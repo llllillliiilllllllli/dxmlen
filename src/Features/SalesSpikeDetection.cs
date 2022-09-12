@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MachineLearning.Features
+namespace MLEngine.Features
 {
     internal class SalesSpikeDetection
     {

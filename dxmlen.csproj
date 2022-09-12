@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <Folder Include="log\" />
+    <Folder Include="src\Application\Configuration\" />
+    <Folder Include="src\Application\Utilities\" />
     <Folder Include="src\Attributes\" />
     <Folder Include="src\Extensions\" />
     <Folder Include="src\Extensions\DataLoaderExtensions\" />
@@ -62,10 +64,15 @@
     <Folder Include="src\Services\ML.NET\Transformers\Text\" />
     <Folder Include="src\Services\ML.NET\Transformers\TransformExtensions\" />
     <Folder Include="src\Services\ML.NET\Transformers\Transforms\" />
+    <Folder Include="src\Services\.NET\" />
     <Folder Include="src\Services\TensorFlow\" />
     <Folder Include="src\Services\Onnx\" />
     <Folder Include="test\" />
     <Folder Include="res\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GitInfo" Version="2.2.0" />
   </ItemGroup>
 
 </Project>

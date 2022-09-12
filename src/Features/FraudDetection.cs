@@ -4,9 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MachineLearning.Features
+namespace MLEngine.Features
 {
     internal class FraudDetection
     {
+        public static void PredictFraud()
+        {
+            return;
+        }
+
+        public static void PredictDetection()
+        {
+            return;
+        }
+
+        public static void PredictFraudDetection()
+        {
+            return;
+        }
     }
 }
