@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace MLEngine.Operation
 {
     internal class Execute
     {
-        public static bool ExecuteCommand(MethodInfo method)
+        public static void ExecuteCommand(MethodInfo method)
         {
-            return true;
+            try { method.Invoke(null, null); }
+            catch { throw; }    
         }
     }
 }

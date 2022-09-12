@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using MLEngine.Styles;
 
 namespace MLEngine.Operation
@@ -20,11 +20,12 @@ namespace MLEngine.Operation
             }
 
             Console.Write($"\n{Color.Green}\u276f{Color.Reset} Select: ");          
-            var input = Console.ReadLine(); 
-            if (input != null || input != "\n" || input != string.Empty)
+            var input = Console.ReadLine();
+            
+            if (!string.IsNullOrEmpty(input))
             {
                 try { return features[int.Parse(input!) - 1]; }                        
-                catch { throw new Exception($"ERROR: Incorrect selection {input}"); }
+                catch { throw new Exception($"Incorrect selection {input}"); }
             }
 
             return null;

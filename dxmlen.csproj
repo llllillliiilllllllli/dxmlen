@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -10,7 +10,6 @@
   <ItemGroup>
     <Folder Include="log\" />
     <Folder Include="src\Application\Configuration\" />
-    <Folder Include="src\Application\Utilities\" />
     <Folder Include="src\Attributes\" />
     <Folder Include="src\Extensions\" />
     <Folder Include="src\Extensions\DataLoaderExtensions\" />
@@ -23,7 +22,6 @@
     <Folder Include="src\Extensions\TreeExtensions\" />
     <Folder Include="src\Macros\" />
     <Folder Include="src\Micros\" />
-    <Folder Include="src\Objects\" />
     <Folder Include="src\Services\ML.NET\Base\PredictionEngineBase\" />
     <Folder Include="src\Services\ML.NET\Base\TrainCatalogBase\" />
     <Folder Include="src\Services\ML.NET\Base\TrainerInfo\" />
@@ -68,11 +66,11 @@
     <Folder Include="src\Services\TensorFlow\" />
     <Folder Include="src\Services\Onnx\" />
     <Folder Include="test\" />
-    <Folder Include="res\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="GitInfo" Version="2.2.0" />
+    <PackageReference Include="Microsoft.ML" Version="1.7.1" />
   </ItemGroup>
 
 </Project>

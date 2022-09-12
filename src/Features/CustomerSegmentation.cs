@@ -10,11 +10,13 @@ namespace MLEngine.Features
     {
         public static void PredictCustomer()
         {
+            Console.WriteLine("PredictCustomer");
             return;
         }
 
         public static void PredictSegmentation()
         {
+            Console.WriteLine("PredictSegmentation");
             return;
         }
     }

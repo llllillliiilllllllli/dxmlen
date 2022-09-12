@@ -1,5 +1,6 @@
 ﻿using MLEngine.Styles;
 using MLEngine.Operation;
+using MLEngine.Utilities;
 
 namespace MLEngine
 {
@@ -25,11 +26,19 @@ namespace MLEngine
             {
                 var features = Reflect.CollectFeatures();
                 var selection = Select.InquireSelection(features);
-                var execution = Execute.ExecuteCommand(selection!);
+                if (selection != null) Execute.ExecuteCommand(selection);
             }
             catch (Exception ex) 
             {
-                Console.WriteLine($"{ex.Message}\n{ex.StackTrace}");
+                Log.Error(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                    Log.Error(ex.Message);
+                    Console.WriteLine(ex.StackTrace);
+                }
             }
 
             Console.Write("\nPress Escape to exit...");
