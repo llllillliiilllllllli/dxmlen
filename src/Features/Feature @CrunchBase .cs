@@ -134,7 +134,7 @@ namespace DxMLEngine.Features
                 "Most Recent Valuation Range",
                 "Date of Most Recent Valuation",
                 "Number of Portfolio Organizations",
-                "Number of Investment",
+                "Number of Investments",
                 "Number of Lead Investments",
                 "Number of Diversity Investments",
                 "Number of Exits",
