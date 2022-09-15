@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MLEngine.Styles
+namespace DxMLEngine.Styles
 {
     internal class Color
     {

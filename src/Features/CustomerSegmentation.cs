@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MLEngine.Features
+namespace DxMLEngine.Features
 {
     internal class CustomerSegmentation
     {

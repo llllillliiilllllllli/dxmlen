@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MLEngine.Entity
+namespace DxMLEngine.Entity
 {
     internal class HousingPriceData
     {

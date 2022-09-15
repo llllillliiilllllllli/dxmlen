@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 
-using MLEngine.Entity;
+using DxMLEngine.Entity;
 
-namespace MLEngine.Features
+namespace DxMLEngine.Features
 {
     internal class PricePrediction
     {

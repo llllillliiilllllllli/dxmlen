@@ -1,8 +1,8 @@
-﻿using MLEngine.Styles;
-using MLEngine.Operation;
-using MLEngine.Utilities;
+﻿using DxMLEngine.Styles;
+using DxMLEngine.Operation;
+using DxMLEngine.Utilities;
 
-namespace MLEngine
+namespace DxMLEngine
 {
     public class Program
     {

@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace MLEngine.Operation
+namespace DxMLEngine.Operation
 {
     internal class Reflect
     {
@@ -14,7 +14,7 @@ namespace MLEngine.Operation
             var assembly = Assembly.GetExecutingAssembly();
             var features = 
                 from type in assembly.GetTypes()
-                where type.Namespace == "MLEngine.Features"
+                where type.Namespace == "DxMLEngine.Features"
                 from method in type.GetMethods()
                 where method.Name != "GetType"
                 where method.Name != "Equals"

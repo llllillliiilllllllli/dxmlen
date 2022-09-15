@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MLEngine.Styles;
+using DxMLEngine.Styles;
 
-namespace MLEngine.Utilities
+namespace DxMLEngine.Utilities
 {
     internal class Log
     {

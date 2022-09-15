@@ -4,9 +4,9 @@ using System.Text;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using MLEngine.Styles;
+using DxMLEngine.Styles;
 
-namespace MLEngine.Operation
+namespace DxMLEngine.Operation
 {
     internal class Select
     {
