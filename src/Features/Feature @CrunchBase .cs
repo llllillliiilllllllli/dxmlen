@@ -357,7 +357,7 @@ namespace DxMLEngine.Features
             var o_fil = $"{o_fol}\\Dataset @CrunchBaseComapnies #-------------- .csv";
             File.WriteAllLines(o_fil, datalines, encoding: Encoding.UTF8);
             var timestamp = File.GetCreationTime(o_fil).ToString("yyyyMMddHHmmss");
-            File.Move(o_fil, o_fil.Replace("#--------------", timestamp));
+            File.Move(o_fil, o_fil.Replace("#--------------", $"#{timestamp}"));
         }
     }
 }
