@@ -39,7 +39,7 @@ namespace DxMLEngine.Features
             var header = new List<string>()
             {
                 "Organization Name",
-                "Founded Date",
+                "Founded Year",
                 "Industries",
                 "Headquarters Location",
                 "Description",
