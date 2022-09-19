@@ -10,7 +10,7 @@ using HtmlAgilityPack;
 
 namespace DxMLEngine.Features
 {
-    internal class CrunchBase
+    internal class CrunchBaseCompanyData
     {
         private static readonly string _CompanyTwitterXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[16]/div/field-formatter/link-formatter/a";
         private static readonly string _CompanyFacebookXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[17]/div/field-formatter/link-formatter/a";
@@ -34,7 +34,7 @@ namespace DxMLEngine.Features
             return document;
         }
 
-        public static string[] ConfigureCompaniesHeader()
+        public static string[] ConfigureHeader()
         {
             var header = new List<string>()
             {
@@ -151,7 +151,7 @@ namespace DxMLEngine.Features
             return header.ToArray();
         }
 
-        public static string[] ConfigureCompaniesXPaths()
+        public static string[] ConfigureXPaths()
         {
             var _NameXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[2]/div/field-formatter/identifier-formatter/a/div/div";
             var _FoundedXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[3]/div/field-formatter/span";
@@ -288,30 +288,34 @@ namespace DxMLEngine.Features
             return xpaths;
         }
 
-        public static void ExtractCompanies()
+        public static void CollectData()
         {
-            Console.Write("Enter input file: ");
+            Console.Write("Enter input file path: ");
             var i_fil = Console.ReadLine()?.Replace("\"", "");
 
             if (string.IsNullOrEmpty(i_fil))
                 throw new ArgumentNullException("path is null or empty");
 
-            Console.Write("Enter output folder: ");
+            Console.Write("Enter output folder path: ");
             var o_fol = Console.ReadLine()?.Replace("\"", "");
 
             if (string.IsNullOrEmpty(o_fol))
                 throw new ArgumentNullException("path is null or empty");
 
+            Console.Write("Enter output file name: ");
+            var o_fil = Console.ReadLine()?.Replace(" ", "");
+
             var paths = File.ReadAllLines(i_fil);
             paths = (from path in paths select path.Replace("\"", "")).ToArray();
 
-            var header = ConfigureCompaniesHeader();
-            var xpaths = ConfigureCompaniesXPaths();
+            var header = ConfigureHeader();
+            var xpaths = ConfigureXPaths();
 
             var dataframe = new List<string[]>() { header };
             foreach (var path in paths)
             {
-                Console.WriteLine($"Extract: {Path.GetFileName(path)}");
+                if (!Path.IsPathFullyQualified(path)) continue;
+                Console.WriteLine($"Collect: {Path.GetFileName(path)}");
 
                 var document = ReadWebpage(path);
                 for (int i = 1; i <= 50; i++)
@@ -354,7 +358,7 @@ namespace DxMLEngine.Features
                 from dataline in dataframe
                 select string.Join(",", dataline);
 
-            var o_fil = $"{o_fol}\\Dataset @CrunchBaseComapnies #-------------- .csv";
+            o_fil = $"{o_fol}\\Dataset @{o_fil} #-------------- .csv";
             File.WriteAllLines(o_fil, datalines, encoding: Encoding.UTF8);
             var timestamp = File.GetCreationTime(o_fil).ToString("yyyyMMddHHmmss");
             File.Move(o_fil, o_fil.Replace("#--------------", $"#{timestamp}"));
