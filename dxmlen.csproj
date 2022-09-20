@@ -30,8 +30,6 @@
     <Folder Include="src\Extensions\LightBgmExtensions\" />
     <Folder Include="src\Extensions\PermutationFeatureImportanceExtensions\" />
     <Folder Include="src\Extensions\TreeExtensions\" />
-    <Folder Include="src\Macros\" />
-    <Folder Include="src\Micros\" />
     <Folder Include="src\Services\ML.NET\Base\PredictionEngineBase\" />
     <Folder Include="src\Services\ML.NET\Base\TrainCatalogBase\" />
     <Folder Include="src\Services\ML.NET\Base\TrainerInfo\" />
