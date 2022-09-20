@@ -402,7 +402,7 @@ namespace DxMLEngine.Features
                 "Acquiree's Website",
                 "Acquiree's Estimated Revenue Range",
                 "Acquiree's Total Funding Amount",
-                "Acquiree's Funding Status",
+                "Acquiree Funding Status",
                 "Acquiree's Number of Funding Rounds",
 
                 "Acquirer's Description",
