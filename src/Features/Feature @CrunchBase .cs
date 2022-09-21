@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 
 using HtmlAgilityPack;
+using System.Runtime.InteropServices;
 
 namespace DxMLEngine.Features
 {
@@ -328,7 +329,9 @@ namespace DxMLEngine.Features
                         {
                             try 
                             {
-                                dataline.Add(node.GetAttributeValue("href", "—"));                                
+                                var href = node.GetAttributeValue("href", "—");
+                                href = href.Replace(",", "%2C");
+                                dataline.Add(href);
                             }
                             catch
                             {
@@ -339,7 +342,7 @@ namespace DxMLEngine.Features
 
                         try
                         {
-                            var text = node.InnerText.Trim().Replace("\"", "\"\"");
+                            var text = node.InnerText.Replace("\"", "\"\"").Trim();
                             dataline.Add("\"" + text + "\"");
                         }
                         catch
@@ -399,20 +402,20 @@ namespace DxMLEngine.Features
                 "Acquiree Last Funding Type",
                 "Acquiree Industries",
                 "Acquiree Headquarters Location",
-                "Acquiree's Website",
-                "Acquiree's Estimated Revenue Range",
-                "Acquiree's Total Funding Amount",
+                "Acquiree Website",
+                "Acquiree Estimated Revenue Range",
+                "Acquiree Total Funding Amount",
                 "Acquiree Funding Status",
-                "Acquiree's Number of Funding Rounds",
+                "Acquiree Number of Funding Rounds",
 
-                "Acquirer's Description",
+                "Acquirer Description",
                 "Acquirer Industries",
                 "Acquirer Headquarters Location",
-                "Acquirer's Website",
-                "Acquirer's Estimated Revenue Range",
-                "Acquirer's Total Funding Amount",
+                "Acquirer Website",
+                "Acquirer Estimated Revenue Range",
+                "Acquirer Total Funding Amount",
                 "Acquirer Funding Status",
-                "Acquirer's Number of Funding Rounds",
+                "Acquirer Number of Funding Rounds",
 
                 "CB Rank (Acquisition)"
             };
@@ -523,7 +526,7 @@ namespace DxMLEngine.Features
 
                         try
                         {
-                            var text = node.InnerText.Trim().Replace("\"", "\"\"");
+                            var text = node.InnerText.Replace("\"", "\"\"").Trim();
                             dataline.Add("\"" + text + "\"");
                         }
                         catch
@@ -715,7 +718,9 @@ namespace DxMLEngine.Features
                         {
                             try
                             {
-                                dataline.Add(node.GetAttributeValue("href", "—"));
+                                var href = node.GetAttributeValue("href", "—");
+                                href = href.Replace(",", "%2C");
+                                dataline.Add(href);
                             }
                             catch
                             {
@@ -726,7 +731,7 @@ namespace DxMLEngine.Features
 
                         try
                         {
-                            var text = node.InnerText.Trim().Replace("\"", "\"\"");
+                            var text = node.InnerText.Replace("\"", "\"\"").Trim();
                             dataline.Add("\"" + text + "\"");
                         }
                         catch
@@ -891,7 +896,9 @@ namespace DxMLEngine.Features
                         {
                             try
                             {
-                                dataline.Add(node.GetAttributeValue("href", "—"));
+                                var href = node.GetAttributeValue("href", "—");
+                                href = href.Replace(",", "%2C");
+                                dataline.Add(href);
                             }
                             catch
                             {
@@ -902,7 +909,7 @@ namespace DxMLEngine.Features
 
                         try
                         {
-                            var text = node.InnerText.Trim().Replace("\"", "\"\"");
+                            var text = node.InnerText.Replace("\"", "\"\"").Trim();
                             dataline.Add("\"" + text + "\"");
                         }
                         catch
@@ -1079,7 +1086,7 @@ namespace DxMLEngine.Features
 
                         try
                         {
-                            var text = node.InnerText.Trim().Replace("\"", "\"\"");
+                            var text = node.InnerText.Replace("\"", "\"\"").Trim();
                             dataline.Add("\"" + text + "\"");
                         }
                         catch
@@ -1374,7 +1381,7 @@ namespace DxMLEngine.Features
 
                         try
                         {
-                            var text = node.InnerText.Trim().Replace("\"", "\"\"");
+                            var text = node.InnerText.Replace("\"", "\"\"").Trim();
                             dataline.Add("\"" + text + "\"");
                         }
                         catch
@@ -1789,7 +1796,9 @@ namespace DxMLEngine.Features
                         {
                             try
                             {
-                                dataline.Add(node.GetAttributeValue("href", "—"));
+                                var href = node.GetAttributeValue("href", "—");
+                                href = href.Replace(",", "%2C");
+                                dataline.Add(href);
                             }
                             catch
                             {
@@ -1800,7 +1809,7 @@ namespace DxMLEngine.Features
 
                         try
                         {
-                            var text = node.InnerText.Trim().Replace("\"", "\"\"");
+                            var text = node.InnerText.Replace("\"", "\"\"").Trim();
                             dataline.Add("\"" + text + "\"");
                         }
                         catch
@@ -1993,7 +2002,9 @@ namespace DxMLEngine.Features
                         {
                             try
                             {
-                                dataline.Add(node.GetAttributeValue("href", "—"));
+                                var href = node.GetAttributeValue("href", "—");
+                                href = href.Replace(",", "%2C");
+                                dataline.Add(href);
                             }
                             catch
                             {
@@ -2004,7 +2015,7 @@ namespace DxMLEngine.Features
 
                         try
                         {
-                            var text = node.InnerText.Trim().Replace("\"", "\"\"");
+                            var text = node.InnerText.Replace("\"", "\"\"").Trim();
                             dataline.Add("\"" + text + "\"");
                         }
                         catch
@@ -2348,7 +2359,9 @@ namespace DxMLEngine.Features
                         {
                             try
                             {
-                                dataline.Add(node.GetAttributeValue("href", "—"));
+                                var href = node.GetAttributeValue("href", "—");
+                                href = href.Replace(",", "%2C");
+                                dataline.Add(href);
                             }
                             catch
                             {
@@ -2359,7 +2372,7 @@ namespace DxMLEngine.Features
 
                         try
                         {
-                            var text = node.InnerText.Trim().Replace("\"", "\"\"");
+                            var text = node.InnerText.Replace("\"", "\"\"").Trim();
                             dataline.Add("\"" + text + "\"");
                         }
                         catch
