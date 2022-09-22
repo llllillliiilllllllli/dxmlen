@@ -39,7 +39,7 @@ namespace DxMLEngine.Features
             {
                 "Organization Name",
                 "Founded Year",
-                "Industries",
+                "Industry",
                 "Headquarters Location",
                 "Description",
                 "CB Rank (Company)",
@@ -67,7 +67,7 @@ namespace DxMLEngine.Features
                 "Number of Enrollments",
                 "School Method",
                 "Number of Founders (Alumni)",
-                "Industry Groups",
+                "Industry Group",
                 "Number of Founders",
                 "Founders",
                 "Number of Employees",
@@ -154,7 +154,7 @@ namespace DxMLEngine.Features
         {
             var _NameXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[2]/div/field-formatter/identifier-formatter/a/div/div";
             var _FoundedXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[3]/div/field-formatter/span";
-            var _IndustriesXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[4]/div/field-formatter/identifier-multi-formatter/span";
+            var _IndustryXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[4]/div/field-formatter/identifier-multi-formatter/span";
             var _HQLocationXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[5]/div/field-formatter/identifier-multi-formatter/span";
             var _DescriptionXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[6]/div/field-formatter/span";
             var _CBRankCompanyXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[7]/div/field-formatter/a";
@@ -262,7 +262,7 @@ namespace DxMLEngine.Features
             var _TagsXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[109]/div/field-formatter/identifier-multi-formatter/span";
 
             string[] xpaths = {
-                _NameXPath, _FoundedXPath, _IndustriesXPath, _HQLocationXPath, _DescriptionXPath, _CBRankCompanyXPath, _HQRegionXPath,
+                _NameXPath, _FoundedXPath, _IndustryXPath, _HQLocationXPath, _DescriptionXPath, _CBRankCompanyXPath, _HQRegionXPath,
                 _DiversityXPath, _EstimatedRevenueXPath, _OperatingStatusXPath, _ExitDateXPath, _ClosedDateXPath, _CompanyTypeXPath,
                 _WebsiteXPath, _TwitterXPath, _FacebookXPath, _LinkedInXPath, _EmailXPath, _PhoneXPath, _NumArticlesXPath, _HubTagsXPath,
                 _FullDescriptionXPath, _ActiveHiringXPath, _InvestorTypeXPath, _InvestorStageXPath, _SchoolTypeXPath, _SchoolProgramXPath,
@@ -400,7 +400,7 @@ namespace DxMLEngine.Features
 
                 "Acquiree Description",
                 "Acquiree Last Funding Type",
-                "Acquiree Industries",
+                "Acquiree Industry",
                 "Acquiree Headquarters Location",
                 "Acquiree Website",
                 "Acquiree Estimated Revenue Range",
@@ -409,7 +409,7 @@ namespace DxMLEngine.Features
                 "Acquiree Number of Funding Rounds",
 
                 "Acquirer Description",
-                "Acquirer Industries",
+                "Acquirer Industry",
                 "Acquirer Headquarters Location",
                 "Acquirer Website",
                 "Acquirer Estimated Revenue Range",
@@ -435,7 +435,7 @@ namespace DxMLEngine.Features
             
             var _AcquireeDescriptionXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[9]/div/field-formatter/span";
             var _AcquireeLastFundingTypeXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[10]/div/field-formatter/a";
-            var _AcquireeIndustriesXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[11]/div/field-formatter/identifier-multi-formatter/span";
+            var _AcquireeIndustryXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[11]/div/field-formatter/identifier-multi-formatter/span";
             var _AcquireeHQLocationXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[12]/div/field-formatter/identifier-multi-formatter/span";
             var _AcquireeWebsiteXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[13]/div/field-formatter/link-formatter/a";
             var _AcquireeEstRevenueRangeXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[14]/div/field-formatter/a";
@@ -444,7 +444,7 @@ namespace DxMLEngine.Features
             var _AcquireeNumFundingRoundsXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[17]/div/field-formatter/span";
 
             var _AcquirerDecriptionXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[18]/div/field-formatter/span";
-            var _AcquirerIndustriesXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[19]/div/field-formatter/identifier-multi-formatter/span";
+            var _AcquirerIndustryXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[19]/div/field-formatter/identifier-multi-formatter/span";
             var _AcquirerHQLocationXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[20]/div/field-formatter/identifier-multi-formatter/span";
             var _AcquirerWebsiteXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[21]/div/field-formatter/link-formatter/a";
             var _AcquirerEstRevenueRangeXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[22]/div/field-formatter/a";
@@ -465,7 +465,7 @@ namespace DxMLEngine.Features
                 _AcquisitionTermsXPath,
                 _AcquireeDescriptionXPath,
                 _AcquireeLastFundingTypeXPath,
-                _AcquireeIndustriesXPath,
+                _AcquireeIndustryXPath,
                 _AcquireeHQLocationXPath,
                 _AcquireeWebsiteXPath,
                 _AcquireeEstRevenueRangeXPath,
@@ -473,7 +473,7 @@ namespace DxMLEngine.Features
                 _AcquireeFundingStatusXPath,
                 _AcquireeNumFundingRoundsXPath,
                 _AcquirerDecriptionXPath,
-                _AcquirerIndustriesXPath,
+                _AcquirerIndustryXPath,
                 _AcquirerHQLocationXPath,
                 _AcquirerWebsiteXPath,
                 _AcquirerEstRevenueRangeXPath,
@@ -591,7 +591,7 @@ namespace DxMLEngine.Features
                 "Number of Contact Emails",
                 "Number of Contact Phones",
                 "Organization HQ Region",
-                "Organization Industries",
+                "Organization Industry",
                 "Organization Number of Employees",
                 "Organization Founded Date",
                 "Organization Last Funding Date",
@@ -626,7 +626,7 @@ namespace DxMLEngine.Features
             var _NumberofContactsEmailsXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[14]/div/field-formatter/span";
             var _NumberofContactsPhonesXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[15]/div/field-formatter/span";
             var _OrganizationHQRegionXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[16]/div/field-formatter/identifier-multi-formatter/span";
-            var _OrganizationIndustriesXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[17]/div/field-formatter/identifier-multi-formatter/span";
+            var _OrganizationIndustryXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[17]/div/field-formatter/identifier-multi-formatter/span";
             var _OrganizationNumberofEmployeesXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[18]/div/field-formatter/a";
             var _OrganizationFoundedDateXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[19]/div/field-formatter/a";
             var _OrganizationLastFundingDateXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[20]/div/field-formatter/a";
@@ -657,7 +657,7 @@ namespace DxMLEngine.Features
                 _NumberofContactsEmailsXPath,
                 _NumberofContactsPhonesXPath,
                 _OrganizationHQRegionXPath,
-                _OrganizationIndustriesXPath,
+                _OrganizationIndustryXPath,
                 _OrganizationNumberofEmployeesXPath,
                 _OrganizationFoundedDateXPath,
                 _OrganizationLastFundingDateXPath,
@@ -1144,8 +1144,8 @@ namespace DxMLEngine.Features
                 "Hub Type",
                 "Parent Organization",
                 "Disverity Spotlight (US Only)",
-                "Industries",
-                "Industry Groups",
+                "Industry",
+                "Industry Group",
                 "Location",
                 "Location Type",
                 "Closed Year",
@@ -1215,7 +1215,7 @@ namespace DxMLEngine.Features
             var _HubType = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[9]/div/field-formatter/enum-multi-formatter/span";
             var _ParentOrganization = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[10]/div/field-formatter/identifier-formatter/span";
             var _DisveritySpotlight = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[11]/div/field-formatter/identifier-multi-formatter/span";
-            var _Industries = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[12]/div/field-formatter/identifier-multi-formatter/span";
+            var _Industry = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[12]/div/field-formatter/identifier-multi-formatter/span";
             var _IndustryGroups = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[13]/div/field-formatter/identifier-multi-formatter/span";
             var _Location = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[14]/div/field-formatter/identifier-multi-formatter/span";
             var _LocationType = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[15]/div/field-formatter/span";
@@ -1282,7 +1282,7 @@ namespace DxMLEngine.Features
                 _HubType,
                 _ParentOrganization,
                 _DisveritySpotlight,
-                _Industries,
+                _Industry,
                 _IndustryGroups,
                 _Location,
                 _LocationType,
@@ -1528,8 +1528,8 @@ namespace DxMLEngine.Features
                 "Number of Founders",
                 "Founders",
                 "Number of Employees",
-                "Industry Groups",
-                "Industries",
+                "Industry Group",
+                "Industry",
                 "School Type",
                 "School Program",
                 "Number of Enrollments",
@@ -1638,7 +1638,7 @@ namespace DxMLEngine.Features
             var _Founders = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[96]/div/field-formatter/identifier-multi-formatter/span";
             var _NumberOfEmployees = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[97]/div/field-formatter/a";
             var _IndustryGroups = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[98]/div/field-formatter/identifier-multi-formatter/span";
-            var _Industries = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[99]/div/field-formatter/identifier-multi-formatter/span";
+            var _Industry = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[99]/div/field-formatter/identifier-multi-formatter/span";
             var _SchoolType = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[100]/div/field-formatter/span";
             var _SchoolProgram = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[101]/div/field-formatter/span";
             var _NumberOfEnrollments = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[102]/div/field-formatter/span";
@@ -1743,7 +1743,7 @@ namespace DxMLEngine.Features
                 _Founders,
                 _NumberOfEmployees,
                 _IndustryGroups,
-                _Industries,
+                _Industry,
                 _SchoolType,
                 _SchoolProgram,
                 _NumberOfEnrollments,
@@ -2069,7 +2069,7 @@ namespace DxMLEngine.Features
             {
                 "Organization Name",
                 "Founded Year",
-                "Industries",
+                "Industry",
                 "Headquarters Location",
                 "Description",
                 "CB Rank (Company)",
@@ -2097,7 +2097,7 @@ namespace DxMLEngine.Features
                 "Number of Enrollments",
                 "School Method",
                 "Number of Founders (Alumni)",
-                "Industry Groups",
+                "Industry Group",
                 "Number of Founders",
                 "Founders",
                 "Number of Employees",
@@ -2184,7 +2184,7 @@ namespace DxMLEngine.Features
         {
             var _NameXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[2]/div/field-formatter/identifier-formatter/a/div/div";
             var _FoundedXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[3]/div/field-formatter/span";
-            var _IndustriesXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[4]/div/field-formatter/identifier-multi-formatter/span";
+            var _IndustryXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[4]/div/field-formatter/identifier-multi-formatter/span";
             var _HQLocationXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[5]/div/field-formatter/identifier-multi-formatter/span";
             var _DescriptionXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[6]/div/field-formatter/span";
             var _CBRankCompanyXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[7]/div/field-formatter/a";
@@ -2292,7 +2292,7 @@ namespace DxMLEngine.Features
             var _TagsXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[109]/div/field-formatter/identifier-multi-formatter/span";
 
             string[] xpaths = {
-                _NameXPath, _FoundedXPath, _IndustriesXPath, _HQLocationXPath, _DescriptionXPath, _CBRankCompanyXPath, _HQRegionXPath,
+                _NameXPath, _FoundedXPath, _IndustryXPath, _HQLocationXPath, _DescriptionXPath, _CBRankCompanyXPath, _HQRegionXPath,
                 _DiversityXPath, _EstimatedRevenueXPath, _OperatingStatusXPath, _ExitDateXPath, _ClosedDateXPath, _CompanyTypeXPath,
                 _WebsiteXPath, _TwitterXPath, _FacebookXPath, _LinkedInXPath, _EmailXPath, _PhoneXPath, _NumArticlesXPath, _HubTagsXPath,
                 _FullDescriptionXPath, _ActiveHiringXPath, _InvestorTypeXPath, _InvestorStageXPath, _SchoolTypeXPath, _SchoolProgramXPath,
