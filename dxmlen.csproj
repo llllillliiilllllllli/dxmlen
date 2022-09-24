@@ -30,6 +30,7 @@
     <Folder Include="src\Extensions\LightBgmExtensions\" />
     <Folder Include="src\Extensions\PermutationFeatureImportanceExtensions\" />
     <Folder Include="src\Extensions\TreeExtensions\" />
+    <Folder Include="src\Functions\Mouse\" />
     <Folder Include="src\Services\ML.NET\Base\PredictionEngineBase\" />
     <Folder Include="src\Services\ML.NET\Base\TrainCatalogBase\" />
     <Folder Include="src\Services\ML.NET\Base\TrainerInfo\" />
@@ -70,6 +71,8 @@
     <Folder Include="src\Services\ML.NET\Transformers\Text\" />
     <Folder Include="src\Services\ML.NET\Transformers\TransformExtensions\" />
     <Folder Include="src\Services\ML.NET\Transformers\Transforms\" />
+    <Folder Include="src\Services\Interop\" />
+    <Folder Include="src\Services\TextCopy\" />
     <Folder Include="src\Services\TensorFlow\" />
     <Folder Include="src\Services\Onnx\" />
     <Folder Include="test\" />
@@ -78,7 +81,9 @@
   <ItemGroup>
     <PackageReference Include="GitInfo" Version="2.2.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+    <PackageReference Include="Microsoft.Data.Analysis" Version="0.19.1" />
     <PackageReference Include="Microsoft.ML" Version="1.7.1" />
+    <PackageReference Include="TextCopy" Version="6.1.0" />
   </ItemGroup>
 
 </Project>
