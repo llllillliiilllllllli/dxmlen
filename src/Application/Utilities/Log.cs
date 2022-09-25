@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DxMLEngine.Styles;
-
+using Color = DxMLEngine.Styles.Color;
 namespace DxMLEngine.Utilities
 {
     internal class Log

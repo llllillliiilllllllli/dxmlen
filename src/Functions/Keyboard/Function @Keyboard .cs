@@ -143,6 +143,20 @@ namespace DxMLEngine.Functions
                 keybd_event(VK_F9, 0, KEYEVENTF_KEYDOWN, IntPtr.Zero);
                 pattern = pattern.Replace("F9", "");
                 keybd_event(VK_F9, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
+            }            
+            
+            if (pattern.StartsWith("F10") == true)
+            {
+                keybd_event(VK_F10, 0, KEYEVENTF_KEYDOWN, IntPtr.Zero);
+                pattern = pattern.Replace("F10", "");
+                keybd_event(VK_F10, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
+            }            
+            
+            if (pattern.StartsWith("F11") == true)
+            {
+                keybd_event(VK_F11, 0, KEYEVENTF_KEYDOWN, IntPtr.Zero);
+                pattern = pattern.Replace("F11", "");
+                keybd_event(VK_F11, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
             }
 
             Thread.Sleep(delay);

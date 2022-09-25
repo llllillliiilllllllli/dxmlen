@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using DxMLEngine.Styles;
-
+using Color = DxMLEngine.Styles.Color;
 namespace DxMLEngine.Operation
 {
     internal class Select
@@ -16,7 +16,7 @@ namespace DxMLEngine.Operation
             for (int i = 0; i < features.Length; i++)
             {
                 var feature = features[i];
-                Console.WriteLine($"{i+1, 2} {feature.DeclaringType?.Name}.{feature.Name}");
+                Console.WriteLine($"{i+1, 3} {feature.DeclaringType?.Name}.{feature.Name}");
             }
 
             Console.Write($"\n{Color.Green}\u276f{Color.Reset} Select: ");          

@@ -2,25 +2,23 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="res\Data %40CrunchBase\**" />
-    <EmbeddedResource Remove="res\Data %40CrunchBase\**" />
-    <None Remove="res\Data %40CrunchBase\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="src\Services\.NET\System %40XML .cs" />
+    <Compile Remove="res\Data %40Tesseract #20220925 - Copy\**" />
+    <EmbeddedResource Remove="res\Data %40Tesseract #20220925 - Copy\**" />
+    <None Remove="res\Data %40Tesseract #20220925 - Copy\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="log\" />
+    <Folder Include="res\Data %40CrunchBase\" />
+    <Folder Include="src\Services\Tesseract\TessData\tessconfigs\" />
     <Folder Include="src\Application\Configuration\" />
-    <Folder Include="src\Attributes\" />
     <Folder Include="src\Extensions\" />
     <Folder Include="src\Extensions\DataLoaderExtensions\" />
     <Folder Include="src\Extensions\DebuggerExtensions\" />
@@ -30,48 +28,51 @@
     <Folder Include="src\Extensions\LightBgmExtensions\" />
     <Folder Include="src\Extensions\PermutationFeatureImportanceExtensions\" />
     <Folder Include="src\Extensions\TreeExtensions\" />
-    <Folder Include="src\Functions\Mouse\" />
-    <Folder Include="src\Services\ML.NET\Base\PredictionEngineBase\" />
-    <Folder Include="src\Services\ML.NET\Base\TrainCatalogBase\" />
-    <Folder Include="src\Services\ML.NET\Base\TrainerInfo\" />
-    <Folder Include="src\Services\ML.NET\Context\MLContext\" />
-    <Folder Include="src\Services\ML.NET\Context\ModelOperations\" />
-    <Folder Include="src\Services\ML.NET\Context\PredictionEngineOptions\" />
-    <Folder Include="src\Services\ML.NET\Context\PredictionEngine\" />
-    <Folder Include="src\Services\ML.NET\Data\DatabaseLoader\" />
-    <Folder Include="src\Services\ML.NET\Data\DataOperations\" />
-    <Folder Include="src\Services\ML.NET\Data\DataViewCursor\" />
-    <Folder Include="src\Services\ML.NET\Data\DataViewRow\" />
-    <Folder Include="src\Services\ML.NET\Data\DataViewSchema\" />
-    <Folder Include="src\Services\ML.NET\Data\InputOutputColumnPair\" />
-    <Folder Include="src\Services\ML.NET\Data\SchemaShape\" />
-    <Folder Include="src\Services\ML.NET\Data\TextLoaderSaver\" />
-    <Folder Include="src\Services\ML.NET\Trainers\AnomalyDetection\" />
-    <Folder Include="src\Services\ML.NET\Trainers\BinaryClassification\" />
-    <Folder Include="src\Services\ML.NET\Trainers\BinaryLoaderSaver\" />
-    <Folder Include="src\Services\ML.NET\Trainers\Clustering\" />
-    <Folder Include="src\Services\ML.NET\Trainers\Forecasting\" />
-    <Folder Include="src\Services\ML.NET\Trainers\MulticlassClassification\" />
-    <Folder Include="src\Services\ML.NET\Trainers\Ranking\" />
-    <Folder Include="src\Services\ML.NET\Trainers\Regression\" />
-    <Folder Include="src\Services\ML.NET\Trainers\StandardTrainers\" />
-    <Folder Include="src\Services\ML.NET\Trainers\TimeSeries\" />
-    <Folder Include="src\Services\ML.NET\Trainers\Vision\" />
-    <Folder Include="src\Services\ML.NET\Transformers\Categorical\" />
-    <Folder Include="src\Services\ML.NET\Transformers\Conversions\" />
-    <Folder Include="src\Services\ML.NET\Transformers\CustomMapping\" />
-    <Folder Include="src\Services\ML.NET\Transformers\Explainability\" />
-    <Folder Include="src\Services\ML.NET\Transformers\Extensions\" />
-    <Folder Include="src\Services\ML.NET\Transformers\FeatureSelection\" />
-    <Folder Include="src\Services\ML.NET\Transformers\ImageEstimator\" />
-    <Folder Include="src\Services\ML.NET\Transformers\KernelExpansion\" />
-    <Folder Include="src\Services\ML.NET\Transformers\MKLComponents\" />
-    <Folder Include="src\Services\ML.NET\Transformers\Normalization\" />
-    <Folder Include="src\Services\ML.NET\Transformers\PrincipleComponentAnalysis\" />
-    <Folder Include="src\Services\ML.NET\Transformers\Text\" />
-    <Folder Include="src\Services\ML.NET\Transformers\TransformExtensions\" />
-    <Folder Include="src\Services\ML.NET\Transformers\Transforms\" />
+    <Folder Include="src\Services\Microsoft\ML\Base\PredictionEngineBase\" />
+    <Folder Include="src\Services\Microsoft\ML\Base\TrainCatalogBase\" />
+    <Folder Include="src\Services\Microsoft\ML\Base\TrainerInfo\" />
+    <Folder Include="src\Services\Microsoft\ML\Context\MLContext\" />
+    <Folder Include="src\Services\Microsoft\ML\Context\ModelOperations\" />
+    <Folder Include="src\Services\Microsoft\ML\Context\PredictionEngineOptions\" />
+    <Folder Include="src\Services\Microsoft\ML\Context\PredictionEngine\" />
+    <Folder Include="src\Services\Microsoft\ML\Data\DatabaseLoader\" />
+    <Folder Include="src\Services\Microsoft\ML\Data\DataOperations\" />
+    <Folder Include="src\Services\Microsoft\ML\Data\DataViewCursor\" />
+    <Folder Include="src\Services\Microsoft\ML\Data\DataViewRow\" />
+    <Folder Include="src\Services\Microsoft\ML\Data\DataViewSchema\" />
+    <Folder Include="src\Services\Microsoft\ML\Data\InputOutputColumnPair\" />
+    <Folder Include="src\Services\Microsoft\ML\Data\SchemaShape\" />
+    <Folder Include="src\Services\Microsoft\ML\Data\TextLoaderSaver\" />
+    <Folder Include="src\Services\Microsoft\ML\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\AnomalyDetection\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\BinaryClassification\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\BinaryLoaderSaver\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\Clustering\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\Forecasting\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\MulticlassClassification\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\Ranking\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\Regression\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\StandardTrainers\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\TimeSeries\" />
+    <Folder Include="src\Services\Microsoft\ML\Trainers\Vision\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\Categorical\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\Conversions\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\CustomMapping\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\Explainability\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\Extensions\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\FeatureSelection\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\ImageEstimator\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\KernelExpansion\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\MKLComponents\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\Normalization\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\PrincipleComponentAnalysis\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\Text\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\TransformExtensions\" />
+    <Folder Include="src\Services\Microsoft\ML\Transformers\Transforms\" />
     <Folder Include="src\Services\Interop\" />
+    <Folder Include="src\Services\Microsoft\CSharp\" />
+    <Folder Include="src\Services\Microsoft\Win32\" />
+    <Folder Include="src\Services\Microsoft\Extensions\" />
     <Folder Include="src\Services\TextCopy\" />
     <Folder Include="src\Services\TensorFlow\" />
     <Folder Include="src\Services\Onnx\" />
@@ -83,7 +84,97 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="Microsoft.Data.Analysis" Version="0.19.1" />
     <PackageReference Include="Microsoft.ML" Version="1.7.1" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    <PackageReference Include="Tesseract" Version="4.1.1" />
     <PackageReference Include="TextCopy" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\tesseract41.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x86\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x86\tesseract41.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x86\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x86\tesseract41.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\tesseract41.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x86\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x86\tesseract41.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\tesseract41.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x86\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x86\tesseract41.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\tesseract41.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x86\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x86\tesseract41.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\tesseract41.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\leptonica-1.80.0.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Dustin\.nuget\packages\tesseract\4.1.1\build\\..\x64\tesseract41.dll" />
   </ItemGroup>
 
 </Project>

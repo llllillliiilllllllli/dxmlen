@@ -14,7 +14,7 @@ namespace DxMLEngine.Functions
             return await ClipboardService.GetTextAsync();
         }        
         
-        public static async Task SetTextAsync(string text)
+        public static async Task SetTextAsync(string path, string text)
         {
             await ClipboardService.SetTextAsync(text);
         }        
@@ -24,7 +24,7 @@ namespace DxMLEngine.Functions
             return ClipboardService.GetText();
         }        
         
-        public static void SetText(string text)
+        public static void SetText(string path, string text)
         {
             ClipboardService.SetText(text);
         }
