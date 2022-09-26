@@ -8,7 +8,7 @@ using DxMLEngine.Objects;
 
 namespace DxMLEngine.Functions
 {
-    internal class DataIO
+    internal class DxData
     {
         public static Datadoc ReadDatadoc(string path)
         {

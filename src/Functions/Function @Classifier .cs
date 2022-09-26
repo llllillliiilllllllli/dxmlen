@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dxMLEngine.Functions
+namespace DxMLEngine.Functions
 {
     internal class Classifier
     {

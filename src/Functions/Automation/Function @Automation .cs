@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace DxMLEngine.Functions
 {
-    internal class AutomationML
+    internal class DxAutomation
     {
     }
 }

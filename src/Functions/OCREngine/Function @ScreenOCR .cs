@@ -13,7 +13,7 @@ using Tesseract;
 
 namespace DxMLEngine.Functions
 {
-    internal class ScreenOCR
+    internal class DxOCREngine
     {
         internal const string TESSSERACT_DATA = @".\src\Services\Tesseract\TessData\";
 

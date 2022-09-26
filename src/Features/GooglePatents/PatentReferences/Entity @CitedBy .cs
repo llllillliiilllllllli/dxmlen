@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace DxMLEngine.Features.GooglePatents
 {
-    internal class PatentCitations
+    internal class CitedBy
     {
         internal class Citation
         {
@@ -32,7 +32,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         public Citation[] Citations;
 
-        public PatentCitations(Citation[] citations)
+        public CitedBy(Citation[] citations)
             => this.Citations = citations;
     }
 }

@@ -9,7 +9,8 @@ using System.Xml.XPath;
 
 namespace DxMLEngine.Functions
 {
-    public class HtmlDocument : HtmlAgilityPack.HtmlDocument
+    public class DxHtmlDocument : HtmlAgilityPack.HtmlDocument
     {
+
     }
 }

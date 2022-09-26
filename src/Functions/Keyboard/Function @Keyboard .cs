@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace DxMLEngine.Functions
 {
-    internal class Keyboard
+    internal class DxKeyboard
     {
         public const byte VK_A = 0x41;
         public const byte VK_Q = 0x51;

@@ -76,7 +76,6 @@
     <Folder Include="src\Services\TextCopy\" />
     <Folder Include="src\Services\TensorFlow\" />
     <Folder Include="src\Services\Onnx\" />
-    <Folder Include="test\" />
   </ItemGroup>
 
   <ItemGroup>

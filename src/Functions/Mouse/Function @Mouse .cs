@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace DxMLEngine.Functions
 {
-    internal class Mouse
+    internal class DxMouse
     {
         [DllImport("User32.dll")]
         private static extern int SetForegroundWindow(IntPtr point);
@@ -19,10 +19,10 @@ namespace DxMLEngine.Functions
         [DllImport("user32.dll")]
         static extern int GetSystemMetrics(int nIndex);
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [DllImport("user32.dll")]
         private static extern bool SetCursorPos(int x, int y);
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [DllImport("user32.dll")]
         private static extern void mouse_event(uint dwFlags, int dx, int dy, uint dwData, int dwExtraInfo);
 
         private const uint MOUSEEVENTF_LEFTDOWN = 0x02;
@@ -30,8 +30,11 @@ namespace DxMLEngine.Functions
         private const uint MOUSEEVENTF_ABSOLUTE = 0x8000;
         private const uint MOUSEEVENTF_MOVE = 0x0001;
 
-        public static void LeftClick(int xpos, int ypos)
+        public static void LeftClick(Process process, int xpos, int ypos)
         {
+            var intPtr = process.MainWindowHandle;
+            SetForegroundWindow(intPtr);
+
             int sx = GetSystemMetrics(SM_CXSCREEN);
             int sy = GetSystemMetrics(SM_CYSCREEN);
 
