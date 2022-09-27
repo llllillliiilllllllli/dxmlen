@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="log\" />
     <Folder Include="res\Data %40CrunchBase\" />
+    <Folder Include="src\Features\YahooFinance\" />
     <Folder Include="src\Services\HtmlAgility\" />
     <Folder Include="src\Services\Tesseract\TessData\tessconfigs\" />
     <Folder Include="src\Application\Configuration\" />

@@ -1,755 +1,368 @@
-+ Synonym- - - - -
-  Patents
-(battery)
+Skip to main content
+Deliver to
+Vietnam
+Electronics
 
-13 of 128670  
-Back to results
-battery;
-Electrolyte for nonaqueous electrolyte battery and nonaqueous electrolyte battery using same
-Abstract
-The present invention can provide an electrolyte solution for a nonaqueous electrolyte battery which can exhibit an effect of suppressing an increase in internal resistance at low temperatures and an effect of suppressing a gas generation amount at high temperatures in a well-balanced manner when used in a nonaqueous electrolyte battery, and a nonaqueous electrolyte battery using the same. The nonaqueous electrolytic solution contains a nonaqueous solvent and a solute. The solute contains at least hexafluorophosphate and/or tetrafluoroborate and contains at least 1 of the following general formula [1]]The salt having an imide anion is not shown in the following general formula [2]]The silane compound does not contain, for example, the following general formula [3]]And the like.
-Classifications
- H01G11/50 Electrodes characterised by their materials specially adapted for lithium-ion capacitors, e.g. for lithium-doping or for intercalation
- H01M10/0567 Liquid materials characterised by the additives
- H01G11/64 Liquid electrolytes characterised by additives
- H01M10/052 Li-accumulators
- H01M10/0525 Rocking-chair batteries, i.e. batteries with lithium insertion or intercalation in both electrodes; Lithium-ion batteries
- H01M10/054 Accumulators with insertion or intercalation of metals other than lithium, e.g. with magnesium or aluminium
- H01M10/0566 Liquid materials
- H01M10/0568 Liquid materials characterised by the solutes
- H01M4/366 Composites as layered products
- H01M4/505 Selection of substances as active materials, active masses, active liquids of inorganic oxides or hydroxides of manganese of mixed oxides or hydroxides containing manganese for inserting or intercalating light metals, e.g. LiMn2O4 or LiMn2OxFy
- H01M4/525 Selection of substances as active materials, active masses, active liquids of inorganic oxides or hydroxides of nickel, cobalt or iron of mixed oxides or hydroxides containing iron, cobalt or nickel for inserting or intercalating light metals, e.g. LiNiO2, LiCoO2 or LiCoOxFy
- H01M6/16 Cells with non-aqueous electrolyte with organic electrolyte
- H01M6/166 Cells with non-aqueous electrolyte with organic electrolyte characterised by the electrolyte by the solute
- H01M6/168 Cells with non-aqueous electrolyte with organic electrolyte characterised by the electrolyte by additives
- H01M10/0569 Liquid materials characterised by the solvents
- H01M2004/027 Negative electrodes
- H01M2004/028 Positive electrodes
- H01M2300/0025 Organic electrolyte
- H01M2300/0028 Organic electrolyte characterised by the solvent
- Y02E60/10 Energy storage using batteries
- Y02T10/70 Energy storage systems for electromobility, e.g. batteries
-Hide more classifications
+Electronics
+Portable Bluetooth Speakers
+English
+Hello, sign in
+Account & Lists
+Returns
+& Orders
+0
+Cart
+All
+Today's Deals
+Customer Service
+Registry
+Gift Cards
+Sell
+Disability Customer Support
+Home Audio & TheaterPremium AudioHeadphonesHome Theater SystemsSpeakersWireless AudioStereo System ComponentsAccessoriesDeals
+Electronics›Portable Audio & Video›Portable Speakers & Docks›Portable Bluetooth Speakers
+$66.45
+$173.42 Shipping & Import Fees Deposit to Vietnam Details 
+$100.64 delivery
+Deliver to Vietnam
+In Stock.
+Qty:
+1
+Qty:1
+Add to Cart
+Buy Now
+  Secure transaction
+Ships from
+Amazon.com
+Sold by
+Amazon.com
+Ships from
+Amazon.com
+Sold by
+Amazon.com
+Return policy: Eligible for Return, Refund or Replacement within 30 days of receipt 
+Support: Free Amazon product support included 
+Add to List
+Have one to sell?
+Sell on Amazon
 
-################################################################################
 
-CN108475824B
-China
 
- Download PDF  Find Prior Art  Similar
-Other languagesChineseInventor森中孝敬久保诚河端涉新免益隆松崎宽树高桥干弘Current Assignee Central Glass Co Ltd
-Worldwide applications
-2016  CN WO EP JP KR US CN 2020  US JP
-Application CN201680075842.0A events 
-2015-12-22
-Priority to JP2015250364
-2016-12-22
-Application filed by Central Glass Co Ltd
-2018-08-31
-Publication of CN108475824A
-2021-08-24
-Application granted
-2021-08-24
-Publication of CN108475824B
-Status
-Active
-2036-12-22
-Anticipated expiration
-Show all events
-InfoPatent citations (17) Cited by (22) Legal events Similar documents Priority and Related ApplicationsExternal linksEspacenetGlobal DossierDiscuss
 
-################################################################################
 
-Description
-Electrolyte for nonaqueous electrolyte battery and nonaqueous electrolyte battery using same
-Technical Field
-The present invention relates to an electrolyte solution for a nonaqueous electrolyte battery, which can exhibit an effect of suppressing an increase in internal resistance at low temperatures and an effect of suppressing a gas generation amount at high temperatures in a well-balanced manner when used in a nonaqueous electrolyte battery, and a nonaqueous electrolyte battery using the same.
-Background
-In recent years, attention has been paid to information storage devices and communication devices, that is, small devices such as personal computers, video cameras, digital cameras, and cellular phones, power storage systems for applications requiring high energy density, large devices such as electric vehicles, hybrid vehicles, auxiliary power sources for fuel cell vehicles, and power storage systems for applications requiring electric power. As one of the candidates, nonaqueous electrolyte batteries such as lithium ion batteries, lithium ion capacitors, and sodium ion batteries have been actively developed.
-Many of these nonaqueous electrolyte batteries have been put to practical use, but are not satisfactory for various uses with respect to various characteristics. In particular, in the case of in-vehicle applications such as electric vehicles, high input/output characteristics are required even in a cold period, and therefore, improvement of low-temperature characteristics is particularly important, and high-temperature cycle characteristics such as maintaining the characteristics (small increase in internal resistance) even when charge and discharge are repeated in a high-temperature environment are required. In addition, laminated batteries using a laminate film such as an aluminum laminate film as a casing member are often used for the purpose of reducing the weight of the battery, but these batteries have a problem of deformation due to swelling or the like caused by gas generation inside the battery.
-Optimization of various battery components including active materials of a positive electrode and a negative electrode has been studied as a means for improving high-temperature characteristics of a nonaqueous electrolyte battery and battery characteristics (cycle characteristics) when repeated charge and discharge are performed. The non-aqueous electrolyte related art is not an exception, and it is proposed that deterioration of the active positive and negative electrode surfaces due to decomposition of the electrolyte is suppressed by various additives. For example, patent document 1 proposes that battery characteristics be improved by adding vinylene carbonate to an electrolyte solution. However, although the battery characteristics at high temperatures are improved, a problem is that the internal resistance increases significantly and the low-temperature characteristics decrease. In addition, many studies have been made on addition of an imide salt to an electrolytic solution, and for example, there have been proposed: a method of suppressing deterioration of high-temperature cycle characteristics and high-temperature storage characteristics by combining a specific sulfonyl imide salt, phosphoryl imide salt and oxalate complex (patent document 2), a method of suppressing deterioration of cycle characteristics and output characteristics by combining a specific sulfonyl imide salt and a fluorophosphate salt (patent document 3), and the like.
-Documents of the prior art
-Patent document
-Patent document 1: japanese patent laid-open No. 2000-123867
-Patent document 2: japanese patent laid-open publication No. 2013-051122
-Patent document 3: japanese patent laid-open publication No. 2013-030465
-Disclosure of Invention
-Problems to be solved by the invention
-The low-temperature characteristics and high-temperature storage characteristics obtained by nonaqueous electrolyte batteries using nonaqueous electrolytes disclosed in prior art documents are not satisfactory and have room for improvement. For example, in more severe applications, an electrolyte solution for a nonaqueous electrolyte battery and a nonaqueous electrolyte battery using the same are required, which can suppress an increase in internal resistance at a low temperature of-30 ℃ or lower and can suppress a gas generation amount at a high temperature of 70 ℃ or higher.
-The purpose of the present invention is to provide an electrolyte for a nonaqueous electrolyte battery, which, when used in a nonaqueous electrolyte battery, can exert a well-balanced effect of suppressing an increase in internal resistance at low temperatures and a gas generation amount at high temperatures, and to provide a nonaqueous electrolyte battery using the electrolyte.
-Means for solving the problems
-The present inventors have conducted intensive studies in view of the above problems, and as a result, have found that: the present inventors have found that, when a nonaqueous electrolyte solution for a nonaqueous electrolyte solution battery containing a nonaqueous solvent and a solute contains at least a hexafluorophosphate and/or a tetrafluoroborate as the solute and the electrolyte solution contains a salt of an imide anion having a specific structure, the nonaqueous electrolyte solution battery can exhibit an effect of suppressing an increase in internal resistance at low temperatures and an effect of suppressing a gas generation amount at high temperatures in a well-balanced manner when the electrolyte solution is used in the nonaqueous electrolyte solution battery, and have completed the present invention.
-The present applicant has filed an invention of an electrolyte solution for a nonaqueous electrolyte battery having excellent low-temperature output characteristics and capable of exhibiting excellent cycle characteristics and storage characteristics at high temperatures, and a nonaqueous electrolyte battery using the same, as japanese patent application laid-open No. 2015 030411. Japanese patent application 2015-030411 also describes an electrolyte for a nonaqueous electrolyte battery, which contains: a salt having an imide anion represented by the following general formula [1], and a silane compound represented by the following general formula [2 ].
-[ general formula [1]]In, R1～R3Each independently of the others being a fluorine atom; an organic group selected from the group consisting of a linear or branched alkyl group having 1 to 10 carbon atoms, a linear or branched alkoxy group having 1 to 10 carbon atoms, an alkenyl group having 2 to 10 carbon atoms, an alkenyloxy group having 2 to 10 carbon atoms, an alkynyl group having 2 to 10 carbon atoms, an alkynyloxy group having 2 to 10 carbon atoms, a cycloalkyl group having 3 to 10 carbon atoms, a cycloalkoxy group having 3 to 10 carbon atoms, a cycloalkenyl group having 3 to 10 carbon atoms, a cycloalkenyloxy group having 3 to 10 carbon atoms, an aryl group having 6 to 10 carbon atoms and an aryloxy group having 6 to 10 carbon atoms, wherein a fluorine atom, an oxygen atom and an unsaturated bond are optionally present in the organic group. Wherein R is1～R3At least 1 of which is fluorineAn atom. Mm+Is an alkali metal cation, an alkaline earth metal cation, or an onium cation, and m represents an integer having the same valence as the cation.]
-Si(R4)a(R5)4-a [2]
-[ general formula [2]]In, R4Each independently represents a group having a carbon-carbon unsaturated bond. R5Each independently represents a linear or branched alkyl group having 1 to 10 carbon atoms, and these groups optionally have a fluorine atom and/or an oxygen atom. a is an integer of 2 to 4.]
-The present applicant has also filed an application as japanese patent application No. 2015-130613 for an electrolyte solution for a nonaqueous electrolyte battery containing a material suitable for a nonaqueous electrolyte battery having high-temperature durability, and an invention of a nonaqueous electrolyte battery using the same. Japanese patent application No. 2015-130613 also describes an electrolyte for a nonaqueous electrolyte battery, which contains: a salt having an imide anion represented by the following general formula [1] and at least 1 ion complex represented by the following general formulae [3] to [5 ].
-[ in the general formula [1],
-R1～R3each independently of the others being a fluorine atom; an organic group selected from the group consisting of a linear or branched alkyl group having 1 to 10 carbon atoms, a linear or branched alkoxy group having 1 to 10 carbon atoms, an alkenyl group having 2 to 10 carbon atoms, an alkenyloxy group having 2 to 10 carbon atoms, an alkynyl group having 2 to 10 carbon atoms, an alkynyloxy group having 2 to 10 carbon atoms, a cycloalkyl group having 3 to 10 carbon atoms, a cycloalkoxy group having 3 to 10 carbon atoms, a cycloalkenyl group having 3 to 10 carbon atoms, a cycloalkenyloxy group having 3 to 10 carbon atoms, an aryl group having 6 to 10 carbon atoms and an aryloxy group having 6 to 10 carbon atoms, wherein a fluorine atom, an oxygen atom and an unsaturated bond are optionally present in the organic group.
-Wherein R is1～R3At least 1 of which is a fluorine atom. Mm+Is an alkali metal cation, an alkaline earth metal cation, or an oniumAnd m represents an integer having the same valence as the cation.]
-[ in the general formula [3],
-Ab+is at least 1 selected from the group consisting of metal ions, protons, and onium ions,
-f is a fluorine atom, and F is a fluorine atom,
-m is at least 1 selected from the group consisting of group 13 elements (Al, B), group 14 elements (Si), and group 15 elements (P, As, Sb),
-o is an oxygen atom, and O is an oxygen atom,
-s is a sulfur atom.
-R6Represents a C1-10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom (when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used), or-N (R)7) -. At this time, R7Represents a hydrogen atom, an alkali metal, a C1-C10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom. When the number of carbon atoms is 3 or more, R7And optionally branched or cyclic structures.
-Y is a carbon atom or a sulfur atom. When Y is a carbon atom, r is 1. When Y is a sulfur atom, r is 1 or 2.
-b is 1 or 2, o is 2 or 4, n is 1 or 2, p is 0 or 1, q is 1 or 2, r is 0, 1 or 2. When p is 0, a direct bond is formed between S-Y. ]
-[ in the general formula [4],
-Ab+is at least 1 selected from the group consisting of metal ions, protons, and onium ions,
-f is a fluorine atom, and F is a fluorine atom,
-m is at least 1 selected from the group consisting of group 13 elements (Al, B), group 14 elements (Si), and group 15 elements (P, As, Sb),
-o is an oxygen atom, and O is an oxygen atom,
-n is a nitrogen atom.
-Y is a carbon atom or a sulfur atom, q is 1 when Y is a carbon atom, and q is 1 or 2 when Y is a sulfur atom.
-R6Represents a C1-10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom (when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used), or-N (R)7) -. At this time, R7Represents a hydrogen atom, an alkali metal, a C1-C10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom. When the number of carbon atoms is 3 or more, R7And optionally branched or cyclic structures.
-R8A hydrocarbon group having 1 to 10 carbon atoms, optionally having a ring, a hetero atom, or a halogen atom (when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used), or-N (R)7) -. At this time, R7Represents a hydrogen atom, an alkali metal, a C1-C10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom. When the number of carbon atoms is 3 or more, R7And optionally branched or cyclic structures.
-b is 1 or 2, o is 2 or 4, n is 1 or 2, p is 0 or 1, q is 1 or 2, r is 0 or 1. When p is 0, it is located at R6The atoms on both sides form a direct bond with each other (i.e., Y and carbon atoms). When r is 0, a direct bond is formed between M and N.]
-[ in the general formula [5],
-d is at least one selected from the group consisting of a halide, a hexafluorophosphate anion, a tetrafluoroborate anion, a bis (trifluoromethanesulfonyl) imide anion, a bis (fluorosulfonyl) imide anion, a (fluorosulfonyl) (trifluoromethanesulfonyl) imide anion, and a bis (difluorophosphoryl) imide anion,
-f is a fluorine atom, and F is a fluorine atom,
-m is any one selected from the group consisting of group 13 elements (Al, B), group 14 elements (Si), and group 15 elements (P, As, Sb),
-o is an oxygen atom, and O is an oxygen atom,
-n is a nitrogen atom.
-Y is a carbon atom or a sulfur atom, q is 1 when Y is a carbon atom, and q is 1 or 2 when Y is a sulfur atom.
-X is a carbon atom or a sulfur atom, r is 1 when X is a carbon atom, and r is 1 or 2 when X is a sulfur atom.
-R6Represents a C1-10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom (when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used), or-N (R)7) -. At this time, R7Represents a hydrogen atom, an alkali metal, a C1-C10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom. When the number of carbon atoms is 3 or more, R7And optionally branched or cyclic structures.
-R9、R10Each independently is a C1-10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom, and when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used. Further, the following formula [ 6]]The depicted also optionally have cyclic structures that contain each other.
-c is 0 or 1, c is 0 (no D is present when c is 0) when n is 1, and c is 1 when n is 2.
-o is 2 or 4, n is 1 or 2, p is 0 or 1, q is 1 or 2, r is 1 or 2, and s is 0 or 1. When p is 0, a direct bond is formed between Y-X.
-When s is 0, N (R)9)(R10) And R6Direct bonding, in which case it is also optionally as described below [ 7]]～[10]The structure shown. Directly bonded to a double bond [8]And [10 ]]When R is not present10. In addition, it is also optionally as in [ 9]]The double bond extends beyond the ring as shown. R at this time11And R12Each independently represents a hydrogen atom, or a hydrocarbon group having 1 to 10 carbon atoms and optionally having a ring, a hetero atom or a halogen atom, and when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used. )
-According to the findings of the inventors and the like after the investigation: even in a nonaqueous electrolyte solution for a nonaqueous electrolyte battery which does not contain a silane compound represented by the general formula [2] or an ion complex represented by the general formulae [3] to [5], the effect of suppressing an increase in internal resistance at low temperatures and the effect of suppressing the amount of gas generated at high temperatures can be exhibited in a well-balanced manner as compared with conventional electrolyte solutions, and the present invention has been completed.
-Specifically, the present invention provides an electrolyte for a nonaqueous electrolyte battery (hereinafter sometimes referred to as "nonaqueous electrolyte solution" or "electrolyte solution"), which contains a nonaqueous solvent and a solute, contains at least a hexafluorophosphate and/or a tetrafluoroborate as the solute, contains at least 1 type of a salt having an imide anion represented by the following general formula [1] (hereinafter sometimes referred to as "salt having an imide anion"), does not contain a silane compound represented by the following general formula [2], and does not contain an ion complex represented by the following general formulae [3] to [5 ].
-[ general formula [1]]In, R1～R3Each independently of the others being a fluorine atom; an organic group selected from the group consisting of a linear or branched alkyl group having 1 to 10 carbon atoms, a linear or branched alkoxy group having 1 to 10 carbon atoms, an alkenyl group having 2 to 10 carbon atoms, an alkenyloxy group having 2 to 10 carbon atoms, an alkynyl group having 2 to 10 carbon atoms, an alkynyloxy group having 2 to 10 carbon atoms, a cycloalkyl group having 3 to 10 carbon atoms, a cycloalkoxy group having 3 to 10 carbon atoms, a cycloalkenyl group having 3 to 10 carbon atoms, a cycloalkenyloxy group having 3 to 10 carbon atoms, an aryl group having 6 to 10 carbon atoms and an aryloxy group having 6 to 10 carbon atoms, wherein a fluorine atom, an oxygen atom and an unsaturated bond may be present in the organic group. Wherein R is1～R3At least 1 of which is a fluorine atom. Mm+Is an alkali metal cation, an alkaline earth metal cation, or an onium cation, and m represents a whole number having the same valence as the cationAnd (4) counting.]
-Si(R4)a(R5)4-a [2]
-[ in the general formula [2],
-R4each independently represents a group having a carbon-carbon unsaturated bond. R5Each independently represents a linear or branched alkyl group having 1 to 10 carbon atoms, and these groups optionally have a fluorine atom and/or an oxygen atom. a is an integer of 2 to 4.]
-[ in the general formula [3],
-Ab+is at least 1 selected from the group consisting of metal ions, protons, and onium ions,
-f is a fluorine atom, and F is a fluorine atom,
-m is at least 1 selected from the group consisting of group 13 elements (Al, B), group 14 elements (Si), and group 15 elements (P, As, Sb),
-o is an oxygen atom, and O is an oxygen atom,
-s is a sulfur atom.
-R6Represents a C1-10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom (when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used), or-N (R)7) -. At this time, R7Represents a hydrogen atom, an alkali metal, a C1-C10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom. When the number of carbon atoms is 3 or more, R7And optionally branched or cyclic structures.
-Y is a carbon atom or a sulfur atom. When Y is a carbon atom, r is 1. When Y is a sulfur atom, r is 1 or 2.
-b is 1 or 2, o is 2 or 4, n is 1 or 2, p is 0 or 1, q is 1 or 2, r is 0, 1 or 2. When p is 0, a direct bond is formed between S-Y. ]
-[ in the general formula [4],
-Ab+is at least 1 selected from the group consisting of metal ions, protons, and onium ions,
-f is a fluorine atom, and F is a fluorine atom,
-m is at least 1 selected from the group consisting of group 13 elements (Al, B), group 14 elements (Si), and group 15 elements (P, As, Sb),
-o is an oxygen atom, and O is an oxygen atom,
-n is a nitrogen atom.
-Y is a carbon atom or a sulfur atom, q is 1 when Y is a carbon atom, and q is 1 or 2 when Y is a sulfur atom.
-R6Represents a C1-10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom (when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group may be used), or-N (R)7) -. At this time, R7Represents a hydrogen atom, an alkali metal, a C1-C10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom. When the number of carbon atoms is 3 or more, R7And optionally branched or cyclic structures.
-R8A hydrocarbon group having 1 to 10 carbon atoms, optionally having a ring, a hetero atom, or a halogen atom (when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used), or-N (R)7) -. At this time, R7Represents a hydrogen atom, an alkali metal, a C1-C10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom. When the number of carbon atoms is 3 or more, R7And optionally branched or cyclic structures.
-b is 1 or 2, o is 2 or 4, n is 1 or 2, p is 0 or 1, q is 1 or 2, r is 0 or 1. When p is 0, it is located at R6The atoms on both sides form a direct bond with each other (i.e., Y and carbon atoms). When r is 0, a direct bond is formed between M and N.]
-[ in the general formula [5],
-d is at least one selected from the group consisting of a halide, a hexafluorophosphate anion, a tetrafluoroborate anion, a bis (trifluoromethanesulfonyl) imide anion, a bis (fluorosulfonyl) imide anion, a (fluorosulfonyl) (trifluoromethanesulfonyl) imide anion, and a bis (difluorophosphoryl) imide anion,
-f is a fluorine atom, and F is a fluorine atom,
-m is any one selected from the group consisting of group 13 elements (Al, B), group 14 elements (Si), and group 15 elements (P, As, Sb),
-o is an oxygen atom, and O is an oxygen atom,
-n is a nitrogen atom.
-Y is a carbon atom or a sulfur atom, q is 1 when Y is a carbon atom, and q is 1 or 2 when Y is a sulfur atom.
-X is a carbon atom or a sulfur atom, r is 1 when X is a carbon atom, and r is 1 or 2 when X is a sulfur atom.
-R6Represents a C1-10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom (when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used), or-N (R)7) -. At this time, R7Represents a hydrogen atom, an alkali metal, a C1-C10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom. When the number of carbon atoms is 3 or more, R7And optionally branched or cyclic structures.
-R9And R10Each independently is a C1-10 hydrocarbon group optionally having a ring, a hetero atom, or a halogen atom, and when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used. Further, the following formula [ 6]]The depicted also optionally have cyclic structures that contain each other.
-c is 0 or 1, c is 0 (no D is present when c is 0) when n is 1, and c is 1 when n is 2.
-o is 2 or 4, n is 1 or 2, p is 0 or 1, q is 1 or 2, r is 1 or 2, and s is 0 or 1. When p is 0, a direct bond is formed between Y-X.
-When s is 0, N (R)9)(R10) And R6Direct bonding, in which case it is optionally as follows [ 7]]～[10]The structure shown. Directly bonded to a double bond [8]、[10]When R is not present10. In addition, alsoOptionally is as in [ 9]]The double bond extends beyond the ring as shown. R at this time11、R12Each independently represents a hydrogen atom, or a hydrocarbon group having 1 to 10 carbon atoms and optionally having a ring, a hetero atom or a halogen atom, and when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used. )
-The term "not contained" in the electrolyte means that the concentration of the total amount of the compounds represented by the general formulae [2] and [3] to [5] in the total amount of the electrolyte is less than 5 mass ppm. The concentration of the silane compound represented by the above general formula [2] in the electrolytic solution can be measured, for example, by gas chromatography. The concentration of the ion complex represented by the above general formulae [3] to [5] in the electrolyte solution can be measured by, for example, an IR (infrared spectroscopy).
-The mechanism of action for improving the battery characteristics by the present invention is not clear, but it is considered that: the above general formula [1]A part of the salt having an imide anion is decomposed at the interface between the positive electrode and the electrolytic solution and at the interface between the negative electrode and the electrolytic solution to form a coating. The coating film suppresses direct contact between the nonaqueous solvent, solute and active material, prevents decomposition of the nonaqueous solvent and solute, and suppresses deterioration of battery performance (increase in resistance and generation of gas). In addition, the principle is not yet determined, but it is considered that: the imide anion has a phosphoryl moiety (-P (═ O) R) and a sulfonyl moiety (-S (═ O)2R), and introduction of both a phosphoryl moiety and a sulfonyl moiety into the above-mentioned coating makes it possible to form a coating which is stronger and has high lithium conductivity, that is, a coating having low electrical resistance (a coating having good output characteristics). Further, it is considered that the above-mentioned effect is that by including a site having a high electron-withdrawing property (for example, a fluorine atom or a fluoroalkoxy group) in the imide anion, the shift of charge becomes larger, and a film having a smaller resistance (a film having a better output characteristic) can be formed. Further, it can be presumed that: when the compound contains hexafluorophosphate anion or tetrafluoroborate anion, a composite coating containing these fluorides is formed, and the coating is high in the content of fluorineA stable coating film can be formed even at a low temperature. From the above-described reasons, it is presumed that the nonaqueous electrolytic solution of the present invention can exhibit the effect of improving the low-temperature output characteristics and the effect of suppressing the amount of gas generated during storage at high temperatures in a well-balanced manner.
-When the salt having an imide anion has at least 1P-F bond or S-F bond, excellent low-temperature characteristics can be obtained. The larger the number of P-F bonds and S-F bonds in the salt having an imide anion, the more preferable the number is, the more the low-temperature characteristics are improved, and the more the above general formula [1]]Among the salts having an imide anion shown above, R is more preferable1～R3All of which are fluorine atoms.
-In addition, among the salts having an imide anion represented by the above general formula [1], the following compounds are preferable:
-R1～R3at least 1 of which is a fluorine atom, and
-R1～R3at least 1 of them is a hydrocarbon group having 6 or less carbon atoms selected from the group optionally containing a fluorine atom.
-Further, the salt having an imide anion represented by the above general formula [1] is preferably a compound,
-R1～R3at least 1 of which is a fluorine atom, and
-R1～R3at least 1 of which is selected from the group consisting of methyl, methoxy, ethyl, ethoxy, propyl, propoxy, vinyl, allyl, allyloxy, ethynyl, 2-propynyl, phenyl, phenyloxy, 2, 2-difluoroethyl, 2, 2-difluoroethyloxy, 2,2, 2-trifluoroethyl, 2,2, 2-trifluoroethyloxy, 2,2,3, 3-tetrafluoropropyl, 2,2,3, 3-tetrafluoropropyloxy, 1,1,1,3,3, 3-hexafluoroisopropyl and 1,1,1,3,3, 3-hexafluoroisopropyloxy.
-The counter cation of the salt having an imide anion represented by the above general formula [1] is preferably selected from the group consisting of lithium ion, sodium ion, potassium ion and tetraalkylammonium ion.
-The solute may further contain a substance selected from the group consisting of LiPF2(C2O4)2、LiPF4(C2O4)、LiP(C2O4)3、LiBF2(C2O4)、LiB(C2O4)2、LiPO2F2、LiN(F2PO)2、LiN(FSO2)2、LiN(CF3SO2)2、LiN(CF3SO2)(FSO2)、LiSO3F、NaPF2(C2O4)2、NaPF4(C2O4)、NaP(C2O4)3、NaBF2(C2O4)、NaB(C2O4)2、NaPO2F2、NaN(F2PO)2、NaN(FSO2)2、NaSO3F、NaN(CF3SO2)2And NaN (CF)3SO2)(FSO2) At least 1 of the group consisting of.
-The amount of the salt having an imide anion represented by the general formula [1] added is preferably in the range of 0.005 to 12.0% by mass based on the total amount of the nonaqueous solvent, the solute and the salt having an imide anion represented by the general formula [1 ]. If the content exceeds 12.0 mass%, the viscosity of the electrolyte solution may increase, and the characteristics may be degraded at low temperatures, and if the content is less than 0.005 mass%, the formation of a coating film may become insufficient, and the effect of improving the characteristics may be hardly exhibited.
-The salt having an imide anion represented by the above general formula [1] is preferably high in purity, and the content of Cl (chlorine) in the salt having an imide anion is particularly preferably 5000 mass ppm or less, and further particularly preferably 1000 mass ppm or less as a raw material before being dissolved in an electrolytic solution.
-In addition, the lower the free acid concentration in the electrolyte, the more difficult the positive electrode active material and the current collector of the nonaqueous electrolyte battery are corroded, and therefore the free acid concentration is preferably low. The free acid concentration is preferably 600 mass ppm or less, more preferably 120 mass ppm or less.
-The electrolyte may further contain at least 1 additive selected from the group consisting of vinylene carbonate, vinyl ethylene carbonate, fluoroethylene carbonate, 1, 6-hexamethylene diisocyanate, ethynylethylene carbonate, trans-difluoroethylene carbonate, propane sultone, propenyl sultone, 1,3, 2-dioxathiolane-2, 2-dioxide, 4-propyl-1, 3, 2-dioxathiolane-2, 2-dioxide, methylene disulfonate, 1, 2-ethanedisulfonic anhydride, tris (trimethylsilyl) borate, succinonitrile, (ethoxy) pentafluorocyclotriphosphazene, tert-butylbenzene, tert-pentylbenzene, fluorobenzene, and cyclohexylbenzene.
-The nonaqueous solvent is preferably at least 1 selected from the group consisting of cyclic carbonates, chain carbonates, cyclic esters, chain esters, cyclic ethers, chain ethers, sulfone compounds, sulfoxide compounds, and ionic liquids. It is more preferable to contain a cyclic carbonate, and it is particularly preferable to contain one or more selected from ethylene carbonate, propylene carbonate, fluoroethylene carbonate, vinylene carbonate, and vinyl ethylene carbonate.
-Further, the present invention is a nonaqueous electrolyte battery including at least: a positive electrode, a negative electrode, and the above-mentioned electrolyte for nonaqueous electrolyte batteries.
-ADVANTAGEOUS EFFECTS OF INVENTION
-The electrolyte solution of the present invention can exhibit, in a well-balanced manner, an effect of suppressing an increase in internal resistance at low temperatures and an effect of suppressing the amount of gas generated at high temperatures when used in a nonaqueous electrolyte battery.
-Detailed Description
-The present invention will be described in detail below, but the description of the technical features described below is an example of the embodiment of the present invention, and is not limited to these specific contents. Various modifications can be made within the scope of the present invention.
-1. Electrolyte for nonaqueous electrolyte battery
-The electrolyte for a nonaqueous electrolyte battery of the present invention is an electrolyte for a nonaqueous electrolyte battery comprising: a nonaqueous electrolyte for a nonaqueous electrolyte battery comprising a nonaqueous solvent and a solute, wherein the solute contains at least a hexafluorophosphate and/or a tetrafluoroborate, the electrolyte contains at least 1 type of a salt having an imide anion represented by the above general formula [1], contains no silane compound represented by the above general formula [2], and does not contain an ion complex represented by the above general formulae [3] to [5 ].
-1-1 for the salt having an imide anion represented by the general formula [1]
-The above general formula [1]In, R1～R3It is important that at least 1 of them is a fluorine atom. The reason is not clear, but the effect of suppressing the increase in the internal resistance of a battery using the electrolyte is insufficient unless at least 1 is a fluorine atom.
-Further, the above general formula [1]]In (1) as represented by R1～R3Examples of the alkyl group and the alkoxy group include: alkyl groups having 1 to 10 carbon atoms such as methyl, ethyl, propyl, isopropyl, butyl, sec-butyl, tert-butyl, pentyl, 2, 2-difluoroethyl, 2,2, 2-trifluoroethyl, 2,2,3, 3-tetrafluoropropyl, and 1,1,1,3,3, 3-hexafluoroisopropyl, fluoroalkyl groups, and alkoxy groups derived from these groups.
-Examples of alkenyl and alkenyloxy groups include: alkenyl groups having 2 to 10 carbon atoms such as vinyl, allyl, 1-propenyl, isopropenyl, 2-butenyl and 1, 3-butadienyl, fluorine-containing alkenyl groups, and alkenyloxy groups derived from these groups.
-Examples of alkynyl and alkynyloxy groups include: an alkynyl group having 2 to 10 carbon atoms such as an ethynyl group, a 2-propynyl group and a 1,1 dimethyl-2-propynyl group, a fluorine-containing alkynyl group, and an alkynyloxy group derived from these groups.
-Examples of the cycloalkyl group and the cycloalkoxy group include: cycloalkyl groups having 3 to 10 carbon atoms such as cyclopentyl and cyclohexyl, fluorine-containing cycloalkyl groups, and cycloalkoxy groups derived from these groups.
-Examples of cycloalkenyl and cycloalkenyloxy are: a cycloalkenyl group having 3 to 10 carbon atoms such as cyclopentenyl group and cyclohexenyl group, a fluorinated cycloalkenyl group, and a cycloalkenyloxy group derived from these groups.
-Examples of the aryl group and aryloxy group include: aryl groups having 6 to 10 carbon atoms such as phenyl, tolyl and xylyl, fluorine-containing aryl groups, and aryloxy groups derived from these groups.
-More specifically, examples of the anion of the salt having an imide anion represented by the general formula [1] include: the following compounds Nos. 1 to 18, and the like. Among them, the salt having an imide anion used in the present invention is not limited by any of the following examples.
-As the above general formula [1]The salt having an imide anion shown is preferably R1～R3At least 1 of which is a fluorine atom and R1～R3At least 1 of them is a compound selected from hydrocarbon groups of 6 carbon atoms or less optionally containing a fluorine atom. When the number of carbon atoms of the hydrocarbon group is more than 6, the internal resistance at the time of forming a coating on the electrode tends to be relatively large. When the number of carbon atoms is 6 or less, the internal resistance tends to be smaller, and therefore, it is preferable that at least 1 group selected from methyl, ethyl, propyl, vinyl, allyl, ethynyl, 2-propynyl, phenyl, trifluoromethyl, 2, 2-difluoroethyl, 2,2, 2-trifluoroethyl, 2,2,3, 3-tetrafluoropropyl, 1,1,1,3,3, 3-hexafluoroisopropyl, and alkoxy, alkenyloxy, and alkynyloxy groups derived from these groups is used, since a nonaqueous electrolyte battery which can exhibit a good balance between cycle characteristics and internal resistance characteristics can be obtained.
-The salt having an imide anion represented by the above general formula [1] is preferably high in purity, and the content of Cl (chlorine) in the salt having an imide anion is particularly preferably 5000 mass ppm or less, more preferably 1000 mass ppm or less, and further preferably 100 mass ppm or less as a raw material before being dissolved in an electrolytic solution. The use of a salt having an imide anion in which Cl (chlorine) remains at a high concentration is not preferable because it tends to corrode a battery member.
-The salt having an imide anion represented by the above general formula [1] can be produced by various methods. The production method is not particularly limited, and can be obtained by the following method, for example.
-Reacting the corresponding phosphoric acid amide (H) in the presence of an organic or inorganic base2NP(＝O)R1R2) With the corresponding sulfonyl halide (R)3SO2X; x is a halogen atom).
-Reacting the corresponding sulfonyl amide (H) in the presence of an organic or inorganic base2NSO2R3) With the corresponding phosphorus oxyhalide (R)1R2P (═ O) X; x is a halogen atom).
-Further, as shown in patent documents (CN101654229A, CN102617414A), the salt having an imide anion, which corresponds to a salt having an imide anion in which the fluorine atom site is a halogen atom other than a fluorine atom, can be obtained by the above-mentioned method, and then fluorinated.
-The amount of the salt having an imide anion to be used in the present invention is preferably 0.005 mass% or more, preferably 0.05 mass% or more, and more preferably 0.1 mass% or more, and preferably 12.0 mass% or less, preferably 6.0 mass% or less, and more preferably 3.0 mass% or less, based on the total amount of the nonaqueous solvent, the solute, and the salt having an imide anion represented by the general formula [1 ].
-If the amount of addition is less than 0.005% by mass, it is difficult to sufficiently obtain the effect of improving the battery characteristics, which is not preferable. On the other hand, if the amount of addition exceeds 12.0 mass%, not only further effects are not obtained and are wasteful, but also excessive formation of a coating increases the resistance, which is liable to cause deterioration of the battery performance, and thus is not preferable. These salts having imide anion may be used alone in an amount of not more than 12.0% by mass, or two or more thereof may be used in combination and ratio arbitrarily according to the use.
-1-2 for solute
-The electrolyte for a nonaqueous electrolyte battery of the present invention contains at least a hexafluorophosphate salt and/or a tetrafluoroborate salt as a solute.
-The type of other solute that can coexist with the hexafluorophosphate and/or tetrafluoroborate used in the electrolyte for nonaqueous electrolyte batteries of the present invention is not particularly limited, and any electrolyte salt can be used. As a specific example, in the case of a lithium battery or a lithium ion battery, there are listed: with LiPF2(C2O4)2、LiPF4(C2O4)、LiP(C2O4)3、LiBF2(C2O4)、LiB(C2O4)2、LiPO2F2、LiN(F2PO)2、LiN(FSO2)2、LiN(CF3SO2)2、LiClO4、LiAsF6、LiSbF6、LiCF3SO3、LiSO3F、LiN(C2F5SO2)2、LiN(CF3SO2)(FSO2)、LiC(CF3SO2)3、LiPF3(C3F7)3、LiB(CF3)4、LiBF3(C2F5) Examples of the electrolyte salt and the case of the sodium ion battery include: with NaPF2(C2O4)2、NaPF4(C2O4)、NaP(C2O4)3、NaBF2(C2O4)、NaB(C2O4)2、NaPO2F2、NaN(F2PO)2、NaN(FSO2)2、NaN(CF3SO2)2、NaClO4、NaAsF6、NaSbF6、NaCF3SO3、NaSO3F、NaN(C2F5SO2)2、NaN(CF3SO2)(FSO2)、NaC(CF3SO2)3、NaPF3(C3F7)3、NaB(CF3)4、NaBF3(C2F5) And the like. These solutes may be used alone or in combinationTwo or more kinds are mixed and used in an arbitrary combination and ratio depending on the use. Among them, LiPF is preferable from the viewpoint of energy density, output characteristics, life and the like of the battery2(C2O4)2、LiPF4(C2O4)、LiP(C2O4)3、LiBF2(C2O4)、LiB(C2O4)2、LiPO2F2、LiN(F2PO)2、LiN(FSO2)2、LiN(CF3SO2)2、LiN(CF3SO2)(FSO2)、LiSO3F、NaPF2(C2O4)2、NaPF4(C2O4)、NaP(C2O4)3、NaBF2(C2O4)、NaB(C2O4)2、NaPO2F2、NaN(F2PO)2、NaN(FSO2)2、NaN(CF3SO2)2、NaSO3F and NaN (CF)3SO2)(FSO2)。
-A suitable combination of the above solutes is preferably selected from the group consisting of LiPF2(C2O4)2、LiPF4(C2O4)、LiP(C2O4)3、LiBF2(C2O4)、LiB(C2O4)2、LiPO2F2、LiN(F2PO)2、LiN(FSO2)2、LiN(CF3SO2)2、LiN(CF3SO2)(FSO2)、LiSO3At least 1 of the group consisting of F and LiPF6Combinations of (a), (b), and the like.
-As solute, will be selected from the group consisting of LiPF2(C2O4)2、LiPF4(C2O4)、LiP(C2O4)3、LiBF2(C2O4)、LiB(C2O4)2、LiPO2F2、LiN(F2PO)2、LiN(FSO2)2、LiN(CF3SO2)2、LiN(CF3SO2)(FSO2)、LiSO3At least 1 of F, and LiPF6Ratio in combination (LiPF)6A molar ratio of 1 mol) is usually 1: 0.001 to 1: 0.5, preferably 1: 0.01-1: a range of 0.2. When the solutes are used in combination at the above-mentioned ratio, various battery characteristics can be further improved. On the other hand, LiPF6Is less than 1: when 0.5, the ionic conductivity of the electrolyte decreases, and the resistance tends to increase.
-The concentration of these solutes (combined concentration of hexafluorophosphate and/or tetrafluoroborate) is not particularly limited, but a suitable lower limit is 0.5mol/L or more, preferably 0.7mol/L or more, and more preferably 0.9mol/L or more, and a suitable upper limit is 2.5mol/L or less, preferably 2.0mol/L or less, and more preferably 1.5mol/L or less. When the concentration is less than 0.5mol/L, the cycle characteristics and output characteristics of the nonaqueous electrolyte battery tend to be deteriorated due to the decrease in ion conductivity, while when the concentration is more than 2.5mol/L, the ion conductivity tends to be decreased due to the increase in viscosity of the electrolyte for the nonaqueous electrolyte battery, and the cycle characteristics and output characteristics of the nonaqueous electrolyte battery may be deteriorated.
-When a large amount of the solute is dissolved in a nonaqueous solvent at a time, the temperature of the nonaqueous electrolytic solution may be increased by the heat of dissolution of the solute. When the liquid temperature rises significantly, decomposition of the lithium salt containing a fluorine atom may be promoted to generate hydrogen fluoride. Hydrogen fluoride is not preferable because it causes deterioration of battery performance. Therefore, the liquid temperature when the solute is dissolved in the nonaqueous solvent is not particularly limited, but is preferably-20 to 80 ℃ and more preferably 0 to 60 ℃.
-1-3 for non-aqueous solvents
-The kind of the nonaqueous solvent used in the electrolyte for a nonaqueous electrolyte battery of the present invention is not particularly limited, and any nonaqueous solvent can be used. Specific examples thereof include: cyclic carbonates such as propylene carbonate (hereinafter sometimes referred to as "PC"), ethylene carbonate (hereinafter sometimes referred to as "EC"), and butylene carbonate; chain carbonates such as diethyl carbonate (hereinafter sometimes referred to as "DEC"), dimethyl carbonate (hereinafter sometimes referred to as "DMC"), and ethyl methyl carbonate (hereinafter sometimes referred to as "EMC"); cyclic esters such as γ -butyrolactone and γ -valerolactone; chain esters such as methyl acetate, methyl propionate, and ethyl propionate (hereinafter sometimes referred to as "EP"); cyclic ethers such as tetrahydrofuran, 2-methyltetrahydrofuran, and dioxane; chain ethers such as dimethoxyethane and diethyl ether; sulfone compounds such as dimethyl sulfoxide and sulfolane, sulfoxide compounds, and the like. Further, ionic liquids different from nonaqueous solvents in type may be mentioned. The nonaqueous solvent used in the present invention may be used alone, or two or more kinds may be used in combination and ratio as desired depending on the application. Among them, propylene carbonate, ethylene carbonate, diethyl carbonate, dimethyl carbonate, ethyl methyl carbonate, methyl propionate, and ethyl propionate are particularly preferable from the viewpoint of electrochemical stability of the redox reaction and chemical stability relating to heat and the reaction of the solute.
-For example, when the nonaqueous solvent contains 1 or more of cyclic carbonates having a high dielectric constant and 1 or more of chain carbonates or chain esters having a low liquid viscosity, the ionic conductivity of the electrolyte solution is preferably improved. Specifically, the following combinations are more preferably included.
-(1) A combination of EC and EMC,
-(2) A combination of EC and DEC,
-(3) Combinations of EC and DMC and EMC,
-(4) EC and DEC in combination with EMC,
-(5) EC and EMC and EP in combination,
-(6) A combination of PC and DEC,
-(7) A combination of PC and EMC,
-(8) A combination of PC and EP,
-(9) PC and DMC and EMC combinations,
-(10) PC and DEC in combination with EMC,
-(11) PC and a combination of DEC and EP,
-(12) PC and EC and EMC,
-(13) PC and EC and DMC and EMC,
-(14) Combinations of PC and EC and DEC and EMC,
-(15) Combinations of PC and EC and EMC and EP
-1-4 for additives
-The above description is of the basic structure of the electrolyte for nonaqueous electrolyte batteries of the present invention, and any additives that are generally used may be added to the electrolyte for nonaqueous electrolyte batteries of the present invention at any ratio as long as the gist of the present invention is not impaired. Specific examples thereof include: cyclohexylbenzene, biphenyl, tert-butylbenzene, tert-amylbenzene, fluorobenzene, vinylene carbonate (hereinafter sometimes referred to as "VC"), vinylethylene carbonate, difluoroanisole, fluoroethylene carbonate (hereinafter sometimes referred to as "FEC"), 1, 6-hexamethylene diisocyanate, ethynylethylene carbonate, trans-difluoroethylene carbonate, propane sultone, propenyl sultone, dimethylvinylene carbonate, 1,3, 2-dioxathiolane-2, 2-dioxide, 4-propyl-1, 3, 2-dioxathiolane-2, 2-dioxide, methanedisulfonic acid methylene ester, 1, 2-ethanedisulfonic anhydride, tris (trimethylsilyl) borate, succinonitrile, (ethoxy) pentafluorocyclotriphosphazene and the like have an overcharge preventing effect, A negative electrode coating film forming effect and a positive electrode protecting effect. Further, as the additive, the solute (lithium salt, sodium salt) and an alkali metal salt other than the salt (lithium salt, sodium salt) having an imide anion represented by the general formula [1] (excluding the ionic complexes represented by the general formulae [3] to [5 ]) can be used. Specifically, there may be mentioned: and carboxylate salts such as lithium acrylate, sodium acrylate, lithium methacrylate and sodium methacrylate, and sulfate ester salts such as lithium methylsulfate, sodium methylsulfate, lithium ethylsulfate and sodium methylsulfate.
-As in the case of a nonaqueous electrolyte battery called a lithium polymer battery, the electrolyte for a nonaqueous electrolyte battery may be quasi-solidified by a gelling agent or a crosslinked polymer.
-The electrolyte for a nonaqueous electrolyte battery of the present invention may be prepared by using a plurality of the above solutes (lithium salt and sodium salt) and salts having an imide anion represented by the above general formula [1] in combination so that the total of the alkali metal salts is 4 or more, depending on the required characteristics.
-For example, one may consider: when 4 lithium salts are contained, 1 of solutes of lithium hexafluorophosphate and lithium tetrafluoroborate (hereinafter sometimes referred to as "first solute") and LiPF are used4(C2O4)、LiPF2(C2O4)2、LiP(C2O4)3、LiBF2(C2O4)、LiB(C2O4)2、LiPO2F2、LiN(F2PO)2、LiN(FSO2)2、LiN(CF3SO2)2、LiClO4、LiAsF6、LiSbF6、LiCF3SO3、LiSO3F、LiN(C2F5SO2)2、LiN(CF3SO2)(FSO2)、LiC(CF3SO2)3、LiPF3(C3F7)3、LiB(CF3)4、LiBF3(C2F5) 1 of the solutes (hereinafter sometimes referred to as "second solutes") is represented by the general formula [1]]The salt having an imide anion is obtained by using 2 kinds of lithium salts such as the above-mentioned compounds Nos. 1 to 18,
-1 of the first solutes, 2 of the second solutes, and 1 of the lithium salts having imide anions are used.
-In particular, as
-(1)LiPF6And the lithium salt of Compound No.5 and the lithium salt of Compound No.6 and LiPF2(C2O4)2The combination of,
-(2)LiPF6And lithium salt of Compound No.1 and lithium salt of Compound No.15 and LiPO2F2The combination of,
-(3)LiPF6And lithium salt and LiPO of Compound No.12F2And LiN (F)2PO)2The combination of,
-(4)LiPF6And lithium salt and LiPF of Compound No.52(C2O4)2And LiPO2F2The combination of,
-The inclusion of 4 lithium salts is preferable because the effect of suppressing the increase in internal resistance at low temperatures is greater.
-Further, the above additives other than these may be further used in combination as necessary.
-Further, the total number of the alkali metal salts may be 5 or more. For example, when 5 lithium salts are contained, it is considered that: using 1 kind of the first solute, 1 kind of the second solute, and 3 kinds of lithium salts such as the above-mentioned compounds Nos. 1 to 18,
-using 1 kind of the first solute, 2 kinds of the second solute, and 2 kinds of lithium salts such as the above-mentioned compounds Nos. 1 to 18,
-1 kind of the first solute is used, 3 kinds of the second solute is used, and 1 kind of the lithium salt such as the compound Nos. 1 to 18 is used.
-In particular, as
-(1)LiPF6And the lithium salt of Compound No.5 and the lithium salt of Compound No.6 and LiPF4(C2O4) And LiPF2(C2O4)2The combination of,
-(2)LiPF6And lithium salt and LiBF of Compound No.12(C2O4) And LiPO2F2And LiSO3A combination of F,
-(3)LiPF6And lithium salt of Compound No.1 and lithium salt of Compound No.6 and LiN (F)2PO)2And LiPO2F2The combination of,
-(4)LiPF6And lithium salt and LiPF of Compound No.54(C2O4) And LiPF2(C2O4)2And LiPO2F2The combination of,
-(5)LiPF6And lithium salt and LiBF of Compound No.52(C2O4) And LiPO2F2And LiSO3The combination of F is preferable because the effect of suppressing gas generation at high temperatures is increased when 5 lithium salts are contained. Further, a lithium salt (the above-mentioned additive) other than these may be further used in combination as necessary.
-2. For non-aqueous electrolyte battery
-Next, the structure of the nonaqueous electrolyte battery of the present invention will be explained. The nonaqueous electrolyte battery of the present invention is characterized by using the above-described electrolyte for nonaqueous electrolyte batteries of the present invention, and a material used for a usual nonaqueous electrolyte battery can be used as another constituent member. That is, the lithium ion secondary battery is composed of a positive electrode and a negative electrode capable of storing and releasing lithium, a current collector, a separator, a container, and the like.
-The negative electrode material is not particularly limited, and in the case of a lithium battery or a lithium ion battery, lithium metal, an alloy of lithium metal and another metal, an intermetallic compound, various carbon materials (artificial graphite, natural graphite, and the like), a metal oxide, a metal nitride, tin (a monomer), a tin compound, silicon (a monomer), a silicon compound, activated carbon, a conductive polymer, and the like can be used.
-The carbon material is, for example, graphitizable carbon (hard carbon) having a plane spacing of (002) planes of 0.37nm or more, graphite having a plane spacing of (002) planes of 0.34nm or less, or the like. More specifically, there are pyrolytic carbons, cokes, glassy carbon fibers, organic polymer compound sintered bodies, activated carbons, carbon blacks, and the like. The coke includes pitch coke, needle coke, petroleum coke, and the like. The organic polymer compound sintered body is obtained by sintering a phenol resin, a furan resin, or the like at an appropriate temperature and carbonizing the sintered body. The carbon material is preferable because the change in crystal structure accompanying the occlusion and release of lithium is very small, and a high energy density and excellent cycle characteristics can be obtained. The shape of the carbon material may be any of a fibrous shape, a spherical shape, a granular shape, and a scaly shape. Amorphous carbon and graphite materials coated with amorphous carbon on the surface are more preferable because the reactivity of the material surface with the electrolyte is low.
-The positive electrode material is not particularly limitedIn the case of lithium batteries and lithium ion batteries, for example, LiCoO can be used2、LiNiO2、LiMnO2、LiMn2O4Lithium-containing transition metal composite oxides; the lithium-containing transition metal composite oxide in which a plurality of transition metals such as Co, Mn, and Ni are mixed; a substance obtained by replacing a part of the transition metals in these lithium-containing transition metal composite oxides with metals other than transition metals; LiFePO known as olivine4、LiCoPO4、LiMnPO4Phosphoric acid compounds of transition metals; TiO 22、V2O5、MoO3And oxides, etc.; TiS2Sulfides such as FeS; or conductive polymers such as polyacetylene, polyparaphenylene, polyaniline, and polypyrrole, activated carbon, polymers that generate radicals, carbon materials, and the like.
-The positive electrode and the negative electrode can be made of conductive materials such as acetylene black, ketjen black, carbon fiber and graphite, binding materials such as polytetrafluoroethylene, polyvinylidene fluoride, SBR resin and polyimide, and can be made into electrode sheets by molding into sheets.
-As the separator for preventing the positive electrode from contacting the negative electrode, a nonwoven fabric or a porous sheet made of polypropylene, polyethylene, paper, glass fiber, or the like can be used.
-The nonaqueous electrolyte battery can be assembled into a shape such as a coin shape, a cylindrical shape, a rectangular shape, an aluminum laminate sheet shape, or the like from the above elements.
-The nonaqueous electrolyte battery may be a nonaqueous electrolyte battery including (I) the above nonaqueous electrolyte, (ii) a positive electrode, (iii) a negative electrode, and (iv) a separator, as described below.
-The nonaqueous electrolyte battery is as follows.
-[ (II) Positive electrode ]
-(II) the positive electrode preferably contains at least 1 oxide and/or polyanion compound as a positive electrode active material.
-[ Positive electrode active Material ]
-In the case of a lithium ion secondary battery in which the cation in the nonaqueous electrolytic solution is a lithium main component, the positive electrode active material constituting the positive electrode of (ii) is not particularly limited as long as it is a material that can be charged and discharged, and examples thereof include the following: (A) a lithium transition metal composite oxide having a layered structure and containing at least 1 or more metal selected from nickel, manganese and cobalt; (B) a lithium manganese composite oxide having a spinel structure; (C) at least 1 of lithium-containing olivine-type phosphates and (D) lithium-containing excess layered transition metal oxides having a layered rock-salt type structure.
-((A) lithium transition metal composite oxide)
-The positive electrode active material (a) is a lithium transition metal composite oxide containing at least 1 or more metals of nickel, manganese, and cobalt and having a layered structure, and examples thereof include: lithium-cobalt composite oxide, lithium-nickel-cobalt-aluminum composite oxide, lithium-cobalt-manganese composite oxide, lithium-nickel-manganese-cobalt composite oxide, and the like. Further, a material in which a part of transition metal atoms in the main body of the lithium transition metal composite oxide is substituted with another element such as Al, Ti, V, Cr, Fe, Cu, Zn, Mg, Ga, Zr, Si, B, Ba, Y, and Sn may be used.
-As specific examples of the lithium-cobalt composite oxide and the lithium-nickel composite oxide, LiCoO can also be used2、LiNiO2Lithium cobaltate (LiCo) added with different elements such as Mg, Zr, Al and Ti0.98Mg0.01Zr0.01O2、LiCo0.98Mg0.01Al0.01O2、LiCo0.975Mg0.01Zr0.005Al0.01O2Etc.), lithium cobaltate having a rare earth compound fixed to the surface thereof as described in WO 2014/034043. Alternatively, LiCoO may be used as described in, for example, Japanese patent application laid-open No. 2002-1510772A part of the particle surface of the granular powder is covered with alumina.
-The lithium-nickel-cobalt composite oxide and the lithium-nickel-cobalt-aluminum composite oxide are represented by the general formula (1-1).
-LiaNi1-b-cCobM1 cO2 (1-1)
-In the formula (1-1), M1Is at least 1 element selected from the group consisting of Al, Fe, Mg, Zr, Ti, B, a is 0.9. ltoreq. a.ltoreq.1.2, B, c satisfy the conditions 0.1. ltoreq. b.ltoreq.0.3, 0. ltoreq. c.ltoreq.0.1.
-They can be prepared, for example, according to the production method described in japanese patent laid-open No. 2009-137834 and the like. Specifically, there may be mentioned: LiNi0.8Co0.2O2、LiNi0.85Co0.10Al0.05O2、LiNi0.87Co0.10Al0.03O2、LiNi0.6Co0.3Al0.1O2And the like.
-Specific examples of the lithium-cobalt-manganese composite oxide and the lithium-nickel-manganese composite oxide include: LiNi0.5Mn0.5O2、LiCo0.5Mn0.5O2And the like.
-Examples of the lithium-nickel-manganese-cobalt composite oxide include: a lithium-containing composite oxide represented by the general formula (1-2).
-LidNieMnfCogM2 hO2 (1-2)
-In the formula (1-2), M2Is at least 1 element selected from the group consisting of Al, Fe, Mg, Zr, Ti, B, Sn, d is 0.9. ltoreq. d.ltoreq.1.2, e, f, g and h satisfy the conditions that e + f + g + h 1, 0. ltoreq. e.ltoreq.0.7, 0. ltoreq. f.ltoreq.0.5, 0. ltoreq. g.ltoreq.0.5 and h.ltoreq.0.
-In order to improve the structural stability and to improve the safety of the lithium secondary battery at high temperatures, the lithium-nickel-manganese-cobalt composite oxide preferably contains manganese in the range represented by the general formula (1-2); in particular, in order to improve the charge-discharge efficiency characteristics of the lithium ion secondary battery, it is more preferable to further contain cobalt within the range represented by the general formula (1-2).
-Specifically, examples thereof include: li [ Ni ] having a charge-discharge region of 4.3V or more1/3Mn1/3Co1/3]O2、Li[Ni0.45Mn0.35Co0.2]O2、Li[Ni0.5Mn0.3Co0.2]O2、Li[Ni0.6Mn0.2Co0.2]O2、Li[Ni0.49Mn0.3Co0.2Zr0.01]O2、Li[Ni0.49Mn0.3Co0.2Mg0.01]O2And the like.
-((B) lithium manganese Complex oxide having spinel Structure)
-Examples of the lithium manganese composite oxide having a spinel structure as the positive electrode active material (B) include: spinel-type lithium manganese complex oxides represented by general formulas (1-3).
-Lij(Mn2-kM3 k)O4 (1-3)
-In the formula (1-3), M3Is at least 1 metal element selected from the group consisting of Ni, Co, Fe, Mg, Cr, Cu, Al and Ti, j is 1.05-1.15, k is 0-0.20.
-Specifically, examples thereof include: LiMn2O4、LiMn1.95Al0.05O4、LiMn1.9Al0.1O4、LiMn1.9Ni0.1O4、LiMn1.5Ni0.5O4And the like.
-((C) lithium-containing olivine-type phosphate)
-Examples of the lithium-containing olivine-type phosphate as the positive electrode active material (C) include: substances represented by the general formulae (1-4).
-LiFe1-nM4 nPO4 (1-4)
-In the formula (1-4), M4Is at least 1 selected from Co, Ni, Mn, Cu, Zn, Nb, Mg, Al, Ti, W, Zr and Cd, and n is more than or equal to 0 and less than or equal to 1.
-Specifically, examples thereof include: LiFePO4、LiCoPO4、LiNiPO4、LiMnPO4Etc., of which LiFePO is preferable4And/or LiMnPO4。
-(D) lithium excess layered transition metal oxide)
-Examples of the lithium-excess layered transition metal oxide having a layered rock-salt structure as the positive electrode active material (D) include those represented by the general formulae (1 to 5).
-xLiM5O2·(1-x)Li2M6O3 (1-5)
-In the formula (1-5), x is a number satisfying 0 < x < 1, and M5Is an average oxidation number of 3+At least 1 or more metal elements of (A), M6Is an average oxidation number of 4+At least 1 metal element. In the formula (1-5), M5Preferably 1 metal element selected from Mn, Ni, Co, Fe, V and Cr having a valence of 3, and the average oxidation number may be 3 with the same amount of metal having a valence of 2 and 4.
-In addition, in the formula (1-5), M6Preferably 1 or more metal elements selected from Mn, Zr and Ti. Specifically, there may be mentioned: 0.5[ LiNi0.5Mn0.5O2]·0.5[Li2MnO3]、0.5[LiNi1/3Co1/3Mn1/3O2]·0.5[Li2MnO3]、0.5[LiNi0.375Co0.25Mn0.375O2]·0.5[Li2MnO3]、0.5[LiNi0.375Co0.125Fe0.125Mn0.375O2]·0.5[Li2MnO3]、0.45[LiNi0.375Co0.25Mn0.375O2]·0.10[Li2TiO3]·0.45[Li2MnO3]And the like.
-It is known that the positive electrode active material (D) represented by the general formula (1-5) exhibits a high capacity when charged at a high voltage of 4.4V (Li basis) or more (for example, U.S. Pat. No. 7,135,252).
-These positive electrode active materials can be prepared by, for example, the production methods described in japanese patent laid-open nos. 2008-270201, WO2013/118661, 2013-030284, and the like.
-The positive electrode active material may contain at least 1 selected from the above-mentioned (a) to (D) as a main component, and examples of the positive electrode active material other than these include: FeS2、TiS2、V2O5、MoO3、MoS2Chalcogenides of equal transition elements or polyacetylene, polyConductive polymers such as p-phenylene, polyaniline, and polypyrrole, activated carbon, polymers that generate radicals, carbon materials, and the like.
-[ Positive electrode Current collector ]
-(II) the positive electrode has a positive electrode current collector. As the positive electrode current collector, for example, aluminum, stainless steel, nickel, titanium, or an alloy thereof can be used.
-[ Positive electrode active Material layer ]
-In the positive electrode of (ii), for example, a positive electrode active material layer may be formed on at least one surface of a positive electrode current collector. The positive electrode active material layer is composed of, for example, the aforementioned positive electrode active material, a binder, and if necessary, a conductive agent.
-Examples of the binder include: polytetrafluoroethylene, polyvinylidene fluoride, or Styrene Butadiene Rubber (SBR) resin, and the like.
-As the conductive agent, for example, acetylene black, ketjen black, carbon fiber, graphite (granular graphite, flake graphite) or other carbon materials can be used. As the positive electrode, acetylene black and ketjen black having low crystallinity are preferably used.
-[ (III) negative electrode ]
-(iii) the negative electrode preferably contains at least 1 kind of negative electrode active material.
-[ negative electrode active Material ]
-In the case of a lithium ion secondary battery in which the cation in the nonaqueous electrolytic solution is a lithium main component, examples of the negative electrode active material constituting the negative electrode of (iii) include: examples of the substance capable of doping/dedoping lithium ions include (E) a carbon material having a lattice plane (002 plane) with a d value of 0.340nm or less in X-ray diffraction, (F) a carbon material having a lattice plane (002 plane) with a d value exceeding 0.340nm in X-ray diffraction, (G) an oxide of 1 or more metals selected from Si, Sn, and Al, (H) 1 or more metals selected from Si, Sn, and Al, or an alloy containing these metals or an alloy of these metals or alloys with lithium, and (I) at least 1 of lithium titanium oxides. These negative electrode active materials may be used alone in 1 kind, or may be used in combination in 2 or more kinds.
-(E) a carbon material having a lattice plane (002 plane) with a d value of 0.340nm or less in X-ray diffraction
-As a negative electrode active material(E) Carbon materials having a lattice plane (002 plane) with a d value of 0.340nm or less in X-ray diffraction include, for example: pyrolytic carbons, cokes (e.g., pitch coke, needle coke, petroleum coke, etc.), graphites, organic polymer compound sintered bodies (e.g., those obtained by firing and carbonizing a phenol resin, a furan resin, etc. at an appropriate temperature), carbon fibers, activated carbon, etc., and they may also be graphitized ones. The carbon material has a (002) plane spacing (d002) of 0.340nm or less as measured by X-ray diffraction method, and preferably has a true density of 1.70g/cm3The graphite or the highly crystalline carbon material having properties similar to those described above.
-(F) a carbon material having a lattice plane (002 plane) with a d value exceeding 0.340nm in X-ray diffraction
-The carbon material having a lattice plane (002 plane) with a d value exceeding 0.340nm in X-ray diffraction of the negative electrode active material (F) includes amorphous carbon, which hardly changes the stacking order even when heat treatment is performed at a high temperature of 2000 ℃. For example, non-graphitizable carbon (hard carbon), mesocarbon microbeads (MCMB) fired at a temperature of 1500 ℃ or lower, mesophase pitch-based carbon fibers (MCF), and the like can be exemplified. Examples thereof include Carbotron (registered trademark) P manufactured by Kureha Corporation.
-(G) an oxide of 1 or more metals selected from Si, Sn and Al)
-Examples of the oxide of 1 or more metals selected from Si, Sn, and Al as the negative electrode active material (G) include substances capable of doping/dedoping lithium ions, such as silicon oxide and tin oxide.
-With ultrafine particles of Si dispersed in SiO2SiO of medium structurexAnd the like. When this material is used as a negative electrode active material, Si that reacts with Li is ultrafine particles to allow smooth charge and discharge, while SiO having the above structurexSince the particles themselves have a small surface area, they have good coatability when made into a composition (paste) for forming a negative electrode active material layer and good adhesion to a current collector of a negative electrode mixture layer.
-In addition, SiOxSince the volume change accompanying charge and discharge is large, SiO is used in combination at a specific ratioxGraphite as the negative electrode active material (E) and the negative electrode active material (E) can achieve both high capacity and good charge-discharge cycle characteristics.
-(H) at least one metal selected from the group consisting of Si, Sn and Al, an alloy containing these metals, or an alloy of these metals or alloys with lithium)
-The negative electrode active material (H) is selected from 1 or more metals selected from Si, Sn, and Al, an alloy containing these metals, or an alloy of these metals or alloys with lithium, and examples thereof include: metals such as silicon, tin, and aluminum, silicon alloys, tin alloys, and aluminum alloys, and materials that are alloyed with lithium during charging and discharging may be used for these metals and alloys.
-Specific examples of these preferable examples include: examples of the metal include a simple metal (e.g., a powdery material) such as silicon (Si) or tin (Sn), an alloy of the metal, a compound containing the metal, and an alloy containing tin (Sn) and cobalt (Co) in the metal, which are described in WO2004/100293 and jp 2008-016424 a. When such a metal is used as an electrode, it is preferable because it can exhibit a high charge capacity and relatively little expansion and contraction in volume accompanying charge and discharge. In addition, it is known that these metals are also preferable in that they are alloyed with Li during charging when used in a negative electrode of a lithium ion secondary battery, and therefore exhibit a high charge capacity.
-Further, for example, a negative electrode active material formed of submicron-diameter silicon pillars, a negative electrode active material including fibers made of silicon, and the like described in WO2004/042851, WO2007/083155, and the like can be used.
-((I) lithium titanium oxide)
-Examples of the lithium titanium oxide as the negative electrode active material (I) include lithium titanate having a spinel structure and lithium titanate having a ramsdellite structure.
-Examples of the lithium titanate having a spinel structure include Li4+αTi5O12(alpha varies in the range of 0. ltoreq. alpha. ltoreq.3 due to charge-discharge reaction). Further, as the lithium titanate having a ramsdellite structure, for example, Li may be mentioned2+βTi3O7(beta. varies in the range of 0. ltoreq. beta. ltoreq.3 due to charge-discharge reaction). These negative electrode active materials can be prepared by, for example, the production methods described in japanese patent laid-open nos. 2007-018883 and 2009-176752.
-For example, in the case of a sodium ion secondary battery in which the cation in the nonaqueous electrolytic solution is mainly sodium, hard carbon or TiO can be used2、V2O5、MoO3And the like as the negative electrode active material. For example, in the case of a sodium ion secondary battery in which the cation in the nonaqueous electrolytic solution is mainly sodium, the following can be used as the positive electrode active material: NaFeO2、NaCrO2、NaNiO2、NaMnO2、NaCoO2And the like sodium-containing transition metal composite oxides; a mixture of these sodium-containing transition metal composite oxides with a plurality of transition metals such as Fe, Cr, Ni, Mn, and Co; a substance obtained by replacing a part of transition metals in the sodium-containing transition metal composite oxide with metals other than other transition metals; na (Na)2FeP2O7、NaCo3(PO4)2P2O7Phosphoric acid compounds of transition metals; TiS2、FeS2And the like sulfides; or conductive polymers such as polyacetylene, polyphenylene, polyaniline and polypyrrole; activated carbon; a free radical generating polymer; carbon materials, and the like.
-[ negative electrode Current collector ]
-(III) the negative electrode has a negative electrode current collector. As the negative electrode current collector, for example, copper, aluminum, stainless steel, nickel, titanium, or an alloy thereof can be used.
-[ negative electrode active material layer ]
-(III) in the negative electrode, for example, a negative electrode active material layer is formed on at least one surface of a negative electrode current collector. The negative electrode active material layer is composed of, for example, the aforementioned negative electrode active material, a binder, and, if necessary, a conductive agent.
-Examples of the binder include: polytetrafluoroethylene, polyvinylidene fluoride, or Styrene Butadiene Rubber (SBR) resin, and the like.
-As the conductive agent, for example, acetylene black, ketjen black, carbon fiber, graphite (granular graphite, flake graphite) or other carbon materials can be used.
-[ method for producing electrode ((II) Positive electrode and (III) negative electrode) ]
-The electrode can be obtained, for example, by dispersing and kneading an active material, a binder, and, if necessary, a conductive agent in a solvent such as N-methyl-2-pyrrolidone (NMP) and water in a predetermined blending amount, applying the obtained paste to a current collector, and drying the applied paste to form an active material layer. The obtained electrode is preferably an electrode which is compressed by a method such as roll pressing and adjusted to an appropriate density.
-[ (IV) spacers ]
-The nonaqueous electrolyte battery comprises (IV) a separator. As the separator for preventing the contact between the positive electrode (ii) and the negative electrode (iii), a nonwoven fabric or a porous sheet made of polyolefin such as polypropylene or polyethylene, cellulose, paper, glass fiber, or the like can be used. In order to allow the electrolyte to permeate and easily transmit ions, these thin films are preferably made microporous.
-Examples of the polyolefin separator include: a film which is capable of transmitting lithium ions and electrically insulates a positive electrode such as a microporous polymer film such as a porous polyolefin film from a negative electrode. As a specific example of the porous polyolefin film, for example, a porous polyethylene film may be used alone, or a multilayer film may be formed by stacking a porous polyethylene film and a porous polypropylene film. Further, a film obtained by laminating a porous polyethylene film and a polypropylene film is exemplified.
-[ outer casing ]
-When the nonaqueous electrolyte battery is configured, as the outer case of the nonaqueous electrolyte battery, for example, a metal can such as a coin-shaped, cylindrical, or rectangular can; the outer shell is laminated. Examples of the metal can material include: nickel-plated steel sheet, stainless steel sheet, nickel-plated stainless steel sheet, aluminum or an alloy thereof, nickel, titanium, or the like.
-As the laminated outer case, for example, an aluminum laminated film; a laminated film made of SUS; a laminated film of polypropylene, polyethylene, etc. coated with silicon oxide.
-The configuration of the nonaqueous electrolyte battery according to the present embodiment is not particularly limited, and may be configured, for example, as follows: the outer case contains an electrode element in which a positive electrode and a negative electrode are disposed so as to face each other, and a nonaqueous electrolytic solution. The shape of the nonaqueous electrolyte battery is not particularly limited, and an electrochemical device having a shape such as a coin shape, a cylindrical shape, a rectangular shape, or an aluminum laminate type can be assembled from the above elements.
-Examples
-The present invention will be specifically described below with reference to examples, but the present invention is not limited to these examples.
-[ example 1-1]
-The production conditions of the nonaqueous electrolytic solution are shown in table 1, and the evaluation results of the battery using the electrolytic solution are shown in table 2. The values of-30 ℃ internal resistance characteristics and gas generation amount of the batteries in table 2 are respectively: the internal resistance after the charge-discharge cycle test of the laminate battery produced using electrolyte solution No. a-35 and the amount of gas generated in the cycle test were relative values of 100.
-As the nonaqueous solvent, a nonaqueous solvent containing ethylene carbonate, dimethyl carbonate, and ethyl methyl carbonate in a volume ratio of 3: 3: 4, in which LiPF as a solute is added6The lithium salt of compound No.1 as the salt having an imide anion was dissolved so as to have a concentration of 1.0mol/L and a concentration of 1.0 mass% with respect to the total amount of the nonaqueous solvent, the solute and the salt having an imide anion (the Cl content in the salt having an imide anion as a raw material before being dissolved in the electrolytic solution was 50 mass ppm), thereby preparing an electrolytic solution No. a-1 for a nonaqueous electrolyte battery. The preparation is carried out while maintaining the liquid temperature in the range of 20-30 ℃. In the electrolyte, the compound represented by the general formula [2]]～[5]The concentration of the total amount of the compounds shown was less than 5 mass ppm, and the free acid concentration was 45 mass ppm.
-Using the above electrolyte and reacting LiNi1/3Co1/3Mn1/3O2Batteries were produced using graphite as a positive electrode material and a negative electrode material, and the cycle characteristics and internal resistance characteristics of the batteries were actually evaluated. The test cell was produced in the following manner.
-In LiNi1/3Co1/3Mn1/3O2The powder 90 mass% was mixed with polyvinylidene fluoride (hereinafter referred to as "PVDF") 5 mass% as a binder and acetylene black 5 mass% as a conductive material, and then N-methylpyrrolidone was added to prepare a paste. The paste was coated on an aluminum foil and dried to obtain a positive electrode for test.
-Further, PVDF in an amount of 10 mass% was mixed as a binder in 90 mass% of the graphite powder, and N-methylpyrrolidone was added thereto to prepare a slurry. This slurry was coated on a copper foil and dried at 120 ℃ for 12 hours to prepare a negative electrode body for testing.
-Then, a 50mAh battery in which a polyethylene separator was immersed in an electrolyte and an aluminum laminate case was assembled was used.
-[ evaluation of internal resistance characteristics (-30 ℃ C.) ]
-Using the above battery, a charge and discharge test was performed at an ambient temperature of 70 ℃. The current density of the charging and discharging is 3.5mA/cm2After charging to 4.3V, 4.3V was maintained for 1 hour, and discharging was carried out to 3.0V, and the charge-discharge cycle was repeated. In addition, the cell after 300 cycles was set at an ambient temperature of 25 ℃ at a current density of 0.35mA/cm2The internal resistance of the battery was measured after charging to 4.3V at an ambient temperature of-30 ℃.
-[ evaluation of gas Generation amount ]
-The amount of gas generation was evaluated by estimating the amount of increase in battery capacity by the buoyancy method using silicone oil before and after the above cycle test at 70 ℃.
-[ Table 1]
-Electrolyte No. A-44 and A-45 in percentage by mass
-Examples 1-2 to 1-34
-Except for the preparation conditions of the nonaqueous electrolytic solutions shown in Table 1, nonaqueous electrolytic solution Nos. A-2 to A-34 were prepared in the same manner as in example 1-1, and evaluated in the same manner. The evaluation results of the battery using this electrolyte are shown in table 2. The salts having imide anions used in the examples each had a Cl content of 200 mass ppm or less. The concentrations of free acids in the electrolytes used in the examples were all 100 mass ppm or less. The values of-30 ℃ internal resistance characteristics and gas generation amount of the batteries in table 2 are shown as follows; the internal resistance after the cycling of the laminate battery produced using electrolyte solution No. a-35 and the amount of gas generated in the cycle test were relative values of 100.
-Comparative examples 1-1 to 1-3 and reference examples 1-1 and 1-2
-Except for the preparation conditions of the nonaqueous electrolytic solutions shown in Table 1, nonaqueous electrolytic solution Nos. A-35 to A-37, A-44 and A-45 were prepared in the same manner as in example 1-1, and the evaluations were carried out in the same manner. In addition, comparative examples 1-1 to 1-3 are experimental examples that do not contain a salt having an imide anion and do not contain an electrolyte solution containing a solute. Reference example 1-1 is a test example relating to an electrolytic solution containing a compound represented by the general formula [2 ]; reference example 1-2 is an experimental example relating to an electrolytic solution containing a compound represented by the general formula [5 ]. The evaluation results of the battery using this electrolyte are shown in table 2. The values of-30 ℃ internal resistance characteristics and gas generation amount of the batteries in table 2 are respectively: the internal resistance after the cycling of the laminate battery produced using electrolyte solution No. a-35 and the amount of gas generated in the cycle test were relative values of 100.
-[ Table 2]
-Relative value of comparative example 1-1 to 100
-Comparative examples 1 to 4 and 1 to 5
-Except for the preparation conditions of the nonaqueous electrolytic solutions shown in Table 1, nonaqueous electrolytic solution Nos. A-38 and A-39 were prepared in the same manner as in example 1-1, and evaluated in the same manner. In comparative examples 1 to 4 and 1 to 5, lithium salts of the following compounds nos. 19 and 20 were used as salts having imide anions, respectively. The Cl content in the salts having imide anions used in comparative examples 1 to 4 and 1 to 5 was 90 mass ppm and 20 mass ppm, respectively. The concentrations of free acids in the electrolytes used in comparative examples 1 to 4 and 1 to 5 were 42 mass ppm and 40 mass ppm, respectively. The evaluation results of the battery using this electrolyte are shown in table 3. The values of-30 ℃ internal resistance characteristics and gas generation amount of the batteries in table 3 are respectively: the internal resistance after the cycling of the laminate battery produced using electrolyte solution No. a-35 (comparative example 1-1) and the amount of gas generated in the cycle test were relative values of 100.
-[ Table 3]
-Relative value of comparative example 1-1 to 100
-Comparative examples 1 to 6
-Non-aqueous electrolyte solution No. A-40 was prepared and evaluated in the same manner as in example 1-1, except that the preparation conditions of the non-aqueous electrolyte solutions shown in Table 1 were used. In comparative examples 1 to 6, the following compound No.21 lithium salt was used as the salt having an imide anion in the electrolyte solution. The Cl content in the salt having an imide anion used in comparative examples 1 to 6 was 5 mass ppm. The concentration of free acid in the electrolyte solutions used in comparative examples 1 to 6 was 37 mass ppm. The evaluation results of the battery using this electrolyte are shown in table 4. The values of-30 ℃ internal resistance characteristics and gas generation amount of the batteries in table 4 are respectively: the internal resistance after the cycling of the laminate battery produced using electrolyte solution No. a-35 (comparative example 1-1) and the amount of gas generated in the cycle test were relative values of 100.
-Compound No.21
-[ Table 4]
-Relative value of comparative example 1-1 to 100
-Comparative examples 1 to 7
-Non-aqueous electrolyte solution No. A-41 was prepared and evaluated in the same manner as in example 1-1, except that the preparation conditions of the non-aqueous electrolyte solutions shown in Table 1 were used. In comparative examples 1 to 7, the following compound No.22 was used as a salt having an imide anion, and the lithium salt was used as an electrolyte solution. The Cl content in the salt having an imide anion used in comparative examples 1 to 7 was 60 mass ppm. The concentration of free acid in the electrolyte solutions used in comparative examples 1 to 7 was 46 mass ppm. The evaluation results of the battery using this electrolyte solution are shown in table 5. The values of-30 ℃ internal resistance characteristics and gas generation amount of the batteries in table 5 are respectively: the internal resistance after the cycling of the laminate battery produced using electrolyte solution No. a-35 (comparative example 1-1) and the amount of gas generated in the cycle test were relative values of 100.
-Compound No.22
-[ Table 5]
-Relative value of comparative example 1-1 to 100
-Comparative examples 1 to 8
-Non-aqueous electrolyte solution No. A-42 was prepared and evaluated in the same manner as in example 1-1, except that the preparation conditions of the non-aqueous electrolyte solutions shown in Table 1 were used. In comparative examples 1 to 8, examples of an electrolytic solution using a lithium salt of the following compound No.23 as a salt having an imide anion were shown. The Cl content in the salt having an imide anion used in comparative examples 1 to 8 was 110 mass ppm. The concentration of free acid in the electrolyte solutions used in comparative examples 1 to 8 was 36 mass ppm. The evaluation results of the battery using this electrolyte solution are shown in table 6. The values of-30 ℃ internal resistance characteristics and gas generation amount of the batteries in table 6 are respectively: the internal resistance after the cycling of the laminate battery produced using electrolyte solution No. a-35 (comparative example 1-1) and the amount of gas generated in the cycle test were relative values of 100.
-Compound No.23
-[ Table 6]
-Relative value of comparative example 1-1 to 100
-Comparative examples 1 to 9
-Non-aqueous electrolyte solution No. A-43 was prepared and evaluated in the same manner as in example 1-1, except that the preparation conditions of the non-aqueous electrolyte solutions shown in Table 1 were used. In comparative examples 1 to 9, examples of an electrolytic solution using a lithium salt of the following compound No.24 as a salt having an imide anion were shown. The Cl content in the salt having an imide anion used in comparative examples 1 to 9 was 20 mass ppm. The concentration of free acid in the electrolyte solutions used in comparative examples 1 to 9 was 39 mass ppm. The evaluation results of the battery using this electrolyte are shown in table 7. The values of-30 ℃ internal resistance characteristics and gas generation amount of the battery in table 7 are: the internal resistance after the cycling of the laminate battery produced using electrolyte solution No. a-35 (comparative example 1-1) and the amount of gas generation accompanying the cycling test were relative values of 100.
-[ Table 7]
-Relative value of comparative example 1-1 to 100
-When the results shown in table 2 are compared, the case where the salt having an imide anion represented by the above general formula [1] contains a hexafluorophosphate salt and/or a tetrafluoroborate salt shows a good internal resistance characteristic, and the amount of gas generated after the cycle is suppressed. The case where the salt having an imide anion of the present invention was not included (comparative examples 1-1 and 1-2) and the case where the salt having an imide anion of the present invention was included only and the hexafluorophosphate salt and/or the tetrafluoroborate salt was not included (comparative example 1-3) were high in internal resistance and large in gas generation amount. On the other hand, when the salt having an imide anion of the present invention is contained together with hexafluorophosphate and/or tetrafluoroborate, excellent internal resistance characteristics and gas generation amount suppressing effect are exhibited.
-Further, from the results shown in tables 3 to 7, it is understood that when salts of imide anions having the same substituent are compared, when salts of imide anions having only a phosphorus atom or only a sulfur atom are used (comparative examples 1-4 to 1-7 and 1-9), and when salts of imide anions having no P-F bond nor S-F bond are used (comparative examples 1-6, 1-8 and 1-9), the internal resistance is high and the amount of gas generated is large. On the other hand, when the salt having an imide anion of the present invention is contained, excellent internal resistance characteristics and gas generation amount suppressing effect are exhibited.
-[ examples 2-1 to 2-47 and comparative examples 2-1 to 2-30] < Experimental example 1 when other solutes and additives were added
-Except for the preparation conditions of the nonaqueous electrolytic solutions shown in Table 8, nonaqueous electrolytic solution Nos. B-1 to B-77 were prepared in the same manner as in example 1-1, and evaluated in the same manner. Each electrolyte solution contained 1.0mol/L of LiPF as a solute6In an electrolyte, of the general formula [2]]～[5]The concentration of the total amount of the compounds shown is less than 5 mass ppm. The concentration of free acids in the electrolyte used in the examples was 120 mass ppm or less in total.
-The evaluation results of the battery using this electrolyte are shown in table 9. The values of-30 ℃ internal resistance characteristics and gas generation amount of the batteries in table 9 are: the internal resistance after the cycle and the gas generation amount in the cycle test of the laminate battery produced using the electrolyte solution not containing the salt having an imide anion of the present invention were relative values of 100.
-[ Table 8]
-[ Table 9]
-In examples 2-1 to 2-6 and comparative examples 2-1 and 2-2, the relative value was defined as 100 for comparative example 2-1
-In examples 2-7, 2-8 and comparative examples 2-3, the relative values of comparative examples 2-3 were set to 100
-Examples 2-9 to 2-10 and comparative examples 2-4, the relative values of comparative examples 2-4 were set to 100
-Examples 2-11 to 2-12 and comparative examples 2-5, the relative values of comparative examples 2-5 were set to 100
-Examples 2-13 to 2-14 and comparative examples 2-6, the relative values of comparative examples 2-6 were set to 100
-Examples 2-15 to 2-16 and comparative examples 2-7 and 2-8, the relative values of comparative examples 2-8 were defined as 100
-Examples 2-17 to 2-18 and comparative examples 2-9, the relative values of comparative examples 2-9 were set to 100
-Examples 2-19 to 2-20 and comparative examples 2-10, the relative values of comparative examples 2-10 were set to 100
-Examples 2-21 to 2-22 and comparative examples 2-11, the relative values of comparative examples 2-11 were set to 100
-Examples 2-23 to 2-24 and comparative examples 2-12, the relative values of comparative examples 2-12 were set to 100
-Examples 2-25 to 2-26 and comparative examples 2-13, the relative values of comparative examples 2-13 were set to 100
-Examples 2-27 to 2-28 and comparative examples 2-14, the relative values of comparative examples 2-14 were set to 100
-Examples 2-29 to 2-30, comparative examples 2-15, and 2-16, relative values when the values of comparative examples 2-16 were set to 100
-Examples 2-31 to 2-32 and comparative examples 2-17, the relative values of comparative examples 2-17 were set to 100
-Examples 2-33 to 2-34 and comparative examples 2-18, the relative values of comparative examples 2-18 were set to 100
-Examples 2-35 to 2-36 and comparative examples 2-19, the relative values of comparative examples 2-19 were set to 100
-In examples 2 to 37 and comparative examples 2 to 20, the relative values of comparative examples 2 to 20 were set to 100
-In examples 2 to 38 and comparative examples 2 to 21, the relative values of comparative examples 2 to 21 were set to 100
-In examples 2 to 39 and comparative examples 2 to 22, the relative values of comparative examples 2 to 22 were set to 100
-In examples 2 to 40 and comparative examples 2 to 23, the relative values of comparative examples 2 to 23 were set to 100
-In examples 2 to 41 and comparative examples 2 to 24, the relative values of comparative examples 2 to 24 were set to 100
-In examples 2 to 42 and comparative examples 2 to 25, the relative values of comparative examples 2 to 25 were set to 100
-In examples 2 to 43 and comparative examples 2 to 26, the relative values of comparative examples 2 to 26 were set to 100
-In examples 2 to 44 and comparative examples 2 to 27, the relative values of comparative examples 2 to 27 were set to 100
-In examples 2 to 45 and comparative examples 2 to 28, the relative values of comparative examples 2 to 28 were set to 100
-In examples 2 to 46 and comparative examples 2 to 29, the relative values of comparative examples 2 to 29 were set to 100
-In examples 2 to 47 and comparative examples 2 to 30, the relative values of comparative examples 2 to 30 were set to 100
-As described above, it was confirmed that: in the electrolyte except LiPF6In any of the examples containing the solute and the additive, the internal resistance characteristics and the gas generation amount of the laminated battery using the electrolyte for a nonaqueous electrolyte battery of the present invention were excellent as compared with the respective comparative examples. Therefore, by using the electrolyte for a nonaqueous electrolyte battery of the present invention, a nonaqueous electrolyte battery exhibiting excellent internal resistance characteristics and gas generation amount suppressing effects can be obtained without depending on the types of the other solutes and additives.
-[ examples 3-1 to 3-4 and comparative examples 3-1 to 3-4] < Experimental example in the case where the negative electrode body was changed >
-As shown in table 10, the negative electrode body and the electrolyte used in example 1-1 were modified in structure, and the evaluation was performed in the same manner as in example 1-1. The negative electrode active material is Li4Ti5O12The negative electrode body of (2) was produced as follows: by reaction of Li with4Ti5O1290% by mass of the powder was mixed with 5% by mass of PVDF as a binder and 5% by mass of acetylene black as a conductive agent, and then N-methylpyrrolidone was added to the mixture, and the resulting paste was coated on a copper foil and dried to prepare a copper foil; the end-of-charge voltage and the end-of-discharge voltage were 2.7V and 1.5V, respectively, in the evaluation of the batteries. In examples 3-1 to 3-4 and comparative examples 3-1 to 3-4, the values of the internal resistance characteristic and the gas generation amount of the battery were as follows: the internal resistance after the cycle and the gas generation amount in the cycle test of the laminate battery produced using the electrolyte solution not containing the salt having an imide anion of the present invention were relative values of 100.
-[ examples 4-1 to 4-5 and comparative examples 4-1 to 4-5] < Experimental example in the case where the negative electrode body was changed >
-As shown in table 10, the negative electrode body and the electrolyte used in example 1-1 were modified in structure, and the evaluation was performed in the same manner as in example 1-1. A negative electrode body in which the negative electrode active material was graphite (silicon-containing) was produced as follows: a paste obtained by mixing 80 mass% graphite powder with 10 mass% silicon powder and 10 mass% PVDF as a binder, and further adding N-methylpyrrolidone was coated on a copper foil and dried; the end-of-charge voltage and the end-of-discharge voltage at the time of battery evaluation were the same as in example 1-1. In examples 4-1 to 4-5 and comparative examples 4-1 to 4-5, the values of the internal resistance characteristic and the gas generation amount of the battery were as follows: the internal resistance after the cycle and the gas generation amount in the cycle test of the laminate battery produced using the electrolyte solution not containing the salt having an imide anion of the present invention were relative values of 100.
-[ examples 5-1 to 5-4 and comparative examples 5-1 to 5-4] < Experimental example in the case where the negative electrode body was changed >
-As shown in table 10, the negative electrode body and the electrolyte used in example 1-1 were modified in structure, and the evaluation was performed in the same manner as in example 1-1. The negative electrode body in which the negative electrode active material was hard carbon was produced as follows: the paste was prepared by mixing 90 mass% of hard carbon with 5 mass% of PVDF as a binder and 5 mass% of acetylene black as a conductive agent, and then adding N-methylpyrrolidone, and applying and drying the resulting paste, and the charge end voltage and the discharge end voltage at the time of battery evaluation were 4.2V and 2.2V, respectively. In examples 5-1 to 5-4 and comparative examples 5-1 to 5-4, the values of the internal resistance characteristic and the gas generation amount of the battery were as follows: the internal resistance after the cycle and the gas generation amount in the cycle test of the laminate battery produced using the electrolyte solution not containing the salt having an imide anion of the present invention were relative values of 100.
-[ Table 10]
-In examples 3-1 and 3-2 and comparative examples 3-1 and 3-2, the relative value was defined as 100 for comparative example 3-1
-In examples 3-3 and 3-4 and comparative examples 3-3 and 3-4, the relative value was defined as 100 for comparative example 3-3
-Examples 4-1 to 4-3 and comparative examples 4-1 to 4-3, the relative value when the value of comparative example 4-1 is 100
-In examples 4-4 and 4-5 and comparative examples 4-4 and 4-5, the relative value was defined as 100 for comparative example 4-4
-In examples 5-1 and 5-2 and comparative examples 5-1 and 5-2, the relative value was defined as 100 as the value of comparative example 5-1
-In examples 5-3 and 5-4 and comparative examples 5-3 and 5-4, the relative value was defined as 100 for comparative example 5-3
-[ examples 6-1 to 6-4 and comparative examples 6-1 to 6-4] < Experimental example in the case where the positive electrode was changed >
-As shown in table 11, the positive electrode body and the electrolyte used in example 1-1 were modified in structure, and the evaluation was performed in the same manner as in example 1-1. The positive electrode active material was LiCoO2The positive electrode body of (2) was produced as follows: by applying to LiCoO290% by mass of the powder was mixed with 5% by mass of PVDF as a binder and acetylene as a conductive materialBlack 5 mass%, N-methylpyrrolidone was further added, and the resulting paste was coated on an aluminum foil and dried. The end-of-charge voltage and the end-of-discharge voltage were 4.2V and 3.0V, respectively, in the evaluation of the battery. In examples 6-1 to 6-4 and comparative examples 6-1 to 6-4, the values of the internal resistance characteristic and the gas generation amount of the battery were as follows: the internal resistance after the cycle and the gas generation amount in the cycle test of the laminate battery produced using the electrolyte solution not containing the salt having an imide anion of the present invention were relative values of 100.
-[ examples 7-1 to 7-4 and comparative examples 7-1 to 7-4] < Experimental example in the case where the positive electrode was changed >
-As shown in table 11, the positive electrode body and the electrolyte used in example 1-1 were modified in structure, and the evaluation was performed in the same manner as in example 1-1. The positive electrode active material was LiNi0.8Co0.15Al0.05O2The positive electrode body of (2) was produced as follows: by reaction on LiNi0.8Co0.15Al0.05O290% by mass of the powder was mixed with 5% by mass of PVDF as a binder and 5% by mass of acetylene black as a conductive material, and N-methylpyrrolidone was added to the mixture, and the resulting paste was coated on an aluminum foil and dried. The end-of-charge voltage and the end-of-discharge voltage were 4.2V and 3.0V, respectively, in the evaluation of the battery. In examples 7-1 to 7-4 and comparative examples 7-1 to 7-4, the values of the internal resistance characteristic and the gas generation amount of the battery were as follows: the internal resistance after cycling and the gas generation amount accompanying the cycling test of the laminate battery produced using the electrolyte solution containing no salt having an imide anion of the present invention were relative values each set to 100.
-[ examples 8-1 to 8-4 and comparative examples 8-1 to 8-4] < Experimental example in the case where the positive electrode was modified
-As shown in table 11, the positive electrode body and the electrolyte used in example 1-1 were modified in structure, and the evaluation was performed in the same manner as in example 1-1. The positive electrode active material was LiMn2O4The positive electrode body of (2) was produced as follows: by adding in LiMn2O4Powder 90 mass% of the total amount of the components was mixed with 5 mass% of PVDF as a binder and 5 mass% of acetylene black as a conductive material, and N-methylpyrrolidone was added to the mixture, and the resulting paste was applied onto an aluminum foil and dried. The end-of-charge voltage and the end-of-discharge voltage were 4.2V and 3.0V, respectively, in the evaluation of the battery. In examples 8-1 to 8-4 and comparative examples 8-1 to 8-4, the values of the internal resistance characteristic and the gas generation amount of the battery were as follows: the internal resistance after the cycle and the gas generation amount in the cycle test of the laminate battery produced using the electrolyte solution not containing the salt having an imide anion of the present invention were relative values of 100.
-[ examples 9-1 to 9-4 and comparative examples 9-1 to 9-4] < Experimental example in the case where the positive electrode body was changed >
-As shown in table 11, the positive electrode body and the electrolyte used in example 1-1 were modified in structure, and the evaluation was performed in the same manner as in example 1-1. The positive electrode active material is LiFePO4The positive electrode body of (2) was produced as follows: by using LiFePO coated with amorphous carbon490% by mass of the powder was mixed with 5% by mass of PVDF as a binder and 5% by mass of acetylene black as a conductive material, and N-methylpyrrolidone was added to the mixture, and the resulting paste was coated on an aluminum foil and dried. The end-of-charge voltage and the end-of-discharge voltage were 4.1V and 2.5V, respectively, in the evaluation of the battery. In examples 9-1 to 9-4 and comparative examples 9-1 to 9-4, the values of the internal resistance characteristic and the gas generation amount of the battery were as follows: the internal resistance after the cycle and the gas generation amount in the cycle test of the laminate battery produced using the electrolyte solution not containing the salt having an imide anion of the present invention were relative values of 100.
-[ Table 11]
-In examples 6-1 and 6-2 and comparative examples 6-1 and 6-2, the relative value was defined as 100 for comparative example 6-1
-In examples 6-3 and 6-4 and comparative examples 6-3 and 6-4, the relative value was defined as 100 as the value of comparative example 6-3
-In examples 7-1 and 7-2 and comparative examples 7-1 and 7-2, the relative value was defined as 100 as the value of comparative example 7-1
-In examples 7-3 and 7-4 and comparative examples 7-3 and 7-4, the relative value was defined as 100 for comparative example 7-3
-In examples 8-1 and 8-2 and comparative examples 8-1 and 8-2, the relative value was defined as 100 as the value of comparative example 8-1
-In examples 8-3 and 8-4 and comparative examples 8-3 and 8-4, the relative value was defined as 100 for comparative example 8-3
-In examples 9-1 and 9-2 and comparative examples 9-1 and 9-2, the relative value was defined as 100 for comparative example 9-1
-In examples 9-3 and 9-4 and comparative examples 9-3 and 9-4, the relative value was defined as 100 for comparative example 9-3
-As described above, it was confirmed that Li was used as the negative electrode active material4Ti5O12In any of the examples of graphite (containing silicon) and hard carbon, the internal resistance characteristics and the amount of gas generated in the laminated battery using the electrolyte for nonaqueous electrolyte batteries according to the present invention were superior to those of the corresponding comparative examples. Therefore, by using the electrolyte for a nonaqueous electrolyte battery of the present invention, a nonaqueous electrolyte battery exhibiting excellent internal resistance characteristics and gas generation amount suppressing effects can be obtained regardless of the type of the negative electrode active material.
-In addition, as described above, it was confirmed that LiCoO was used as the positive electrode active material2、LiNi0.8Co0.15Al0.05O2、LiMn2O4、LiFePO4In any of the examples of (a) and (b), the multilayer battery using the electrolyte solution for nonaqueous electrolyte batteries of the present invention was superior to the corresponding comparative examples in both internal resistance characteristics and gas generation amount. Therefore, by using the electrolyte for a nonaqueous electrolyte battery of the present invention, a nonaqueous electrolyte battery exhibiting excellent internal resistance characteristics and gas generation amount suppressing effects can be obtained regardless of the type of the positive electrode active material.
-[ example 10-1]
-As the nonaqueous solvent, propylene carbonate, ethylene carbonate, diethyl carbonate in a volume ratio of 2: 2: 6 in which NaPF is dissolved as a solute6The sodium salt of compound No.1 as the salt having an imide anion was dissolved so as to have a concentration of 1.0mol/L and a concentration of 1.0 mass% with respect to the total amount of the nonaqueous solvent, the solute and the salt having an imide anion (the Cl content in the salt having an imide anion as a raw material before being dissolved in the electrolytic solution was 10 mass ppm), and an electrolytic solution for a nonaqueous electrolyte battery was prepared as shown in table 12. The concentration of the free acid in the electrolyte solution was 12 mass ppm. The above preparation was carried out while maintaining the liquid temperature at 25 ℃.
-Using the electrolyte and adding NaFe0.5Co0.5O2A battery was produced in the same manner as in example 1-1 except that hard carbon was used as a positive electrode material and a negative electrode material, and the battery was evaluated in the same manner as in example 1-1. The positive electrode active material was NaFe0.5Co0.5O2In the positive electrode body of (1), in NaFe0.5Co0.5O290% by mass of the powder was mixed with 5% by mass of PVDF as a binder and 5% by mass of acetylene black as a conductive material, and N-methylpyrrolidone was further added to the mixture, and the resulting paste was applied to an aluminum foil and dried, whereby the charge end voltage and the discharge end voltage at the time of battery evaluation were 3.8V and 1.5V, respectively. The evaluation results are shown in Table 13.
-Examples 10-2 to 10-18 and comparative examples 10-1 to 10-9
-An electrolyte for a nonaqueous electrolyte battery was prepared and a battery was evaluated in the same manner as in example 10-1, except that the type and concentration of the solute and the type and concentration of the salt having an imide anion were changed as shown in table 12. The concentrations of free acids in the electrolytes used in the examples were all 50 mass ppm or less. The evaluation results are shown in Table 13. In examples 10-1 to 10-18 and comparative examples 10-1 to 10-9, the values of the internal resistance characteristics and the gas generation amount of the battery were as follows: the internal resistance after the cycle and the gas generation amount in the cycle test of the laminate battery produced using the electrolyte solution not containing the salt having an imide anion of the present invention were relative values of 100.
-[ Table 12]
-[ Table 13]
-In examples 10-1 to 10-6 and comparative examples 10-1 to 10-3, the relative value was defined as 100 for comparative example 10-1
-In examples 10-7 to 10-12 and comparative examples 10-4 and 10-5, the relative value was defined as 100 for comparative example 10-4
-In examples 10-13, 10-14 and comparative example 10-6, the relative value was defined as 100 for the value of comparative example 10-6
-Relative values when the values of comparative examples 10-7 were set to 100 in examples 10-15, 10-16 and comparative examples 10-7
-In examples 10-17 and 10-18 and comparative examples 10-8 and 10-9, the relative value was defined as 100 for comparative example 10-8
-From the results in table 13, in the sodium ion battery, the example in which the salt having an imide anion of the present invention was added to the electrolytic solution confirmed good internal resistance characteristics and gas generation amount suppressing effect, compared to the comparative example in which the salt was not added.
-The salt having an imide anion of the present invention was not included (comparative examples 10-1, 10-4, 10-6, 10-7 and 10-8) and the salt having an imide anion containing only a phosphorus atom or only a sulfur atom was used (comparative examples 10-2, 10-3, 10-5 and 10-9), and the internal resistance was high and the amount of gas generated was also large. On the other hand, when the salt having an imide anion of the present invention and hexafluorophosphate were contained at the same time, good internal resistance characteristics and gas generation amount suppressing effect were confirmed.
-In addition, in the electrolyte, NaPF is excluded6In any of the examples containing the solute and the additive, the example added with the salt having an imide anion of the present invention was confirmed to have improved internal resistance characteristics and gas generation amount suppressing effect compared to the comparative example not added with the salt having an imide anion of the present invention, and the same effect can be obtained.
-[ examples 11-1 to 11-21 and comparative examples 11-1 to 11-19] < Experimental example 2 when other solutes and additives were added
-Except for the preparation conditions of the nonaqueous electrolytic solutions shown in Table 14, nonaqueous electrolytic solution Nos. D-1 to D-40 were prepared in the same manner as in example 1-1, and evaluated in the same manner. Each electrolyte solution contained 1.0mol/L of LiPF as a solute6In an electrolyte, of the general formula [2]]～[5]The concentration of the total amount of the compounds shown is less than 5 mass ppm. The concentrations of free acids in the electrolytes used in the examples were all 120 mass ppm or less. The positive electrode active material was LiNi0.6Co0.2Mn0.2O2The positive electrode body of (2) was produced as follows: by reaction on LiNi0.6Co0.2Mn0.2O290% by mass of the powder was mixed with 5% by mass of PVDF as a binder and 5% by mass of acetylene black as a conductive material, and N-methylpyrrolidone was added to the mixture, and the resulting paste was coated on an aluminum foil and dried. The end-of-charge voltage and the end-of-discharge voltage were 4.35V and 3.0V, respectively, at the time of battery evaluation. The positive electrode active material was LiNi0.6Co0.2Mn0.2O2+LiMn2O4The positive electrode body of (2) was produced as follows: by mixing LiNi0.6Co0.2Mn0.2O2Powder 60 mass% and LiMn2O4The powder was 30 mass%, PVDF as a binder in an amount of 5 mass% and acetylene black as a conductive material in an amount of 5 mass% were mixed, and N-methylpyrrolidone was added to the mixture, and the resulting paste was coated on an aluminum foil and dried. The end-of-charge voltage and the end-of-discharge voltage at the time of battery evaluation were 4.2V and 3, respectively.0V。
-The evaluation results of the batteries using the electrolyte and the electrodes are shown in table 15. The values of-30 ℃ internal resistance characteristics and gas generation amount of the batteries in table 15 are: the internal resistance after the cycle of the laminated battery produced using the electrolyte solution not containing the salt having an imide anion of the present invention and the amount of gas generation accompanying the cycle test were relative values of 100.
-[ Table 14]
-[ Table 15]
-(examples 11-1 to 11-14 are relative values when the values of comparative examples 11-1 to 11-14 were each 100,
-Examples 11 to 15 are relative values when the value of comparative example 11-1 was taken as 100,
-Examples 11 to 16 are relative values when the value of comparative example 11-2 was taken as 100,
-Examples 11 to 17 are relative values when the values of comparative examples 11 to 15 were taken as 100,
-Examples 11 to 18 are relative values when the values of comparative examples 11 to 16 were taken as 100,
-Examples 11 to 19 are relative values when the values of comparative examples 11 to 17 were taken as 100,
-Examples 11 to 20 are relative values when the values of comparative examples 11 to 18 were taken as 100,
-Examples 11 to 21 are relative values when the values of comparative examples 11 to 19 were set to 100)
-As described above, in the electrolyte, except for LiPF6In the examples in which the total amount of lithium salts is 3 to 4 or more in addition to the other solutes and additives, it was confirmed that the internal resistance characteristics and the gas generation amount of the laminate battery using the electrolyte for a nonaqueous electrolyte battery of the present invention are superior to those of the respective comparative examples. Therefore, by using the electrolyte for a nonaqueous electrolyte battery of the present invention, a nonaqueous electrolyte battery exhibiting excellent internal resistance characteristics and gas generation amount suppressing effects can be obtained without depending on the types of the other solutes and additives.
-[ examples 12-1 to 12-6 and comparative examples 12-1 to 12-6] < Experimental examples using different nonaqueous solvents >
-Except that the basic compositions of the solute and the nonaqueous solvent were changed under the preparation conditions shown in Table 16, nonaqueous electrolyte solutions No. E-1 to E-12 were prepared in the same manner as in example 1-1, and evaluated in the same manner. The total concentration of the compounds represented by the general formulae [2] to [5] in each electrolyte solution is less than 5 mass ppm. The concentrations of free acids in the electrolytes used in the examples were all 120 mass ppm or less. The evaluation results of the battery using this electrolyte solution are shown in table 17. The values of-30 ℃ internal resistance characteristics and gas generation amount of the batteries in table 17 are: the internal resistance after the cycle and the gas generation amount in the cycle test of the laminate battery produced using the electrolyte solution not containing the salt having an imide anion of the present invention were relative values of 100.
-[ Table 16]
-[ Table 17]
-(examples 12-1 to 12-6 are relative values when the values of comparative examples 12-1 to 12-6 were each set to 100.)
-As described above, it was confirmed that the multilayer battery using the electrolyte for a nonaqueous electrolyte battery of the present invention is superior in internal resistance characteristics and gas generation amount to the respective comparative examples even when different types of nonaqueous solvents are used. Therefore, by using the electrolyte for a nonaqueous electrolyte battery of the present invention, a nonaqueous electrolyte battery exhibiting excellent internal resistance characteristics and gas generation amount suppressing effects can be obtained regardless of the type of nonaqueous solvent.
-Table 18 shows the results of using electrolytes No. A-1, A-15 and A-35 as the electrolytes and changing the positive electrode bodies and the negative electrode bodies.
-[ Table 18]
-Examples 3-1 and 3-2 are relative values when the value of comparative example 3-1 was set to 100
-Examples 1-1 and 1-15 are relative values when the value of comparative example 1-1 was set to 100
-Examples 5-1 and 5-2 are relative values when the value of comparative example 5-1 was set to 100
-Examples 8-1 and 8-2 are relative values when the value of comparative example 8-1 was set to 100
-Examples 9-1 and 9-2 are relative values when the value of comparative example 9-1 was set to 100
-< comparison of effects by negative electrode bodies >
-And the negative electrode active material is Li with high negative electrode potential4Ti5O12As shown by the results of examples 1-1, 1-15, and examples 5-1 and 5-2, in which the negative electrode active material having a lower negative electrode potential was used, compared with examples 3-1 and 3-2, the nonaqueous electrolyte battery using the electrolyte for nonaqueous electrolyte batteries according to the present invention had a negative electrode potential of less than 1.5V (Li/Li)+) The nonaqueous electrolyte battery of the negative electrode active material according to (3) can obtain more excellent internal resistance characteristics and gas generation amount suppressing effect.
-< comparison of effects by Positive electrode body >
-And LiMn having a spinel structure as a positive electrode active material2O4Examples 8-1 and 8-2 of (1) and (2) use LiFePO having an olivine-type structure4As compared with examples 9-1 and 9-2, the results of examples 1-1 and 1-15 using the active material having a layered rock salt structure show that the nonaqueous electrolyte battery using the electrolyte solution for a nonaqueous electrolyte battery of the present invention can obtain more excellent internal resistance characteristics and gas generation amount suppressing effects in the nonaqueous electrolyte battery using the positive electrode active material having a layered rock salt structure.
-Claims (11)
-Hide Dependent 
-1. An electrolyte for a nonaqueous electrolyte battery comprising a nonaqueous solvent and a solute, characterized in that the nonaqueous electrolyte for a nonaqueous electrolyte battery contains at least a hexafluorophosphate and/or a tetrafluoroborate as the solute, contains at least 1 kind of a salt having an imide anion represented by the following general formula [1] but does not contain a silane compound represented by the following general formula [2] and an ion complex represented by the following general formulae [3] to [5],
-in the general formula [1],
-R1～R3each independently of the others being a fluorine atom; selected from the group consisting of a C1-10 linear or branched alkyl group, a C1-10 linear or branched alkoxy group, a C2-10 alkenyl group, and a C2-10 alkoxy groupAn alkenyloxy group, an alkynyl group having 2 to 10 carbon atoms, an alkynyloxy group having 2 to 10 carbon atoms, a cycloalkyl group having 3 to 10 carbon atoms, a cycloalkoxy group having 3 to 10 carbon atoms, a cycloalkenyl group having 3 to 10 carbon atoms, a cycloalkenyloxy group having 3 to 10 carbon atoms, an aryl group having 6 to 10 carbon atoms, and an aryloxy group having 6 to 10 carbon atoms, wherein the organic group optionally further contains a fluorine atom, an oxygen atom, or an unsaturated bond, and R is a group represented by formula1～R3At least 1 of which is a fluorine atom,
-Mm+is an alkali metal cation, an alkaline earth metal cation, or an onium cation,
-m represents an integer having the same valence as the cation,
-Si(R4)a(R5)4-a [2]
-in the general formula [2],
-R4each independently of the others, a group having a carbon-carbon unsaturated bond,
-R5each independently of the other, a linear or branched alkyl group having 1 to 10 carbon atoms, which optionally has a fluorine atom and/or an oxygen atom,
-a is an integer of 2 to 4,
-in the general formula [3],
-Ab+is at least 1 selected from the group consisting of metal ions, protons, and onium ions,
-f is a fluorine atom, and F is a fluorine atom,
-m is at least 1 selected from the group consisting of Al, B As a group 13 element, Si As a group 14 element, and P, As, Sb As a group 15 element,
-o is an oxygen atom, and O is an oxygen atom,
-s is a sulfur atom, and the sulfur atom,
-R6is C1-10 hydrocarbon group optionally having ring or hetero atom or halogen atom, and optionally has branched or cyclic structure when the carbon number is more than 3, or-N (R)7) -, in this case, R7Is hydrogen atom, alkali metal, or any one of 1 to 10 carbon atomsR is a hydrocarbon group having a ring or hetero atom or halogen atom and having 3 or more carbon atoms7And optionally also a branched or cyclic structure,
-y is a carbon atom or a sulfur atom, r is 1 when Y is a carbon atom, r is 1 or 2 when Y is a sulfur atom,
-b is 1 or 2, o is 2 or 4, n is 1 or 2, p is 0 or 1, q is 1 or 2, r is 0, 1 or 2, and when p is 0, a direct bond is formed between S and Y,
-in the general formula [4],
-Ab+is at least 1 selected from the group consisting of metal ions, protons, and onium ions,
-f is a fluorine atom, and F is a fluorine atom,
-m is at least 1 selected from the group consisting of Al, B As a group 13 element, Si As a group 14 element, and P, As, Sb As a group 15 element,
-o is an oxygen atom, and O is an oxygen atom,
-n is a nitrogen atom, and N is a nitrogen atom,
-y is a carbon atom or a sulfur atom, q is 1 when Y is a carbon atom, q is 1 or 2 when Y is a sulfur atom,
-R6is C1-10 hydrocarbon group optionally having ring or hetero atom or halogen atom, and optionally has branched or cyclic structure when the carbon number is more than 3, or-N (R)7) -, in this case, R7R represents a hydrogen atom, an alkali metal, a hydrocarbon group having 1 to 10 carbon atoms and optionally having a ring, a hetero atom or a halogen atom, and when the number of carbon atoms is 3 or more7And optionally also a branched or cyclic structure,
-R8is a hydrogen atom, a C1-10 hydrocarbon group optionally having a ring or hetero atom or a halogen atom, and when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used, or-N (R)7) -, in this case, R7Is hydrogen atom, alkali metal, C1-10 hydrocarbon group optionally having ring or hetero atom or halogen atom, R is 3 or more7And optionally also a branched or cyclic structure,
-b is 1 or 2, o is 2 or 4, n is 1 or 2, p is 0 or 1, q is 1 or 2, R is 0 or 1, when p is 0, at R6Y on both sides forms a direct bond with carbon atoms, when r is 0, a direct bond is formed between M-N,
-in the general formula [5],
-d is at least one selected from the group consisting of a halide, a hexafluorophosphate anion, a tetrafluoroborate anion, a bis (trifluoromethanesulfonyl) imide anion, a bis (fluorosulfonyl) imide anion, a (fluorosulfonyl) (trifluoromethanesulfonyl) imide anion, and a bis (difluorophosphoryl) imide anion,
-f is a fluorine atom, and F is a fluorine atom,
-m is any one selected from the group consisting of Al, B As a group 13 element, Si As a group 14 element, and P, As, Sb As a group 15 element,
-o is an oxygen atom, and O is an oxygen atom,
-n is a nitrogen atom, and N is a nitrogen atom,
-y is a carbon atom or a sulfur atom, q is 1 when Y is a carbon atom, q is 1 or 2 when Y is a sulfur atom,
-x is a carbon atom or a sulfur atom, r is 1 when X is a carbon atom, r is 1 or 2 when X is a sulfur atom,
-R6represents C1-10 hydrocarbon group optionally having ring or hetero atom or halogen atom, and when the number of carbon atoms is 3 or more, optionally branched or cyclic hydrocarbon group, or-N (R)7) -, in this case, R7R represents a hydrogen atom, an alkali metal, a hydrocarbon group having 1 to 10 carbon atoms and optionally having a ring, a hetero atom or a halogen atom, and when the number of carbon atoms is 3 or more7And optionally also a branched or cyclic structure,
-R9and R10Each independently is a C1-10 hydrocarbon group optionally having a ring, a hetero atom or a halogen atom, and when the number of carbon atoms is 3 or more, is optionally a branched or cyclic hydrocarbon group, optionally having the following general formula [ 6]]The cyclic structure as defined in (1) above,
-c is 0 or 1, c is 0 when n is 1, D is absent when c is 0, c is 1 when n is 2,
-o is 2 or 4, n is 1 or 2, p is 0 or 1, q is 1 or 2, r is 1 or 2, s is 0 or 1, when p is 0, direct bonding is formed between Y and X,
-when s is 0, N (R)9)(R10) And R6Direct bonding, in which case the following is also optional [ 7]]～[10]Of [ 8] directly bonded as a double bond]、[10]When R is not present10And, in addition, optionally also as [ 9]]The double bond extending outside the ring as shown, in this case R11And R12Each independently represents a hydrogen atom, a ring having 1 to 10 carbon atoms, or a hydrocarbon group optionally having a hetero atom or a halogen atom, and when the number of carbon atoms is 3 or more, a branched or cyclic hydrocarbon group is optionally used;
-2. the electrolyte for nonaqueous electrolyte batteries according to claim 1, wherein the general formula [1]]The salt having an imide anion shown is R1～R3All of which are fluorine atoms.
-3. The electrolyte for a nonaqueous electrolyte battery according to claim 1, wherein the salt having an imide anion represented by the general formula [1] is a compound represented by the following formula:
-R1～R3at least 1 of which is a fluorine atom, and
-R1～R3at least 1 of them is a hydrocarbon group having 6 or less carbon atoms selected from the group optionally containing a fluorine atom.
-4. The electrolyte for a nonaqueous electrolyte battery according to claim 1, wherein the salt having an imide anion represented by the general formula [1] is a compound represented by the following formula:
-R1～R3at least 1 of which is a fluorine atom,
-R1～R3at least 1 of which is selected from the group consisting of methyl, methoxy, ethyl, ethoxy, propyl, propoxy, vinyl, allyl, allyloxy, ethynyl, 2-propynyl, phenyl, phenyloxy, 2, 2-difluoroethyl, 2, 2-difluoroethyloxy, 2,2, 2-trifluoroethyl, 2,2, 2-trifluoroethyloxy, 2,2,3, 3-tetrafluoropropyl, 2,2,3, 3-tetrafluoropropyloxy, 1,1,1,3,3, 3-hexafluoroisopropyl and 1,1,1,3,3, 3-hexafluoroisopropyloxy.
-5. The electrolyte solution for a nonaqueous electrolyte battery according to claim 1, wherein the exclusion means that the concentration of the total amount of the compounds represented by the general formulae [2] and [3] to [5] in the total amount of the electrolyte solution is less than 5 mass ppm.
-6. The electrolyte solution for a nonaqueous electrolyte battery according to any one of claims 1 to 5, wherein the counter cation of the salt having an imide anion represented by the general formula [1] is selected from the group consisting of a lithium ion, a sodium ion, a potassium ion, and a tetraalkylammonium ion.
-7. The electrolyte solution for nonaqueous electrolyte batteries according to any one of claims 1 to 5, further comprising a solute selected from the group consisting of LiPF2(C2O4)2、LiPF4(C2O4)、LiP(C2O4)3、LiBF2(C2O4)、LiB(C2O4)2、LiPO2F2、LiN(F2PO)2、LiN(FSO2)2、LiN(CF3SO2)2、LiN(CF3SO2)(FSO2)、LiSO3F、NaPF2(C2O4)2、NaPF4(C2O4)、NaP(C2O4)3、NaBF2(C2O4)、NaB(C2O4)2、NaPO2F2、NaN(F2PO)2、NaN(FSO2)2、NaSO3F、NaN(CF3SO2)2And NaN (CF)3SO2)(FSO2) At least 1 of the group consisting of.
-8. The electrolyte solution for a nonaqueous electrolyte battery according to any one of claims 1 to 5, wherein the amount of the salt having an imide anion represented by the general formula [1] added is in the range of 0.005 to 12.0% by mass relative to the total amount of the nonaqueous solvent, the solute, and the salt having an imide anion represented by the general formula [1 ].
-9. The electrolyte solution for nonaqueous electrolyte batteries according to any one of claims 1 to 5, wherein, and further comprising at least 1 additive selected from the group consisting of vinylene carbonate, vinyl ethylene carbonate, fluoroethylene carbonate, 1, 6-hexamethylene diisocyanate, ethynylethylene carbonate, trans-difluoroethylene carbonate, propane sultone, propenyl sultone, 1,3, 2-dioxathiolane-2, 2-dioxide, 4-propyl-1, 3, 2-dioxathiolane-2, 2-dioxide, methylene disulfonate, 1, 2-ethanedisulfonic anhydride, tris (trimethylsilyl) borate, succinonitrile, (ethoxy) pentafluorocyclotriphosphazene, tert-butylbenzene, tert-pentylbenzene, fluorobenzene, and cyclohexylbenzene.
-10. The electrolyte solution for a nonaqueous electrolyte battery according to any one of claims 1 to 5, wherein the nonaqueous solvent is at least 1 selected from the group consisting of cyclic carbonates, chain carbonates, cyclic esters, chain esters, cyclic ethers, chain ethers, sulfone compounds, sulfoxide compounds, and ionic liquids.
-11. A nonaqueous electrolyte battery at least comprises: a positive electrode, a negative electrode, and the electrolyte for a nonaqueous electrolyte battery according to any one of claims 1 to 5.
-Patent Citations (17)
-Publication number	Priority date	Publication date	Assignee	Title
-JP2002083628A *	2000-09-07	2002-03-22	Bridgestone Corp	Additive for nonaqueous electrolytic solution secondary battery and the nonaqueous electrolytic solution secondary battery
-JP2003059529A *	2001-08-13	2003-02-28	Ube Ind Ltd	Nonaqueous electrolyte solution and lithium secondary battery using same
-CN1219338C *	2000-09-07	2005-09-14	株式会社普利司通	Additive for nonaqueous-electrolyte secondary battery
-CN102617414A *	2012-03-02	2012-08-01	苏州氟特电池材料有限公司	Synthesis methods of alkali metal salt containing sulfonyl chloride or phosphorus imide and alkali metal salt containing fluorine sulfonyl or phosphorus imide
-CN103797634A *	2011-08-31	2014-05-14	中央硝子株式会社	Electrolytic solution for nonaqueous electrolytic solution cell, and nonaqueous electrolytic solution cell
-CN108140891A *	2015-10-15	2018-06-08	中央硝子株式会社	Battery with nonaqueous electrolyte electrolyte and use its battery with nonaqueous electrolyte
-Family To Family Citations				
-JPH0365396B2 *	1981-08-06	1991-10-11		
-JP3957415B2	1998-10-20	2007-08-15	日立マクセル株式会社	Non-aqueous secondary battery
-JP4847675B2 *	2002-10-23	2011-12-28	パナソニック株式会社	Nonaqueous electrolyte secondary battery and electrolyte used therefor
-US7709157B2	2002-10-23	2010-05-04	Panasonic Corporation	Non-aqueous electrolyte secondary battery and electrolyte for the same
-JP2011181234A *	2010-02-26	2011-09-15	Toyota Motor Corp	Nonaqueous electrolyte type lithium ion secondary battery
-KR102193243B1	2011-04-11	2020-12-28	미쯔비시 케미컬 주식회사	Method for producing lithium fluorosulfonate, lithium fluorosulfonate, nonaqueous electrolyte solution, and nonaqueous electrolyte secondary battery
-JP2013030465A	2011-06-24	2013-02-07	Central Glass Co Ltd	Electrolyte for nonaqueous electrolyte battery, and nonaqueous electrolyte battery
-US10424794B2 *	2014-07-02	2019-09-24	Central Glass Co., Ltd.	Ionic complex, electrolyte for nonaqueous electrolyte battery, nonaqueous electrolyte battery and ionic complex synthesis method
-JP6361486B2 *	2014-12-01	2018-07-25	セントラル硝子株式会社	Non-aqueous electrolyte battery electrolyte and non-aqueous electrolyte battery using the same
-JP6582880B2 *	2014-12-01	2019-10-02	セントラル硝子株式会社	IMIDIC ACID COMPOUND HAVING DIVALENT ANION AND PROCESS FOR PRODUCING THE SAME
-JP6665396B2 *	2015-02-19	2020-03-13	セントラル硝子株式会社	Electrolyte for non-aqueous electrolyte battery and non-aqueous electrolyte battery using the same
-* Cited by examiner, † Cited by third party
-Cited By (22)
-Publication number	Priority date	Publication date	Assignee	Title
-Family To Family Citations				
-CN109119685A *	2017-06-23	2019-01-01	宁德时代新能源科技股份有限公司	Electrolyte and lithium ion battery
-CN109422252B *	2017-08-22	2021-05-11	东莞东阳光科研发有限公司	Preparation method of lithium fluorosulfonyl difluorophosphoryl imine, product and application thereof
-JP2019046614A *	2017-08-31	2019-03-22	三菱ケミカル株式会社	Non-aqueous electrolyte solution for sodium ion secondary battery and sodium ion secondary battery
-JP2019053984A *	2017-09-12	2019-04-04	セントラル硝子株式会社	Additive agent for nonaqueous electrolyte solution, nonaqueous electrolyte solution, and nonaqueous electrolyte battery
-EP3471191A1 *	2017-10-11	2019-04-17	Centre National De La Recherche Scientifique	Electrolyte composition including a specific combination of additives, its use as non-aqueous liquid electrolyte in a na-ion battery and na-ion battery including such an electrolyte composition
-CN109904520B *	2017-12-07	2020-12-11	宁德时代新能源科技股份有限公司	Nonaqueous electrolyte solution and secondary battery
-CN108808087B *	2018-05-04	2022-06-10	常德市大度新材料有限公司	Electrolyte containing lithium phosphoryl imide and battery using electrolyte
-CN112470322A *	2018-08-16	2021-03-09	中央硝子株式会社	Nonaqueous electrolyte solution and nonaqueous electrolyte secondary battery
-CN113228367A *	2018-09-05	2021-08-06	株式会社杰士汤浅国际	Nonaqueous electrolyte electricity storage element and method for manufacturing nonaqueous electrolyte electricity storage element
-KR102323950B1	2018-12-12	2021-11-08	삼성에스디아이 주식회사	Electrode for rechargeable lithium battery and rechargeable lithium battery including same
-WO2020153791A1 *	2019-01-25	2020-07-30	주식회사 엘지화학	Electrolyte for lithium secondary battery and lithium secondary battery comprising same
-CN109888387B *	2019-02-01	2021-10-08	无锡凯帕德瑞科技有限公司	Capacitor battery electrolyte and preparation method thereof
-CN113474931A	2019-02-28	2021-10-01	三菱化学株式会社	Nonaqueous electrolyte for sodium ion secondary battery and sodium ion secondary battery
-CN109980225B *	2019-03-18	2020-09-08	宁德新能源科技有限公司	Electrochemical device and electronic device comprising same
-US11267707B2	2019-04-16	2022-03-08	Honeywell International Inc	Purification of bis(fluorosulfonyl) imide
-CN112242551B *	2019-07-16	2021-12-07	宁德时代新能源科技股份有限公司	Secondary battery
-US20220271340A1	2019-07-24	2022-08-25	Central Glass Co., Ltd.	Nonaqueous electrolyte solution, nonaqueous electrolyte battery and compound
-KR20210026503A	2019-08-30	2021-03-10	주식회사 엘지화학	Electrolyte additives for electrolyte, non-aqueous electrolyte and secondary battery comprising same
-KR20210026500A *	2019-08-30	2021-03-10	주식회사 엘지화학	Non-aqueous electrolyte and lithium secondary battery comprising the same
-CN115004436A *	2020-01-28	2022-09-02	三洋电机株式会社	Nonaqueous electrolyte for secondary battery and nonaqueous electrolyte secondary battery
-WO2021153733A1 *	2020-01-31	2021-08-05	三菱ケミカル株式会社	Non-aqueous electrolyte secondary battery and method for producing same
-CN111710910B *	2020-07-01	2021-06-29	香河昆仑化学制品有限公司	Electrolyte containing bis-tetrafluorophosphoryl imide salt and lithium ion battery
-* Cited by examiner, † Cited by third party, ‡ Family to family citation
-Similar Documents
-Publication	Publication Date	Title
-CN108475824B	2021-08-24	Electrolyte for nonaqueous electrolyte battery and nonaqueous electrolyte battery using same
-US10847838B2	2020-11-24	Electrolyte solution for non-aqueous electrolytic solution battery and non-aqueous electrolyte solution battery using same
-CN107251310B	2020-01-03	Electrolyte for nonaqueous electrolyte battery and nonaqueous electrolyte battery using same
-CN108701864B	2022-05-24	Electrolyte for nonaqueous electrolyte battery and nonaqueous electrolyte battery using same
-WO2013187380A1	2013-12-19	Electrolyte for non-aqueous electrolyte battery, and non-aqueous electrolyte battery using same
-KR102427676B1	2022-08-01	Additives for non-aqueous electrolytes, non-aqueous electrolytes, and non-aqueous electrolyte batteries
-KR102423131B1	2022-07-20	Additives for non-aqueous electrolytes, electrolytes for non-aqueous electrolyte batteries, and non-aqueous electrolyte batteries
-WO2019146705A1	2019-08-01	Electrolyte for non-aqueous electrolyte battery, and non-aqueous electrolyte battery using said electrolyte
-CN112470322A	2021-03-09	Nonaqueous electrolyte solution and nonaqueous electrolyte secondary battery
-CN113939938A	2022-01-14	Non-aqueous electrolyte
-CN113924677A	2022-01-11	Non-aqueous electrolyte
-CN113906530A	2022-01-07	Nonaqueous electrolyte solution and nonaqueous electrolyte battery
-JP2021163684A	2021-10-11	Nonaqueous electrolytic solution, and nonaqueous electrolytic secondary battery arranged by use thereof
-Priority And Related Applications
-Child Applications (1)
-Application	Priority date	Filing date	Relation	Title
-CN202110944238.XA	2015-12-22	2016-12-22	Division	Electrolyte for nonaqueous electrolyte battery and nonaqueous electrolyte battery using same
-Priority Applications (5)
-Application	Priority date	Filing date	Title
-JP2015250364		2015-12-22	
-JP2015-250364		2015-12-22	
-JP2016224154		2016-11-17	
-JP2016-224154		2016-11-17	
-PCT/JP2016/088588	2015-12-22	2016-12-22	Electrolyte for non-aqueous electrolyte cell, and non-aqueous electrolyte cell in which same is used
-Applications Claiming Priority (1)
-Application	Filing date	Title
-CN202110944238.XA	2016-12-22	Electrolyte for nonaqueous electrolyte battery and nonaqueous electrolyte battery using same
-Legal Events
-Date	Code	Title	Description
-2018-08-31	PB01	Publication	
-2018-08-31	PB01	Publication	
-2018-09-25	SE01	Entry into force of request for substantive examination	
-2018-09-25	SE01	Entry into force of request for substantive examination	
-2021-08-24	GR01	Patent grant	
-2021-08-24	GR01	Patent grant	
-Concepts
-machine-extracted
- Download
-Filter table 
-Name	Image	Sections	Count	Query match
- nonaqueous electrolyte		title,claims,abstract,description	119	0.000
- electrolyte		title,claims,description	80	0.000
- imide anion		claims,abstract,description	213	0.000
- sodium chloride		claims,abstract,description	95	0.000
- electrolyte solution		claims,abstract,description	91	0.000
- salts		claims,abstract,description	88	0.000
- solvent		claims,abstract,description	29	0.000
- Hexafluorophosphate	Hexafluorophosphate	claims,abstract,description	12	0.000
- tetrafluoroborate	tetrafluoroborate	claims,abstract,description	11	0.000
- silane		claims,abstract,description	7	0.000
- carbon atoms	carbon atoms	claims,description	119	0.000
- fluorine		claims,description	51	0.000
- compounds		claims,description	48	0.000
- fluoro group	fluoro group	claims,description	48	0.000
- carbon	carbon	claims,description	42	0.000
- metal		claims,description	42	0.000
- metal		claims,description	40	0.000
- aluminium		claims,description	38	0.000
- hydrocarbons		claims,description	34	0.000
- halogen group		claims,description	33	0.000
- sulfur		claims,description	31	0.000
- heteroatoms		claims,description	30	0.000
- sulfur atoms		claims,description	30	0.000
- carbon		claims,description	27	0.000
- LiN		claims,description	25	0.000
- oxygen atoms	oxygen atoms	claims,description	25	0.000
- cycloalkyl group		claims,description	23	0.000
- cyclic group		claims,description	20	0.000
- alkali metal		claims,description	19	0.000
- hydrogen atoms	hydrogen atoms	claims,description	16	0.000
- additive		claims,description	15	0.000
- ions		claims,description	15	0.000
- lithium ion		claims,description	15	0.000
- LiPO2F2		claims,description	13	0.000
- Lithium Ion	Lithium Ion	claims,description	12	0.000
- alkali metals		claims,description	12	0.000
- boron		claims,description	12	0.000
- cations		claims,description	12	0.000
- phosphorus		claims,description	12	0.000
- FSO2		claims,description	11	0.000
- LiB		claims,description	9	0.000
- LiPF2		claims,description	9	0.000
- alkyl group		claims,description	9	0.000
- antimony		claims,description	9	0.000
- arsenic		claims,description	9	0.000
- boron group element		claims,description	9	0.000
- carbon group element		claims,description	9	0.000
- pnictogen		claims,description	9	0.000
- alkoxy group		claims,description	8	0.000
- nitrogen		claims,description	8	0.000
- nitrogen atoms	nitrogen atoms	claims,description	8	0.000
- LiBF2		claims,description	7	0.000
- LiN(FSO2)2		claims,description	7	0.000
- LiPF4		claims,description	7	0.000
- Lip		claims,description	7	0.000
- alkenyloxy group		claims,description	7	0.000
- alkynyl group		claims,description	7	0.000
- alkynyloxy group		claims,description	7	0.000
- aryl group		claims,description	7	0.000
- cycloalkenyl group		claims,description	7	0.000
- organic group		claims,description	7	0.000
- sodium cation	sodium cation	claims,description	7	0.000
- sodium ion		claims,description	7	0.000
- additive		claims,description	6	0.000
- aryloxy group		claims,description	6	0.000
- cycloalkenyloxy group		claims,description	6	0.000
- cycloalkoxy group		claims,description	6	0.000
- onium ions		claims,description	6	0.000
- triflyl group	triflyl group	claims,description	6	0.000
- 1,3-dioxol-2-one	1,3-dioxol-2-one	claims,description	5	0.000
- LiSO3F		claims,description	5	0.000
- cyclic carbonates		claims,description	5	0.000
- ethynyl group	ethynyl group	claims,description	5	0.000
- 2-propenyl group	2-propenyl group	claims,description	4	0.000
- 2-propynyl group	2-propynyl group	claims,description	4	0.000
- 4-ethenyl-1,3-dioxolan-2-one	4-ethenyl-1,3-dioxolan-2-one	claims,description	4	0.000
- 4-fluoro-1,3-dioxolan-2-one	4-fluoro-1,3-dioxolan-2-one	claims,description	4	0.000
- NaN(FSO2)2		claims,description	4	0.000
- NaPF4		claims,description	4	0.000
- NaPO2F2		claims,description	4	0.000
- alkaline earth metal		claims,description	4	0.000
- chain carbonates		claims,description	4	0.000
- esters		claims,description	4	0.000
- methyl group	methyl group	claims,description	4	0.000
- phenyl group	phenyl group	claims,description	4	0.000
- 1,2,5-oxadithiolane 2,2,5,5-tetraoxide	1,2,5-oxadithiolane 2,2,5,5-tetraoxide	claims,description	3	0.000
- 1,3,2-dioxathiolane 2,2-dioxide	1,3,2-dioxathiolane 2,2-dioxide	claims,description	3	0.000
- 1,3-Propane sultone	1,3-Propane sultone	claims,description	3	0.000
- 1,6-hexamethylene diisocyanate		claims,description	3	0.000
- 2-ethoxy-2,4,4,6,6-pentafluoro-1,3,5-triaza-2$l^{5},4$l^{5},6$l^{5}-triphosphacyclohexa-1,3,5-triene	2-ethoxy-2,4,4,6,6-pentafluoro-1,3,5-triaza-2$l^{5},4$l^{5},6$l^{5}-triphosphacyclohexa-1,3,5-triene	claims,description	3	0.000
- 2-methylbutan-2-ylbenzene	2-methylbutan-2-ylbenzene	claims,description	3	0.000
- 4-propyl-1,3,2-dioxathiolane 2,2-dioxide	4-propyl-1,3,2-dioxathiolane 2,2-dioxide	claims,description	3	0.000
- Carbonate dianion	Carbonate dianion	claims,description	3	0.000
- Fluorobenzene	Fluorobenzene	claims,description	3	0.000
- Hexamethylene diisocyanate	Hexamethylene diisocyanate	claims,description	3	0.000
- Succinonitrile	Succinonitrile	claims,description	3	0.000
- carbon carbon	carbon carbon	claims,description	3	0.000
- carbon fibre reinforced carbon		claims,description	3	0.000
- carbonic acid;(E)-1,2-difluoroethene	carbonic acid;(E)-1,2-difluoroethene	claims,description	3	0.000
- cyclic ethers		claims,description	3	0.000
- cyclohexylbenzene	cyclohexylbenzene	claims,description	3	0.000
- ethers		claims,description	3	0.000
- halides		claims,description	3	0.000
- ionic liquid		claims,description	3	0.000
- tert-butylbenzene	tert-butylbenzene	claims,description	3	0.000
- tris(trimethylsilyl) borate	tris(trimethylsilyl) borate	claims,description	3	0.000
- Potassium Ion		claims,description	2	0.000
- allyloxy group		claims,description	2	0.000
- methanedisulfonate	methanedisulfonate	claims,description	2	0.000
- potassium ion		claims,description	2	0.000
- potassium ion	potassium ion	claims,description	2	0.000
- yttrium		claims,description	2	0.000
- C2-C10 alkenyl group		claims	1	0.000
- suppression		abstract,description	31	0.000
- effects		abstract,description	25	0.000
- Sulfuric acid	Sulfuric acid	description	1	1.000
-Show all concepts from the description section
-About Send Feedback Public Datasets Terms Privacy Policy
+
+
+VIDEO
+Pyle Portable Bluetooth PA Speaker System - 600W Rechargeable Outdoor Bluetooth Speaker Portable PA System w/ Dual 8” Subwoofer 1” Tweeter, Microphone In, Party Lights, USB, Radio, Remote - PPHP2835B
+Click image to open expanded view
+Pyle Portable Bluetooth PA Speaker System - 600W Rechargeable Outdoor Bluetooth Speaker Portable PA System w/ Dual 8” Subwoofer 1” Tweeter, Microphone In, Party Lights, USB, Radio, Remote - PPHP2835B
+Visit the Pyle Store
+3.6 out of 5 stars    1,581 ratings | 65 answered questions
+-21% $66.45
+List Price: $83.99 
+$173.42 Shipping & Import Fees Deposit to Vietnam Details 
+Style: Speaker System
+Speaker System
+$66.45
+Speaker System + Connector
+$82.25
+Speaker System + Microphone System
+$89.44
+Speaker Type	Subwoofer
+Special Feature	Radio
+Model Number	PPHP2835B
+Connectivity Technology	Bluetooth, Auxiliary, USB
+Speaker Amplification Type	Active
+About this item
+600 WATT POWER: This high powered wireless karaoke PA portable bluetooth speaker is equipped with dual 8" subwoofer and 1" tweeter with 600 watt peak power / 300W RMS at 2.6 ohm for full range stereo sound reproduction and impressive bass response
+COMPATIBLE WITH BLUETOOTH: The box type loud bluetooth speaker system is compatible with bluetooth for wireless audio streaming and works with devices like iPhone, android mobile phone, iPad, tablet, PC. Ideal for personal indoor home and outdoor use
+3 INPUTS: Pyle bluetooth speaker karaoke PA system is equipped with a USB flash drive reader so it can serve as an MP3 player, a 3.5mm AUX input for connecting external devices & a 1/4” mic / guitar input. Equipped with FM radio with digital LED display
+FLASHING DJ LIGHTS: The bluetooth party speaker with lights features multi-color flashing disco LED party lights. True wireless stereo system adds life to any occasion, great for patio parties & night gatherings when colorful presence is noticeable
+RECHARGEABLE BATTERY: This Pyle PA speaker is great for karaoke, stage performances & crowd control. It is fully portable, thanks to its built-in rechargeable battery with level indicator lights, and extending carry handle so you can take it anywhere
+Note: Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this product may require an adapter or converter for use in your destination. Please check compatibility before purchasing.
+Frequently bought together
+Pyle Portable Bluetooth PA Speaker System - 600W Rechargeable Outdoor Bluetooth Speaker Portable PA System w/ Dual 8” Subwoof+Portable VHF Wireless Microphone System - Professional Battery Operated Handheld Dynamic Unidirectional Cordless Microphone T
+Total price:$89.44
+Add both to Cart
+
+This item: Pyle Portable Bluetooth PA Speaker System - 600W Rechargeable Outdoor Bluetooth Speaker Portable PA System w/ Dual 8” Subwoofer 1” Tweeter, Microphone In, Party Lights, USB, Radio, Remote - PPHP2835B
+$66.45
+
+Portable VHF Wireless Microphone System - Professional Battery Operated Handheld Dynamic Unidirectional Cordless Microphone Transmitter Set W/Adapter Receiver, for PA Karaoke DJ Party - Pyle PDWM91
+$22.99
+Customers also search
+Rockville House Party System 10" 1000w Bluetooth LED Booming Bass Home Speakers
+rockville rock party 6
+Philips X3206 Bluetooth Party Speaker with Deep bass, Up to 14 Hours Battery, Party Lights and Karaoke Effects, Microphone and Guitar Input, Audio-in, USB Charging, Built-in Carry Handle, TAX3206
+philips x3206
+Philips X5206 Bluetooth Party Speaker with Extra bass, Up to 14 Hours Battery, Party Lights and Karaoke Effects, Microphone and Guitar Input, Audio-in, USB Charging, Built-in Carry Handle, TAX5206
+philips x5206
+Dual Electronics LU44BTS Wireless Portable Bluetooth Speaker | Expansive Stereo Sound | 15-Hour Playtime | IPX4 | 100ft of Wireless Connectivity Range | Single Bluetooth Speaker
+dual electronics lu48bts
+From the manufacturer
+Outdoor speaker, Portable speaker, Pyle Speaker, Bluetooth speaker, Party Speaker, Speaker
+Outdoor speaker, Portable speaker, Pyle Speaker, Bluetooth speaker, Party Speaker, Speaker
+Outdoor speaker, Portable speaker, Pyle Speaker, Bluetooth speaker, Party Speaker, Speaker
+Outdoor speaker, Portable speaker, Pyle Speaker, Bluetooth speaker, Party Speaker, Speaker
+Looking for specific info?
+See questions and answers
+Videos
+Videos for this product
+Video Widget Card0:10
+Customer Review: Great Sounds
+James E Darden
+Video Widget Card0:23
+Customer Review: Do not waste your money
+Customer Video
+Video Widget Card0:08
+😍😍I love it
+Henry
+Video Widget Card0:10
+Customer Review: It’s worth the money
+Sherwin Johnson
+Video Widget Card0:21
+Customer Review: The showstopper
+Amazon Customer
+Video Widget Card0:16
+Customer Review: A good speaker
+Joseph Warren
+Video Widget Card0:07
+Customer Review: Tried it in the house it loud will try it outside for the cookout on labor day
+Denise Long
+Videos for related products
+Video Widget Card0:32
+BOOM8 demo video
+ProAudio outlet
+Video Widget Card3:32
+Punchy Bass Technology, True wireless stereo, LED Lights.
+JinqianUS
+Video Widget Card8:42
+W-King T9 Bluetooth Speaker Full Review
+Old Man/New Tech
+Upload your video
+Product guides and documents
+User Manual (PDF)
+Product information
+Product Dimensions	9.1 x 8.7 x 23.2 inches
+Item Weight	7.78 pounds
+Manufacturer	Pyle
+ASIN	B08BTT288G
+Country of Origin	China
+Item model number	PPHP2835B
+Customer Reviews	3.6 out of 5 stars    1,581 ratings
+3.6 out of 5 stars
+Best Sellers Rank	#48 in Portable Bluetooth Speakers
+#697 in MP3 & MP4 Player Accessories
+Date First Available	June 25, 2020
+Warranty & Support
+If you'd like a copy of the manufacturer's warranty for a product found on Amazon.com, you can contact the manufacturer directly or visit their website for more information. Manufacturer's warranties may not apply in all cases, depending on factors like the use of the product, where the product was purchased, or who you purchased the product from. Please review the warranty carefully, and contact the manufacturer if you have any questions.
+Feedback
+Would you like to tell us about a lower price?
+What's in the box
+PA Speaker System Remote Control Power Adapter
+Product Description
+Features: - True Wireless Stereo System - Portable Speaker System - High-Powered PA Loud Speaker Style - Bluetooth Wireless Music Streaming Ability - Multi-Color Flashing LED Party Lights - Built-in Rechargeable Battery - FM Radio with Digital LED Display - Connect & Stream Audio from External Devices - Aux (3.5mm) Input Connector Jack - USB Flash Memory Reader - 6.5mm Microphone input - Battery Level LED Indicator Lights - Rugged & Durable Molded Cabinet Design - Convenient Extendable Carry Handle - For Indoor / Outdoor Use Bluetooth Wireless Streaming: - Built-in Bluetooth for Wireless Music Streaming - Simple & Hassle-Free Pairing - Works with All of Today’s Latest Devices - Smartphones, Tablets, Laptops, Computers, etc. - Bluetooth Version: 4.1 - Bluetooth Network Name: ‘PYLEUSA’ - Wireless Range: Up to 32’ ft. What's in the Box: - PA Speaker System - Remote Control - Power Adapter Technical Specs: - Material: Polypropylene (PP) - Max Power Output: 600 Watt Max - Sound System: 8’’ -inch Subwoofer x2 + 1” Tweeter - Impedance: 2.6 Ohm - USB Interface Type: 2.0 - Digital Audio File Support: MP3 - Maximum USB Flash Support: 32GB - Remote Control Battery Operated, 1 Piece Button Cell Battery CR-2025 (Included) - Battery Life: Up to 3 Hours (Charge Time: Approx. 4.5 Hours) - Rechargeable Battery: 3.7V, 2400mAh – 8.88 Wh - Power Supply: 120/240V, Switchable (5V/2A Power Adapter) - Dimensions (L x W x H): 9.1’’ x 8.7’’ x 23.2’’ -inches.
+
+Customer reviews
+3.6 out of 5 stars
+3.6 out of 5
+1,581 global ratings
+5 star 	
+ 47%
+4 star 	
+ 15%
+3 star 	
+ 10%
+2 star 	
+ 7%
+1 star 	
+ 21%
+How customer reviews and ratings work
+Reviews with images
+Customer imageCustomer imageCustomer imageCustomer image
+See all customer images
+
+Top reviews
+Top reviews
+Top reviews from the United States
+	Amazon Customer
+4.0 out of 5 stars A good deal for the price
+Reviewed in the United States on September 11, 2022
+Style: Speaker SystemVerified Purchase
+The radio feature and remote work great. We had a little trouble with the Blue Tooth connection but once we figured out the steps it was easy. The speaker is very light but from the add it did look like it came with a mike. We'd buy it again!
+One person found this helpful
+Helpful
+Report abuse
+	Da Ko
+4.0 out of 5 stars Good value!
+Reviewed in the United States on August 4, 2022
+Style: Speaker SystemVerified Purchase
+I bought this speaker for good value and some fun. I knew I was not going to get high-fidelity. I expected the lows and highs were going to be weak or non-existent, and I was not disappointed because I got what I paid for. It is lightweight for its size and thus probably had a puny magnet. I bought it anyways because I just needed something for camping and karaoke. I also bought the Pyle wireless mic kit and it worked perfectly with this speaker, except the echoing was not adjustable on the speaker or mic. Overall, I give it 3.5 stars but had to round it up to 4.
+2 people found this helpful
+Helpful
+Report abuse
+	Dawn DeJong
+4.0 out of 5 stars Super Lightweight
+Reviewed in the United States on September 19, 2022
+Style: Speaker SystemVerified Purchase
+Good sound in a very lightweight package. Love the LED show and the ability to turn it off if desired.
+Helpful
+Report abuse
+	Amazon Customer
+4.0 out of 5 stars Very light
+Reviewed in the United States on September 23, 2022
+Style: Speaker SystemVerified Purchase
+Sound was ok. The battery runs out quickly.
+Helpful
+Report abuse
+	Johnny Hughes
+4.0 out of 5 stars It's nice to have portable amplifier speaker.
+Reviewed in the United States on August 29, 2022
+Style: Speaker SystemVerified Purchase
+I am happy with my portable amplifier. I'm so glad they put a switch on , amp for the light. I like the light but don't want them on all the time. Easy to move a round. It's a good buy. Johnny 🙂.
+One person found this helpful
+Helpful
+Report abuse
+	Christy aston
+5.0 out of 5 stars Sounds great for karaoke
+Reviewed in the United States on September 5, 2022
+Style: Speaker SystemVerified Purchase
+I'm using it for the PA system to sing karaoke. Built-in Bluetooth mode let's me hook up any Bluetooth device and use YouTube or other song choice apps to sing songs. The lights just go through a light set system change, it has an on an off switch.. It's loud and has enough bass to sing, but bass sounds ok. There is a remote and you can use the EQ button for more bass has 4 sound options in EQ settings. If your looking for something that has Maga bass sound then this item is not for you. Other than that its perfect for me and I'm enjoying it very much.
+Customer image
+Helpful
+Report abuse
+	Michele( Roth ) Vanderpool
+4.0 out of 5 stars Good sound
+Reviewed in the United States on September 14, 2022
+Style: Speaker SystemVerified Purchase
+has good sound quality , like the remote can pause music with remote .
+Helpful
+Report abuse
+	boonie kruger
+4.0 out of 5 stars Nice
+Reviewed in the United States on September 15, 2022
+Style: Speaker SystemVerified Purchase
+Nice for the price.
+Helpful
+Report abuse
+See all reviews
+Top reviews from other countries
+	Pete
+3.0 out of 5 stars Good product
+Reviewed in Australia on September 3, 2022
+Style: Speaker SystemVerified Purchase
+Not very loud
+Report abuse
+See all reviews
+Back to top
+Get to Know Us
+Careers
+Blog
+About Amazon
+Investor Relations
+Amazon Devices
+Amazon Science
+Make Money with Us
+Sell products on Amazon
+Sell on Amazon Business
+Sell apps on Amazon
+Become an Affiliate
+Advertise Your Products
+Self-Publish with Us
+Host an Amazon Hub
+›See More Make Money with Us
+Amazon Payment Products
+Amazon Business Card
+Shop with Points
+Reload Your Balance
+Amazon Currency Converter
+Let Us Help You
+Amazon and COVID-19
+Your Account
+Your Orders
+Shipping Rates & Policies
+Returns & Replacements
+Manage Your Content and Devices
+Amazon Assistant
+Help
+ 
+English $USD - U.S. Dollar United States
+Amazon Music
+Stream millions
+of songs		Amazon Advertising
+Find, attract, and
+engage customers		Amazon Drive
+Cloud storage
+from Amazon		6pm
+Score deals
+on fashion brands		AbeBooks
+Books, art
+& collectibles		ACX
+Audiobook Publishing
+Made Easy		Alexa
+Actionable Analytics
+for the Web
+ 
+Sell on Amazon
+Start a Selling Account		Amazon Business
+Everything For
+Your Business		AmazonGlobal
+Ship Orders
+Internationally		Home Services
+Experienced Pros
+Happiness Guarantee		Amazon Ignite
+Sell your original
+Digital Educational
+Resources		Amazon Web Services
+Scalable Cloud
+Computing Services		Audible
+Listen to Books & Original
+Audio Performances
+ 
+Book Depository
+Books With Free
+Delivery Worldwide		Box Office Mojo
+Find Movie
+Box Office Data		ComiXology
+Thousands of
+Digital Comics		DPReview
+Digital
+Photography		Fabric
+Sewing, Quilting
+& Knitting		Goodreads
+Book reviews
+& recommendations		IMDb
+Movies, TV
+& Celebrities
+ 
+IMDbPro
+Get Info Entertainment
+Professionals Need		Kindle Direct Publishing
+Indie Digital & Print Publishing
+Made Easy		Prime Video Direct
+Video Distribution
+Made Easy		Shopbop
+Designer
+Fashion Brands		Woot!
+Deals and
+Shenanigans		Zappos
+Shoes &
+Clothing		Ring
+Smart Home
+Security Systems
+ 
+ 		eero WiFi
+Stream 4K Video
+in Every Room		Blink
+Smart Security
+for Every Home		Neighbors App
+Real-Time Crime
+& Safety Alerts		Amazon Subscription Boxes
+Top subscription boxes – right to your door		PillPack
+Pharmacy Simplified		 
+Conditions of Use
+Privacy Notice
+Interest-Based Ads
+© 1996-2022, Amazon.com, Inc. or its affiliates
+­
+­
