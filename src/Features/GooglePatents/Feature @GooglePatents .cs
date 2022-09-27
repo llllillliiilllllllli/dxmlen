@@ -9,17 +9,17 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
-using Microsoft.Data.Analysis;
-
-using DxMLEngine.Attributes;
-using DxMLEngine.Functions;
 using System.ComponentModel;
 using System.Reflection.Metadata;
 using System.Net;
 using System.Drawing;
-using static DxMLEngine.Features.GooglePatents.Images;
-using static DxMLEngine.Features.GooglePatents.Classifications;
-using static DxMLEngine.Features.GooglePatents.SimilarDocuments;
+
+using Microsoft.Data.Analysis;
+
+using DxMLEngine.Attributes;
+using DxMLEngine.Functions;
+
+using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace DxMLEngine.Features.GooglePatents
 {
@@ -461,7 +461,7 @@ namespace DxMLEngine.Features.GooglePatents
             var targetSource = pageSource
                 .Split("<body unresolved>")[0];
 
-            var document = new DxHtmlDocument();
+            var document = new HtmlDocument();
             document.LoadHtml(targetSource);
 
             var metaXPath = "/html/head/meta";
@@ -501,7 +501,7 @@ namespace DxMLEngine.Features.GooglePatents
                 .Split("<h2>Abstract</h2>")[1]
                 .Split("<h2>Description</h2>")[0];
 
-            var abstractHtml = new DxHtmlDocument();
+            var abstractHtml = new HtmlDocument();
             abstractHtml.LoadHtml(targetSource);
 
             var languageXPath = "/div/abstract";
@@ -524,7 +524,7 @@ namespace DxMLEngine.Features.GooglePatents
                 .Split("<h2>Images</h2>")[1]
                 .Split("<h2>Classifications</h2>")[0];
 
-            var imageHtml = new DxHtmlDocument();
+            var imageHtml = new HtmlDocument();
             imageHtml.LoadHtml(targetSource);
 
             var thumbnailXPath = "/ul/li/img";
@@ -533,12 +533,12 @@ namespace DxMLEngine.Features.GooglePatents
             var fullImageXPath = "/ul/li/meta";
             var fullImageNodes = imageHtml.DocumentNode.SelectNodes(fullImageXPath);
 
-            var imagesHrefs = new List<ImageHref>();
+            var imagesHrefs = new List<Images.ImageHref>();
             for (int i = 0; i < thumbnailNodes.Count; i++)
             {
                 var thumbnailHref = thumbnailNodes[i].GetAttributeValue("src", null);
                 var fullImageHref = fullImageNodes[i].GetAttributeValue("content", null);
-                imagesHrefs.Add(new ImageHref(thumbnailHref, fullImageHref));
+                imagesHrefs.Add(new Images.ImageHref(thumbnailHref, fullImageHref));
             }
 
             return new Images(imagesHrefs.ToArray());
@@ -550,7 +550,7 @@ namespace DxMLEngine.Features.GooglePatents
                 .Split("<h2>Classifications</h2>")[1]
                 .Split("<h2>Abstract</h2>")[0];
 
-            var classHtml = new DxHtmlDocument();
+            var classHtml = new HtmlDocument();
             classHtml.LoadHtml(targetSource);
 
             var classXPath = "/ul/li/ul/li/span";
@@ -568,9 +568,9 @@ namespace DxMLEngine.Features.GooglePatents
                 where itemprop == "Description"
                 select node.InnerText).ToArray();
 
-            var classes = new List<Class>();
+            var classes = new List<Classifications.Class>();
             for (int i = 0; i < classCodes.Length; i++)
-                classes.Add(new Class(classCodes[i], classDescriptions[i]));
+                classes.Add(new Classifications.Class(classCodes[i], classDescriptions[i]));
 
             return new Classifications(classes.ToArray());
         }
@@ -588,7 +588,7 @@ namespace DxMLEngine.Features.GooglePatents
             /// ====================================================================================
 
             ////0
-            var document = new DxHtmlDocument();
+            var document = new HtmlDocument();
             document.LoadHtml(pageSource);
 
             ////1
@@ -608,7 +608,7 @@ namespace DxMLEngine.Features.GooglePatents
                 .Split("<h2>Info</h2>")[1]
                 .Split("<h2>Images</h2>")[0];
 
-            var infoHtml = new DxHtmlDocument();
+            var infoHtml = new HtmlDocument();
             infoHtml.LoadHtml(targetSource);
 
             var headInfoXPath = "/dl/dd";

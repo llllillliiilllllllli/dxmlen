@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="log\" />
     <Folder Include="res\Data %40CrunchBase\" />
+    <Folder Include="src\Services\HtmlAgility\" />
     <Folder Include="src\Services\Tesseract\TessData\tessconfigs\" />
     <Folder Include="src\Application\Configuration\" />
     <Folder Include="src\Extensions\" />
@@ -71,11 +72,11 @@
     <Folder Include="src\Services\Microsoft\ML\Transformers\Transforms\" />
     <Folder Include="src\Services\Interop\" />
     <Folder Include="src\Services\Microsoft\CSharp\" />
-    <Folder Include="src\Services\Microsoft\Win32\" />
     <Folder Include="src\Services\Microsoft\Extensions\" />
     <Folder Include="src\Services\TextCopy\" />
     <Folder Include="src\Services\TensorFlow\" />
     <Folder Include="src\Services\Onnx\" />
+    <Folder Include="test\" />
   </ItemGroup>
 
   <ItemGroup>
