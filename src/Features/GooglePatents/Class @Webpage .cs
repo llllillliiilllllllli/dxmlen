@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace DxMLEngine.Features.GooglePatents
 {
-    internal class SearchUrl
+    internal class Webpage
     {
         internal string? Domain { set; get; }
         internal string? QueryKey { set; get; }
@@ -32,7 +32,7 @@ namespace DxMLEngine.Features.GooglePatents
         internal string? Type { set; get; }
         internal string? Litigation { set; get; }
 
-        public SearchUrl() 
+        public Webpage() 
         {
             this.Domain = "https://patents.google.com/";
             this.QueryKey = "?q=";
@@ -53,7 +53,7 @@ namespace DxMLEngine.Features.GooglePatents
             this.Pagination = "&page={page}";
         }
 
-        public string ConfigureSearchUrl(SearchBy searchBy)
+        public string ConfigureWebpage(SearchBy searchBy)
         {
             /// ====================================================================================
             /// configure search url based on given domain, query, and parameters

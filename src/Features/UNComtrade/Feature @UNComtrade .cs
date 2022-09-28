@@ -51,7 +51,7 @@ namespace DxMLEngine.Features.UNComtrade
                 throw new ArgumentNullException("file name is null or empty");
 
             ////1
-            var inputEndpoints = InputDataAvailabilityEndpoints(i_fil);
+            var inputEndpoints = InputAvailabilityEndpoints(i_fil);
 
             ////2
             var client = new HttpClient();
@@ -117,14 +117,14 @@ namespace DxMLEngine.Features.UNComtrade
             }
         }
 
-        private static DataAvailabilityEnpoint[] InputDataAvailabilityEndpoints(string path)
+        private static Endpoint[] InputAvailabilityEndpoints(string path)
         {
             var dataFrame = DataFrame.LoadCsv(path, header: true, encoding: Encoding.UTF8);
 
-            var endpoints = new List<DataAvailabilityEnpoint>();
+            var endpoints = new List<Endpoint>();
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
-                var endpoint = new DataAvailabilityEnpoint();
+                var endpoint = new Endpoint();
 
                 endpoint.TradeType = dataFrame["Trade Type"][i] != null ? dataFrame["Trade Type"][i].ToString() : null;
                 endpoint.Frequency = dataFrame["Data Frequency"][i] != null ? dataFrame["Data Frequency"][i].ToString() : null;
@@ -139,14 +139,14 @@ namespace DxMLEngine.Features.UNComtrade
             return endpoints.ToArray();
         }
 
-        private static TradeDataEndpoint[] InputTradeDataEndpoints(string path)
+        private static Endpoint[] InputTradeDataEndpoints(string path)
         {
             var dataFrame = DataFrame.LoadCsv(path, header: true, encoding: Encoding.UTF8);
 
-            var endpoints = new List<TradeDataEndpoint>();
+            var endpoints = new List<Endpoint>();
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
-                var endpoint = new TradeDataEndpoint();
+                var endpoint = new Endpoint();
 
                 endpoint.TradeType = dataFrame["Trade Type"][i] != null ? dataFrame["Trade Type"][i].ToString() : null;
                 endpoint.Frequency = dataFrame["Data Frequency"][i] != null ? dataFrame["Data Frequency"][i].ToString() : null;

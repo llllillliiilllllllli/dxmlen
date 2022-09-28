@@ -12,7 +12,7 @@ namespace DxMLEngine.Functions
     {
         public static Process? LaunghEdge(string initialUrl = "about:blank",
             ProcessWindowStyle windowStyle = ProcessWindowStyle.Normal,
-            bool createNoWindow = false)
+            bool createNoWindow = false, int wait = 100)
         {
             var startInfo = new ProcessStartInfo("MicrosoftEdge.exe");
             startInfo.Arguments = initialUrl;
@@ -20,7 +20,7 @@ namespace DxMLEngine.Functions
             startInfo.CreateNoWindow = createNoWindow;
 
             var browser = Process.Start(startInfo);
-            Thread.Sleep(100);
+            Thread.Sleep(wait);
 
             return browser;
         }
@@ -30,11 +30,11 @@ namespace DxMLEngine.Functions
             DxKeyboard.SendKeys(browser, "ALT+F4", 100);
         }
 
-        public static Process OpenNewTab(Process browser, string url)
+        public static Process OpenNewTab(Process browser, string url, int wait = 5000)
         {
             var fileName = browser.StartInfo.FileName;
             var process = Process.Start(fileName, url);
-            Thread.Sleep(5000);
+            Thread.Sleep(wait);
 
             return process;
         }
@@ -44,25 +44,38 @@ namespace DxMLEngine.Functions
             DxKeyboard.SendKeys(process, "CTRL+W", 100);
         }
 
-        public static string CopyPageText(Process process)
+        public static string CopyPageText(Process process, int wait = 0)
         {
-            DxKeyboard.SendKeys(process, "CTRL+A", 100);
-            DxKeyboard.SendKeys(process, "CTRL+C", 100);
-            Thread.Sleep(1000);
+            Thread.Sleep(wait);
+
+            DxClipboard.SetText("");
+            DxClipboard.GetText();
+            while (DxClipboard.GetText() == "")
+            { 
+                DxKeyboard.SendKeys(process, "CTRL+A", 100);
+                DxKeyboard.SendKeys(process, "CTRL+C", 100);
+                Thread.Sleep(1000);
+            }
 
             return DxClipboard.GetText();
         }
 
-        public static string CopyPageSource(Process process)
+        public static string CopyPageSource(Process process, int wait = 5000)
         {
             DxKeyboard.SendKeys(process, "CTRL+U", 100);
-            Thread.Sleep(5000);
+            Thread.Sleep(wait);
 
             var newProcess = Process.GetCurrentProcess();
 
-            DxKeyboard.SendKeys(newProcess, "CTRL+A", 100);
-            DxKeyboard.SendKeys(newProcess, "CTRL+C", 100);
-            Thread.Sleep(1000);
+            DxClipboard.SetText("");
+            DxClipboard.GetText();
+            while (DxClipboard.GetText() == "")
+            {
+                DxKeyboard.SendKeys(newProcess, "CTRL+A", 100);
+                DxKeyboard.SendKeys(newProcess, "CTRL+C", 100);                
+                Thread.Sleep(1000);
+            }
+
             DxKeyboard.SendKeys(newProcess, "CTRL+W", 100);
 
             return DxClipboard.GetText();

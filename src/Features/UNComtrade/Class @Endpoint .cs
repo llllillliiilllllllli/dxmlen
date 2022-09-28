@@ -1,59 +1,28 @@
 ﻿/// ====================================================================================
-/// UN Comtrade data enpoint:
-///     http://comtrade.un.org/api/get?{parameters}
+/// Data availability enpoint:
+///     http://comtrade.un.org/api//refs/da/view?{parameters}
 ///     
-/// Parameters:         
-///     type            : trade data type (default = C)
+/// Parameters:     
+///     type            : trade data type (default = any)
 ///         type=C      : commodities 
-///         type=S      : services   
-///         
+///         type=S      : services 
+///     
 ///     freq            : data frequency (default = any)
 ///         freq=A      : annual
 ///         freq=M      : monthly        
 ///     
-///     r               : reporting area (default = 0)     
+///     r               : reporting area (default = any)    
 ///         r=id        : country id
 ///     
-///     ps              : time period
-///         ps=2020     : year
-///         ps=202012   : month
+///     ps              : time period (default = any)
+///         ps=2015     : year
+///         ps=201512   : month
 ///         
-///     px              : classification
+///     px              : classification (default = any)
 ///         ps=HS       : HS classes
 ///         ps=BEC      : BEC classes
 ///         ps=EB02     : services classes
 ///         
-///     p               : partner area
-///         p=id        : country id
-///       
-///     rg              : trade flow (default = all)
-///         rg=id       : trade regime id
-///         
-///     cc              : classification code (default = AG2)
-///         cc=ALL      : total trade no detail breakdown
-///         cc=AG1      : ...
-///         cc=AG2      : ...
-///         cc=AG3      : ...
-///         cc=AG4      : ...
-///         cc=AG5      : ...
-///         cc=AG6      : ...
-///         cc=TOTAL    : all codes in the classification
-///     
-///     fmt             : output format (default = header) 
-///         fmt=json    : JavaScript Object Notation (JSON)
-///         fmt=csv     : Comma-separated Values (CSV)
-///         
-///     max             : maximum records returned (default = 500)  
-///         max=number  : 
-///         
-///     head            : head heading style (default = H)   
-///         head=H      : human readable headings        
-///         head=M      : machine readable headings         
-///     
-///     IMTS            : data defined by IMTS (default = 2010)
-///         IMTS=2010   : data that comply with IMTS 2010
-///         IMTS=orig   : data that comply with earlier version of IMTS
-///                     
 ///     token           : authorization
 ///         token=code  : API key
 /// ====================================================================================
@@ -68,11 +37,10 @@ using System.Threading.Tasks;
 
 namespace DxMLEngine.Features.UNComtrade
 {
-    internal class TradeDataEndpoint
+    internal class Endpoint
     {
-        public const string EP_BASE = "http://comtrade.un.org/api/get?{parameters}";
-
-        public Dictionary<object, object?> Parameters { set; get; }
+        public const string EP_AVAILABILITY = "http://comtrade.un.org/api//refs/da/view?{parameters}";
+        public const string EP_UNTRADE_DATA = "http://comtrade.un.org/api/get?{parameters}";
 
         public string? TradeType { set; get; }
         public string? Frequency { set; get; }
@@ -88,9 +56,11 @@ namespace DxMLEngine.Features.UNComtrade
         public string? IMTS { set; get; }
         public string? ApiToken { set; get; }
 
-        public TradeDataEndpoint()
+        public Dictionary<object, object?> Parameters { set; get; }
+
+        public Endpoint()
         {
-            Parameters = new Dictionary<object, object?>() 
+            Parameters = new Dictionary<object, object?>()
             {
                 { "type", null },
                 { "freq", null },
@@ -109,6 +79,26 @@ namespace DxMLEngine.Features.UNComtrade
         }
 
         public string ConfigureEndpoint()
+        {
+            Parameters["type"] = TradeType;
+            Parameters["freq"] = Frequency;
+            Parameters["r"] = ReportingArea;
+            Parameters["ps"] = TimePeriod;
+            Parameters["px"] = Classification;
+            Parameters["token"] = ApiToken;
+
+            var parameters = "";
+            if (Parameters["type"] != null) parameters += $"&type={Parameters["type"]}";
+            if (Parameters["freq"] != null) parameters += $"&freq={Parameters["freq"]}";
+            if (Parameters["r"] != null) parameters += $"&r={Parameters["r"]}";
+            if (Parameters["ps"] != null) parameters += $"&ps={Parameters["ps"]}";
+            if (Parameters["px"] != null) parameters += $"&px={Parameters["px"]}";
+            if (Parameters["token"] != null) parameters += $"&token={Parameters["token"]}";
+
+            return EP_AVAILABILITY.Replace("{parameters}", parameters).Replace("?&", "?");
+        }
+
+        public string ConfigureTradeDataEndpoint()
         {
             Parameters["type"] = TradeType;
             Parameters["freq"] = Frequency;
@@ -139,7 +129,7 @@ namespace DxMLEngine.Features.UNComtrade
             if (Parameters["IMTS"] != null) parameters += $"&IMTS={Parameters["IMTS"]}";
             if (Parameters["token"] != null) parameters += $"&token={Parameters["token"]}";
 
-            return EP_BASE.Replace("{parameters}", parameters).Replace("?&", "?"); ;
+            return EP_UNTRADE_DATA.Replace("{parameters}", parameters).Replace("?&", "?"); ;
         }
     }
 }

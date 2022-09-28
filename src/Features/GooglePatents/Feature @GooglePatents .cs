@@ -108,10 +108,10 @@ namespace DxMLEngine.Features.GooglePatents
             ////1            
             var dataFrame = DataFrame.LoadCsv(i_fil, header: true, encoding: Encoding.UTF8);
 
-            var searchUrls = new List<SearchUrl>();
+            var searchUrls = new List<Webpage>();
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
-                var searchUrl = new SearchUrl();
+                var searchUrl = new Webpage();
 
                 var keyword = dataFrame["Keyword"][i].ToString();
                 var classCode = dataFrame["Class Code"][i].ToString();
@@ -172,7 +172,7 @@ namespace DxMLEngine.Features.GooglePatents
             ////4            
             foreach (var searchUrl in searchUrls)
             {
-                var url = searchUrl.ConfigureSearchUrl(searchBy);
+                var url = searchUrl.ConfigureWebpage(searchBy);
                 var process = BrowserAutomation.OpenNewTab(browser!, url.Replace("{page}", "0"));
 
             ////5

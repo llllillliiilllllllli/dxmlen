@@ -11,31 +11,31 @@ namespace DxMLEngine.Utilities
     {
         public static void Debug(string msg)
         {
-            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:MM:SS");
+            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss");
             Console.WriteLine($"\n{timestamp} | {Color.Yellow}DEBUG{Color.Reset} | {msg}");
         }
 
         public static void Info(string msg)
         {
-            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss");
+            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             Console.WriteLine($"\n{timestamp} | {Color.Blue}INFO{Color.Reset} | {msg}");
         }
 
         public static void Warning(string msg)
         {
-            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:MM:SS");
+            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             Console.WriteLine($"\n{timestamp} | {Color.Magenta}WARNING{Color.Reset} | {msg}");
         }
 
         public static void Error(string msg)
         {
-            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:MM:SS");
+            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             Console.WriteLine($"\n{timestamp} | {Color.Red}ERROR{Color.Reset} | {msg}");
         }
 
         public static void Crit(string msg)
         {
-            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:MM:SS");
+            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             Console.WriteLine($"\n{timestamp} | {Color.Black}CRITICAL{Color.Reset} | {msg}");
         }
     }

@@ -9,7 +9,7 @@ using DxMLEngine.Functions;
 
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
-namespace DxMLEngine.Features.DataCollection
+namespace DxMLEngine.Features.CrunchBase
 {
     [Feature]
     internal class CrunchBaseCompany
