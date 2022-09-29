@@ -33,43 +33,37 @@ namespace DxMLEngine.Features.UNComtrade
         {
             ////0
             Console.Write("\nEnter input file path: ");
-            var i_fil = Console.ReadLine()?.Replace("\"", "");
+            var inFile = Console.ReadLine()?.Replace("\"", "");
 
-            if (string.IsNullOrEmpty(i_fil))
+            if (string.IsNullOrEmpty(inFile))
                 throw new ArgumentNullException("path is null or empty");
 
             Console.Write("\nEnter output folder path: ");
-            var o_fol = Console.ReadLine()?.Replace("\"", "");
+            var outDir = Console.ReadLine()?.Replace("\"", "");
 
-            if (string.IsNullOrEmpty(o_fol))
+            if (string.IsNullOrEmpty(outDir))
                 throw new ArgumentNullException("path is null or empty");
 
-            Console.Write("\nEnter output file name: ");
-            var o_fil = Console.ReadLine()?.Replace(" ", "");
-
-            if (string.IsNullOrEmpty(o_fil))
-                throw new ArgumentNullException("file name is null or empty");
-
             ////1
-            var inputEndpoints = InputAvailabilityEndpoints(i_fil);
+            var endpoints = InputAvailabilityEndpoints(inFile);
 
             ////2
             var client = new HttpClient();
 
             ////3
-            foreach (var inputEndpoint in inputEndpoints)
+            foreach (var endpoint in endpoints)
             {
-                var endpoint = inputEndpoint.ConfigureEndpoint();
+                Console.WriteLine($"\nCollect: {endpoint.AvailabilityEndpoint}");
 
-                Console.WriteLine($"\nCollect: {endpoint}");
-
-                var uri = new Uri(endpoint);
+                var uri = new Uri(endpoint.AvailabilityEndpoint);
                 var request = new HttpRequestMessage() { RequestUri = uri };
                 var response = client.Send(request);
-                var result = response.Content.ReadAsStringAsync();
+                endpoint.Reponse = response.Content.ReadAsStringAsync().Result;
 
-                Console.WriteLine(result.Result);
-                Console.WriteLine("\n\n\n");
+                Console.WriteLine(endpoint.Reponse);
+                Console.WriteLine();
+
+                OutputAvailability(outDir, endpoint);
             }            
         }
 
@@ -77,55 +71,50 @@ namespace DxMLEngine.Features.UNComtrade
         {
             ////0
             Console.Write("\nEnter input file path: ");
-            var i_fil = Console.ReadLine()?.Replace("\"", "");
+            var inFile = Console.ReadLine()?.Replace("\"", "");
 
-            if (string.IsNullOrEmpty(i_fil))
+            if (string.IsNullOrEmpty(inFile))
                 throw new ArgumentNullException("path is null or empty");
 
             Console.Write("\nEnter output folder path: ");
-            var o_fol = Console.ReadLine()?.Replace("\"", "");
+            var outDir = Console.ReadLine()?.Replace("\"", "");
 
-            if (string.IsNullOrEmpty(o_fol))
+            if (string.IsNullOrEmpty(outDir))
                 throw new ArgumentNullException("path is null or empty");
 
-            Console.Write("\nEnter output file name: ");
-            var o_fil = Console.ReadLine()?.Replace(" ", "");
-
-            if (string.IsNullOrEmpty(o_fil))
-                throw new ArgumentNullException("file name is null or empty");
-
             ////1
-            var inputEndpoints = InputTradeDataEndpoints(i_fil);
+            var endpoints = InputTradeDataEndpoints(inFile);
 
             ////2
             var client = new HttpClient();
 
             ////3
-            foreach (var inputEndpoint in inputEndpoints)
+            foreach (var endpoint in endpoints)
             {
-                var endpoint = inputEndpoint.ConfigureEndpoint();
+                Console.WriteLine($"\nCollect: {endpoint.TradeDataEndpoint}");
 
-                Console.WriteLine($"\nCollect: {endpoint}");
-
-                var uri = new Uri(endpoint);
+                var uri = new Uri(endpoint.AvailabilityEndpoint);
                 var request = new HttpRequestMessage() { RequestUri = uri };
                 var response = client.Send(request);
-                var result = response.Content.ReadAsStringAsync();
+                endpoint.Reponse = response.Content.ReadAsStringAsync().Result;
 
-                Console.WriteLine(result.Result);
-                Console.WriteLine("\n\n\n");
+                Console.WriteLine(endpoint.Reponse);
+                Console.WriteLine();
+
+                OutputTradeData(outDir, endpoint);
             }
         }
 
         private static Endpoint[] InputAvailabilityEndpoints(string path)
         {
-            var dataFrame = DataFrame.LoadCsv(path, header: true, encoding: Encoding.UTF8);
+            var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
 
             var endpoints = new List<Endpoint>();
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
                 var endpoint = new Endpoint();
 
+                endpoint.Id = dataFrame["ID"][i] != null ? dataFrame["ID"][i].ToString() : null;
                 endpoint.TradeType = dataFrame["Trade Type"][i] != null ? dataFrame["Trade Type"][i].ToString() : null;
                 endpoint.Frequency = dataFrame["Data Frequency"][i] != null ? dataFrame["Data Frequency"][i].ToString() : null;
                 endpoint.ReportingArea = dataFrame["Reporting Area"][i] != null ? dataFrame["Reporting Area"][i].ToString() : null;
@@ -141,13 +130,14 @@ namespace DxMLEngine.Features.UNComtrade
 
         private static Endpoint[] InputTradeDataEndpoints(string path)
         {
-            var dataFrame = DataFrame.LoadCsv(path, header: true, encoding: Encoding.UTF8);
+            var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
 
             var endpoints = new List<Endpoint>();
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
                 var endpoint = new Endpoint();
 
+                endpoint.Id = dataFrame["ID"][i] != null ? dataFrame["ID"][i].ToString() : null;
                 endpoint.TradeType = dataFrame["Trade Type"][i] != null ? dataFrame["Trade Type"][i].ToString() : null;
                 endpoint.Frequency = dataFrame["Data Frequency"][i] != null ? dataFrame["Data Frequency"][i].ToString() : null;
                 endpoint.ReportingArea = dataFrame["Reporting Area"][i] != null ? dataFrame["Reporting Area"][i].ToString() : null;
@@ -168,6 +158,24 @@ namespace DxMLEngine.Features.UNComtrade
             }
 
             return endpoints.ToArray();
+        }
+    
+        private static void OutputAvailability(string location, Endpoint endpoint)
+        {
+            var path = $"{location}\\Datason @{endpoint.Id}Availability #-------------- .json";
+            File.WriteAllText(path, endpoint.Reponse, encoding: Encoding.UTF8);
+
+            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
+        }
+
+        private static void OutputTradeData(string location, Endpoint endpoint)
+        {
+            var path = $"{location}\\Datason @{endpoint.Id}TradeData #-------------- .json";
+            File.WriteAllText(path, endpoint.Reponse, encoding: Encoding.UTF8);
+
+            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
         }
     }
 }

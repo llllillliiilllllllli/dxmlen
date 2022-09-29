@@ -25,7 +25,6 @@
     <Folder Include="src\Features\CrunchBase\CBInvestors\" />
     <Folder Include="src\Features\CrunchBase\CBEvents\" />
     <Folder Include="src\Features\CrunchBase\CBCompanies\" />
-    <Folder Include="src\Features\YahooFinance\" />
     <Folder Include="src\Services\HtmlAgility\" />
     <Folder Include="src\Services\Tesseract\TessData\tessconfigs\" />
     <Folder Include="src\Application\Configuration\" />

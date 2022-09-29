@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Devices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,55 +9,74 @@ namespace DxMLEngine.Features.Amazon
 {
     internal class Webpage
     {
-        public const string URL_SEARCH_PAGE = "https://www.amazon.com/s?k={keyword}";
-        public const string URL_PRODUCT_PAGE = "https://www.amazon.com/dp/{asin}";
-        public const string URL_REVIEW_PAGE = "https://www.amazon.com/product-reviews/{asin}";
+        public string Domain { get { return "https://patents.google.com/"; } }
+        public string SearchUrl { get { return ConfigureSearchUrl(); } }
+        public string DetailUrl { get { return ConfigureDetailUrl(); } }
+        public string ReviewUrl { get { return ConfigureReviewUrl(); } }
 
-        public string? Keyword { set; get; }
-        public string? Asin { set; get; }
+        public string? PageText { set; get; }
+        public string? PageSource { set; get; }
 
-        public Dictionary<object, object?> Parameters { set; get; }
-        public string? FilterByStar { set; get; }
-        public string? SearchPage { set; get; }
-        public string? ReviewPage { set; get; }
+        private const string URL_SEARCH_PAGE = "https://www.amazon.com/s{parameters}";
+        private const string URL_PRODUCT_PAGE = "https://www.amazon.com/dp/{asin}";
+        private const string URL_REVIEW_PAGE = "https://www.amazon.com/product-reviews/{asin}/{parameters}";
+
+        internal Dictionary<object, object?> SearchParameters { set; get; }
+        internal Dictionary<object, object?> ReviewParameters { set; get; }
+        
+        internal string? Keyword { set; get; }
+        internal string? Asin { set; get; }
+        internal string? FilterByStar { set; get; }
+
+        internal string? SearchPageNumber { set; get; }
+        internal string? ReviewPageNumber { set; get; }
+
+        internal PageLayout PageLayout { set; get; }
 
         public Webpage()
         {
-            Parameters = new Dictionary<object, object?>()
+            SearchParameters = new Dictionary<object, object?>()
             {
-                { "/filterByStar", null },
-                { "&page=", null },
-                { "?pageNumber=", null },
+                { "?k=", Keyword },
+                { "&page=", SearchPageNumber },
+            };
+
+            ReviewParameters = new Dictionary<object, object?>()
+            {
+                { "&filterByStar=", FilterByStar },
+                { "&pageNumber=", ReviewPageNumber },
             };
         }
 
         public string ConfigureSearchUrl()
         {
-            Parameters["&page="] = SearchPage;
+            SearchParameters["?k="] = Keyword != null ? Keyword.Replace(" ", "+").Replace("&", "%26") : null;
+            SearchParameters["&page="] = SearchPageNumber;
 
-            var keyword = Keyword != null ? Keyword.Replace(" ", "+").Replace("&", "%26") : null;
-            var url = URL_SEARCH_PAGE.Replace("{keyword}", keyword);
+            var paramters = "";
+            foreach (var key in SearchParameters.Keys)
+                if (SearchParameters[key] != null)
+                    paramters += $"{key}{SearchParameters[key]}";
 
-            if (Parameters["&page="] != null) url += $"&page={Parameters["&page="]}";            
-
-            return url;
+            return URL_SEARCH_PAGE.Replace("{parameters}", paramters);
         }
 
-        public string ConfigureProductUrl()
+        public string ConfigureDetailUrl()
         {
             return URL_PRODUCT_PAGE.Replace("{asin}", Asin);
         }
 
         public string ConfigureReviewUrl()
         {
-            Parameters["/filterByStar"] = FilterByStar;
-            Parameters["?pageNumber="] = ReviewPage;
+            ReviewParameters["&filterByStar="] = FilterByStar;
+            ReviewParameters["&pageNumber="] = ReviewPageNumber;
 
-            var url = URL_REVIEW_PAGE.Replace("{asin}", Asin);
-            if (Parameters["/filterByStar"] != null) url += $"/filterByStar={Parameters["/filterByStar"]}";
-            if (Parameters["?pageNumber="] != null) url += $"?pageNumber={Parameters["?pageNumber="]}";
+            var parameters = "";
+            foreach (var key in ReviewParameters.Keys)
+                if (ReviewParameters[key] != null)
+                    parameters += $"{key}{ReviewParameters[key]}";
 
-            return url;
+            return URL_REVIEW_PAGE.Replace("{asin}", Asin).Replace("{parameters}", parameters);
         }
     }
 }
