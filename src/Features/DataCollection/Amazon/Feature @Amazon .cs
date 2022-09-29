@@ -379,7 +379,7 @@ namespace DxMLEngine.Features.Amazon
 
         private static void OutputSearchPageText(string location, Webpage webpage)
         {
-            var path = $"{location}\\Webpage @SearchPage #-------------- .txt";
+            var path = $"{location}\\Datadoc @SearchPage #-------------- .txt";
             File.WriteAllText(path, webpage.PageText, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
@@ -388,7 +388,7 @@ namespace DxMLEngine.Features.Amazon
 
         private static void OutputSearchPageSource(string location, Webpage webpage)
         {
-            var path = $"{location}\\Webpage @SearchPage #-------------- .html";
+            var path = $"{location}\\Webpage @Search #-------------- .html";
             File.WriteAllText(path, webpage.PageSource, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
@@ -397,7 +397,7 @@ namespace DxMLEngine.Features.Amazon
 
         private static void OutputDetailPageText(string location, Webpage webpage)
         {
-            var path = $"{location}\\Webpage @DetailPage #-------------- .txt";
+            var path = $"{location}\\Datadoc @DetailPage #-------------- .txt";
             File.WriteAllText(path, webpage.PageText, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
@@ -406,7 +406,7 @@ namespace DxMLEngine.Features.Amazon
 
         private static void OutputDetailPageSource(string location, Webpage webpage)
         {
-            var path = $"{location}\\Webpage @DetailPage #-------------- .html";
+            var path = $"{location}\\Webpage @Detail #-------------- .html";
             File.WriteAllText(path, webpage.PageSource, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
@@ -415,7 +415,7 @@ namespace DxMLEngine.Features.Amazon
 
         private static void OutputReviewPageText(string location, Webpage webpage)
         {
-            var path = $"{location}\\Webpage @ReviewPage #-------------- .txt";
+            var path = $"{location}\\Datadoc @ReviewPage #-------------- .txt";
             File.WriteAllText(path, webpage.PageText, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
@@ -424,7 +424,7 @@ namespace DxMLEngine.Features.Amazon
 
         private static void OutputReviewPageSource(string location, Webpage webpage)
         {
-            var path = $"{location}\\Webpage @ReviewPage #-------------- .html";
+            var path = $"{location}\\Webpage @Review #-------------- .html";
             File.WriteAllText(path, webpage.PageSource, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");

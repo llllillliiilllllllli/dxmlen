@@ -21,8 +21,6 @@ namespace DxMLEngine.Features.GooglePatents
         private const string URL_SEARCH_PAGE = "https://patents.google.com/?{parameters}";
         private const string URL_PATENT_PAGE = "https://patents.google.com/patent/{patentCode}";
 
-        internal Dictionary<string, string?> Parameters { set; get; }
-
         internal string? Keyword { set; get; }
         internal string? ClassCode { set; get; }
         internal string? PatentCode { set; get; }
@@ -44,20 +42,6 @@ namespace DxMLEngine.Features.GooglePatents
 
         public Webpage() 
         {
-            Parameters = new Dictionary<string, string?>()
-            {
-                {"&q=", null },
-                {"&before=", Before },
-                {"&after=", After },
-                {"&inventor=", Inventor },
-                {"&assignee=", Assignee },
-                {"&country=", Country },
-                {"&language=", Language },
-                {"&status=", Status },
-                {"&type=", Type },
-                {"&litigation=", Litigation },
-                {"&page=", PageNumber },
-            };
         }
 
         private string ConfigureSearchUrl()
@@ -73,38 +57,33 @@ namespace DxMLEngine.Features.GooglePatents
             /// ====================================================================================
 
             ////0
+            var parameters = "";
             switch (searchBy)
             {
                 case SearchBy.Keyword:
-                    Parameters["&q="] = Keyword;
+                    parameters += $"&q={Keyword}";
                     break;                
                 case SearchBy.ClassCode:
-                    Parameters["&q="] = ClassCode;
+                    parameters += $"&q={ClassCode}";
                     break;                
                 case SearchBy.PatentCode:
-                    Parameters["&q="] = PatentCode;
+                    parameters += $"&q={PatentCode}";
                     break;
             }
 
             ////1
-            Parameters["&before="] = Before;
-            Parameters["&after="] = After;
-            Parameters["&inventor="] = Inventor;
-            Parameters["&assignee="] = Assignee;
-            Parameters["&country="] = Country;
-            Parameters["&language="] = Language;
-            Parameters["&status="] = Status;
-            Parameters["&type="] = Type;
-            Parameters["&litigation="] = Litigation;
-            Parameters["&page="] = PageNumber;
+            if (Before != null) parameters += $"&before={Before}";
+            if (After != null) parameters += $"&after={After}";
+            if (Inventor != null) parameters += $"&inventor={Inventor}";
+            if (Assignee != null) parameters += $"&assignee={Assignee}";
+            if (Country != null) parameters += $"&country={Country}";
+            if (Language != null) parameters += $"&language={Language}";
+            if (Status != null) parameters += $"&status={Status}";
+            if (Type != null) parameters += $"&type={Type}";
+            if (Litigation != null) parameters += $"&litigation={Litigation}";
+            if (PageNumber != null) parameters += $"&page={PageNumber}";
 
-            ////2
-            var paramters = "";
-            foreach (var key in Parameters.Keys)
-                if (Parameters[key] != null)
-                    paramters += $"{key}{Parameters[key]}";
-
-            return URL_SEARCH_PAGE.Replace("{parameters}", paramters).Replace("?&", "?");
+            return URL_SEARCH_PAGE.Replace("{parameters}", parameters).Replace("?&", "?");
         }
 
         private string ConfigurePatentUrl()

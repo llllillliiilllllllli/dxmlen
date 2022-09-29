@@ -34,20 +34,12 @@ namespace DxMLEngine.Features.CrunchBase
         private const string URL_PEOPLE_PAGE = "";
         private const string URL_SCHOOL_PAGE = "";
 
-        internal Dictionary<string, string?> Parameters { set; get; }
-
         internal string? Param1 { set; get; }
         internal string? Param2 { set; get; }
         internal string? Param3 { set; get; }
 
         public Webpage()
         {
-            Parameters = new Dictionary<string, string?>()
-            {
-                {"&param1=", Param1 },
-                {"&param2=", Param2 },
-                {"&param3=", Param3 },
-            };
         }
 
         private string ConfigureSearchUrl()

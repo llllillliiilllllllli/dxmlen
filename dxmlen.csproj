@@ -16,15 +16,15 @@
 
   <ItemGroup>
     <Folder Include="log\" />
-    <Folder Include="src\Features\CrunchBase\CBFundings\" />
-    <Folder Include="src\Features\CrunchBase\CBAcquisitions\" />
-    <Folder Include="src\Features\CrunchBase\CBPeople\" />
-    <Folder Include="src\Features\CrunchBase\CBHubs\" />
-    <Folder Include="src\Features\CrunchBase\CBSchools\" />
-    <Folder Include="src\Features\CrunchBase\CBContacts\" />
-    <Folder Include="src\Features\CrunchBase\CBInvestors\" />
-    <Folder Include="src\Features\CrunchBase\CBEvents\" />
-    <Folder Include="src\Features\CrunchBase\CBCompanies\" />
+    <Folder Include="src\Features\DataCollection\CrunchBase\CBFundings\" />
+    <Folder Include="src\Features\DataCollection\CrunchBase\CBAcquisitions\" />
+    <Folder Include="src\Features\DataCollection\CrunchBase\CBPeople\" />
+    <Folder Include="src\Features\DataCollection\CrunchBase\CBHubs\" />
+    <Folder Include="src\Features\DataCollection\CrunchBase\CBSchools\" />
+    <Folder Include="src\Features\DataCollection\CrunchBase\CBContacts\" />
+    <Folder Include="src\Features\DataCollection\CrunchBase\CBInvestors\" />
+    <Folder Include="src\Features\DataCollection\CrunchBase\CBEvents\" />
+    <Folder Include="src\Features\DataCollection\CrunchBase\CBCompanies\" />
     <Folder Include="src\Services\HtmlAgility\" />
     <Folder Include="src\Services\Tesseract\TessData\tessconfigs\" />
     <Folder Include="src\Application\Configuration\" />

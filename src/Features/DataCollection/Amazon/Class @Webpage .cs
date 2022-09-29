@@ -20,9 +20,6 @@ namespace DxMLEngine.Features.Amazon
         private const string URL_SEARCH_PAGE = "https://www.amazon.com/s{parameters}";
         private const string URL_PRODUCT_PAGE = "https://www.amazon.com/dp/{asin}";
         private const string URL_REVIEW_PAGE = "https://www.amazon.com/product-reviews/{asin}/{parameters}";
-
-        internal Dictionary<object, object?> SearchParameters { set; get; }
-        internal Dictionary<object, object?> ReviewParameters { set; get; }
         
         internal string? Keyword { set; get; }
         internal string? Asin { set; get; }
@@ -35,30 +32,15 @@ namespace DxMLEngine.Features.Amazon
 
         public Webpage()
         {
-            SearchParameters = new Dictionary<object, object?>()
-            {
-                { "?k=", Keyword },
-                { "&page=", SearchPageNumber },
-            };
-
-            ReviewParameters = new Dictionary<object, object?>()
-            {
-                { "&filterByStar=", FilterByStar },
-                { "&pageNumber=", ReviewPageNumber },
-            };
         }
 
         public string ConfigureSearchUrl()
         {
-            SearchParameters["?k="] = Keyword != null ? Keyword.Replace(" ", "+").Replace("&", "%26") : null;
-            SearchParameters["&page="] = SearchPageNumber;
+            var parameters = "";
+            if (Keyword != null) parameters += $"?k={Keyword.Replace(" ", "+").Replace("&", "%26")}";
+            if (SearchPageNumber != null) parameters += $"&page={SearchPageNumber}";
 
-            var paramters = "";
-            foreach (var key in SearchParameters.Keys)
-                if (SearchParameters[key] != null)
-                    paramters += $"{key}{SearchParameters[key]}";
-
-            return URL_SEARCH_PAGE.Replace("{parameters}", paramters);
+            return URL_SEARCH_PAGE.Replace("{parameters}", parameters);
         }
 
         public string ConfigureDetailUrl()
@@ -68,13 +50,9 @@ namespace DxMLEngine.Features.Amazon
 
         public string ConfigureReviewUrl()
         {
-            ReviewParameters["&filterByStar="] = FilterByStar;
-            ReviewParameters["&pageNumber="] = ReviewPageNumber;
-
             var parameters = "";
-            foreach (var key in ReviewParameters.Keys)
-                if (ReviewParameters[key] != null)
-                    parameters += $"{key}{ReviewParameters[key]}";
+            if (FilterByStar != null) parameters += $"&filterByStar={FilterByStar}";
+            if (ReviewPageNumber != null) parameters += $"&pageNumber={ReviewPageNumber}";
 
             return URL_REVIEW_PAGE.Replace("{asin}", Asin).Replace("{parameters}", parameters);
         }

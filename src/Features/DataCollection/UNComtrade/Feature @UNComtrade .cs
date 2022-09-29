@@ -105,6 +105,8 @@ namespace DxMLEngine.Features.UNComtrade
             }
         }
 
+        #region INPUT OUTPUT
+
         private static Endpoint[] InputAvailabilityEndpoints(string path)
         {
             var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
@@ -177,5 +179,7 @@ namespace DxMLEngine.Features.UNComtrade
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
             File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
         }
+
+        #endregion INPUT OUTPUT
     }
 }
