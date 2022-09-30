@@ -15,6 +15,7 @@ namespace DxMLEngine.Features.GooglePatents
         public string SearchUrl { get { return ConfigureSearchUrl(); } }
         public string PatentUrl { get { return ConfigurePatentUrl(); } }
         
+        public string? Id { set; get; }
         public string? PageText { set; get; }
         public string? PageSource { set; get; }
 
@@ -38,7 +39,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         internal string? PageNumber { set; get; }
 
-        internal SearchBy searchBy { set; get; }
+        internal SearchBy? searchBy { set; get; }
 
         public Webpage() 
         {
@@ -68,6 +69,9 @@ namespace DxMLEngine.Features.GooglePatents
                     break;                
                 case SearchBy.PatentCode:
                     parameters += $"&q={PatentCode}";
+                    break;
+                default:
+                    parameters += $"";
                     break;
             }
 

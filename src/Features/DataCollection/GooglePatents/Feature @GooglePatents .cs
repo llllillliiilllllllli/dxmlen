@@ -124,7 +124,7 @@ namespace DxMLEngine.Features.GooglePatents
                         break;
 
                     default:
-                        webpage.searchBy = SearchBy.Keyword;
+                        webpage.searchBy = null;
                         break;
                 }
 
@@ -169,7 +169,7 @@ namespace DxMLEngine.Features.GooglePatents
                 for (int i = 0; i < numPages; i++)
                 {
                     webpage.PageNumber = $"{i}";
-                    Console.WriteLine($"Collect: {webpage.SearchUrl}");
+                    Console.WriteLine($"\nCollect: {webpage.SearchUrl}");
 
                     var newTab = BrowserAutomation.OpenNewTab(browser, webpage.SearchUrl);
                     webpage.PageText = BrowserAutomation.CopyPageText(newTab);
@@ -288,11 +288,14 @@ namespace DxMLEngine.Features.GooglePatents
             ////4
             foreach (var webpage in webpages)
             {
-                Console.WriteLine($"Collect: {webpage.PatentUrl}");
+                Console.WriteLine($"\nCollect: {webpage.PatentUrl}");
 
                 var newTab = BrowserAutomation.OpenNewTab(browser, webpage.PatentUrl);
                 webpage.PageText = BrowserAutomation.CopyPageText(newTab);
                 webpage.PageSource = BrowserAutomation.CopyPageSource(newTab);
+
+                if (CheckPageText(webpage) == null) continue;
+                if (CheckPageSource(webpage) == null) continue;
 
                 OutputDetailPageText(outDir, webpage);
                 OutputDetailPageSource(outDir, webpage);
@@ -301,7 +304,8 @@ namespace DxMLEngine.Features.GooglePatents
                 var patent = new Patent();
 
                 patent.Title = ExtractTitle(webpage);
-                                
+                patent.Url = webpage.PatentUrl;
+
                 if (options.Contains("Abstract")) 
                     patent.Abstract = ExtractAbstract(webpage);
 
@@ -414,7 +418,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static void OutputSearchPageText(string location, Webpage webpage)
         {
-            var path = $"{location}\\Datadoc @SearchPage #-------------- .txt";
+            var path = $"{location}\\Datadoc @{webpage.Id}SearchPage #-------------- .txt";
             File.WriteAllText(path, webpage.PageText, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
@@ -423,7 +427,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static void OutputSearchPageSource(string location, Webpage webpage)
         {
-            var path = $"{location}\\Webpage @Search #-------------- .html";
+            var path = $"{location}\\Webpage @{webpage.Id}SearchPage #-------------- .html";
             File.WriteAllText(path, webpage.PageSource, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
@@ -432,7 +436,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static void OutputDetailPageText(string location, Webpage webpage)
         {
-            var path = $"{location}\\Datadoc @DetailPage #-------------- .txt";
+            var path = $"{location}\\Datadoc @{webpage.PatentCode}DetailPage #-------------- .txt";
             File.WriteAllText(path, webpage.PageText, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
@@ -441,7 +445,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static void OutputDetailPageSource(string location, Webpage webpage)
         {
-            var path = $"{location}\\Webpage @Detail #-------------- .html";
+            var path = $"{location}\\Webpage @{webpage.PatentCode}DetailPage #-------------- .html";
             File.WriteAllText(path, webpage.PageSource, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
@@ -502,6 +506,104 @@ namespace DxMLEngine.Features.GooglePatents
                 return null;
         }
         
+        private static string[]? CheckPageText(Webpage webpage)
+        {
+            /// ====================================================================================
+            /// Abstract
+            /// Images (16)
+            /// Classifications
+            /// Description
+            /// Claims (36)
+            /// Patent Citations (69)
+            /// Non-Patent Citations (17)
+            /// Cited By (77)
+            /// Similar Documents
+            /// Parent Applications (1)
+            /// Priority Applications (6)
+            /// Applications Claiming Priority (1)
+            /// Legal Events
+            /// Concepts
+            /// ====================================================================================
+            
+            if (webpage.PageText == null)
+                throw new ArgumentNullException("webpage.PageText == null");
+
+            var headers = new string[]
+            {
+                "Abstract",
+                "Images",
+                "Classifications",
+                "Description",
+                "Claims",
+                "Patent Citations",
+                "Non-Patent Citations",
+                "Cited By",
+                "Similar Documents",
+                "Parent Applications",
+                "Priority Applications",
+                "Applications Claiming Priority",
+                "Legal Events",
+                "Concepts",
+            };
+
+            var splittedLines =
+                from line in webpage.PageText.Split("\n", StringSplitOptions.TrimEntries)
+                where string.IsNullOrEmpty(line) == false
+                select line;
+
+            var foundedHeaders = (
+                from line in splittedLines
+                from header in headers
+                where line.Contains(header)
+                select header).ToArray();
+
+            if (foundedHeaders.Length == 0) return null;
+            return foundedHeaders;
+        }
+
+        private static string[]? CheckPageSource(Webpage webpage)
+        {
+            /// ====================================================================================
+            /// <h2>Info</h2>
+            /// <h2>Links</h2>
+            /// <h2>Images</h2>
+            /// <h2>Classifications</h2>
+            /// <h2>Abstract</h2>
+            /// <h2>Description</h2>
+            /// <h2>Claims (<span itemprop="count">36</span>)</h2>
+            /// <h2>Abstract</h2>
+            /// <h2>Priority Applications (6)</h2>
+            /// <h2>Applications Claiming Priority (1)</h2>
+            /// <h2>Related Parent Applications (1)</h2>
+            /// <h2>Publications (2)</h2>
+            /// <h2>ID=53042265</h2>
+            /// <h2>Family Applications (2)</h2>
+            /// <h2>Family Applications Before (1)</h2>
+            /// <h2>Country Status (15)</h2>
+            /// <h2>Cited By (2)</h2>
+            /// <h2>Families Citing this family (75)</h2>
+            /// <h2>Citations (57)</h2>
+            /// <h2>Family Cites Families (12)</h2>
+            /// <h2>Patent Citations (58)</h2>
+            /// <h2>Non-Patent Citations (17)</h2>
+            /// <h2>Cited By (4)</h2>
+            /// <h2>Also Published As</h2>
+            /// <h2>Similar Documents</h2>
+            /// <h2>Legal Events</h2>
+            /// ====================================================================================
+
+            if (webpage.PageSource == null)
+                throw new ArgumentException("webpage.PageText == null");
+
+            var foundedHeaders = (
+                from match in Regex.Matches(webpage.PageSource, @"<h2>[\w\d\s\n\r\t.]+<[/]h2>")
+                where match.Success && string.IsNullOrEmpty(match.Value) == false
+                select match.Value.Trim()).ToArray();
+
+            if (foundedHeaders.Length == 0) return null;
+            return foundedHeaders;
+        }
+
         #endregion PAGE CHECKING
                 
         #region DATA EXTRACTION
@@ -518,52 +620,32 @@ namespace DxMLEngine.Features.GooglePatents
                 let codeMatches = codeRegex.Matches(webpage.PageText)
                 from codeMatch in codeMatches
                 where codeMatch.Success
+                where codeMatch.Value.Length > 6
                 select codeMatch.Value;
 
             return foundedPatentCodes.ToArray();
         }
 
         private static string ExtractTitle(Webpage webpage)
-        {
-            if (webpage.PageText == null)
-                throw new ArgumentException("webpage.PageText == null");            
-            
+        {        
             if (webpage.PageSource == null)
                 throw new ArgumentException("webpage.PageSource == null");
 
-            ////
-            var targetText = webpage.PageText
-                .Split("Abstract")[0];
-
-            var slittedLines = (
-                from line in targetText.Split("\n", StringSplitOptions.TrimEntries)
-                where string.IsNullOrEmpty(line) == false
-                select line).ToArray();
-
-            var title = slittedLines.Last();
-
-            ////
             var targetSource = webpage.PageSource
                 .Split("<body unresolved>")[0];
 
-            var document = new HtmlDocument();
-            document.LoadHtml(targetSource);
+            var pageHtml = new HtmlDocument();
+            pageHtml.LoadHtml(targetSource);
 
-            var metaXPath = "/html/head/meta";
-            var metaNodes = document.DocumentNode.SelectNodes(metaXPath);
+            var titleNode = (
+                from node in pageHtml.DocumentNode.SelectNodes("/html/head/meta")
+                where node.GetAttributeValue("name", null) == "DC.title"
+                select node.GetAttributeValue("content", null)).First();
 
-            var altTitle = (
-                from metaNode in metaNodes
-                let name = metaNode.GetAttributeValue("name", null)
-                where name == "DC.title"
-                let content = metaNode.GetAttributeValue("content", null)
-                select content).First();
-
-            Console.WriteLine(title);
-            return title;
+            return titleNode.Trim();
         }
 
-        private static Abstract ExtractAbstract(Webpage webpage)
+        private static Abstract? ExtractAbstract(Webpage webpage)
         {
             /// ====================================================================================
             /// Extract summary from Google Patents webpage using raw text and page source
@@ -581,41 +663,34 @@ namespace DxMLEngine.Features.GooglePatents
             if (webpage.PageSource == null)
                 throw new ArgumentException("webpage.PageSource == null");
 
-            ////0
-            var targetText = webpage.PageText
-                .Split("Abstract")[1]
-                .Split("Images")[0];
+            var pageHtml = new HtmlDocument();
+            pageHtml.LoadHtml(webpage.PageSource);
 
-            var abstractText = targetText;
+            var language = (
+                from node in pageHtml.DocumentNode.SelectNodes("/html/head/link")
+                where node.GetAttributeValue("rel", null) == "canonical"
+                let href = node.GetAttributeValue("href", null)                
+                select href.Split("/").Last()).First().ToUpper();
 
-            var targetSource = webpage.PageSource
-                .Split("<h2>Abstract</h2>")[1]
-                .Split("<h2>Description</h2>")[0];
-
-            var abstractHtml = new HtmlDocument();
-            abstractHtml.LoadHtml(targetSource);
-
-            var languageXPath = "/div/abstract";
-            var languageNode = abstractHtml.DocumentNode.SelectSingleNode(languageXPath);
-            var language = languageNode.GetAttributeValue("lang", null);
-
-            var contentXPath = "/div/abstract/div";
-            var contentNode = abstractHtml.DocumentNode.SelectSingleNode(contentXPath);
-            var content = contentNode.InnerText;
-
-            if (!string.IsNullOrEmpty(abstractText))
-                Console.WriteLine(abstractText);
+            var content = (
+                from node in pageHtml.DocumentNode.SelectNodes("/html/head/meta")
+                where node.GetAttributeValue("name", null) == "DC.description"
+                select node.GetAttributeValue("content", null).Trim()).First();
 
             return new Abstract(content, language);
         }
 
-        private static Images ExtractImages(Webpage webpage)
+        private static Images? ExtractImages(Webpage webpage)
         {
             if (webpage.PageText == null)
                 throw new ArgumentException("webpage.PageText == null");
 
             if (webpage.PageSource == null)
                 throw new ArgumentException("webpage.PageSource == null");
+
+            var foundedHeaders = CheckPageText(webpage);
+            if (!foundedHeaders!.Contains("Images"))
+                return null;
 
             var targetSource = webpage.PageSource
                 .Split("<h2>Images</h2>")[1]
@@ -641,13 +716,17 @@ namespace DxMLEngine.Features.GooglePatents
             return new Images(imagesHrefs.ToArray());
         }
 
-        private static Classifications ExtractClassifications(Webpage webpage)
+        private static Classifications? ExtractClassifications(Webpage webpage)
         {
             if (webpage.PageText == null)
                 throw new ArgumentException("webpage.PageText == null");
 
             if (webpage.PageSource == null)
-                throw new ArgumentException("webpage.PageSource == null"); 
+                throw new ArgumentException("webpage.PageSource == null");
+
+            var foundedHeaders = CheckPageText(webpage);
+            if (!foundedHeaders!.Contains("Classification"))
+                return null;
 
             var targetSource = webpage.PageSource
                 .Split("<h2>Classifications</h2>")[1]
@@ -678,7 +757,7 @@ namespace DxMLEngine.Features.GooglePatents
             return new Classifications(classes.ToArray());
         }
 
-        private static GeneralInfo ExtractGeneralInfo(Webpage webpage)
+        private static GeneralInfo? ExtractGeneralInfo(Webpage webpage)
         {
             /// ====================================================================================
             /// Extract info card section from Google Patents webpage using raw text data
@@ -690,32 +769,21 @@ namespace DxMLEngine.Features.GooglePatents
             /// >>> funct:  2       # scan through different portions in raw text to get data
             /// ====================================================================================
 
+            ////0
             if (webpage.PageText == null)
                 throw new ArgumentException("webpage.PageText == null");
 
             if (webpage.PageSource == null)
                 throw new ArgumentException("webpage.PageSource == null");
+            
+            ////
+            var foundedHeaders = CheckPageSource(webpage);
+            if (!foundedHeaders!.Contains("<h2>Info</h2>"))
+                return null;
 
-            ////0
-            var document = new HtmlDocument();
-            document.LoadHtml(webpage.PageSource);
-
-            ////1
-            var targetText = webpage.PageText
-                .Split("classifications")[1]
-                .Split("Description")[0];
-
-            var infoLines = (
-                from line in targetText.Split("\n", StringSplitOptions.TrimEntries)
-                where string.IsNullOrEmpty(line) == false
-                select line).ToArray();
-
-            var patentCode = infoLines[0];
-
-            ////2
+            ////
             var targetSource = webpage.PageSource
-                .Split("<h2>Info</h2>")[1]
-                .Split("<h2>Images</h2>")[0];
+                .Split("<h2>Info</h2>")[1];
 
             var infoHtml = new HtmlDocument();
             infoHtml.LoadHtml(targetSource);
@@ -725,6 +793,7 @@ namespace DxMLEngine.Features.GooglePatents
             var headInfoNodes = infoHtml.DocumentNode.SelectNodes(headInfoXPath);
             var bodyInfoNodes = infoHtml.DocumentNode.SelectNodes(bodyInfoXPath);
 
+            ////
             var publicationNumber = (
                 from infoNode in headInfoNodes
                 let itemprop = infoNode.GetAttributeValue("itemprop", null)
@@ -743,9 +812,20 @@ namespace DxMLEngine.Features.GooglePatents
                 where itemprop == "countryName"
                 select infoNode.InnerText).First();
 
-            var downloadXPath = "/html/head/meta[10]";
-            var downloadNode = document.DocumentNode.SelectSingleNode(downloadXPath);
-            var downloadHref = downloadNode.GetAttributeValue("content", null);
+            var pageHtml = new HtmlDocument();
+            pageHtml.LoadHtml(webpage.PageSource);
+            string? downloadHref;
+            try
+            {
+                downloadHref = (
+                    from node in pageHtml.DocumentNode.SelectNodes("/html/head/meta")
+                    where node.GetAttributeValue("name", null) == "citation_pdf_url"
+                    select node.GetAttributeValue("content", null)).First();
+            }
+            catch (Exception)
+            {
+                downloadHref = null;
+            }              
 
             var priorArtKeywords = (
                 from infoNode in headInfoNodes
@@ -753,11 +833,19 @@ namespace DxMLEngine.Features.GooglePatents
                 where itemprop == "priorArtKeywords"
                 select infoNode.InnerText).ToArray();
 
-            var legalStatus = (
-                from infoNode in headInfoNodes
-                let itemprop = infoNode.GetAttributeValue("itemprop", null)
-                where itemprop == "legalStatusIfi"
-                select infoNode.InnerText.Trim()).First();
+            string? legalStatus;
+            try
+            {
+                legalStatus = (
+                    from infoNode in headInfoNodes
+                    let itemprop = infoNode.GetAttributeValue("itemprop", null)
+                    where itemprop == "legalStatusIfi"
+                    select infoNode.InnerText.Trim()).First();
+            }
+            catch (Exception)
+            {
+                legalStatus = null;
+            }
 
             var applicationNumber = (
                 from infoNode in bodyInfoNodes
@@ -771,11 +859,19 @@ namespace DxMLEngine.Features.GooglePatents
                 where itemprop == "inventor"
                 select infoNode.InnerText).ToArray();
 
-            var currentAssignee = (
-                from infoNode in bodyInfoNodes
-                let itemprop = infoNode.GetAttributeValue("itemprop", null)
-                where itemprop == "assigneeCurrent"
-                select infoNode.InnerText.Trim()).First();
+            string? currentAssignee;             
+            try
+            {
+                currentAssignee = (
+                    from infoNode in bodyInfoNodes
+                    let itemprop = infoNode.GetAttributeValue("itemprop", null)
+                    where itemprop == "assigneeCurrent"
+                    select infoNode.InnerText.Trim()).First();
+            }
+            catch (Exception)
+            {
+                currentAssignee = null;
+            }
 
             var originalAssignees = (
                 from infoNode in bodyInfoNodes

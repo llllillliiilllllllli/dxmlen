@@ -12,6 +12,7 @@ namespace DxMLEngine.Features.GooglePatents
     internal class Patent
     {
         public string? Title { set; get; }
+        public string? Url { set; get; }
 
         public Abstract? Abstract { set; get; }
         public Images? Images { set; get; }
