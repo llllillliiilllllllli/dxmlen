@@ -43,10 +43,10 @@ namespace DxMLEngine.Features.UNComtrade
         public string TradeDataEndpoint { get { return ConfigureTradeDataEndpoint(); } } 
 
         public string? Id { get; set; }
-        public string? Reponse { set; get; }
+        public string? Response { set; get; }
 
-        public const string EP_AVAILABILITY = "http://comtrade.un.org/api/refs/da/view?{parameters}";
-        public const string EP_UNTRADE_DATA = "http://comtrade.un.org/api/get?{parameters}";
+        private const string EP_AVAILABILITY = "http://comtrade.un.org/api/refs/da/view?{parameters}";
+        private const string EP_UNTRADE_DATA = "http://comtrade.un.org/api/get?{parameters}";
         
         public string? TradeType { set; get; }
         public string? Frequency { set; get; }

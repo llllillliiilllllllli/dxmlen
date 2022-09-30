@@ -58,12 +58,12 @@ namespace DxMLEngine.Features.UNComtrade
                 var uri = new Uri(endpoint.AvailabilityEndpoint);
                 var request = new HttpRequestMessage() { RequestUri = uri };
                 var response = client.Send(request);
-                endpoint.Reponse = response.Content.ReadAsStringAsync().Result;
+                endpoint.Response = response.Content.ReadAsStringAsync().Result;
 
-                Console.WriteLine(endpoint.Reponse);
+                Console.WriteLine(endpoint.Response);
                 Console.WriteLine();
 
-                OutputAvailability(outDir, endpoint);
+                OutputAvailabilityData(outDir, endpoint);
             }            
         }
 
@@ -96,9 +96,9 @@ namespace DxMLEngine.Features.UNComtrade
                 var uri = new Uri(endpoint.AvailabilityEndpoint);
                 var request = new HttpRequestMessage() { RequestUri = uri };
                 var response = client.Send(request);
-                endpoint.Reponse = response.Content.ReadAsStringAsync().Result;
+                endpoint.Response = response.Content.ReadAsStringAsync().Result;
 
-                Console.WriteLine(endpoint.Reponse);
+                Console.WriteLine(endpoint.Response);
                 Console.WriteLine();
 
                 OutputTradeData(outDir, endpoint);
@@ -162,10 +162,10 @@ namespace DxMLEngine.Features.UNComtrade
             return endpoints.ToArray();
         }
     
-        private static void OutputAvailability(string location, Endpoint endpoint)
+        private static void OutputAvailabilityData(string location, Endpoint endpoint)
         {
             var path = $"{location}\\Datason @{endpoint.Id}Availability #-------------- .json";
-            File.WriteAllText(path, endpoint.Reponse, encoding: Encoding.UTF8);
+            File.WriteAllText(path, endpoint.Response, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
             File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
@@ -174,7 +174,7 @@ namespace DxMLEngine.Features.UNComtrade
         private static void OutputTradeData(string location, Endpoint endpoint)
         {
             var path = $"{location}\\Datason @{endpoint.Id}TradeData #-------------- .json";
-            File.WriteAllText(path, endpoint.Reponse, encoding: Encoding.UTF8);
+            File.WriteAllText(path, endpoint.Response, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
             File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
