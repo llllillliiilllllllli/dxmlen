@@ -80,5 +80,11 @@ namespace DxMLEngine.Functions
 
             return DxClipboard.GetText();
         }
+
+        public static void DownloadWebpage(Process process, int wait = 5000)
+        {
+            DxKeyboard.SendKeys(process, "CTRL+S", 100);
+            Thread.Sleep(wait);
+        }
     }
 }

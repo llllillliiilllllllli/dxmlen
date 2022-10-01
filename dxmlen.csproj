@@ -25,6 +25,17 @@
     <Folder Include="src\Features\DataCollection\CrunchBase\CBInvestors\" />
     <Folder Include="src\Features\DataCollection\CrunchBase\CBEvents\" />
     <Folder Include="src\Features\DataCollection\CrunchBase\CBCompanies\" />
+    <Folder Include="src\Features\DataCollection\Google\GoogleSearch\" />
+    <Folder Include="src\Features\DataCollection\Google\GoogleNews\" />
+    <Folder Include="src\Features\DataCollection\Google\GoogleBooks\" />
+    <Folder Include="src\Features\DataCollection\Google\GoogleMaps\" />
+    <Folder Include="src\Features\DataCollection\Google\GooglePlay\" />
+    <Folder Include="src\Features\DataCollection\Google\GoogleArts\" />
+    <Folder Include="src\Features\DataCollection\Google\GoogleTranslate\" />
+    <Folder Include="src\Features\DataCollection\Meta\Instagram\" />
+    <Folder Include="src\Features\DataCollection\Meta\Facebook\" />
+    <Folder Include="src\Features\DataCollection\Google\YouTube\" />
+    <Folder Include="src\Features\DataCollection\Meta\" />
     <Folder Include="src\Services\HtmlAgility\" />
     <Folder Include="src\Services\Tesseract\TessData\tessconfigs\" />
     <Folder Include="src\Application\Configuration\" />
