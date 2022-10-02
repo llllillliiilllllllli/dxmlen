@@ -39,7 +39,8 @@ namespace DxMLEngine.Features.GooglePatents
 
         internal string? PageNumber { set; get; }
 
-        internal SearchBy? searchBy { set; get; }
+        internal SearchBy? SearchBy { set; get; }
+        internal int? NumberOfPages { set; get; }
 
         private string ConfigureSearchUrl()
         {
@@ -55,17 +56,17 @@ namespace DxMLEngine.Features.GooglePatents
 
             ////0
             var parameters = "";
-            switch (searchBy)
+            switch (SearchBy)
             {
-                case SearchBy.Keyword:
-                    parameters += $"&q={Keyword}";
-                    break;                
-                case SearchBy.ClassCode:
-                    parameters += $"&q={ClassCode}";
-                    break;                
-                case SearchBy.PatentCode:
+                case Features.GooglePatents.SearchBy.PatentCode:
                     parameters += $"&q={PatentCode}";
                     break;
+                case Features.GooglePatents.SearchBy.ClassCode:
+                    parameters += $"&q={ClassCode}";
+                    break;                
+                case Features.GooglePatents.SearchBy.Keyword:
+                    parameters += $"&q={Keyword?.Replace(" ", "+")}";
+                    break;                
                 default:
                     parameters += $"";
                     break;

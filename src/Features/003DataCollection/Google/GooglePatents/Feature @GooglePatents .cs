@@ -16,11 +16,13 @@ using System.Drawing;
 
 using Microsoft.Data.Analysis;
 
+using DxMLEngine.Utilities;
 using DxMLEngine.Attributes;
 using DxMLEngine.Functions;
 
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
-using Microsoft.ML.Transforms;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace DxMLEngine.Features.GooglePatents
 {
@@ -65,17 +67,6 @@ namespace DxMLEngine.Features.GooglePatents
             if (string.IsNullOrEmpty(outFile))
                 throw new ArgumentNullException("file name is null or empty");            
 
-            Console.WriteLine("\nSelect search by method: ");
-            Console.WriteLine("  1 Search by keyword");
-            Console.WriteLine("  2 Search by class code");
-            Console.WriteLine("  3 Search by patent code");
-
-            Console.Write("\nSelect: ");
-            var selection = Console.ReadLine()?.Trim();
-
-            Console.Write("\nEnter number of pages: ");
-            var inputPage = Console.ReadLine()?.Trim();
-
             ////1            
             var webpages = InputSearchParameters(inFile);
             
@@ -87,44 +78,20 @@ namespace DxMLEngine.Features.GooglePatents
             ////3
             var patentCodes = new List<PatentCode>();
             foreach (var webpage in webpages)
-            {
-                switch (selection)
-                {
-                    case "1":
-                        webpage.searchBy = SearchBy.Keyword;
-                        break;
-
-                    case "2":
-                        webpage.searchBy = SearchBy.ClassCode;
-                        break;
-
-                    case "3":
-                        webpage.searchBy = SearchBy.PatentCode;
-                        break;
-
-                    default:
-                        webpage.searchBy = null;
-                        break;
-                }
-
-            ////4          
+            {        
                 var tempTab = Browser.OpenNewTab(browser, webpage.SearchUrl);
                 webpage.PageText = Browser.CopyPageText(tempTab);
                 webpage.PageSource = Browser.CopyPageSource(tempTab);
                 Browser.CloseCurrentTab(tempTab);
 
-            ////5
-                int? numPages;
-                if (!string.IsNullOrEmpty(inputPage)) 
-                    numPages = int.Parse(inputPage);
-                else
-                {
-                    numPages = FindNumberOfPages(webpage);
-                    if (numPages == null) continue;
-                }
+            ////4
+                if (webpage.NumberOfPages == null)
+                    webpage.NumberOfPages = FindNumberOfPages(webpage);
 
-            ////6              
-                for (int i = 0; i < numPages; i++)
+                if (webpage.NumberOfPages == null) continue;
+
+            ////5              
+                for (int i = 0; i <= webpage.NumberOfPages; i++)
                 {
                     webpage.PageNumber = $"{i}";
                     Console.WriteLine($"\nCollect: {webpage.SearchUrl}");
@@ -144,7 +111,7 @@ namespace DxMLEngine.Features.GooglePatents
 
             Browser.CloseBrowser(browser);
 
-            ////7
+            ////6
             OutputPatentCodes(outDir, outFile, patentCodes.ToArray());
         }
     
@@ -157,7 +124,7 @@ namespace DxMLEngine.Features.GooglePatents
             /// >>> param:  string  # path to output folder for storing collected data 
             /// >>> param:  string  # name of file for saving unprocessed patent text data 
             /// ====================================================================================
-            
+
             ////0 
             Console.Write("\nEnter input file path: ");
             var inFile = Console.ReadLine()?.Replace("\"", "");
@@ -290,6 +257,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static Webpage[] InputSearchParameters(string path)
         {
+            Log.Info("InputSearchParameters");
             var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
 
             var webpages = new List<Webpage>();
@@ -297,36 +265,48 @@ namespace DxMLEngine.Features.GooglePatents
             {
                 var webpage = new Webpage();
 
-                webpage.Keyword = dataFrame["Keyword"][i] != null
-                    ? dataFrame["Keyword"][i]!.ToString()!.Replace(" ", "+") : null;
-                webpage.ClassCode = dataFrame["Class Code"][i] != null
-                    ? dataFrame["Class Code"][i]!.ToString()!.Replace(" ", "+") : null;
-                webpage.PatentCode = dataFrame["Patent Code"][i] != null
-                    ? dataFrame["Patent Code"][i]!.ToString()!.Replace(" ", "+") : null;
+                webpage.PatentCode = Convert.ToString(dataFrame["Patent Code"][i]);
+                webpage.ClassCode = Convert.ToString(dataFrame["Class Code"][i]);
+                webpage.Keyword = Convert.ToString(dataFrame["Keyword"][i]);
 
-                webpage.Before = dataFrame["Before"][i] != null
-                    ? dataFrame["Before"][i]!.ToString()!.Replace(" ", "+") : null;
-                webpage.After = dataFrame["After"][i] != null
-                    ? dataFrame["After"][i]!.ToString()!.Replace(" ", "+") : null;
-                webpage.Inventor = dataFrame["Inventor"][i] != null
-                    ? dataFrame["Inventor"][i]!.ToString()!.Replace(" ", "+") : null;
-                webpage.Assignee = dataFrame["Assignee"][i] != null
-                    ? dataFrame["Assignee"][i]!.ToString()!.Replace(" ", "+") : null;
+                webpage.Before = Convert.ToString(dataFrame["Before"][i]);
+                webpage.After = Convert.ToString(dataFrame["After"][i]);
+                webpage.Inventor = Convert.ToString(dataFrame["Inventor"][i]);
+                webpage.Assignee = Convert.ToString(dataFrame["Assignee"][i]);
 
-                webpage.Country = dataFrame["Country"][i] != null
-                    ? dataFrame["Country"][i]!.ToString()!.Replace(" ", "+") : null;
-                webpage.Language = dataFrame["Language"][i] != null
-                    ? dataFrame["Language"][i]!.ToString()!.Replace(" ", "+") : null;
-                webpage.Status = dataFrame["Status"][i] != null
-                    ? dataFrame["Status"][i]!.ToString()!.Replace(" ", "+") : null;
-                webpage.Type = dataFrame["Type"][i] != null
-                    ? dataFrame["Type"][i]!.ToString()!.Replace(" ", "+") : null;
-                webpage.Litigation = dataFrame["Litigation"][i] != null
-                    ? dataFrame["Litigation"][i]!.ToString()!.Replace(" ", "+") : null;
+                webpage.Country = Convert.ToString(dataFrame["Country"][i]);
+                webpage.Language = Convert.ToString(dataFrame["Language"][i]);
+                webpage.Status = Convert.ToString(dataFrame["Status"][i]);
+                webpage.Type = Convert.ToString(dataFrame["Type"][i]);
+                webpage.Litigation = Convert.ToString(dataFrame["Litigation"][i]);
+                
+                var searchBy = Convert.ToString(dataFrame["Search By"][i]);
+                var NumberOfPages = dataFrame["Number of Pages"][i];
 
-                if (webpage.Keyword != null) Console.WriteLine($"Input: {webpage.Keyword}");
-                if (webpage.ClassCode != null) Console.WriteLine($"Input: {webpage.ClassCode}");
-                if (webpage.PatentCode != null) Console.WriteLine($"Input: {webpage.PatentCode}");
+                switch (searchBy)
+                {
+                    case "Patent Code":
+                        webpage.SearchBy = SearchBy.PatentCode;
+                        break;
+
+                    case "Class Code":
+                        webpage.SearchBy = SearchBy.ClassCode;
+                        break;
+
+                    case "Keyword":
+                        webpage.SearchBy = SearchBy.Keyword;
+                        break;
+
+                    default:
+                        webpage.SearchBy = null;
+                        break;
+                }
+
+                webpage.NumberOfPages = NumberOfPages != null ? Convert.ToInt32(NumberOfPages) : null;
+
+                if (webpage.SearchBy == SearchBy.PatentCode) Console.WriteLine($"{webpage.PatentCode}");
+                if (webpage.SearchBy == SearchBy.ClassCode) Console.WriteLine($"{webpage.ClassCode}");
+                if (webpage.SearchBy == SearchBy.Keyword) Console.WriteLine($"{webpage.Keyword}");
 
                 webpages.Add(webpage);
             }
@@ -336,6 +316,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static Webpage[] InputPatentCodes(string path)
         {
+            Log.Info("InputPatentCodes");
             var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
 
             var webpages = new List<Webpage>();
@@ -346,7 +327,7 @@ namespace DxMLEngine.Features.GooglePatents
                 webpage.PatentCode = dataFrame["Patent Code"][i] != null
                     ? dataFrame["Patent Code"][i]!.ToString()!.Replace(" ", "+") : null;
 
-                Console.WriteLine($"Input: {webpage.PatentCode}");
+                Console.WriteLine($"{webpage.PatentCode}");
                 webpages.Add(webpage);
             }
 
@@ -355,6 +336,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static void OutputSearchPageText(string location, Webpage webpage)
         {
+            Log.Info("OutputSearchPageText");
             var path = $"{location}\\Datadoc @{webpage.Id}SearchPage #-------------- .txt";
             File.WriteAllText(path, webpage.PageText, encoding: Encoding.UTF8);
 
@@ -364,6 +346,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static void OutputSearchPageSource(string location, Webpage webpage)
         {
+            Log.Info("OutputSearchPageSource");
             var path = $"{location}\\Webpage @{webpage.Id}SearchPage #-------------- .html";
             File.WriteAllText(path, webpage.PageSource, encoding: Encoding.UTF8);
 
@@ -373,6 +356,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static void OutputDetailPageText(string location, Webpage webpage)
         {
+            Log.Info("OutputDetailPageText");
             var path = $"{location}\\Datadoc @{webpage.PatentCode}DetailPage #-------------- .txt";
             File.WriteAllText(path, webpage.PageText, encoding: Encoding.UTF8);
 
@@ -382,6 +366,7 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static void OutputDetailPageSource(string location, Webpage webpage)
         {
+            Log.Info("OutputDetailPageSource");
             var path = $"{location}\\Webpage @{webpage.PatentCode}DetailPage #-------------- .html";
             File.WriteAllText(path, webpage.PageSource, encoding: Encoding.UTF8);
 
@@ -391,12 +376,12 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static void OutputPatentCodes(string location, string fileName, PatentCode[] patentCodes)
         {
+            Log.Info("OutputPatentCodes");
             var dataFrame = new DataFrame(new List<DataFrameColumn>()
                 {
-                    new StringDataFrameColumn("Keyword"),
-                    new StringDataFrameColumn("Class Code"),
                     new StringDataFrameColumn("Patent Code"),
-
+                    new StringDataFrameColumn("Class Code"),                    
+                    new StringDataFrameColumn("Keyword"),
                     new StringDataFrameColumn("Before"),
                     new StringDataFrameColumn("After"),
                     new StringDataFrameColumn("Inventor"),
@@ -406,8 +391,6 @@ namespace DxMLEngine.Features.GooglePatents
                     new StringDataFrameColumn("Status"),
                     new StringDataFrameColumn("Type"),
                     new StringDataFrameColumn("Litigation"),
-
-                    new StringDataFrameColumn("Founded Patent Code"),
                 }
             );
 
@@ -415,9 +398,9 @@ namespace DxMLEngine.Features.GooglePatents
             {
                 var dataRow = new List<KeyValuePair<string, object?>>()
                 {
-                    new KeyValuePair<string, object?>("Code", patentCode.Code),
-                    new KeyValuePair<string, object?>("Keyword", patentCode.Keyword),
+                    new KeyValuePair<string, object?>("Patent Code", patentCode.Code),
                     new KeyValuePair<string, object?>("Class Code", patentCode.ClassCode),
+                    new KeyValuePair<string, object?>("Keyword", patentCode.Keyword),
                     new KeyValuePair<string, object?>("Before", patentCode.Before),
                     new KeyValuePair<string, object?>("After", patentCode.After),
                     new KeyValuePair<string, object?>("Inventor", patentCode.Inventor),
@@ -429,7 +412,7 @@ namespace DxMLEngine.Features.GooglePatents
                     new KeyValuePair<string, object?>("Litigation", patentCode.Litigation),
                 };
 
-                Console.WriteLine($"Output: {patentCode}");
+                Console.WriteLine($"{patentCode.Code}");
                 dataFrame.Append(dataRow, inPlace: true);
             }
 
@@ -442,9 +425,11 @@ namespace DxMLEngine.Features.GooglePatents
 
         private static void OutputPatentDetails(string location, string fileName, Patent patent)
         {
-            var jsonString = JsonSerializer.Serialize(patent);
+            Log.Info("OutputPatentDetails");
 
-            Console.WriteLine($"Output: {patent.Title}");
+            var jsonString = JsonSerializer.Serialize(patent, new JsonSerializerOptions() {  WriteIndented = true });
+
+            Console.WriteLine($"{patent.Title}");
 
             var path = $"{location}\\Datason @{fileName} #-------------- .json";
             File.WriteAllText(path, jsonString, encoding: Encoding.UTF8);
@@ -601,7 +586,7 @@ namespace DxMLEngine.Features.GooglePatents
                 let codeMatches = codeRegex.Matches(webpage.PageText)
                 from codeMatch in codeMatches
                 where codeMatch.Success
-                where codeMatch.Value.Length > 6
+                where Regex.Match(codeMatch.Value, @"[\d]+").Success
                 select codeMatch.Value;
 
             var patentCodes = new List<PatentCode>();
@@ -609,8 +594,8 @@ namespace DxMLEngine.Features.GooglePatents
             {
                 var patentCode = new PatentCode();
                 patentCode.Code = foundedPatentCode;
-                patentCode.Keyword = webpage.Keyword;
                 patentCode.ClassCode = webpage.ClassCode;
+                patentCode.Keyword = webpage.Keyword;
                 patentCode.Before = webpage.Before;
                 patentCode.After = webpage.After;
                 patentCode.Inventor = webpage.Inventor;
@@ -984,86 +969,86 @@ namespace DxMLEngine.Features.GooglePatents
             {
                 if (textHeaders[i].Contains("Patent Citations"))
                 {
-                    targetText = webpage.PageText
-                        .Split("Claims")[1]
+                    targetText = Regex
+                        .Split(webpage.PageText, @"Claims [(][\d]+[)]")[1]
                         .Split("Patent Citations")[0];
                     break;
                 }
 
                 if (textHeaders[i].Contains("Patent Citations"))
                 {
-                    targetText = webpage.PageText
-                        .Split("Claims")[1]
+                    targetText = Regex
+                        .Split(webpage.PageText, @"Claims [(][\d]+[)]")[1]
                         .Split("Patent Citations")[0];
                     break;
                 }
 
                 if (textHeaders[i].Contains("Patent Citations"))
                 {
-                    targetText = webpage.PageText
-                        .Split("Claims")[1]
+                    targetText = Regex
+                        .Split(webpage.PageText, @"Claims [(][\d]+[)]")[1]
                         .Split("Non-Patent Citations")[0];
                     break;
                 }
 
                 if (textHeaders[i].Contains("Cited By"))
                 {
-                    targetText = webpage.PageText
-                        .Split("Claims")[1]
+                    targetText = Regex
+                        .Split(webpage.PageText, @"Claims [(][\d]+[)]")[1]
                         .Split("Cited By")[0];
                     break;
                 }
 
                 if (textHeaders[i].Contains("Similar Documents"))
                 {
-                    targetText = webpage.PageText
-                        .Split("Claims")[1]
+                    targetText = Regex
+                        .Split(webpage.PageText, @"Claims [(][\d]+[)]")[1]
                         .Split("Similar Documents")[0];
                     break;
                 }                
                 
                 if (textHeaders[i].Contains("Parent Applications"))
                 {
-                    targetText = webpage.PageText
-                        .Split("Claims")[1]
+                    targetText = Regex
+                        .Split(webpage.PageText, @"Claims [(][\d]+[)]")[1]
                         .Split("Parent Applications")[0];
                     break;
                 }                
                 
                 if (textHeaders[i].Contains("Priority Applications"))
                 {
-                    targetText = webpage.PageText
-                        .Split("Claims")[1]
+                    targetText = Regex
+                        .Split(webpage.PageText, @"Claims [(][\d]+[)]")[1]
                         .Split("Priority Applications")[0];
                     break;
                 }                
                 
                 if (textHeaders[i].Contains("Applications Claiming Priority"))
                 {
-                    targetText = webpage.PageText
-                        .Split("Claims")[1]
+                    targetText = Regex
+                        .Split(webpage.PageText, @"Claims [(][\d]+[)]")[1]
                         .Split("Applications Claiming Priority")[0];
                     break;
                 }                
                 
                 if (textHeaders[i].Contains("Legal Events"))
                 {
-                    targetText = webpage.PageText
-                        .Split("Claims")[1]
+                    targetText = Regex
+                        .Split(webpage.PageText, @"Claims [(][\d]+[)]")[1]
                         .Split("Legal Events")[0];
                     break;
                 }
 
                 if (textHeaders[i].Contains("Concepts"))
                 {
-                    targetText = webpage.PageText
-                        .Split("Claims")[1]
+                    targetText = Regex
+                        .Split(webpage.PageText, @"Claims [(][\d]+[)]")[1]
                         .Split("Concepts")[0];
                     break;
                 }
             }
 
-            var content = targetText;
+            var content = targetText != null ? targetText.Trim() : null;
 
             ////
             var targetSource = webpage.PageSource
@@ -1141,6 +1126,8 @@ namespace DxMLEngine.Features.GooglePatents
                         from node in conceptNode.ChildNodes
                         where node.GetAttributeValue("itemprop", null) == "svg_small"
                         select node.InnerText).First();
+
+                    concept.ImageSmall = concept.ImageSmall[0..100] + "...";
                 }
                 catch (Exception) { concept.ImageSmall = null; }
 
@@ -1150,6 +1137,8 @@ namespace DxMLEngine.Features.GooglePatents
                         from node in conceptNode.ChildNodes
                         where node.GetAttributeValue("itemprop", null) == "svg_large"
                         select node.InnerText).First();
+
+                    concept.ImageLarge = concept.ImageLarge[0..100] + "...";
                 }
                 catch (Exception) { concept.ImageLarge = null; }
 

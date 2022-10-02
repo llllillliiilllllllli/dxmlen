@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="log\" />
+    <Folder Include="src\Features\002Mathematics\" />
     <Folder Include="src\Features\003DataCollection\CrunchBase\CBFundings\" />
     <Folder Include="src\Features\003DataCollection\CrunchBase\CBAcquisitions\" />
     <Folder Include="src\Features\003DataCollection\CrunchBase\CBPeople\" />
@@ -33,7 +34,6 @@
     <Folder Include="src\Features\003DataCollection\Google\GoogleArts\" />
     <Folder Include="src\Features\003DataCollection\Google\GoogleTranslate\" />
     <Folder Include="src\Features\003DataCollection\Google\YouTube\" />
-    <Folder Include="src\Features\002Mathematics\" />
     <Folder Include="src\Services\HtmlAgility\" />
     <Folder Include="src\Services\Tesseract\TessData\tessconfigs\" />
     <Folder Include="src\Application\Configuration\" />
