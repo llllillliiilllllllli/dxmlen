@@ -8,7 +8,7 @@ using DxMLEngine.Attributes;
 
 namespace DxMLEngine.Features.GoogleScholar
 {
-    internal class Webpage
+    internal class WebSearch
     {
         public string? Id { set; get; }
 
@@ -33,11 +33,6 @@ namespace DxMLEngine.Features.GoogleScholar
         public string? PageSource { set; get; }
         
         #endregion Response
-
-        public Webpage()
-        {
-
-        }
 
         private string ConfigureSearchUrl()
         {

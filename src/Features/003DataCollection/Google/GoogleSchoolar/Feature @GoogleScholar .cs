@@ -47,7 +47,7 @@ namespace DxMLEngine.Features.GoogleScholar
                 throw new ArgumentNullException("path is null or empty");
 
             ////
-            var webpages = InputSearchUrls(inFile);
+            var searches = InputSearchUrls(inFile);
 
             ////
             var browser = Browser.LaunghEdge();
@@ -55,22 +55,22 @@ namespace DxMLEngine.Features.GoogleScholar
                 throw new Exception("browser == null");
 
             ////
-            foreach (var webpage in webpages)
+            foreach (var search in searches)
             {   
-                var tempTab = Browser.OpenNewTab(browser, webpage.SearchUrl);
-                webpage.PageText = Browser.CopyPageText(tempTab);
-                webpage.PageSource = Browser.CopyPageSource(tempTab);
+                var tempTab = Browser.OpenNewTab(browser, search.SearchUrl);
+                search.PageText = Browser.CopyPageText(tempTab);
+                search.PageSource = Browser.CopyPageSource(tempTab);
                 Browser.CloseCurrentTab(tempTab);
 
-                var numPages = FindNumberOfPages(webpage);
+                var numPages = FindNumberOfPages(search);
 
                 for (int i = 0; i <= numPages; i++)
                 {
-                    webpage.Page = $"{i * 10}";
-                    Console.WriteLine($"\nCollect: {webpage.SearchUrl}");
+                    search.Page = $"{i * 10}";
+                    Console.WriteLine($"\nCollect: {search.SearchUrl}");
 
-                    var newTab = Browser.OpenNewTab(browser, webpage.SearchUrl);
-                    Browser.DownloadWebpage(newTab, wait: 7000);
+                    var newTab = Browser.OpenNewTab(browser, search.SearchUrl);
+                    Browser.DownloadWebSearch(newTab, wait: 7000);
                     Browser.CloseCurrentTab(newTab);
                 }
             }
@@ -99,7 +99,7 @@ namespace DxMLEngine.Features.GoogleScholar
                 throw new ArgumentNullException("path is null or empty");
 
             ////
-            var paths = InputWebpagePaths(inFile);
+            var paths = InputWebSearchPaths(inFile);
 
             ////
             var researchPapers = new List<ResearchPaper>();
@@ -447,27 +447,27 @@ namespace DxMLEngine.Features.GoogleScholar
             return researchPapers.ToArray();
         }
 
-        private static Webpage[] InputSearchUrls(string inFile)
+        private static WebSearch[] InputSearchUrls(string inFile)
         {
             var dataFrame = DataFrame.LoadCsv(inFile, header: true, separator: '\t', encoding: Encoding.UTF8);
-            var webpages = new List<Webpage>();
+            var searches = new List<WebSearch>();
             for (int i = 0; i < dataFrame.Rows.Count; i++) 
             {
-                var webpage = new Webpage();
-                webpage.Query = Convert.ToString(dataFrame["Query"][i]);
-                webpage.Page = Convert.ToString(dataFrame["Page"][i]);
-                webpage.Language = Convert.ToString(dataFrame["Language"][i]);
-                webpage.FromYear = Convert.ToString(dataFrame["From Year"][i]);
-                webpage.ToYear = Convert.ToString(dataFrame["To Year"][i]);
-                webpage.Reviewed = Convert.ToBoolean(dataFrame["Reviewed"][i]);
+                var search = new WebSearch();
+                search.Query = Convert.ToString(dataFrame["Query"][i]);
+                search.Page = Convert.ToString(dataFrame["Page"][i]);
+                search.Language = Convert.ToString(dataFrame["Language"][i]);
+                search.FromYear = Convert.ToString(dataFrame["From Year"][i]);
+                search.ToYear = Convert.ToString(dataFrame["To Year"][i]);
+                search.Reviewed = Convert.ToBoolean(dataFrame["Reviewed"][i]);
                 
-                webpages.Add(webpage);
+                searches.Add(search);
             }
 
-            return webpages.ToArray();
+            return searches.ToArray();
         }
 
-        private static string[] InputWebpagePaths(string inFile)
+        private static string[] InputWebSearchPaths(string inFile)
         {
             var dataFrame = DataFrame.LoadCsv(inFile, header: true, separator: '\t', encoding: Encoding.UTF8);
             var paths = new List<string>();
@@ -528,12 +528,12 @@ namespace DxMLEngine.Features.GoogleScholar
             File.Move(outFile, outFile.Replace("#--------------", $"#{timestamp}"));
         }
     
-        private static int? FindNumberOfPages(Webpage webpage)
+        private static int? FindNumberOfPages(WebSearch search)
         {
-            if (webpage.PageText == null)
-                throw new ArgumentNullException("webpage.PageText != null");
+            if (search.PageText == null)
+                throw new ArgumentNullException("search.PageText != null");
 
-            var match = Regex.Match(webpage.PageText, @"About [\d,]+ results [(][\d.]+ sec[)]");
+            var match = Regex.Match(search.PageText, @"About [\d,]+ results [(][\d.]+ sec[)]");
 
             if (match.Success)
             {

@@ -13,6 +13,8 @@ using DxMLEngine.Functions;
 
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
+using DxMLEngine.Utilities;
+
 namespace DxMLEngine.Features.Amazon
 {
     [Feature]
@@ -50,83 +52,56 @@ namespace DxMLEngine.Features.Amazon
             if (string.IsNullOrEmpty(outDir))
                 throw new ArgumentNullException("path is null or empty");
 
-            Console.Write("\nEnter number of pages: ");
-            var inputPages = Console.ReadLine()?.Replace(",", "");
-
             ////1            
-            var webpages = InputSearchKeywords(inFile);
+            var searches = InputAsinSearches(inFile);
 
             ////2
-            var dataFrame = new DataFrame(new List<DataFrameColumn>()
-                {
-                    new StringDataFrameColumn("Keyword"),
-                    new StringDataFrameColumn("ASIN"),
-                    new StringDataFrameColumn("URL"),
-                }
-            );
-
-            ////3
             var browser = Browser.LaunghEdge();
             if (browser == null)
                 throw new Exception("browser == null");
 
-            ////4
-            foreach (var webpage in webpages)
-            {          
-                var tempTab = Browser.OpenNewTab(browser, webpage.SearchUrl);
-                webpage.PageText = Browser.CopyPageText(tempTab, 1000);
-                webpage.PageSource = Browser.CopyPageSource(tempTab, 5000);
+            ////3
+            var foundedProducts = new List<Product>();
+            for (int i = 0; i < searches.Length; i++)
+            {
+                var search = searches[i];
 
-                webpage.PageLayout = CheckPageLayout(webpage);
-                
+                var tempTab = Browser.OpenNewTab(browser, search.SearchUrl);
+                search.PageText = Browser.CopyPageText(tempTab, 1000);
+                search.PageSource = Browser.CopyPageSource(tempTab, 5000);
+
+                search.PageLayout = CheckPageLayout(search);                
                 Browser.CloseCurrentTab(tempTab);
 
-            ////5
-                int numPages;
-                if (!string.IsNullOrEmpty(inputPages)) numPages = int.Parse(inputPages);
-                else
-                    numPages = FindNumberOfProductPages(webpage);
+            ////4
+                if (search.NumberOfPages == null) 
+                    search.NumberOfPages = FindNumberOfProductPages(search);
+                if (search.NumberOfPages == null)
+                    continue;
 
-            ////6
-                for (int i = 0; i < numPages; i++)
+            ////5               
+                for (int j = 0; j < 2; j++)
                 {
-                    webpage.SearchPageNumber = $"{i+1}";
-                    Console.WriteLine($"\nCollect: {webpage.SearchUrl}");
+                    search.SearchPageNumber = $"{j+1}";
+                    Console.WriteLine($"\nCollect: {search.SearchUrl}");
 
-                    var newTab = Browser.OpenNewTab(browser, webpage.SearchUrl);
-                    webpage.PageText = Browser.CopyPageText(newTab, 1000);
-                    webpage.PageSource = Browser.CopyPageSource(newTab, 5000);
+                    var newTab = Browser.OpenNewTab(browser, search.SearchUrl);
+                    search.PageText = Browser.CopyPageText(newTab, 1000);
+                    search.PageSource = Browser.CopyPageSource(newTab, 5000);
 
-                    OutputSearchPageText(outDir, webpage);
-                    OutputSearchPageSource(outDir, webpage);
+                    var fileName = $"{search.Keyword?.Replace(" ", "")}Page{j + 1}";
+                    OutputPageText(outDir, fileName, search);
+                    OutputPageSource(outDir, fileName, search);
 
-                    var foundedAsins = new List<string>();
-                    if (webpage.PageLayout == PageLayout.FormA)
-                        foundedAsins.AddRange(ExtractAsinFormA(webpage));
-                    if (webpage.PageLayout == PageLayout.FormB)
-                        foundedAsins.AddRange(ExtractAsinFormB(webpage));
-                        
-                    foreach (var foundedAsin in foundedAsins)
-                    {
-                        var dataRow = new List<KeyValuePair<string, object?>>()
-                        {
-                            new KeyValuePair<string, object?>("Keyword", webpage.Keyword),
-                            new KeyValuePair<string, object?>("ASIN", foundedAsin),
-                            new KeyValuePair<string, object?>("URL", webpage.SearchUrl),
-                        };
-
-                        Console.WriteLine(foundedAsin);
-                        dataFrame.Append(dataRow, inPlace: true);
-                    }
-
+                    foundedProducts.AddRange(ExtractProductAsins(search));
                     Browser.CloseCurrentTab(newTab);
                 }
             }
 
             Browser.CloseBrowser(browser!);
 
-            ////7
-            OutputProductSearches(outDir, dataFrame);
+            ////6
+            OutputProductAsins(outDir, "ProductAsins", foundedProducts.ToArray());
         }
 
         public static void CollectProductDetails()
@@ -163,56 +138,36 @@ namespace DxMLEngine.Features.Amazon
                 throw new ArgumentNullException("path is null or empty");
 
             ////1            
-            var webpages = InputProductAsins(inFile);
+            var searches = InputProductSearches(inFile);
 
             ////2
             var browser = Browser.LaunghEdge();
             if (browser == null)
                 throw new Exception("browser == null");
 
-            ////3
-            var dataFrame = new DataFrame(new List<DataFrameColumn>()
-                {
-                    new StringDataFrameColumn("Keyword"),
-                    new StringDataFrameColumn("ASIN"),
-                    new StringDataFrameColumn("Product Name"),
-                    new StringDataFrameColumn("Seller Name"),
-                    new StringDataFrameColumn("Selling Price"),
-                    new StringDataFrameColumn("Category"),
-                    new StringDataFrameColumn("Description"),
-                    new StringDataFrameColumn("URL"),
-                }
-            );
-
             ////4
-            foreach (var webpage in webpages)
+            var products = new List<Product>();
+            for (int i = 0; i < searches.Length; i++)
             {
-                Console.WriteLine($"\nCollect: {webpage.DetailUrl}");
+                var search = searches[i];
+                Console.WriteLine($"\nCollect: {search.DetailUrl}");
 
-                var newTab = Browser.OpenNewTab(browser, webpage.DetailUrl);
-                webpage.PageText = Browser.CopyPageText(newTab, 2000);
-                webpage.PageSource = Browser.CopyPageSource(newTab, 5000);
+                var newTab = Browser.OpenNewTab(browser, search.DetailUrl);
+                search.PageText = Browser.CopyPageText(newTab, 2000);
+                search.PageSource = Browser.CopyPageSource(newTab, 5000);
 
-                OutputDetailPageText(outDir, webpage);
-                OutputDetailPageSource(outDir, webpage);
+                var fileName = $"{search.Asin}Page{i + 1}";
+                OutputPageText(outDir, fileName, search);
+                OutputPageSource(outDir, fileName, search);
 
-                var dataRows = new List<KeyValuePair<string, object?>>();
-                dataRows.AddRange(new List<KeyValuePair<string, object?>>()
-                {
-                    new KeyValuePair<string, object?>("Keyword", webpage.Keyword),
-                    new KeyValuePair<string, object?>("ASIN", webpage.Asin),
-                    new KeyValuePair<string, object?>("URL", webpage.DetailUrl),
-                });
-                dataRows.AddRange(ExtractProductData(webpage));
-
-                dataFrame.Append(dataRows, inPlace: true);
+                products.Add(ExtractProductDetails(search));
                 Browser.CloseCurrentTab(newTab);
             }
 
             Browser.CloseBrowser(browser);
 
             ////5
-            OutputProductDetails(outDir, dataFrame);
+            OutputProductDetails(outDir, "ProductDetails", products.ToArray());
         }
 
         public static void CollectCustomerReviews()
@@ -230,19 +185,209 @@ namespace DxMLEngine.Features.Amazon
             if (string.IsNullOrEmpty(outDir))
                 throw new ArgumentNullException("path is null or empty");
 
-            Console.Write("\nSelect options [Positive/Negative]: ");
-            var option = Console.ReadLine();
-
-            Console.Write("\nEnter number of pages: ");
-            var inputPages = Console.ReadLine()?.Replace(",", "");
-
             ////1            
-            var webpages = InputProductAsins(inFile);
+            var searches = InputReviewSearches(inFile);
 
             ////2
+            var browser = Browser.LaunghEdge();
+            if (browser == null)
+                throw new Exception("browser == null");
+
+            ////3
+            var reviews = new List<Review>();
+            for (int i = 0; i < searches.Length; i++)
+            {
+                var search = searches[i];
+
+                var tempTab = Browser.OpenNewTab(browser, search.ReviewUrl);
+                search.PageText = Browser.CopyPageText(tempTab, 1000);
+                search.PageSource = Browser.CopyPageSource(tempTab, 5000);
+
+                Browser.CloseCurrentTab(tempTab);
+
+            ////4
+                if (search.NumberOfPages == null)
+                    search.NumberOfPages = FindNumberOfReviewPages(search);
+                if (search.NumberOfPages == null) continue;
+
+            ////5
+                for (int j = 0; j < search.NumberOfPages; j++)
+                {
+                    search.ReviewPageNumber = $"{j+1}";
+
+                    Console.WriteLine($"\nCollect: {search.ReviewUrl}");
+                    
+                    var fileName = $"{search.Asin}Review{i + 1}";
+                    OutputPageText(outDir, fileName, search);
+                    OutputPageSource(outDir, fileName, search);
+
+                    var newTab = Browser.OpenNewTab(browser, search.ReviewUrl);
+                    search.PageText = Browser.CopyPageText(newTab, 2000);
+                    search.PageSource = Browser.CopyPageSource(newTab, 5000);
+
+                    reviews.Add(ExtractCustomerReviews(search));                 
+                    Browser.CloseCurrentTab(newTab);
+                }
+            }
+
+            Browser.CloseBrowser(browser);
+
+            ////8
+            OutputCustomerReviews(outDir, "CustomerReviews", reviews.ToArray());
+        }
+
+        #region INPUT OUTPUT
+
+        private static WebSearch[] InputAsinSearches(string path)
+        {
+            var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
+            var searches = new List<WebSearch>();
+            for (int i = 0; i < dataFrame.Rows.Count; i++)
+            {
+                var search = new WebSearch();
+                search.Keyword = Convert.ToString(dataFrame["Keyword"][i]);
+                search.NumberOfPages = Convert.ToInt32(dataFrame["Number of Pages"][i]);
+                
+                searches.Add(search);
+            }
+
+            return searches.ToArray();
+        }
+
+        private static WebSearch[] InputProductSearches(string path)
+        {
+            var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
+            var searches = new List<WebSearch>();
+            for (int i = 0; i < dataFrame.Rows.Count; i++)
+            {
+                var search = new WebSearch();
+                search.Asin = Convert.ToString(dataFrame["ASIN"][i]);
+                searches.Add(search);
+            }
+
+            return searches.ToArray();
+        }
+        
+        private static WebSearch[] InputReviewSearches(string path)
+        {
+            var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
+            var searches = new List<WebSearch>();
+            for (int i = 0; i < dataFrame.Rows.Count; i++)
+            {
+                var search = new WebSearch();
+                search.Asin = Convert.ToString(dataFrame["ASIN"][i]);
+                search.NumberOfPages = Convert.ToInt32(dataFrame["Number of Pages"][i]);
+
+                switch (Convert.ToString(dataFrame["Filter By Star"][i]))
+                {
+                    case "Positive":
+                        search.FilterByStar = "positive";
+                        break;
+
+                    case "Negative":
+                        search.FilterByStar = "critical";
+                        break;
+
+                    default:
+                        search.FilterByStar = null;
+                        break;
+                }
+
+                searches.Add(search);
+            }
+
+            return searches.ToArray();
+        }
+
+        private static void OutputPageText(string location, string fileName, WebSearch search)
+        {
+            Log.Info("OutputPageText");
+
+            var path = $"{location}\\Datadoc @{fileName} #-------------- .txt";
+            File.WriteAllText(path, search.PageText, encoding: Encoding.UTF8);
+
+            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
+        }
+
+        private static void OutputPageSource(string location, string fileName, WebSearch search)
+        {
+            Log.Info("OutputPageSource");
+
+            var path = $"{location}\\Dataweb @{fileName} #-------------- .html";
+            File.WriteAllText(path, search.PageSource, encoding: Encoding.UTF8);
+
+            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
+        }
+
+        private static void OutputProductAsins(string location, string fileName, Product[] products)
+        {
+            var dataFrame = new DataFrame(new List<DataFrameColumn>()
+            {
+                new StringDataFrameColumn("ASIN"),
+            });
+
+            foreach (var product in products)
+            {
+                var dataRow = new List<KeyValuePair<string, object?>>()
+                {
+                    new KeyValuePair<string, object?>("ASIN", product.Asin),
+                };
+
+                Console.WriteLine(product.Asin);
+                dataFrame.Append(dataRow, inPlace: true);
+            }
+
+            var path = $"{location}\\Dataset @{fileName} #-------------- .csv";
+            DataFrame.WriteCsv(dataFrame, path, encoding: Encoding.UTF8);
+
+            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
+        }
+
+        private static void OutputProductDetails(string location, string fileName, Product[] products)
+        {
+            var dataFrame = new DataFrame(new List<DataFrameColumn>()
+            {
+                new StringDataFrameColumn("ASIN"),
+                new StringDataFrameColumn("Product Name"),
+                new StringDataFrameColumn("Seller Name"),
+                new StringDataFrameColumn("Selling Price"),
+                new StringDataFrameColumn("Category"),
+                new StringDataFrameColumn("Description"),
+                new StringDataFrameColumn("URL"),
+            });        
+            
+            foreach (var product in products)
+            {
+                var dataRow = new List<KeyValuePair<string, object?>>()
+                {
+                    new KeyValuePair<string, object?>("ASIN", $"\"{product.Asin}\""),
+                    new KeyValuePair<string, object?>("Product Name", $"\"{product.Name}\""),
+                    new KeyValuePair<string, object?>("Seller Name", $"\"{product.Seller}\""),
+                    new KeyValuePair<string, object?>("Selling Price", $"\"{product.Price}\""),
+                    new KeyValuePair<string, object?>("Category", product.Categories != null
+                        ? $"\"{string.Join(", ", product.Categories)}\"" : null),
+                    new KeyValuePair<string, object?>("Description", product.Description != null
+                        ? $"\"{product.Description?.Replace("\"", "\"\"")}\"" : null),
+                    new KeyValuePair<string, object?>("URL", $"\"{product.Url}\""),
+                };
+
+                dataFrame.Append(dataRow, inPlace: true);
+            }
+
+            var path = $"{location}\\Dataset @{fileName} #-------------- .csv";
+            DataFrame.WriteCsv(dataFrame, path, encoding: Encoding.UTF8);
+
+            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
+        }
+
+        private static void OutputCustomerReviews(string location, string fileName, Review[] reviews)
+        {
             var dataFrame = new DataFrame(new List<DataFrameColumn>()
                 {
-                    new StringDataFrameColumn("Keyword"),
                     new StringDataFrameColumn("ASIN"),
                     new StringDataFrameColumn("Product Name"),
                     new StringDataFrameColumn("Seller Name"),
@@ -265,193 +410,43 @@ namespace DxMLEngine.Features.Amazon
                 }
             );
 
-            ////3
-            var browser = Browser.LaunghEdge();
-            if (browser == null)
-                throw new Exception("browser == null");
-
-            ////4
-            foreach (var webpage in webpages)
+            foreach (var review in reviews)
             {
-                switch (option)
+                if (review.Comments == null) continue;
+                foreach (var comment in review.Comments)
                 {
-                    case "Positive":
-                        webpage.FilterByStar = "positive";
-                        break;
-
-                    case "Negative":
-                        webpage.FilterByStar = "critical";
-                        break;
-
-                    default:
-                        webpage.FilterByStar = null;
-                        break;
-                }
-
-                var tempTab = Browser.OpenNewTab(browser, webpage.ReviewUrl);
-                webpage.PageText = Browser.CopyPageText(tempTab, 1000);
-                webpage.PageSource = Browser.CopyPageSource(tempTab, 5000);
-
-                OutputReviewPageText(outDir, webpage);
-                OutputReviewPageSource(outDir, webpage);
-
-                Browser.CloseCurrentTab(tempTab);
-
-            ////5
-                int numPages;
-                if (!string.IsNullOrEmpty(inputPages)) numPages = int.Parse(inputPages);
-                else
-                    numPages = FindNumberOfReviewPages(webpage);
-
-            ////6
-                for (int i = 0; i < numPages; i++)
-                {
-                    webpage.ReviewPageNumber = $"{i+1}";
-
-                    Console.WriteLine($"\nCollect: {webpage.ReviewUrl}");
-
-                    var newTab = Browser.OpenNewTab(browser, webpage.ReviewUrl);
-                    webpage.PageText = Browser.CopyPageText(newTab, 2000);
-                    webpage.PageSource = Browser.CopyPageSource(newTab, 5000);
-
-                    var dataRows = new List<KeyValuePair<string, object?>>();
-                    dataRows.AddRange(new List<KeyValuePair<string, object?>>()
+                    var dataRow = new KeyValuePair<string, object?>[]
                     {
-                        new KeyValuePair<string, object?>("Keyword", webpage.Keyword),
-                        new KeyValuePair<string, object?>("ASIN", webpage.Asin),
-                        new KeyValuePair<string, object?>("URL", webpage.ReviewUrl),
-                    });
-                    dataRows.AddRange(ExtractReviewInfo(webpage));
+                        new KeyValuePair<string, object?>("ASIN", $"\"{review.Asin}\""),
+                        new KeyValuePair<string, object?>("Product Name", $"\"{review.ProductName}\""),
+                        new KeyValuePair<string, object?>("Seller Name", $"\"{review.SellerName}\""),
+                        new KeyValuePair<string, object?>("Overall Score", $"\"{review.OverallScore}\""),
+                        new KeyValuePair<string, object?>("Rating Score", $"\"{review.RatingScore}\""),
+                        new KeyValuePair<string, object?>("Number of Ratings", $"\"{review.NumberOfRating}\""),
+                        new KeyValuePair<string, object?>("5 Star", $"\"{review.FiveStar}\""),
+                        new KeyValuePair<string, object?>("4 Star", $"\"{review.FourStar}\""),
+                        new KeyValuePair<string, object?>("3 Star", $"\"{review.ThreeStar}\""),
+                        new KeyValuePair<string, object?>("2 Star", $"\"{review.TwoStar}\""),
+                        new KeyValuePair<string, object?>("1 Star", $"\"{review.OneStar}\""),
 
-            ////7
-                    var reviews = ExtractReviewDetails(webpage);
-                    foreach (var review in reviews)
-                    {
-                        dataRows.AddRange(review);
-                        dataFrame.Append(dataRows, inPlace: true);
+                        new KeyValuePair<string, object?>("Review Id", $"\"{comment.Id}\""),
+                        new KeyValuePair<string, object?>("Date & Location", $"\"{comment.DateLocation}\""),
+                        new KeyValuePair<string, object?>("Reviewer Name", $"\"{comment.ReviewerName}\""),
+                        new KeyValuePair<string, object?>("Review Rating", $"\"{comment.ReviewRating}\""),
+                        new KeyValuePair<string, object?>("Review Title", comment.ReviewTitle != null 
+                            ? $"\"{comment.ReviewTitle.Replace("\"", "\"\"")}\"" : null),
+                        new KeyValuePair<string, object?>("Review Content", comment.ReviewContent != null
+                            ? $"\"{comment.ReviewContent.Replace("\"", "\"\"")}\"" : null),
+                        new KeyValuePair<string, object?>("Verified Purchase", $"\"{comment.VerifiedPurchase}\""),
+                        
+                        new KeyValuePair<string, object?>("URL", $"\"{review.Url}\""),
+                    };
 
-                        Console.Write($"{review[0].Value?.ToString()?[1..^1]} | ");
-                        Console.WriteLine($"{review[2].Value?.ToString()?[1..^1]}");
-                        Console.WriteLine($"{review[5].Value?.ToString()?[1..^1]}");
-                        Console.WriteLine();
-                    }
-                    
-                    Browser.CloseCurrentTab(newTab);
-                }
+                    dataFrame.Append(dataRow, inPlace: true);
+                }             
             }
 
-            Browser.CloseBrowser(browser);
-
-            ////8
-            OutputProductReviews(outDir, dataFrame);
-        }
-
-        #region INPUT OUTPUT
-
-        private static Webpage[] InputSearchKeywords(string path)
-        {
-            var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
-            var webpages = new List<Webpage>();
-            for (int i = 0; i < dataFrame.Rows.Count; i++)
-            {
-                var webpage = new Webpage();
-                webpage.Keyword = dataFrame["Keyword"][i] != null ? dataFrame["Keyword"][i].ToString() : null;
-                webpages.Add(webpage);
-            }
-
-            return webpages.ToArray();
-        }
-
-        private static Webpage[] InputProductAsins(string path)
-        {
-            var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
-            var webpages = new List<Webpage>();
-            for (int i = 0; i < dataFrame.Rows.Count; i++)
-            {
-                var webpage = new Webpage();
-                webpage.Keyword = dataFrame["Keyword"][i] != null ? dataFrame["Keyword"][i].ToString() : null;
-                webpage.Asin = dataFrame["ASIN"][i] != null ? dataFrame["ASIN"][i].ToString() : null;
-                webpages.Add(webpage);
-            }
-
-            return webpages.ToArray();
-        }
-
-        private static void OutputSearchPageText(string location, Webpage webpage)
-        {
-            var path = $"{location}\\Datadoc @SearchPage #-------------- .txt";
-            File.WriteAllText(path, webpage.PageText, encoding: Encoding.UTF8);
-
-            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
-            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
-        }
-
-        private static void OutputSearchPageSource(string location, Webpage webpage)
-        {
-            var path = $"{location}\\Webpage @Search #-------------- .html";
-            File.WriteAllText(path, webpage.PageSource, encoding: Encoding.UTF8);
-
-            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
-            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
-        }
-
-        private static void OutputDetailPageText(string location, Webpage webpage)
-        {
-            var path = $"{location}\\Datadoc @DetailPage #-------------- .txt";
-            File.WriteAllText(path, webpage.PageText, encoding: Encoding.UTF8);
-
-            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
-            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
-        }
-
-        private static void OutputDetailPageSource(string location, Webpage webpage)
-        {
-            var path = $"{location}\\Webpage @Detail #-------------- .html";
-            File.WriteAllText(path, webpage.PageSource, encoding: Encoding.UTF8);
-
-            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
-            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
-        }
-
-        private static void OutputReviewPageText(string location, Webpage webpage)
-        {
-            var path = $"{location}\\Datadoc @ReviewPage #-------------- .txt";
-            File.WriteAllText(path, webpage.PageText, encoding: Encoding.UTF8);
-
-            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
-            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
-        }
-
-        private static void OutputReviewPageSource(string location, Webpage webpage)
-        {
-            var path = $"{location}\\Webpage @Review #-------------- .html";
-            File.WriteAllText(path, webpage.PageSource, encoding: Encoding.UTF8);
-
-            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
-            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
-        }
-
-        private static void OutputProductSearches(string location, DataFrame dataFrame)
-        {
-            var path = $"{location}\\Dataset @ProductSearches #-------------- .csv";
-            DataFrame.WriteCsv(dataFrame, path, encoding: Encoding.UTF8);
-
-            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
-            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
-        }
-
-        private static void OutputProductDetails(string location, DataFrame dataFrame)
-        {
-            var path = $"{location}\\Dataset @ProductDetails #-------------- .csv";
-            DataFrame.WriteCsv(dataFrame, path, encoding: Encoding.UTF8);
-
-            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
-            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
-        }
-
-        private static void OutputProductReviews(string location, DataFrame dataFrame)
-        {
-            var path = $"{location}\\Dataset @ProductReviews #-------------- .csv";
+            var path = $"{location}\\Dataset @{fileName} #-------------- .csv";
             DataFrame.WriteCsv(dataFrame, path, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
@@ -462,53 +457,43 @@ namespace DxMLEngine.Features.Amazon
 
         #region PAGE CHECKING
 
-        private static int FindNumberOfProductPages(Webpage webpage)
+        private static int FindNumberOfProductPages(WebSearch search)
         {
-            if (webpage.PageText == null)
-                throw new ArgumentException("webpage.PageText == null");
+            if (search.PageText == null)
+                throw new ArgumentException("search.PageText == null");
 
-            if (webpage.PageSource == null)
-                throw new ArgumentException("webpage.PageSource == null");
+            if (search.PageSource == null)
+                throw new ArgumentException("search.PageSource == null");
 
-            var targetText = webpage.PageText
+            var targetText = search.PageText
                 .Split("RESULTS")[0];
 
-            var regex = new Regex("");
-            var perPage = "";
-            switch (webpage.PageLayout)
+            Match? match = null;
+            while (true)
             {
-                case PageLayout.FormA:
-                    regex = new Regex(@"1-48 of over [\d,]+ results for ");
-                    perPage = "48";
-                    break;
+                match = Regex.Match(targetText, @"1-16 of( over)* [\d,]+ results for ");
+                if (match.Success) break;
 
-                case PageLayout.FormB:
-                    regex = new Regex(@"1-16 of over [\d,]+ results for ");
-                    perPage = "16";
-                    break;
+                match = Regex.Match(targetText, @"1-48 of( over)* [\d,]+ results for ");
+                if (match.Success) break;
             }
 
-            var matches = regex.Matches(targetText);
+            var numResults = int.Parse(
+                Regex.Match(match.Value[4..], @"[\d,]+").Value.Replace(",", ""));
 
-            var numResults =
-                from match in matches
-                where match.Success
-                where string.IsNullOrEmpty(match.Value) == false
-                select int.Parse(match.Value
-                    .Replace($"1-{perPage} of over ", "")
-                    .Replace(" results for ", "")
-                    .Replace(",", ""));
+            var perPage = int.Parse(
+                Regex.Match(match.Value[..4], @"[-][\d,]+").Value.Replace("-", ""));
 
-            return int.Parse((numResults.First() / int.Parse(perPage)).ToString().Split(".")[0]);
+            return int.Parse((numResults / perPage).ToString().Split(".")[0]);
         }
     
-        private static int FindNumberOfReviewPages(Webpage webpage)
+        private static int FindNumberOfReviewPages(WebSearch search)
         {
-            if (webpage.PageSource == null)
-                throw new ArgumentException("webpage.PageSource == null");
+            if (search.PageSource == null)
+                throw new ArgumentException("search.PageSource == null");
 
             var pageHtml = new HtmlDocument();
-            pageHtml.LoadHtml(webpage.PageSource);
+            pageHtml.LoadHtml(search.PageSource);
 
             var numResultXPath = "//*[@id='filter-info-section']/div";
             var numResultNode = pageHtml.DocumentNode.SelectSingleNode(numResultXPath);
@@ -520,37 +505,25 @@ namespace DxMLEngine.Features.Amazon
             return int.Parse((numResults / 10).ToString().Split(".")[0]);
         }
         
-        private static PageLayout CheckPageLayout(Webpage webpage)
+        private static PageLayout CheckPageLayout(WebSearch search)
         {
-            if (webpage.PageText == null)
-                throw new ArgumentException("webpage.PageText == null");
+            if (search.PageText == null)
+                throw new ArgumentException("search.PageText == null");
 
-            if (webpage.PageSource == null)
-                throw new ArgumentException("webpage.PageSource == null");
+            if (search.PageSource == null)
+                throw new ArgumentException("search.PageSource == null");
 
             ////0
-            var targetText = webpage.PageText
+            var targetText = search.PageText
                 .Split("RESULTS")[0];
 
-            var regexA = new Regex(@"1-48 of over [\d,]+ results for \u0022[\w]+\u0022");
+            var regexA = new Regex(@"1-48 of( over)* [\d,]+ results for \u0022[\w]+\u0022");
             var matchA = regexA.Match(targetText);
             if (matchA.Success) return PageLayout.FormA;
 
-            var regexB = new Regex(@"1-16 of over [\d,]+ results for \u0022[\w]+\u0022");
+            var regexB = new Regex(@"1-16 of( over)* [\d,]+ results for \u0022[\w]+\u0022");
             var matchB = regexB.Match(targetText);
             if (matchB.Success) return PageLayout.FormB;
-
-            ////1
-            var html = new HtmlDocument();
-            html.LoadHtml(webpage.PageSource);
-
-            var checkXPath = @"/html/body/div[1]/div[2]/span/div/h1/div/div[1]/div/div/span[1]";
-
-            var formANode = html.DocumentNode.SelectSingleNode(checkXPath);
-            if (formANode != null) return PageLayout.FormA;
-
-            var formBNode = html.DocumentNode.SelectSingleNode(checkXPath);
-            if (formBNode != null) return PageLayout.FormB;
 
             return PageLayout.Unknown;
         }
@@ -559,20 +532,40 @@ namespace DxMLEngine.Features.Amazon
 
         #region DATA EXTRACTION
 
-        private static string[] ExtractAsinFormA(Webpage webpage)
+        private static Product[] ExtractProductAsins(WebSearch search)
+        {
+            var foundedAsins = new List<string>();
+            
+            if (search.PageLayout == PageLayout.FormA)
+                foundedAsins.AddRange(ExtractAsinFormA(search));
+            
+            if (search.PageLayout == PageLayout.FormB)
+                foundedAsins.AddRange(ExtractAsinFormB(search));
+
+            var products = new List<Product>();
+            foreach (var foundedAsin in foundedAsins)
+            {
+                var product = new Product();
+                product.Asin = foundedAsin;
+                products.Add(product);
+            }
+            return products.ToArray();
+        }
+
+        private static string[] ExtractAsinFormA(WebSearch search)
         {
             /// ====================================================================================
             /// https://www.amazon.com/s?k=chair
             /// ====================================================================================
 
-            if (webpage.PageText == null)
-                throw new ArgumentException("webpage.PageText == null");
+            if (search.PageText == null)
+                throw new ArgumentException("search.PageText == null");
 
-            if (webpage.PageSource == null)
-                throw new ArgumentException("webpage.PageSource == null");
+            if (search.PageSource == null)
+                throw new ArgumentException("search.PageSource == null");
 
             ////0
-            var targetText = webpage.PageText
+            var targetText = search.PageText
                 .Split("RESULTS")[0];
 
             var regex = new Regex(@"1-48 of over [\d,]+ results for \u0022[\w]+\u0022");
@@ -583,7 +576,7 @@ namespace DxMLEngine.Features.Amazon
                 .Replace("\u0022", "");
 
             ////1
-            var targetSource = webpage.PageSource
+            var targetSource = search.PageSource
                 .Split("<div class=\"s-main-slot s-result-list s-search-results sg-row\">")[1]
                 .Split("<div class=\"s-result-list-placeholder aok-hidden sg-row\">")[0];
 
@@ -601,20 +594,20 @@ namespace DxMLEngine.Features.Amazon
             return foundedAsins.ToArray();
         }
 
-        private static string[] ExtractAsinFormB(Webpage webpage)
+        private static string[] ExtractAsinFormB(WebSearch search)
         {
             /// ====================================================================================
             /// https://www.amazon.com/s?k=electronics
             /// ====================================================================================
 
-            if (webpage.PageText == null)
-                throw new ArgumentException("webpage.PageText == null");
+            if (search.PageText == null)
+                throw new ArgumentException("search.PageText == null");
 
-            if (webpage.PageSource == null)
-                throw new ArgumentException("webpage.PageSource == null");
+            if (search.PageSource == null)
+                throw new ArgumentException("search.PageSource == null");
 
             ////0
-            var targetText = webpage.PageText
+            var targetText = search.PageText
                 .Split("RESULTS")[0];
 
             var regex = new Regex(@"1-16 of over [\d,]+ results for \u0022[\w]+\u0022");
@@ -624,7 +617,7 @@ namespace DxMLEngine.Features.Amazon
                 .Replace(match.Value, @"1-16 of over [\d,]+ results for ", "")
                 .Replace("\u0022", "");
 
-            var targetSource = webpage.PageSource
+            var targetSource = search.PageSource
                 .Split("<div class=\"s-main-slot s-result-list s-search-results sg-row\">")[1]
                 .Split("<div class=\"s-result-list-placeholder aok-hidden sg-row\">")[0];
 
@@ -643,21 +636,25 @@ namespace DxMLEngine.Features.Amazon
             return foundedAsins.ToArray();
         }
 
-        private static KeyValuePair<string, object?>[] ExtractProductData(Webpage webpage)
+        private static Product ExtractProductDetails(WebSearch search)
         {
             /// ====================================================================================
             /// https://www.amazon.com/dp/B081H44MHD
             /// https://www.amazon.com/dp/B099VMT8VZ
             /// ====================================================================================
 
-            if (webpage.PageText == null)
-                throw new ArgumentException("webpage.PageText == null");
+            if (search.PageText == null)
+                throw new ArgumentException("search.PageText == null");
 
-            if (webpage.PageSource == null)
-                throw new ArgumentException("webpage.PageSource == null");
+            if (search.PageSource == null)
+                throw new ArgumentException("search.PageSource == null");
+
+            var product = new Product();
+            product.Asin = search.Asin;
+            product.Url = search.DetailUrl;
 
             ////0
-            var targetText = webpage.PageText
+            var targetText = search.PageText
                 .Split("Sell on Amazon")[1];
 
             var splittedLines = (
@@ -668,9 +665,6 @@ namespace DxMLEngine.Features.Amazon
             var archorRegex = new Regex(@"[\d.]+ out of 5 stars [\d, ]* ratings");
             var priceRegex = new Regex(@"\$(0|[1-9][0-9]{0,2})(,\d{3})*(\.\d{1,2})?");
 
-            string? productName = null;
-            string? sellerName = null;
-            string? sellingPrice = null;
             for (int i = 0; i < splittedLines.Length; i++)
             {
                 var archorMatch = archorRegex.Match(splittedLines[i]);
@@ -680,8 +674,8 @@ namespace DxMLEngine.Features.Amazon
                     {
                         if (splittedLines[j].Contains("Visit"))
                         {
-                            sellerName = splittedLines[j].Replace("Visit the ", "");
-                            productName = splittedLines[j-1];                            
+                            product.Seller = splittedLines[j].Replace("Visit the ", "").Trim();
+                            product.Name = splittedLines[j-1].Trim();                            
                             break;
                         }
                     }
@@ -690,7 +684,7 @@ namespace DxMLEngine.Features.Amazon
                     {
                         var priceMatch = priceRegex.Match(splittedLines[j]);
                         if (priceMatch.Success)
-                            sellingPrice = priceMatch.Value;
+                            product.Price = priceMatch.Value;
                     }
 
                     break;
@@ -698,10 +692,9 @@ namespace DxMLEngine.Features.Amazon
             }
 
             //// 
-            string[]? categories = null;
             try
             {
-                var categorySource = webpage.PageSource
+                var categorySource = search.PageSource
                     .Split("<ul class=\"a-unordered-list a-horizontal a-size-small\">")[1]
                     .Split("</ul>")[0];
 
@@ -710,22 +703,18 @@ namespace DxMLEngine.Features.Amazon
 
                 var categoryXPath = "//*[@class='a-link-normal a-color-tertiary']";
                 var categoryNodes = categoryHtml.DocumentNode.SelectNodes(categoryXPath);
-                categories = (
+                
+                product.Categories = (
                     from node in categoryNodes
-                    let category = node.InnerText.Trim()
+                    let category = node.InnerText
                     where string.IsNullOrEmpty(category) == false
-                    select category).ToArray();
+                    select category.Trim()).ToArray();
             }
-            catch
-            {
-                categories = null;  
-            }
+            catch { product.Categories = null; }
 
             ////          
             var descriptionHtml = new HtmlDocument();
-            descriptionHtml.LoadHtml(webpage.PageSource);
-
-            string[]? description = null;
+            descriptionHtml.LoadHtml(search.PageSource);
 
             try
             {
@@ -733,41 +722,38 @@ namespace DxMLEngine.Features.Amazon
                 var decriptionNode = descriptionHtml.DocumentNode.SelectSingleNode(desriptionXPath);
 
                 if (decriptionNode != null)
-                    description = decriptionNode.InnerText
-                        .Split("\n", StringSplitOptions.TrimEntries);
+                    product.Description = decriptionNode.InnerText.Trim();
             }
-            catch { description = null; }
+            catch { product.Description = null; }
 
-            var dataRow = new List<KeyValuePair<string, object?>>()
-            {
-                new KeyValuePair<string, object?>("Product Name", $"\"{productName}\""),
-                new KeyValuePair<string, object?>("Seller Name", $"\"{sellerName}\""),
-                new KeyValuePair<string, object?>("Selling Price", $"\"{sellingPrice}\""),
-                new KeyValuePair<string, object?>("Category", 
-                    categories != null ? $"\"{string.Join(",", categories).Trim()}\"" : null),
-                new KeyValuePair<string, object?>("Description", 
-                    description != null ? $"\"{string.Join("\n", description).Trim()}\"" : null),
-            };
-
-            return dataRow.ToArray();
+            return product;
         }
 
-        private static KeyValuePair<string, object?>[] ExtractReviewInfo(Webpage webpage)
+        private static Review ExtractCustomerReviews(WebSearch search)
+        {
+            var review = new Review();
+            ExtractReviewInfo(search, ref review);
+            ExtractReviewDetails(search, ref review);
+
+            return review;
+        }
+
+        private static void ExtractReviewInfo(WebSearch search, ref Review review)
         {
             /// ====================================================================================
             /// https://www.amazon.com/product-reviews/B081H44MHD
             /// https://www.amazon.com/product-reviews/B099VMT8VZ
             /// ====================================================================================
 
-            if (webpage.PageText == null)
-                throw new ArgumentException("webpage.PageText == null");
+            if (search.PageText == null)
+                throw new ArgumentException("search.PageText == null");
 
-            if (webpage.PageSource == null)
-                throw new ArgumentException("webpage.PageSource == null");
+            if (search.PageSource == null)
+                throw new ArgumentException("search.PageSource == null");
 
             ////0
             var pageHtml = new HtmlDocument();
-            pageHtml.LoadHtml(webpage.PageSource);
+            pageHtml.LoadHtml(search.PageSource);
 
             var productXpath = "//*[@id='cm_cr-product_info']/div/div[2]/div/div/div[2]/div[1]/h1/a";
             var productNode = pageHtml.DocumentNode.SelectSingleNode(productXpath);
@@ -778,7 +764,7 @@ namespace DxMLEngine.Features.Amazon
             var sellerName = sellerNode.InnerText.Trim();
 
             ////1
-            var ratingText = webpage.PageText
+            var ratingText = search.PageText
                 .Split("Customer reviews")[2]
                 .Split("Write a review")[0];
 
@@ -822,39 +808,35 @@ namespace DxMLEngine.Features.Amazon
                 }
             }
 
-            var dataRow = new List<KeyValuePair<string, object?>>()
-            {
-                new KeyValuePair<string, object?>("Product Name", $"\"{productName}\""),
-                new KeyValuePair<string, object?>("Seller Name", $"\"{sellerName}\""),
-                new KeyValuePair<string, object?>("Overall Score", overallScore),
-                new KeyValuePair<string, object?>("Rating Score", ratingScore),
-                new KeyValuePair<string, object?>("Number of Ratings", numRatings),
-                new KeyValuePair<string, object?>("5 Star", fiveStar),
-                new KeyValuePair<string, object?>("4 Star", fourStar),
-                new KeyValuePair<string, object?>("3 Star", threeStar),
-                new KeyValuePair<string, object?>("2 Star", twoStar),
-                new KeyValuePair<string, object?>("1 Star", oneStar),
-            };
-
-            return dataRow.ToArray();
+            review.Asin = search.Asin;
+            review.ProductName = productName;
+            review.SellerName = sellerName;
+            review.OverallScore = overallScore;
+            review.RatingScore = ratingScore;
+            review.NumberOfRating = numRatings;
+            review.FiveStar = fiveStar;
+            review.FourStar = fourStar;
+            review.ThreeStar = threeStar;
+            review.TwoStar = twoStar;
+            review.OneStar = oneStar;            
         }
 
-        private static KeyValuePair<string, object?>[][] ExtractReviewDetails(Webpage webpage)
+        private static void ExtractReviewDetails(WebSearch search, ref Review review)
         {
             /// ====================================================================================
             /// https://www.amazon.com/product-reviews/B081H44MHD
             /// https://www.amazon.com/product-reviews/B099VMT8VZ
             /// ====================================================================================
 
-            if (webpage.PageText == null)
-                throw new ArgumentException("webpage.PageText == null");
+            if (search.PageText == null)
+                throw new ArgumentException("search.PageText == null");
 
-            if (webpage.PageSource == null)
-                throw new ArgumentException("webpage.PageSource == null");
+            if (search.PageSource == null)
+                throw new ArgumentException("search.PageSource == null");
 
             ////0
             var pageHtml = new HtmlDocument();
-            pageHtml.LoadHtml(webpage.PageSource);
+            pageHtml.LoadHtml(search.PageSource);
 
             var reviewSectionXPath = "//*[@id='cm_cr-review_list']";
             var reviewSectionNode = pageHtml.DocumentNode.SelectSingleNode(reviewSectionXPath);
@@ -925,23 +907,22 @@ namespace DxMLEngine.Features.Amazon
                     verifiedPurchases.Add("Unverified Purchase");
             }
 
-            var dataRows = new List<KeyValuePair<string, object?>[]>();
+            var comments = new List<Review.Comment>();
             for (int i = 0; i < reviewIds.Length; i++)
             {
-                dataRows.Add(new KeyValuePair<string, object?>[]
-                    {
-                        new KeyValuePair<string, object?>("Review Id", $"\"{reviewIds[i]}\""),
-                        new KeyValuePair<string, object?>("Date & Location", $"\"{dateLocations[i]}\""),
-                        new KeyValuePair<string, object?>("Reviewer Name", $"\"{reviewerNames[i]}\""),
-                        new KeyValuePair<string, object?>("Review Rating", $"\"{reviewRatings[i]}\""),
-                        new KeyValuePair<string, object?>("Review Title", reviewTitles[i] != null ? $"\"{reviewTitles[i]?.Replace("\"", "\"\"")}\"" : null),
-                        new KeyValuePair<string, object?>("Review Content", reviewContents[i] != null ? $"\"{reviewContents[i]?.Replace("\"", "\"\"")}\"" : null),
-                        new KeyValuePair<string, object?>("Verified Purchase", $"\"{verifiedPurchases[i]}\""),
-                    }
-                );
+                var comment = new Review.Comment(); 
+                comment.Id = reviewIds[i];
+                comment.DateLocation = dateLocations[i];
+                comment.ReviewerName = reviewerNames[i];
+                comment.ReviewRating = reviewRatings[i];
+                comment.ReviewTitle = reviewTitles[i];
+                comment.ReviewContent = reviewContents[i];
+                comment.VerifiedPurchase = verifiedPurchases[i];
+
+                comments.Add(comment);
             }
 
-            return dataRows.ToArray();
+            review.Comments = comments.ToArray();
         }
 
         #endregion DATA EXTRACTION

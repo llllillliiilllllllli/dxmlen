@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace DxMLEngine.Features.GooglePatents
 {
-    internal class Webpage
+    internal class WebSearch
     {
         public string? Id { set; get; }
 
@@ -50,7 +50,7 @@ namespace DxMLEngine.Features.GooglePatents
             /// >>> param:  SearchBy    # search by option to configure search url
             ///             
             /// >>> funct:  1       # update search query using selected search by method
-            /// >>> funct:  2       # update other parameters based on properties of webpage instance
+            /// >>> funct:  2       # update other parameters based on properties of search instance
             /// >>> funct:  3       # assign arguments to parameters in search url where not null
             /// ====================================================================================
 

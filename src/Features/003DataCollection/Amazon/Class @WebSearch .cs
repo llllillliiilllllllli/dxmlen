@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DxMLEngine.Features.Amazon
 {
-    internal class Webpage
+    internal class WebSearch
     {
         public string? Id { set; get; }
 
@@ -24,6 +24,7 @@ namespace DxMLEngine.Features.Amazon
         internal string? Keyword { set; get; }
         internal string? Asin { set; get; }
         internal string? FilterByStar { set; get; }
+        internal int? NumberOfPages { set; get; }
 
         internal string? SearchPageNumber { set; get; }
         internal string? ReviewPageNumber { set; get; }

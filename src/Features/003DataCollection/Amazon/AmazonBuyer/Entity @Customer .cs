@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dxmlen.src.Features.Amazon.AmazonBuyer
+namespace DxMLEngine.Features.Amazon
 {
     internal class Customer
     {

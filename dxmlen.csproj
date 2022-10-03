@@ -34,6 +34,7 @@
     <Folder Include="src\Features\003DataCollection\Google\GoogleArts\" />
     <Folder Include="src\Features\003DataCollection\Google\GoogleTranslate\" />
     <Folder Include="src\Features\003DataCollection\Google\YouTube\" />
+    <Folder Include="src\Functions\Data\" />
     <Folder Include="src\Services\HtmlAgility\" />
     <Folder Include="src\Services\Tesseract\TessData\tessconfigs\" />
     <Folder Include="src\Application\Configuration\" />

@@ -18,11 +18,13 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
+using System.Text.Json;
 
 using Microsoft.Data.Analysis;
 
 using DxMLEngine.Attributes;
 using DxMLEngine.Functions;
+using DxMLEngine.Features.GooglePatents;
 
 namespace DxMLEngine.Features.UNComtrade
 {
@@ -51,8 +53,10 @@ namespace DxMLEngine.Features.UNComtrade
             var client = new HttpClient();
 
             ////3
-            foreach (var endpoint in endpoints)
+            var dataList = new List<DataAvailability>();
+            for (int i = 0; i < endpoints.Length; i++)
             {
+                var endpoint = endpoints[i];
                 Console.WriteLine($"\nCollect: {endpoint.AvailabilityEndpoint}");
 
                 var uri = new Uri(endpoint.AvailabilityEndpoint);
@@ -60,11 +64,19 @@ namespace DxMLEngine.Features.UNComtrade
                 var response = client.Send(request);
                 endpoint.Response = response.Content.ReadAsStringAsync().Result;
 
-                Console.WriteLine(endpoint.Response);
-                Console.WriteLine();
+                var dataAvailability = ExtractDataAvailability(endpoint);
+                if (dataAvailability != null) 
+                { 
+                    dataList.Add(dataAvailability);
 
-                OutputAvailabilityData(outDir, endpoint);
-            }            
+                    //OutputOneTXT(outDir, $"DataAvailability{i+1}", dataAvailability);
+                    //OutputOneCSV(outDir, $"DataAvailability{i+1}", dataAvailability);
+                    //OutputOneJSON(outDir, $"DataAvailability{i+1}", dataAvailability);
+                }
+            }
+            //OutputAllTXT(outDir, "DataAvailability", dataList.ToArray());
+            //OutputAllCSV(outDir, "DataAvailability", dataList.ToArray());
+            //OutputAllJSON(outDir, "DataAvailability", dataList.ToArray());
         }
 
         public static void CollectTradeData()
@@ -89,8 +101,10 @@ namespace DxMLEngine.Features.UNComtrade
             var client = new HttpClient();
 
             ////3
-            foreach (var endpoint in endpoints)
+            var dataList = new List<TradeData>();
+            for (int i = 0; i < endpoints.Length; i++)
             {
+                var endpoint = endpoints[i];
                 Console.WriteLine($"\nCollect: {endpoint.TradeDataEndpoint}");
 
                 var uri = new Uri(endpoint.AvailabilityEndpoint);
@@ -98,11 +112,19 @@ namespace DxMLEngine.Features.UNComtrade
                 var response = client.Send(request);
                 endpoint.Response = response.Content.ReadAsStringAsync().Result;
 
-                Console.WriteLine(endpoint.Response);
-                Console.WriteLine();
+                var tradeData = ExtractTradeData(endpoint);
+                if (tradeData != null)
+                {
+                    dataList.Add(tradeData);
 
-                OutputTradeData(outDir, endpoint);
+                    //OutputOneTXT(outDir, $"TradeData{i+1}", tradeData);
+                    //OutputOneCSV(outDir, $"TradeData{i+1}", tradeData);
+                    //OutputOneJSON(outDir, $"TradeData{i+1}", tradeData);
+                }
             }
+            //OutputAllTXT(outDir, "DataAvailability", dataList.ToArray());
+            //OutputAllCSV(outDir, "DataAvailability", dataList.ToArray());
+            //OutputAllJSON(outDir, "DataAvailability", dataList.ToArray());
         }
 
         #region INPUT OUTPUT
@@ -162,24 +184,199 @@ namespace DxMLEngine.Features.UNComtrade
             return endpoints.ToArray();
         }
     
-        private static void OutputAvailabilityData(string location, Endpoint endpoint)
+        private static void OutputEndpoint(string location, string fileName, Endpoint endpoint)
         {
-            var path = $"{location}\\Datason @{endpoint.Id}Availability #-------------- .json";
+            var path = $"{location}\\Datason @{fileName} #-------------- .json";
             File.WriteAllText(path, endpoint.Response, encoding: Encoding.UTF8);
 
             var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
             File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
         }
 
-        private static void OutputTradeData(string location, Endpoint endpoint)
+        private static void OutputOneTXT(string location, string fileName, object entity)
         {
-            var path = $"{location}\\Datason @{endpoint.Id}TradeData #-------------- .json";
-            File.WriteAllText(path, endpoint.Response, encoding: Encoding.UTF8);
+            if (entity.GetType() == typeof(DataAvailability))
+            {
+                var dataAvailability = (DataAvailability)entity;
+                var lines = new string?[]
+                {
+                    dataAvailability.type,
+                    dataAvailability.freq,
+                    dataAvailability.px,
+                    dataAvailability.ps,
+                    dataAvailability.r,
+                    dataAvailability.rDesc,
+                    Convert.ToString(dataAvailability.TotalRecords),
+                    Convert.ToString(dataAvailability.isOriginal),
+                    Convert.ToString(dataAvailability.publicationDate),
+                    Convert.ToString(dataAvailability.isPartnerDetail),
+                };
 
-            var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
-            File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
+                var path = $"{location}\\Datadoc @{fileName} #-------------- .txt";
+                File.WriteAllLines(path, lines!, encoding: Encoding.UTF8);
+
+                var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+                File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
+            }
+
+            if (entity.GetType() == typeof(TradeData))
+            {
+                var tradeData = (TradeData)entity;
+                var lines = new string?[]
+                {
+                    //tradeData.validation,
+                    //tradeData.dataset,
+                };
+
+                var path = $"{location}\\Datadoc @{fileName} #-------------- .txt";
+                File.WriteAllLines(path, lines!, encoding: Encoding.UTF8);
+
+                var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+                File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
+            }
+        }
+
+        private static void OutputOneCSV(string location, string fileName, object entity)
+        {
+            if (entity.GetType() == typeof(DataAvailability))
+            {
+                throw new NotImplementedException();
+            }
+
+            if (entity.GetType() == typeof(TradeData))
+            {
+                throw new NotImplementedException();
+            }
+
+        }
+
+        private static void OutputOneJSON(string location, string fileName, object entity)
+        {
+            if (entity.GetType() == typeof(DataAvailability))
+            {
+                var dataAvailability = (DataAvailability)entity;
+                var options = new JsonSerializerOptions() { WriteIndented = true };
+                var jsonString = JsonSerializer.Serialize(dataAvailability, options);
+
+                Console.WriteLine($"{dataAvailability.publicationDate}");
+
+                var path = $"{location}\\Datason @{fileName} #-------------- .json";
+                File.WriteAllText(path, jsonString, encoding: Encoding.UTF8);
+
+                var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+                File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);                
+            }
+
+            if (entity.GetType() == typeof(TradeData))
+            {
+                var tradeData = (TradeData)entity;
+                var options = new JsonSerializerOptions() { WriteIndented = true };
+                var jsonString = JsonSerializer.Serialize(tradeData, options);
+
+                Console.WriteLine($"{tradeData.validation}");
+
+                var path = $"{location}\\Datason @{fileName} #-------------- .json";
+                File.WriteAllText(path, jsonString, encoding: Encoding.UTF8);
+
+                var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+                File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
+            }
+        }
+
+        private static void OutputAllTXT(string location, string fileName, object entity)
+        {
+            if (entity.GetType() == typeof(DataAvailability[]))
+            {
+                throw new NotImplementedException();
+            }
+
+            if (entity.GetType() == typeof(TradeData[]))
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private static void OutputAllCSV(string location, string fileName, object entity)
+        {
+            if (entity.GetType() == typeof(DataAvailability[]))
+            {
+                var dataAvailability = (DataAvailability[])entity;
+                var dataFrame = new DataFrame(new List<DataFrameColumn>()
+                    {
+                        new StringDataFrameColumn("Trade Type"),
+                        new StringDataFrameColumn("Frequency"),
+                        new StringDataFrameColumn("Reporting Area"),
+                        new StringDataFrameColumn("Time Period"),
+                        new StringDataFrameColumn("Classification"),
+                });
+
+                foreach (var data in dataAvailability)
+                {
+                    var dataRow = new List<KeyValuePair<string, object?>>()
+                    {
+                        new KeyValuePair<string, object?>("Trade Type", data.type),
+                        new KeyValuePair<string, object?>("Frequency", data.freq),
+                        new KeyValuePair<string, object?>("Reporting Area", data.r),
+                        new KeyValuePair<string, object?>("Time Period", data.ps),
+                        new KeyValuePair<string, object?>("Classification", data.px),
+                    };
+
+                    Console.WriteLine($"{data.type}");
+                    dataFrame.Append(dataRow, inPlace: true);
+                }
+
+                var path = $"{location}\\Dataset @{fileName} #-------------- .csv";
+                DataFrame.WriteCsv(dataFrame, path, header: true, encoding: Encoding.UTF8);
+
+                var timestamp = File.GetCreationTime(path).ToString("yyyyMMddHHmmss");
+                File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
+            }
+
+            if (entity.GetType() == typeof(TradeData[]))
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private static void OutputAllJSON(string location, string fileName, object entity)
+        {
+            if (entity.GetType() == typeof(DataAvailability[]))
+            {
+                throw new NotImplementedException();
+            }
+
+            if (entity.GetType() == typeof(TradeData[]))
+            {
+                throw new NotImplementedException();
+            }
         }
 
         #endregion INPUT OUTPUT
+
+        #region DATA EXTRACTION
+
+        private static DataAvailability? ExtractDataAvailability(Endpoint endpoint)
+        {
+            if (endpoint.Response == null)
+                throw new ArgumentNullException("endpoint.Response == null");
+
+            var options = new JsonSerializerOptions() { WriteIndented = true };
+            var dataAvailability = JsonSerializer.Deserialize<DataAvailability>(endpoint.Response, options);
+
+            return dataAvailability;
+        }
+
+        private static TradeData? ExtractTradeData(Endpoint endpoint)
+        {
+            if (endpoint.Response == null)
+                throw new ArgumentNullException("endpoint.Response == null");
+
+            var options = new JsonSerializerOptions() { WriteIndented = true };
+            var tradeData = JsonSerializer.Deserialize<TradeData>(endpoint.Response, options);
+
+            return tradeData;
+        }
+
+        #endregion DATA EXTRACTION
     }
 }

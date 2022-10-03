@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DxMLEngine.Features.CrunchBase
 {
-    internal class Webpage
+    internal class WebSearch
     {
         public string? Id { set; get; }
 
