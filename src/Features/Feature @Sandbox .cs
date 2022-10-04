@@ -1,6 +1,7 @@
 ﻿using DxMLEngine.Attributes;
 using DxMLEngine.Features.YahooFinance;
 using DxMLEngine.Features.UNComtrade;
+using DxMLEngine.Features.ScienceDirect;
 
 using System.Text.Json;
 
@@ -23,7 +24,7 @@ namespace DxMLEngine.Features
             var request = new HttpRequestMessage() { RequestUri = uri };
             endpoint.Response = client.Send(request).Content.ReadAsStringAsync().Result;
 
-            var search = JsonSerializer.Deserialize<Search>(endpoint.Response);
+            var search = JsonSerializer.Deserialize<YahooFinance.Search>(endpoint.Response);
 
             if (search == null)
                 throw new NullReferenceException("search == null");
@@ -230,6 +231,19 @@ namespace DxMLEngine.Features
                 Console.WriteLine(dataset.rgCode);
                 Console.WriteLine(dataset.cstCode);
             }
+        }
+    
+        public static void DeserializeScienceDirectSearch()
+        {
+            var path = "C:\\Users\\Dustin\\OneDrive\\Program\\3 Application Program\\dxmlen\\res\\ScienceDirect @Search .json";
+            var jsonString = File.ReadAllText(path);
+            var scienceDirectSearch = JsonSerializer.Deserialize<ScienceDirectSearch>(jsonString);
+            
+            Console.WriteLine(scienceDirectSearch?.searchResult);
+            Console.WriteLine(scienceDirectSearch?.searchResult?.opensearchQuery);
+            Console.WriteLine(scienceDirectSearch?.searchResult?.opensearchstartIndex);
+            Console.WriteLine(scienceDirectSearch?.searchResult?.opensearchtotalResults);
+            Console.WriteLine(scienceDirectSearch?.searchResult?.opensearchitemsPerPage);
         }
     }
 }

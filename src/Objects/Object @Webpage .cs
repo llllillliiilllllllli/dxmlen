@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DxMLEngine.Objects
 {
-    internal class WebSearch
+    internal class Search
     {
         internal string? Title { set; get; }
         internal string? Url { set; get; }

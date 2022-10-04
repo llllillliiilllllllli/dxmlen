@@ -70,7 +70,7 @@ namespace DxMLEngine.Features.GoogleScholar
                     Console.WriteLine($"\nCollect: {search.SearchUrl}");
 
                     var newTab = Browser.OpenNewTab(browser, search.SearchUrl);
-                    Browser.DownloadWebSearch(newTab, wait: 7000);
+                    Browser.DownloadSearch(newTab, wait: 7000);
                     Browser.CloseCurrentTab(newTab);
                 }
             }
@@ -99,7 +99,7 @@ namespace DxMLEngine.Features.GoogleScholar
                 throw new ArgumentNullException("path is null or empty");
 
             ////
-            var paths = InputWebSearchPaths(inFile);
+            var paths = InputSearchPaths(inFile);
 
             ////
             var researchPapers = new List<ResearchPaper>();
@@ -447,13 +447,13 @@ namespace DxMLEngine.Features.GoogleScholar
             return researchPapers.ToArray();
         }
 
-        private static WebSearch[] InputSearchUrls(string inFile)
+        private static Search[] InputSearchUrls(string inFile)
         {
             var dataFrame = DataFrame.LoadCsv(inFile, header: true, separator: '\t', encoding: Encoding.UTF8);
-            var searches = new List<WebSearch>();
+            var searches = new List<Search>();
             for (int i = 0; i < dataFrame.Rows.Count; i++) 
             {
-                var search = new WebSearch();
+                var search = new Search();
                 search.Query = Convert.ToString(dataFrame["Query"][i]);
                 search.Page = Convert.ToString(dataFrame["Page"][i]);
                 search.Language = Convert.ToString(dataFrame["Language"][i]);
@@ -467,7 +467,7 @@ namespace DxMLEngine.Features.GoogleScholar
             return searches.ToArray();
         }
 
-        private static string[] InputWebSearchPaths(string inFile)
+        private static string[] InputSearchPaths(string inFile)
         {
             var dataFrame = DataFrame.LoadCsv(inFile, header: true, separator: '\t', encoding: Encoding.UTF8);
             var paths = new List<string>();
@@ -528,7 +528,7 @@ namespace DxMLEngine.Features.GoogleScholar
             File.Move(outFile, outFile.Replace("#--------------", $"#{timestamp}"));
         }
     
-        private static int? FindNumberOfPages(WebSearch search)
+        private static int? FindNumberOfPages(Search search)
         {
             if (search.PageText == null)
                 throw new ArgumentNullException("search.PageText != null");

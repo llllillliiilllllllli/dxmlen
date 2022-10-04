@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DxMLEngine.Features.Amazon
 {
-    internal class WebSearch
+    internal class Search
     {
         public string? Id { set; get; }
 

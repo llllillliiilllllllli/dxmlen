@@ -1,0 +1,847 @@
+{
+  "search-results": {
+    "opensearch:totalResults": "999996",
+    "opensearch:startIndex": "0",
+    "opensearch:itemsPerPage": "25",
+    "opensearch:Query": {
+      "@role": "request",
+      "@searchTerms": "Animal",
+      "@startPage": "0"
+    },
+    "link": [
+      {
+        "@_fa": "true",
+        "@ref": "self",
+        "@href": "https://api.elsevier.com/content/search/sciencedirect?start=0&count=25&query=Animal&apiKey=7f59af901d2d86f78a1fd60c1bf9426a&httpAccept=application%2Fjson",
+        "@type": "application/json"
+      },
+      {
+        "@_fa": "true",
+        "@ref": "first",
+        "@href": "https://api.elsevier.com/content/search/sciencedirect?start=0&count=25&query=Animal&apiKey=7f59af901d2d86f78a1fd60c1bf9426a&httpAccept=application%2Fjson",
+        "@type": "application/json"
+      },
+      {
+        "@_fa": "true",
+        "@ref": "next",
+        "@href": "https://api.elsevier.com/content/search/sciencedirect?start=25&count=25&query=Animal&apiKey=7f59af901d2d86f78a1fd60c1bf9426a&httpAccept=application%2Fjson",
+        "@type": "application/json"
+      },
+      {
+        "@_fa": "true",
+        "@ref": "last",
+        "@href": "https://api.elsevier.com/content/search/sciencedirect?start=5975&count=25&query=Animal&apiKey=7f59af901d2d86f78a1fd60c1bf9426a&httpAccept=application%2Fjson",
+        "@type": "application/json"
+      }
+    ],
+    "entry": [
+      {
+        "@_fa": "true",
+        "load-date": "2020-01-23T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0149763419305391"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0149763419305391?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.neubiorev.2020.01.028",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0149763419305391",
+        "dc:title": "The nuts and bolts of animal emotion",
+        "dc:creator": "L. Kremer",
+        "prism:publicationName": "Neuroscience & Biobehavioral Reviews",
+        "prism:volume": "113",
+        "prism:coverDate": "2020-06-30",
+        "prism:startingPage": "273",
+        "prism:endingPage": "286",
+        "prism:doi": "10.1016/j.neubiorev.2020.01.028",
+        "openaccess": true,
+        "pii": "S0149763419305391",
+        "authors": {
+          "author": [
+            { "$": "L. Kremer" },
+            { "$": "S. E. J. Klein Holkenborg" },
+            { "$": "L. E. Webb" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2021-01-15T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/B9780128188729000030"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/B9780128188729000030?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/B978-0-12-818872-9.00003-0",
+        "prism:url": "https://api.elsevier.com/content/article/pii/B9780128188729000030",
+        "dc:title": "The Role of Human-Animal Interaction in Child and Adolescent Health and Development",
+        "dc:creator": "Camie A. Tomlinson",
+        "prism:publicationName": "Reference Module in Biomedical Sciences",
+        "prism:coverDate": "2021-12-31",
+        "prism:doi": "10.1016/B978-0-12-818872-9.00003-0",
+        "openaccess": false,
+        "pii": "B9780128188729000030",
+        "authors": {
+          "author": [
+            { "$": "Camie A. Tomlinson" },
+            { "$": "Angela Matijczak" },
+            { "$": "Nancy R. Gee" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2019-12-16T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0001706X19315335"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0001706X19315335?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.actatropica.2019.105298",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0001706X19315335",
+        "dc:title": "Balantidium coli in domestic animals: An emerging protozoan pathogen of zoonotic significance",
+        "dc:creator": "Arslan Ahmed",
+        "prism:publicationName": "Acta Tropica",
+        "prism:volume": "203",
+        "prism:coverDate": "2020-03-31",
+        "prism:startingPage": "105298",
+        "prism:doi": "10.1016/j.actatropica.2019.105298",
+        "openaccess": false,
+        "pii": "S0001706X19315335",
+        "authors": {
+          "author": [
+            { "$": "Arslan Ahmed" },
+            { "$": "Muhammad Ijaz" },
+            { "$": "Muhammad Umar Javed" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-07-11T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0006320720307540"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0006320720307540?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.biocon.2020.108696",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0006320720307540",
+        "dc:title": "Methods for the assessment and conservation of threatened animal parasites",
+        "dc:creator": "Mackenzie L. Kwak",
+        "prism:publicationName": "Biological Conservation",
+        "prism:volume": "248",
+        "prism:coverDate": "2020-08-31",
+        "prism:startingPage": "108696",
+        "prism:doi": "10.1016/j.biocon.2020.108696",
+        "openaccess": false,
+        "pii": "S0006320720307540",
+        "authors": {
+          "author": [
+            { "$": "Mackenzie L. Kwak" },
+            { "$": "Allen C. G. Heath" },
+            { "$": "Pedro Cardoso" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-07-14T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0031938420303905"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0031938420303905?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.physbeh.2020.113076",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0031938420303905",
+        "dc:title": "The influence of human interaction on guinea pigs: Behavioral and thermographic changes during animal-assisted therapy",
+        "dc:creator": "S Wirth",
+        "prism:publicationName": "Physiology & Behavior",
+        "prism:volume": "225",
+        "prism:coverDate": "2020-10-15",
+        "prism:startingPage": "113076",
+        "prism:doi": "10.1016/j.physbeh.2020.113076",
+        "openaccess": true,
+        "pii": "S0031938420303905",
+        "authors": {
+          "author": [
+            { "$": "S Wirth" },
+            { "$": "SG Gebhardt-Henrich" },
+            { "$": "K Hediger" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2019-07-31T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/B9780444640468002664"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/B9780444640468002664?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/B978-0-444-64046-8.00266-4",
+        "prism:url": "https://api.elsevier.com/content/article/pii/B9780444640468002664",
+        "dc:title": "4.38: Animal Cloning - State of the Art and Applications",
+        "dc:creator": "Vilceu Bordignon",
+        "prism:publicationName": "Comprehensive Biotechnology",
+        "prism:volume": "4",
+        "prism:coverDate": "2019-12-31",
+        "prism:startingPage": "450",
+        "prism:endingPage": "465",
+        "prism:doi": "10.1016/B978-0-444-64046-8.00266-4",
+        "openaccess": false,
+        "pii": "B9780444640468002664",
+        "authors": { "author": "Vilceu Bordignon" }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-09-19T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0091302220300637"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0091302220300637?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.yfrne.2020.100872",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0091302220300637",
+        "dc:title": "Animal models built for women’s brain health: Progress and potential",
+        "dc:creator": "Kathleen E. Morrison",
+        "prism:publicationName": "Frontiers in Neuroendocrinology",
+        "prism:volume": "59",
+        "prism:coverDate": "2020-10-31",
+        "prism:startingPage": "100872",
+        "prism:doi": "10.1016/j.yfrne.2020.100872",
+        "openaccess": false,
+        "pii": "S0091302220300637",
+        "authors": { "author": "Kathleen E. Morrison" }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2018-10-31T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0168159118305872"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0168159118305872?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.applanim.2018.10.015",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0168159118305872",
+        "dc:title": "Be kind to others: Prosocial behaviours and their implications for animal welfare",
+        "dc:creator": "Jean-Loup Rault",
+        "prism:publicationName": "Applied Animal Behaviour Science",
+        "prism:volume": "210",
+        "prism:coverDate": "2019-01-31",
+        "prism:startingPage": "113",
+        "prism:endingPage": "123",
+        "prism:doi": "10.1016/j.applanim.2018.10.015",
+        "openaccess": false,
+        "pii": "S0168159118305872",
+        "authors": { "author": "Jean-Loup Rault" }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2018-10-17T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0195561618300895"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0195561618300895?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.cvsm.2018.07.010",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0195561618300895",
+        "dc:title": "An Overview of Trends in Animal Poisoning Cases in the United States: 2011 to 2017",
+        "dc:creator": "Charlotte Means",
+        "prism:publicationName": "Veterinary Clinics of North America: Small Animal Practice",
+        "prism:volume": "48",
+        "prism:coverDate": "2018-11-30",
+        "prism:startingPage": "899",
+        "prism:endingPage": "907",
+        "prism:doi": "10.1016/j.cvsm.2018.07.010",
+        "openaccess": false,
+        "pii": "S0195561618300895",
+        "authors": {
+          "author": [
+            { "$": "Charlotte Means" },
+            { "$": "Tina Wismer" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2019-11-13T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0165027019303413"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0165027019303413?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.jneumeth.2019.108484",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0165027019303413",
+        "dc:title": "Companion animal models of neurological disease",
+        "dc:creator": "Brittanie Partridge",
+        "prism:publicationName": "Journal of Neuroscience Methods",
+        "prism:volume": "331",
+        "prism:coverDate": "2020-02-01",
+        "prism:startingPage": "108484",
+        "prism:doi": "10.1016/j.jneumeth.2019.108484",
+        "openaccess": true,
+        "pii": "S0165027019303413",
+        "authors": {
+          "author": [
+            { "$": "Brittanie Partridge" },
+            { "$": "John H. Rossmeisl" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2019-11-30T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0045653519327468"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0045653519327468?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.chemosphere.2019.125506",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0045653519327468",
+        "dc:title": "Content of essential and non-essential elements in wild animals from western Ukraine and the health risks associated with meat and liver consumption",
+        "dc:creator": "Bogumiła Pilarczyk",
+        "prism:publicationName": "Chemosphere",
+        "prism:volume": "244",
+        "prism:coverDate": "2020-04-30",
+        "prism:startingPage": "125506",
+        "prism:doi": "10.1016/j.chemosphere.2019.125506",
+        "openaccess": false,
+        "pii": "S0045653519327468",
+        "authors": {
+          "author": [
+            { "$": "Bogumiła Pilarczyk" },
+            { "$": "Agnieszka Tomza-Marciniak" },
+            { "$": "Marek Ligocki" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-04-05T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0165032719332525"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0165032719332525?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.jad.2020.03.147",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0165032719332525",
+        "dc:title": "Adult separation anxiety disorder: The human-animal bond",
+        "dc:creator": "Elisha Dowsett",
+        "prism:publicationName": "Journal of Affective Disorders",
+        "prism:volume": "270",
+        "prism:coverDate": "2020-06-01",
+        "prism:startingPage": "90",
+        "prism:endingPage": "96",
+        "prism:doi": "10.1016/j.jad.2020.03.147",
+        "openaccess": false,
+        "pii": "S0165032719332525",
+        "authors": {
+          "author": [
+            { "$": "Elisha Dowsett" },
+            { "$": "Paul Delfabbro" },
+            { "$": "Anna Chur-Hansen" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2019-12-04T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/B9780081022955107759"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/B9780081022955107759?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/B978-0-08-102295-5.10775-9",
+        "prism:url": "https://api.elsevier.com/content/article/pii/B9780081022955107759",
+        "dc:title": "Animal Geographies",
+        "dc:creator": "Alice J. Hovorka",
+        "prism:publicationName": "International Encyclopedia of Human Geography",
+        "prism:coverDate": "2020-12-31",
+        "prism:startingPage": "127",
+        "prism:endingPage": "132",
+        "prism:doi": "10.1016/B978-0-08-102295-5.10775-9",
+        "openaccess": false,
+        "pii": "B9780081022955107759",
+        "authors": { "author": "Alice J. Hovorka" }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2019-02-05T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0003347218304020"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0003347218304020?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.anbehav.2018.12.016",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0003347218304020",
+        "dc:title": "The use of multilayer network analysis in animal behaviour",
+        "dc:creator": "Kelly R. Finn",
+        "prism:publicationName": "Animal Behaviour",
+        "prism:volume": "149",
+        "prism:coverDate": "2019-03-31",
+        "prism:startingPage": "7",
+        "prism:endingPage": "22",
+        "prism:doi": "10.1016/j.anbehav.2018.12.016",
+        "openaccess": false,
+        "pii": "S0003347218304020",
+        "authors": {
+          "author": [
+            { "$": "Kelly R. Finn" },
+            { "$": "Matthew J. Silk" },
+            { "$": "Noa Pinter-Wollman" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-07-20T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0271530920300574"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0271530920300574?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.langcom.2020.06.005",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0271530920300574",
+        "dc:title": "The human-animal divide in communication: anthropocentric, posthuman and integrationist answers",
+        "dc:creator": "Sinead Kwok",
+        "prism:publicationName": "Language & Communication",
+        "prism:volume": "74",
+        "prism:coverDate": "2020-09-30",
+        "prism:startingPage": "61",
+        "prism:endingPage": "73",
+        "prism:doi": "10.1016/j.langcom.2020.06.005",
+        "openaccess": false,
+        "pii": "S0271530920300574",
+        "authors": { "author": "Sinead Kwok" }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2019-12-04T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/B9780081022955103312"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/B9780081022955103312?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/B978-0-08-102295-5.10331-2",
+        "prism:url": "https://api.elsevier.com/content/article/pii/B9780081022955103312",
+        "dc:title": "Animal Welfare",
+        "dc:creator": "Kathryn Gillespie",
+        "prism:publicationName": "International Encyclopedia of Human Geography",
+        "prism:coverDate": "2020-12-31",
+        "prism:startingPage": "133",
+        "prism:endingPage": "138",
+        "prism:doi": "10.1016/B978-0-08-102295-5.10331-2",
+        "openaccess": false,
+        "pii": "B9780081022955103312",
+        "authors": { "author": "Kathryn Gillespie" }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-09-01T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/B9780081005965226735"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/B9780081005965226735?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/B978-0-08-100596-5.22673-5",
+        "prism:url": "https://api.elsevier.com/content/article/pii/B9780081005965226735",
+        "dc:title": "2.41: Supercritical Extraction of Valued Components From Animals Parts",
+        "dc:creator": "Nupur Nagavekar",
+        "prism:publicationName": "Innovative Food Processing Technologies",
+        "prism:coverDate": "2021-12-31",
+        "prism:startingPage": "597",
+        "prism:endingPage": "619",
+        "prism:doi": "10.1016/B978-0-08-100596-5.22673-5",
+        "openaccess": false,
+        "pii": "B9780081005965226735",
+        "authors": {
+          "author": [
+            { "$": "Nupur Nagavekar" },
+            { "$": "Kriti Dubey" },
+            { "$": "Rekha S. Singhal" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-01-24T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0141113619306944"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0141113619306944?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.marenvres.2020.104888",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0141113619306944",
+        "dc:title": "Electric and magnetic senses in marine animals, and potential behavioral effects of electromagnetic surveys",
+        "dc:creator": "Daniel Nyqvist",
+        "prism:publicationName": "Marine Environmental Research",
+        "prism:volume": "155",
+        "prism:coverDate": "2020-03-31",
+        "prism:startingPage": "104888",
+        "prism:doi": "10.1016/j.marenvres.2020.104888",
+        "openaccess": false,
+        "pii": "S0141113619306944",
+        "authors": {
+          "author": [
+            { "$": "Daniel Nyqvist" },
+            { "$": "Caroline Durif" },
+            { "$": "Lise Doksæter Sivle" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-04-21T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0030666520300372"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0030666520300372?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.otc.2020.03.001",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0030666520300372",
+        "dc:title": "Animal Models of Tinnitus: A Review",
+        "dc:creator": "Alexander Galazyuk",
+        "prism:publicationName": "Otolaryngologic Clinics of North America",
+        "prism:volume": "53",
+        "prism:coverDate": "2020-08-31",
+        "prism:startingPage": "469",
+        "prism:endingPage": "480",
+        "prism:doi": "10.1016/j.otc.2020.03.001",
+        "openaccess": false,
+        "pii": "S0030666520300372",
+        "authors": {
+          "author": [
+            { "$": "Alexander Galazyuk" },
+            { "$": "Thomas J. Brozoski" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-11-27T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/B9780128205952000151"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/B9780128205952000151?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/B978-0-12-820595-2.00015-1",
+        "prism:url": "https://api.elsevier.com/content/article/pii/B9780128205952000151",
+        "dc:title": "Chapter 15: Issues and policies in animal genomics",
+        "dc:creator": "Ramanuj Banerjee",
+        "prism:publicationName": "Advances in Animal Genomics",
+        "prism:coverDate": "2021-12-31",
+        "prism:startingPage": "237",
+        "prism:endingPage": "257",
+        "prism:doi": "10.1016/B978-0-12-820595-2.00015-1",
+        "openaccess": false,
+        "pii": "B9780128205952000151",
+        "authors": {
+          "author": [
+            { "$": "Ramanuj Banerjee" },
+            { "$": "Sukanta Mondal" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-01-22T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0003347219304130"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0003347219304130?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.anbehav.2019.12.011",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0003347219304130",
+        "dc:title": "The history and impact of women in animal behaviour and the ABS: a North American perspective",
+        "dc:creator": "Zuleyma Tang-Martínez",
+        "prism:publicationName": "Animal Behaviour",
+        "prism:volume": "164",
+        "prism:coverDate": "2020-06-30",
+        "prism:startingPage": "251",
+        "prism:endingPage": "260",
+        "prism:doi": "10.1016/j.anbehav.2019.12.011",
+        "openaccess": false,
+        "pii": "S0003347219304130",
+        "authors": { "author": "Zuleyma Tang-Martínez" }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-04-10T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0044848620306852"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0044848620306852?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.aquaculture.2020.735357",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0044848620306852",
+        "dc:title": "Research advances in the genomics and applications for molecular breeding of aquaculture animals",
+        "dc:creator": "Xinxin You",
+        "prism:publicationName": "Aquaculture",
+        "prism:volume": "526",
+        "prism:coverDate": "2020-09-15",
+        "prism:startingPage": "735357",
+        "prism:doi": "10.1016/j.aquaculture.2020.735357",
+        "openaccess": false,
+        "pii": "S0044848620306852",
+        "authors": {
+          "author": [
+            { "$": "Xinxin You" },
+            { "$": "Xinxin Shan" },
+            { "$": "Qiong Shi" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-05-30T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0165614720301292"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0165614720301292?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.tips.2020.05.005",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0165614720301292",
+        "dc:title": "<ce:italic>In Vitro</ce:italic> and Animal Models for SARS-CoV-2 research",
+        "dc:creator": "Kazuo Takayama",
+        "prism:publicationName": "Trends in Pharmacological Sciences",
+        "prism:volume": "41",
+        "prism:coverDate": "2020-08-31",
+        "prism:startingPage": "513",
+        "prism:endingPage": "517",
+        "prism:doi": "10.1016/j.tips.2020.05.005",
+        "openaccess": false,
+        "pii": "S0165614720301292",
+        "authors": { "author": "Kazuo Takayama" }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2019-07-31T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/B9780444640468002925"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/B9780444640468002925?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/B978-0-444-64046-8.00292-5",
+        "prism:url": "https://api.elsevier.com/content/article/pii/B9780444640468002925",
+        "dc:title": "4.39: The Methodologies and Application Potential of Genetically Modified Farm Animals",
+        "dc:creator": "Heiner Niemann",
+        "prism:publicationName": "Comprehensive Biotechnology",
+        "prism:volume": "4",
+        "prism:coverDate": "2019-12-31",
+        "prism:startingPage": "466",
+        "prism:endingPage": "480",
+        "prism:doi": "10.1016/B978-0-444-64046-8.00292-5",
+        "openaccess": false,
+        "pii": "B9780444640468002925",
+        "authors": {
+          "author": [
+            { "$": "Heiner Niemann" },
+            { "$": "Andrea Lucas-Hahn" },
+            { "$": "Björn Petersen" }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "load-date": "2020-08-12T00:00:00.000Z",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/article/pii/S0195561620300577"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scidir",
+            "@href": "https://www.sciencedirect.com/science/article/pii/S0195561620300577?dgcid=api_sd_search-api-endpoint"
+          }
+        ],
+        "dc:identifier": "DOI:10.1016/j.cvsm.2020.06.010",
+        "prism:url": "https://api.elsevier.com/content/article/pii/S0195561620300577",
+        "dc:title": "Update on Cardiopulmonary Resuscitation in Small Animals",
+        "dc:creator": "Manuel Boller",
+        "prism:publicationName": "Veterinary Clinics of North America: Small Animal Practice",
+        "prism:volume": "50",
+        "prism:coverDate": "2020-11-30",
+        "prism:startingPage": "1183",
+        "prism:endingPage": "1202",
+        "prism:doi": "10.1016/j.cvsm.2020.06.010",
+        "openaccess": false,
+        "pii": "S0195561620300577",
+        "authors": {
+          "author": [
+            { "$": "Manuel Boller" },
+            { "$": "Daniel J. Fletcher" }
+          ]
+        }
+      }
+    ]
+  }
+}

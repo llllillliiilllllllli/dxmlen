@@ -276,15 +276,15 @@ namespace DxMLEngine.Features.GooglePatents
 
         #region INPUT OUTPUT
 
-        private static WebSearch[] InputSearchParameters(string path)
+        private static Search[] InputSearchParameters(string path)
         {
             Log.Info("InputSearchParameters");
             var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
 
-            var searches = new List<WebSearch>();
+            var searches = new List<Search>();
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
-                var search = new WebSearch();
+                var search = new Search();
 
                 search.PatentCode = Convert.ToString(dataFrame["Patent Code"][i]);
                 search.ClassCode = Convert.ToString(dataFrame["Class Code"][i]);
@@ -335,15 +335,15 @@ namespace DxMLEngine.Features.GooglePatents
             return searches.ToArray();
         }
 
-        private static WebSearch[] InputPatentCodes(string path)
+        private static Search[] InputPatentCodes(string path)
         {
             Log.Info("InputPatentCodes");
             var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
 
-            var searches = new List<WebSearch>();
+            var searches = new List<Search>();
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
-                var search = new WebSearch();
+                var search = new Search();
 
                 search.PatentCode = dataFrame["Patent Code"][i] != null
                     ? dataFrame["Patent Code"][i]!.ToString()!.Replace(" ", "+") : null;
@@ -355,7 +355,7 @@ namespace DxMLEngine.Features.GooglePatents
             return searches.ToArray();
         }
 
-        private static void OutputPageText(string location, string fileName, WebSearch search)
+        private static void OutputPageText(string location, string fileName, Search search)
         {
             Log.Info("OutputSearchPageText");
             var path = $"{location}\\Datadoc @{fileName} #-------------- .txt";
@@ -365,7 +365,7 @@ namespace DxMLEngine.Features.GooglePatents
             File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
         }
 
-        private static void OutputPageSource(string location, string fileName, WebSearch search)
+        private static void OutputPageSource(string location, string fileName, Search search)
         {
             Log.Info("OutputSearchPageSource");
             var path = $"{location}\\Dataweb @{fileName} #-------------- .html";
@@ -574,7 +574,7 @@ namespace DxMLEngine.Features.GooglePatents
                 
         #region PAGE CHECKING
         
-        private static int? FindNumberOfPages(WebSearch search)
+        private static int? FindNumberOfPages(Search search)
         {
             if (search.PageText == null)
                 throw new ArgumentException("search.PageText == null");
@@ -606,7 +606,7 @@ namespace DxMLEngine.Features.GooglePatents
                 return null;
         }
         
-        private static string[] CheckTextHeaders(WebSearch search)
+        private static string[] CheckTextHeaders(Search search)
         {
             /// ====================================================================================
             /// Abstract
@@ -660,7 +660,7 @@ namespace DxMLEngine.Features.GooglePatents
             return foundedHeaders;
         }
 
-        private static string[] CheckSourceHeaders(WebSearch search)
+        private static string[] CheckSourceHeaders(Search search)
         {
             /// ====================================================================================
             /// <h2>Info</h2>
@@ -706,7 +706,7 @@ namespace DxMLEngine.Features.GooglePatents
                 
         #region DATA EXTRACTION
 
-        private static PatentCode[] ExtractPatentCodes(WebSearch search)
+        private static PatentCode[] ExtractPatentCodes(Search search)
         {
             if (search.PageText == null)
                 throw new ArgumentException("search.PageText == null");
@@ -744,7 +744,7 @@ namespace DxMLEngine.Features.GooglePatents
             return patentCodes.ToArray();
         }
 
-        private static string ExtractTitle(WebSearch search)
+        private static string ExtractTitle(Search search)
         {        
             if (search.PageSource == null)
                 throw new ArgumentException("search.PageSource == null");
@@ -763,7 +763,7 @@ namespace DxMLEngine.Features.GooglePatents
             return titleNode.Trim();
         }
 
-        private static Abstract? ExtractAbstract(WebSearch search)
+        private static Abstract? ExtractAbstract(Search search)
         {
             /// ====================================================================================
             /// Extract summary from Google Patents search using raw text and page source
@@ -798,7 +798,7 @@ namespace DxMLEngine.Features.GooglePatents
             return new Abstract(content, language);
         }
 
-        private static Images? ExtractImages(WebSearch search)
+        private static Images? ExtractImages(Search search)
         {
             if (search.PageText == null)
                 throw new ArgumentException("search.PageText == null");
@@ -833,7 +833,7 @@ namespace DxMLEngine.Features.GooglePatents
             return new Images(imagesHrefs.ToArray());
         }
 
-        private static Classifications? ExtractClassifications(WebSearch search)
+        private static Classifications? ExtractClassifications(Search search)
         {
             if (search.PageText == null)
                 throw new ArgumentException("search.PageText == null");
@@ -874,7 +874,7 @@ namespace DxMLEngine.Features.GooglePatents
             return new Classifications(classes.ToArray());
         }
 
-        private static GeneralInfo? ExtractGeneralInfo(WebSearch search)
+        private static GeneralInfo? ExtractGeneralInfo(Search search)
         {
             /// ====================================================================================
             /// Extract info card section from Google Patents search using raw text data
@@ -1050,7 +1050,7 @@ namespace DxMLEngine.Features.GooglePatents
                 applicationNumber, applicationEvents.ToArray(), externalLinks);
         }
 
-        private static Description? ExtractDescription(WebSearch search)
+        private static Description? ExtractDescription(Search search)
         {
             ////0
             if (search.PageText == null)
@@ -1085,7 +1085,7 @@ namespace DxMLEngine.Features.GooglePatents
             return new Description(content, language);
         }
 
-        private static Claims? ExtractClaims(WebSearch search)
+        private static Claims? ExtractClaims(Search search)
         {
             if (search.PageText == null)
                 throw new ArgumentNullException("search.PageText == null");
@@ -1198,7 +1198,7 @@ namespace DxMLEngine.Features.GooglePatents
             return new Claims(content, language);
         }
 
-        private static Concepts? ExtractConcepts(WebSearch search)
+        private static Concepts? ExtractConcepts(Search search)
         {
             if (search.PageText == null)
                 throw new ArgumentNullException("search.PageText == null");
@@ -1325,32 +1325,32 @@ namespace DxMLEngine.Features.GooglePatents
             return new Concepts(concepts.ToArray());
         }
 
-        private static PatentCitations ExtractPatentCitations(WebSearch search)
+        private static PatentCitations ExtractPatentCitations(Search search)
         {
             throw new NotFiniteNumberException();
         }
 
-        private static NonPatentCitations ExtractNonPatentCitations(WebSearch search)
+        private static NonPatentCitations ExtractNonPatentCitations(Search search)
         {
             throw new NotFiniteNumberException();
         }
 
-        private static CitedBy ExtractCitedBy(WebSearch search)
+        private static CitedBy ExtractCitedBy(Search search)
         {
             throw new NotFiniteNumberException();
         }
 
-        private static SimilarDocuments ExtractSimilarDocuments(WebSearch search)
+        private static SimilarDocuments ExtractSimilarDocuments(Search search)
         {
             throw new NotFiniteNumberException();
         }        
         
-        private static PriorityApplications ExtractPriorityApplications(WebSearch search)
+        private static PriorityApplications ExtractPriorityApplications(Search search)
         {
             throw new NotFiniteNumberException();
         }        
         
-        private static LegalEvents ExtractLegalEvents(WebSearch search)
+        private static LegalEvents ExtractLegalEvents(Search search)
         {
             throw new NotFiniteNumberException();
         }

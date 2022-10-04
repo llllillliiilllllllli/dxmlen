@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace DxMLEngine.Features.GooglePatents
 {
-    internal class WebSearch
+    internal class Search
     {
         public string? Id { set; get; }
 

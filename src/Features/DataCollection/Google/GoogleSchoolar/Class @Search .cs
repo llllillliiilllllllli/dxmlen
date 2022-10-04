@@ -8,11 +8,11 @@ using DxMLEngine.Attributes;
 
 namespace DxMLEngine.Features.GoogleScholar
 {
-    internal class WebSearch
+    internal class Search
     {
         public string? Id { set; get; }
 
-        #region Request
+        #region REQUEST
 
         private const string URL_SEARCH_PAGE = "https://scholar.google.com/scholar?{parameters}";
         
@@ -24,15 +24,6 @@ namespace DxMLEngine.Features.GoogleScholar
         public string? FromYear { set; get; } 
         public string? ToYear { set; get; } 
         public bool? Reviewed { set; get; }
-
-        #endregion Request
-
-        #region Response
-
-        public string? PageText { set; get; }
-        public string? PageSource { set; get; }
-        
-        #endregion Response
 
         private string ConfigureSearchUrl()
         {
@@ -47,5 +38,14 @@ namespace DxMLEngine.Features.GoogleScholar
 
             return URL_SEARCH_PAGE.Replace("{parameters}", parameters).Replace("?&", "?");
         }
+
+        #endregion REQUEST
+
+        #region RESPONSE
+
+        public string? PageText { set; get; }
+        public string? PageSource { set; get; }
+
+        #endregion RESPONSE
     }
 }

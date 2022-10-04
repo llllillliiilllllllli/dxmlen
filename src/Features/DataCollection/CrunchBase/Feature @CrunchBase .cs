@@ -14,7 +14,7 @@ namespace DxMLEngine.Features.CrunchBase
     [Feature]
     internal class CrunchBaseAcquisition
     {
-        private static HtmlDocument ReadWebSearch(string path)
+        private static HtmlDocument ReadSearch(string path)
         {
             if (!Path.IsPathFullyQualified(path))
                 throw new ArgumentNullException("path is not fully qualified");
@@ -161,7 +161,7 @@ namespace DxMLEngine.Features.CrunchBase
                 if (!Path.IsPathFullyQualified(path)) continue;
                 Console.WriteLine($"\nCollect: {Path.GetFileName(path)}");
 
-                var document = ReadWebSearch(path);
+                var document = ReadSearch(path);
                 for (int i = 1; i <= 50; i++)
                 {
                     var dataline = new List<string>();
@@ -203,7 +203,7 @@ namespace DxMLEngine.Features.CrunchBase
         private static readonly string _CompanyFacebookXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[17]/div/field-formatter/link-formatter/a";
         private static readonly string _CompanyLinkedInXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[18]/div/field-formatter/link-formatter/a";
 
-        private static HtmlDocument ReadWebSearch(string path)
+        private static HtmlDocument ReadSearch(string path)
         {
             if (!Path.IsPathFullyQualified(path))
                 throw new ArgumentNullException("path is not fully qualified");
@@ -504,7 +504,7 @@ namespace DxMLEngine.Features.CrunchBase
                 if (!Path.IsPathFullyQualified(path)) continue;
                 Console.WriteLine($"\nCollect: {Path.GetFileName(path)}");
 
-                var document = ReadWebSearch(path);
+                var document = ReadSearch(path);
                 for (int i = 1; i <= 50; i++)
                 {
                     var dataline = new List<string>();
@@ -559,7 +559,7 @@ namespace DxMLEngine.Features.CrunchBase
     {
         private static readonly string _ContactLinkedInXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[6]/div/field-formatter/blob-formatter/external-link/a";
 
-        private static HtmlDocument ReadWebSearch(string path)
+        private static HtmlDocument ReadSearch(string path)
         {
             if (!Path.IsPathFullyQualified(path))
                 throw new ArgumentNullException("path is not fully qualified");
@@ -710,7 +710,7 @@ namespace DxMLEngine.Features.CrunchBase
                 if (!Path.IsPathFullyQualified(path)) continue;
                 Console.WriteLine($"\nCollect: {Path.GetFileName(path)}");
 
-                var document = ReadWebSearch(path);
+                var document = ReadSearch(path);
                 for (int i = 1; i <= 50; i++)
                 {
                     var dataline = new List<string>();
@@ -765,7 +765,7 @@ namespace DxMLEngine.Features.CrunchBase
     {
         private static readonly string _EventRegistrationURLXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[10]/div/field-formatter/link-formatter/a";
 
-        private static HtmlDocument ReadWebSearch(string path)
+        private static HtmlDocument ReadSearch(string path)
         {
             if (!Path.IsPathFullyQualified(path))
                 throw new ArgumentNullException("path is not fully qualified");
@@ -889,7 +889,7 @@ namespace DxMLEngine.Features.CrunchBase
                 if (!Path.IsPathFullyQualified(path)) continue;
                 Console.WriteLine($"\nCollect: {Path.GetFileName(path)}");
 
-                var document = ReadWebSearch(path);
+                var document = ReadSearch(path);
                 for (int i = 1; i <= 50; i++)
                 {
                     var dataline = new List<string>();
@@ -942,7 +942,7 @@ namespace DxMLEngine.Features.CrunchBase
     [Feature]
     internal class CrunchBaseFunding
     {
-        private static HtmlDocument ReadWebSearch(string path)
+        private static HtmlDocument ReadSearch(string path)
         {
             if (!Path.IsPathFullyQualified(path))
                 throw new ArgumentNullException("path is not fully qualified");
@@ -1082,7 +1082,7 @@ namespace DxMLEngine.Features.CrunchBase
                 if (!Path.IsPathFullyQualified(path)) continue;
                 Console.WriteLine($"\nCollect: {Path.GetFileName(path)}");
 
-                var document = ReadWebSearch(path);
+                var document = ReadSearch(path);
                 for (int i = 1; i <= 50; i++)
                 {
                     var dataline = new List<string>();
@@ -1120,7 +1120,7 @@ namespace DxMLEngine.Features.CrunchBase
     [Feature]
     internal class CrunchBaseHub
     {
-        private static HtmlDocument ReadWebSearch(string path)
+        private static HtmlDocument ReadSearch(string path)
         {
             if (!Path.IsPathFullyQualified(path))
                 throw new ArgumentNullException("path is not fully qualified");
@@ -1378,7 +1378,7 @@ namespace DxMLEngine.Features.CrunchBase
                 if (!Path.IsPathFullyQualified(path)) continue;
                 Console.WriteLine($"\nCollect: {Path.GetFileName(path)}");
 
-                var document = ReadWebSearch(path);
+                var document = ReadSearch(path);
                 for (int i = 1; i <= 50; i++)
                 {
                     var dataline = new List<string>();
@@ -1420,7 +1420,7 @@ namespace DxMLEngine.Features.CrunchBase
         private static readonly string _InvestorLinkedInXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[14]/div/field-formatter/link-formatter/a";
         private static readonly string _InvestorFacebookXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[15]/div/field-formatter/link-formatter/a";
 
-        private static HtmlDocument ReadWebSearch(string path)
+        private static HtmlDocument ReadSearch(string path)
         {
             if (!Path.IsPathFullyQualified(path))
                 throw new ArgumentNullException("path is not fully qualified");
@@ -1792,7 +1792,7 @@ namespace DxMLEngine.Features.CrunchBase
                 if (!Path.IsPathFullyQualified(path)) continue;
                 Console.WriteLine($"\nCollect: {Path.GetFileName(path)}");
 
-                var document = ReadWebSearch(path);
+                var document = ReadSearch(path);
                 for (int i = 1; i <= 50; i++)
                 {
                     var dataline = new List<string>();
@@ -1849,7 +1849,7 @@ namespace DxMLEngine.Features.CrunchBase
         private static readonly string _PersonalLinkedInXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[13]/div/field-formatter/link-formatter/a";
         private static readonly string _PersonalFacebookXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[14]/div/field-formatter/link-formatter/a";
 
-        private static HtmlDocument ReadWebSearch(string path)
+        private static HtmlDocument ReadSearch(string path)
         {
             if (!Path.IsPathFullyQualified(path))
                 throw new ArgumentNullException("path is not fully qualified");
@@ -1999,7 +1999,7 @@ namespace DxMLEngine.Features.CrunchBase
                 if (!Path.IsPathFullyQualified(path)) continue;
                 Console.WriteLine($"\nCollect: {Path.GetFileName(path)}");
 
-                var document = ReadWebSearch(path);
+                var document = ReadSearch(path);
                 for (int i = 1; i <= 50; i++)
                 {
                     var dataline = new List<string>();
@@ -2056,7 +2056,7 @@ namespace DxMLEngine.Features.CrunchBase
         private static readonly string _SchoolFacebookXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[17]/div/field-formatter/link-formatter/a";
         private static readonly string _SchoolLinkedInXPath = "/html/body/chrome/div/mat-sidenav-container/mat-sidenav-content/div/discover/page-layout/div/div/div[2]/section[2]/results/div/div/div[2]/sheet-grid/div/div/grid-body/div/grid-row[{index}]/grid-cell[18]/div/field-formatter/link-formatter/a";
 
-        private static HtmlDocument ReadWebSearch(string path)
+        private static HtmlDocument ReadSearch(string path)
         {
             if (!Path.IsPathFullyQualified(path))
                 throw new ArgumentNullException("path is not fully qualified");
@@ -2357,7 +2357,7 @@ namespace DxMLEngine.Features.CrunchBase
                 if (!Path.IsPathFullyQualified(path)) continue;
                 Console.WriteLine($"\nCollect: {Path.GetFileName(path)}");
 
-                var document = ReadWebSearch(path);
+                var document = ReadSearch(path);
                 for (int i = 1; i <= 50; i++)
                 {
                     var dataline = new List<string>();

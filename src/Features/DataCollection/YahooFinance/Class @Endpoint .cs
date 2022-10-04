@@ -1,10 +1,12 @@
 ﻿using DxMLEngine.Features.GooglePatents;
+using DxMLEngine.Objects;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace DxMLEngine.Features.YahooFinance

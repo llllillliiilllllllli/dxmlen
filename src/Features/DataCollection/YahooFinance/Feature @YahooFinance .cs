@@ -175,9 +175,8 @@ namespace DxMLEngine.Features.YahooFinance
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
                 var endpoint = new Endpoint();
-
-                endpoint.Id = dataFrame["ID"][i] != null ? dataFrame["ID"][i].ToString() : null;
-                endpoint.Query = dataFrame["Query"][i] != null ? dataFrame["Query"][i].ToString() : null;
+                endpoint.Id = Convert.ToString(dataFrame["ID"][i]);
+                endpoint.Query = Convert.ToString(dataFrame["Query"][i]);
 
                 endpoints.Add(endpoint);
             }

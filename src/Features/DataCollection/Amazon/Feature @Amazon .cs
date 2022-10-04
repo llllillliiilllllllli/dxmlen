@@ -238,13 +238,13 @@ namespace DxMLEngine.Features.Amazon
 
         #region INPUT OUTPUT
 
-        private static WebSearch[] InputAsinSearches(string path)
+        private static Search[] InputAsinSearches(string path)
         {
             var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
-            var searches = new List<WebSearch>();
+            var searches = new List<Search>();
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
-                var search = new WebSearch();
+                var search = new Search();
                 search.Keyword = Convert.ToString(dataFrame["Keyword"][i]);
                 search.NumberOfPages = Convert.ToInt32(dataFrame["Number of Pages"][i]);
                 
@@ -254,13 +254,13 @@ namespace DxMLEngine.Features.Amazon
             return searches.ToArray();
         }
 
-        private static WebSearch[] InputProductSearches(string path)
+        private static Search[] InputProductSearches(string path)
         {
             var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
-            var searches = new List<WebSearch>();
+            var searches = new List<Search>();
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
-                var search = new WebSearch();
+                var search = new Search();
                 search.Asin = Convert.ToString(dataFrame["ASIN"][i]);
                 searches.Add(search);
             }
@@ -268,13 +268,13 @@ namespace DxMLEngine.Features.Amazon
             return searches.ToArray();
         }
         
-        private static WebSearch[] InputReviewSearches(string path)
+        private static Search[] InputReviewSearches(string path)
         {
             var dataFrame = DataFrame.LoadCsv(path, header: true, separator: '\t', encoding: Encoding.UTF8);
-            var searches = new List<WebSearch>();
+            var searches = new List<Search>();
             for (int i = 0; i < dataFrame.Rows.Count; i++)
             {
-                var search = new WebSearch();
+                var search = new Search();
                 search.Asin = Convert.ToString(dataFrame["ASIN"][i]);
                 search.NumberOfPages = Convert.ToInt32(dataFrame["Number of Pages"][i]);
 
@@ -299,7 +299,7 @@ namespace DxMLEngine.Features.Amazon
             return searches.ToArray();
         }
 
-        private static void OutputPageText(string location, string fileName, WebSearch search)
+        private static void OutputPageText(string location, string fileName, Search search)
         {
             Log.Info("OutputPageText");
 
@@ -310,7 +310,7 @@ namespace DxMLEngine.Features.Amazon
             File.Move(path, path.Replace("#--------------", $"#{timestamp}"), overwrite: true);
         }
 
-        private static void OutputPageSource(string location, string fileName, WebSearch search)
+        private static void OutputPageSource(string location, string fileName, Search search)
         {
             Log.Info("OutputPageSource");
 
@@ -457,7 +457,7 @@ namespace DxMLEngine.Features.Amazon
 
         #region PAGE CHECKING
 
-        private static int FindNumberOfProductPages(WebSearch search)
+        private static int FindNumberOfProductPages(Search search)
         {
             if (search.PageText == null)
                 throw new ArgumentException("search.PageText == null");
@@ -487,7 +487,7 @@ namespace DxMLEngine.Features.Amazon
             return int.Parse((numResults / perPage).ToString().Split(".")[0]);
         }
     
-        private static int FindNumberOfReviewPages(WebSearch search)
+        private static int FindNumberOfReviewPages(Search search)
         {
             if (search.PageSource == null)
                 throw new ArgumentException("search.PageSource == null");
@@ -505,7 +505,7 @@ namespace DxMLEngine.Features.Amazon
             return int.Parse((numResults / 10).ToString().Split(".")[0]);
         }
         
-        private static PageLayout CheckPageLayout(WebSearch search)
+        private static PageLayout CheckPageLayout(Search search)
         {
             if (search.PageText == null)
                 throw new ArgumentException("search.PageText == null");
@@ -532,7 +532,7 @@ namespace DxMLEngine.Features.Amazon
 
         #region DATA EXTRACTION
 
-        private static Product[] ExtractProductAsins(WebSearch search)
+        private static Product[] ExtractProductAsins(Search search)
         {
             var foundedAsins = new List<string>();
             
@@ -552,7 +552,7 @@ namespace DxMLEngine.Features.Amazon
             return products.ToArray();
         }
 
-        private static string[] ExtractAsinFormA(WebSearch search)
+        private static string[] ExtractAsinFormA(Search search)
         {
             /// ====================================================================================
             /// https://www.amazon.com/s?k=chair
@@ -594,7 +594,7 @@ namespace DxMLEngine.Features.Amazon
             return foundedAsins.ToArray();
         }
 
-        private static string[] ExtractAsinFormB(WebSearch search)
+        private static string[] ExtractAsinFormB(Search search)
         {
             /// ====================================================================================
             /// https://www.amazon.com/s?k=electronics
@@ -636,7 +636,7 @@ namespace DxMLEngine.Features.Amazon
             return foundedAsins.ToArray();
         }
 
-        private static Product ExtractProductDetails(WebSearch search)
+        private static Product ExtractProductDetails(Search search)
         {
             /// ====================================================================================
             /// https://www.amazon.com/dp/B081H44MHD
@@ -729,7 +729,7 @@ namespace DxMLEngine.Features.Amazon
             return product;
         }
 
-        private static Review ExtractCustomerReviews(WebSearch search)
+        private static Review ExtractCustomerReviews(Search search)
         {
             var review = new Review();
             ExtractReviewInfo(search, ref review);
@@ -738,7 +738,7 @@ namespace DxMLEngine.Features.Amazon
             return review;
         }
 
-        private static void ExtractReviewInfo(WebSearch search, ref Review review)
+        private static void ExtractReviewInfo(Search search, ref Review review)
         {
             /// ====================================================================================
             /// https://www.amazon.com/product-reviews/B081H44MHD
@@ -821,7 +821,7 @@ namespace DxMLEngine.Features.Amazon
             review.OneStar = oneStar;            
         }
 
-        private static void ExtractReviewDetails(WebSearch search, ref Review review)
+        private static void ExtractReviewDetails(Search search, ref Review review)
         {
             /// ====================================================================================
             /// https://www.amazon.com/product-reviews/B081H44MHD
