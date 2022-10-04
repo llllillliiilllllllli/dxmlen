@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace DxMLEngine.Features.ScienceDirect
 {
-    internal class ArticleEntitlementRetrieval
+    internal enum RetrieveBy
     {
-
+        Doi = 0,
+        Eid = 1,
+        Pii = 2,
+        PubMedId = 3,
+        ScopusId = 4,
     }
 }

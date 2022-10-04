@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DxMLEngine.Features.ScienceDirect
+namespace DxMLEngine
 {
-    internal class Affiliation
+    internal enum FileFormat
     {
-
+        Txt = 0,
+        Csv = 1,
+        Json = 2,
+        Xml = 3,
     }
 }

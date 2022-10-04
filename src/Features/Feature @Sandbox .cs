@@ -207,7 +207,7 @@ namespace DxMLEngine.Features
             }
         }
 
-        public static void DeserializeTradeDAtaAPI()
+        public static void DeserializeTradeDataAPI()
         {
             var endpoint = "https://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2013&r=826&p=0&rg=all&cc=AG2&fmt=json";
             Console.WriteLine($"\nCollect: {endpoint}");
@@ -231,19 +231,6 @@ namespace DxMLEngine.Features
                 Console.WriteLine(dataset.rgCode);
                 Console.WriteLine(dataset.cstCode);
             }
-        }
-    
-        public static void DeserializeScienceDirectSearch()
-        {
-            var path = "C:\\Users\\Dustin\\OneDrive\\Program\\3 Application Program\\dxmlen\\res\\ScienceDirect @Search .json";
-            var jsonString = File.ReadAllText(path);
-            var scienceDirectSearch = JsonSerializer.Deserialize<ScienceDirectSearch>(jsonString);
-            
-            Console.WriteLine(scienceDirectSearch?.searchResult);
-            Console.WriteLine(scienceDirectSearch?.searchResult?.opensearchQuery);
-            Console.WriteLine(scienceDirectSearch?.searchResult?.opensearchstartIndex);
-            Console.WriteLine(scienceDirectSearch?.searchResult?.opensearchtotalResults);
-            Console.WriteLine(scienceDirectSearch?.searchResult?.opensearchitemsPerPage);
-        }
+        }   
     }
 }

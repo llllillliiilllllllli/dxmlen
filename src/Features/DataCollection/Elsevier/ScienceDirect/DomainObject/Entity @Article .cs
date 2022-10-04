@@ -8,20 +8,23 @@ namespace DxMLEngine.Features.ScienceDirect
 {
     public class Article
     {
-        public string? Identifier { get; set; }
-        public string? Title { get; set; }
-        public string? Creator { get; set; }
+        public string? Title { set; get; }
+        public string? Description { set; get; }
+        public string[]? Keywords { set; get; }
+        public string[]? Creators { set; get; }
+        public string? Publisher { set; get; }
+        public string? Volume { set; get; }
+        public string? Type { set; get; }
+        public DateTime? CoverDate { set; get; }
+        public string? PageRange { set; get; }
+        public bool? OpenAccess { set; get; }
 
-        public string? Url { get; set; }
-        public string? PublicationName { get; set; }
-        public string? Volume { get; set; }
-        public string? CoverDate { get; set; }
-        public string? StartingPage { get; set; }
-        public string? EndingPage { get; set; }
-        public string? Doi { get; set; }
+        public string? Doi { set; get; }
+        public string? Eid { set; get; }
+        public string? Pii { set; get; }
+        public string? PubmedId { set; get; }
+        public string? ScopusId { set; get; }
 
-        public bool OpenAccess { get; set; }
-        public string? Pii { get; set; }
-        public string[]? Authors { get; set; }
+        public string? Url { set; get; }
     }
 }
