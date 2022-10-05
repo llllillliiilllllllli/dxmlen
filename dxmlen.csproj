@@ -15,39 +15,40 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="doc\UseCases\BusinessIntelligence\" />
     <Folder Include="log\" />
-    <Folder Include="src\Features\DataProcessing\TextMining\" />
-    <Folder Include="src\Features\DataProcessing\Statistics\" />
-    <Folder Include="src\Features\DataCollection\CrunchBase\CBFundings\" />
-    <Folder Include="src\Features\DataCollection\CrunchBase\CBAcquisitions\" />
-    <Folder Include="src\Features\DataCollection\CrunchBase\CBPeople\" />
-    <Folder Include="src\Features\DataCollection\CrunchBase\CBHubs\" />
-    <Folder Include="src\Features\DataCollection\CrunchBase\CBSchools\" />
-    <Folder Include="src\Features\DataCollection\CrunchBase\CBContacts\" />
-    <Folder Include="src\Features\DataCollection\CrunchBase\CBInvestors\" />
-    <Folder Include="src\Features\DataCollection\CrunchBase\CBEvents\" />
-    <Folder Include="src\Features\DataCollection\CrunchBase\CBCompanies\" />
-    <Folder Include="src\Features\DataCollection\Elsevier\EngineeringVillage\" />
-    <Folder Include="src\Features\DataCollection\Elsevier\Geofacets\" />
-    <Folder Include="src\Features\DataCollection\Elsevier\PharmaPendium\" />
-    <Folder Include="src\Features\DataCollection\Elsevier\SciVar\" />
-    <Folder Include="src\Features\DataCollection\Elsevier\Scopus\" />
-    <Folder Include="src\Features\DataCollection\Google\GoogleSearch\" />
-    <Folder Include="src\Features\DataCollection\Google\GoogleNews\" />
-    <Folder Include="src\Features\DataCollection\Google\GoogleBooks\" />
-    <Folder Include="src\Features\DataCollection\Google\GoogleMaps\" />
-    <Folder Include="src\Features\DataCollection\Google\GooglePlay\" />
-    <Folder Include="src\Features\DataCollection\Google\GoogleArts\" />
-    <Folder Include="src\Features\DataCollection\Google\GoogleTranslate\" />
-    <Folder Include="src\Features\DataCollection\Google\YouTube\" />
-    <Folder Include="src\Features\UseCases\Research\CitationSystem\" />
-    <Folder Include="src\Features\UseCases\Research\AcademicResearch\" />
-    <Folder Include="src\Features\UseCases\Research\IR-CRIS\" />
-    <Folder Include="src\Features\UseCases\Research\FederatedSearch\" />
-    <Folder Include="src\Features\UseCases\Research\" />
-    <Folder Include="src\Features\UseCases\Research\ResearchInfo\" />
-    <Folder Include="src\Features\UseCases\Research\ResearchMetrics\" />
-    <Folder Include="src\Features\UseCases\Research\ResearchMining\" />
+    <Folder Include="src\Features\LearningEngine\TextMining\" />
+    <Folder Include="src\Features\LearningEngine\Statistics\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBFundings\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBAcquisitions\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBPeople\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBHubs\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBSchools\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBContacts\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBInvestors\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBEvents\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBCompanies\" />
+    <Folder Include="src\Features\DataRespository\Elsevier\EngineeringVillage\" />
+    <Folder Include="src\Features\DataRespository\Elsevier\Geofacets\" />
+    <Folder Include="src\Features\DataRespository\Elsevier\PharmaPendium\" />
+    <Folder Include="src\Features\DataRespository\Elsevier\SciVar\" />
+    <Folder Include="src\Features\DataRespository\Elsevier\Scopus\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleSearch\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleNews\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleBooks\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleMaps\" />
+    <Folder Include="src\Features\DataRespository\Google\GooglePlay\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleArts\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleTranslate\" />
+    <Folder Include="src\Features\DataRespository\Google\YouTube\" />
+    <Folder Include="doc\UseCases\ResearchManagement\CitationSystem\" />
+    <Folder Include="doc\UseCases\ResearchManagement\AcademicResearch\" />
+    <Folder Include="doc\UseCases\ResearchManagement\IR-CRIS\" />
+    <Folder Include="doc\UseCases\ResearchManagement\FederatedSearch\" />
+    <Folder Include="doc\UseCases\ResearchManagement\" />
+    <Folder Include="doc\UseCases\ResearchManagement\ResearchInfo\" />
+    <Folder Include="doc\UseCases\ResearchManagement\ResearchMetrics\" />
+    <Folder Include="doc\UseCases\ResearchManagement\ResearchMining\" />
     <Folder Include="src\Functions\Data\" />
     <Folder Include="src\Functions\Mathematics\" />
     <Folder Include="src\Services\HtmlAgility\" />
@@ -117,6 +118,8 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="Microsoft.Data.Analysis" Version="0.19.1" />
     <PackageReference Include="Microsoft.ML" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.TimeSeries" Version="1.7.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
     <PackageReference Include="Tesseract" Version="4.1.1" />
     <PackageReference Include="TextCopy" Version="6.1.0" />
