@@ -1,0 +1,6 @@
+﻿Content,ActualLabel,PredictedLabel,Probability,Score
+"We were grossed out by the melted ice-cream at the end. The rest were great but I love dessert so I would rate it 5 out of 10.","False","True","0.97790635","3.7901223"
+"On a positive note, our server was very attentive. But then the main meal come out very late. We have to wait for thirteen minutes.","False","True","0.72966516","0.9929243"
+"The burgers are terrific. Cannot complain 'cause cheese makes me happy. Me and my friends order half of the set.","True","True","0.7205623","0.94725233"
+"The only thing I did like was the prime rib and dessert section.","True","True","0.70215654","0.85758847"
+"I wonder if Yelp menu have ever changed. They repeatly serve the same foods and drinks.","False","True","0.88210946","2.01256"

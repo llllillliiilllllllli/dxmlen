@@ -232,5 +232,70 @@ namespace DxMLEngine.Features
                 Console.WriteLine(dataset.cstCode);
             }
         }   
+
+        public static void InquireParameters(string inFile, string inDir, int outInt, float outFloat)
+        {
+            Console.WriteLine(inFile);
+            Console.WriteLine(inDir);
+            Console.WriteLine(outInt);
+            Console.WriteLine(outFloat);
+        }
+
+        public static void FindRSquared()
+        {
+            var actualValues = new float[] 
+            { 
+                15.000f,
+                14.000f,
+                18.000f,
+                14.000f,
+                18.000f,
+                15.000f,
+                12.000f,
+                15.000f,
+                12.000f,
+                12.000f,
+                17.000f,
+                15.000f,
+                14.000f,
+                15.000f,
+                16.000f,
+                14.000f,
+                18.000f,
+                19.000f,
+                17.000f,
+                17.000f,
+            };
+
+            var predictedValues = new float[] 
+            {
+                15.361f,
+                14.080f,
+                18.429f,
+                14.888f,
+                18.061f,
+                15.111f,
+                12.735f,
+                15.900f,
+                12.094f,
+                12.441f,
+                17.422f,
+                15.956f,
+                14.522f,
+                15.938f,
+                16.462f,
+                14.864f,
+                18.073f,
+                19.355f,
+                17.541f,
+                17.064f,
+            };
+
+            var norminator = actualValues.Zip(predictedValues, (x, y) => (x - actualValues.Average()) * (y - actualValues.Average())).Sum();
+            var denominator = Math.Sqrt(actualValues.Sum(x => Math.Pow(x - actualValues.Average(), 2)) * predictedValues.Sum(y => Math.Pow(y - predictedValues.Average(), 2)));
+            var RSQ = norminator / denominator;
+
+            Console.WriteLine($"R-Squared : {RSQ}");
+        }
     }
 }

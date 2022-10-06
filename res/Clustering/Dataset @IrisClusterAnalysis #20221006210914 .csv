@@ -1,0 +1,4 @@
+﻿SepalLength,SepalWidth,PetalLength,PetalWidth,ActualCluster,PredictedCluster,AverageDistance
+"5.2","3.4","1.3","0.3","Iris-setosa","3","12.660134"
+"5","2.4","3.2","1.1","Iris-versicolor","1","6.311342"
+"6.4","2.6","4.9","1.8","Iris-virginica","1","6.280111"

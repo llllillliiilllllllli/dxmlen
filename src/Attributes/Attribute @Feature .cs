@@ -8,5 +8,11 @@ namespace DxMLEngine.Attributes
 {
     internal class Feature : Attribute
     {
+        internal string? Instruction { set; get; }
+        public Feature() { }
+        public Feature(string instruction)
+        {
+            this.Instruction = instruction;
+        }
     }
 }
