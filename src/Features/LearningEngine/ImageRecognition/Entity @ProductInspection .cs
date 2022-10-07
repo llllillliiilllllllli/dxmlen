@@ -19,7 +19,7 @@ namespace DxMlEngine.Features.ProductInspection
 	public class ProductImage
 	{
 		[ColumnName("Image")]
-		public bytes[]? Image { set; get; }
+		public byte[]? Image { set; get; }
 		
 		[ColumnName("ImagePath")]
 		public string? ImagePath { set; get; }

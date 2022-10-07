@@ -15,17 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="doc\UseCases\BusinessIntelligence\" />
-    <Folder Include="doc\UseCases\MachineLearning\AnomalyDetection\" />
-    <Folder Include="doc\UseCases\MachineLearning\SentimentAnalysis\" />
-    <Folder Include="doc\UseCases\MachineLearning\SalesForecasting\" />
-    <Folder Include="doc\UseCases\MachineLearning\ProductRecommendation\" />
-    <Folder Include="doc\UseCases\MachineLearning\PricePrediction\" />
-    <Folder Include="doc\UseCases\MachineLearning\ObjectDetection\" />
-    <Folder Include="doc\UseCases\MachineLearning\ImageClassification\" />
-    <Folder Include="doc\UseCases\MachineLearning\FraudDetection\" />
-    <Folder Include="doc\UseCases\MachineLearning\CustomerSegmentation\" />
+    <Folder Include="doc\" />
     <Folder Include="log\" />
+    <Folder Include="test\" />
     <Folder Include="src\Features\LearningEngine\TextMining\" />
     <Folder Include="src\Features\LearningEngine\Statistics\" />
     <Folder Include="src\Features\DataStation\CrunchBase\CBFundings\" />
@@ -50,14 +42,6 @@
     <Folder Include="src\Features\DataStation\Google\GoogleArts\" />
     <Folder Include="src\Features\DataStation\Google\GoogleTranslate\" />
     <Folder Include="src\Features\DataStation\Google\YouTube\" />
-    <Folder Include="doc\UseCases\ResearchManagement\CitationSystem\" />
-    <Folder Include="doc\UseCases\ResearchManagement\AcademicResearch\" />
-    <Folder Include="doc\UseCases\ResearchManagement\IR-CRIS\" />
-    <Folder Include="doc\UseCases\ResearchManagement\FederatedSearch\" />
-    <Folder Include="doc\UseCases\ResearchManagement\" />
-    <Folder Include="doc\UseCases\ResearchManagement\ResearchInfo\" />
-    <Folder Include="doc\UseCases\ResearchManagement\ResearchMetrics\" />
-    <Folder Include="doc\UseCases\ResearchManagement\ResearchMining\" />
     <Folder Include="src\Functions\Data\" />
     <Folder Include="src\Functions\Mathematics\" />
     <Folder Include="src\Services\HtmlAgility\" />
@@ -119,7 +103,6 @@
     <Folder Include="src\Services\TextCopy\" />
     <Folder Include="src\Services\TensorFlow\" />
     <Folder Include="src\Services\Onnx\" />
-    <Folder Include="test\" />
   </ItemGroup>
 
   <ItemGroup>

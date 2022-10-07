@@ -22,6 +22,6 @@ namespace DxMlEngine.Features.ProductInspection
 		public string? ImagePath { set; get; }
 		
 		[ColumnName("PredictedLabel")]
-		public string? ImagePath { set; get; }
+		public string? Category { set; get; }
 	}
 }
