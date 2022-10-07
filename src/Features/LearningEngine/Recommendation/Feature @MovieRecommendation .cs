@@ -23,12 +23,21 @@ namespace DxMLEngine.Features.Recommendation
     [Feature]
     internal class MovieRecommendation
     {
+        private const string MovieRecommendationGuide =
+            "\nInstruction:\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................";
+
         [Feature]
         public static void BuildRecommendationModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext(seed: 0);
 
-            var dataView = InputMovieRatingData(ref mlContext, inFile, FileFormat.Csv);
+            var dataView = InputMovieRatingFromFile(ref mlContext, inFile, FileFormat.Csv);
 
             var trainTestData = mlContext.Data.TrainTestSplit(dataView, testFraction: 0.2);
             var trainData = trainTestData.TrainSet;
@@ -59,7 +68,7 @@ namespace DxMLEngine.Features.Recommendation
             var mlContext = new MLContext();
             var model = mlContext.Model.Load(inFileModel, out _);
 
-            var inputData = InputMovieRatingData(ref mlContext, inFileData, FileFormat.Csv);
+            var inputData = InputMovieRatingFromFile(ref mlContext, inFileData, FileFormat.Csv);
 
             var movieRatings = mlContext.Data.CreateEnumerable<MovieRating>(inputData, false).ToArray();
             var predictions = ConsumeRecommendationModel(ref mlContext, model, movieRatings);
@@ -78,7 +87,7 @@ namespace DxMLEngine.Features.Recommendation
 
         #region DATA CONNECTION
 
-        private static IDataView? InputMovieRatingData(ref MLContext mlContext, string path, FileFormat fileFormat)
+        private static IDataView? InputMovieRatingFromFile(ref MLContext mlContext, string path, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Txt)
             {
@@ -188,9 +197,9 @@ namespace DxMLEngine.Features.Recommendation
                 throw new ArgumentNullException("path is null or empty");
 
             Console.Write("\nEnter output folder path: ");
-            var ourDir = Console.ReadLine()?.Replace("\"", "");
+            var outDir = Console.ReadLine()?.Replace("\"", "");
 
-            if (string.IsNullOrEmpty(ourDir))
+            if (string.IsNullOrEmpty(outDir))
                 throw new ArgumentNullException("path is null or empty");
 
             Console.Write("\nEnter output file name: ");
@@ -199,7 +208,7 @@ namespace DxMLEngine.Features.Recommendation
             if (string.IsNullOrEmpty(fileName))
                 throw new ArgumentNullException("file name is null or empty");
 
-            var inputData = InputMovieRatingData(ref mlContext, inFile, FileFormat.Csv);
+            var inputData = InputMovieRatingFromFile(ref mlContext, inFile, FileFormat.Csv);
             if (inputData == null)
                 throw new ArgumentNullException("inputData == null");
 
@@ -215,7 +224,7 @@ namespace DxMLEngine.Features.Recommendation
                 Console.WriteLine($"PredictedRating : {predictions[i].Rating}\n");
             }
 
-            OutputMovieRecommendation(ourDir, fileName, movieRatings, predictions, FileFormat.Csv);
+            OutputMovieRecommendation(outDir, fileName, movieRatings, predictions, FileFormat.Csv);
         }
 
         private static MovieRatingPrediction[] ConsumeRecommendationModel(ref MLContext mlContext, ITransformer model, MovieRating[] movieRatings)

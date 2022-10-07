@@ -15,6 +15,7 @@ namespace DxMLEngine.Objects
         Xml     = 4,
         Html    = 5,
         Mdf     = 6,
-        Jpeg    = 7,
+        Jpg     = 7,
+        Jpeg    = 8,
     }
 }

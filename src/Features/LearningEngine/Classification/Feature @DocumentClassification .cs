@@ -20,12 +20,21 @@ namespace DxMLEngine.Features.Classification
     [Feature]
     internal class DocumentClassification
     {
+        private const string DocumentClassificationGuide =
+            "\nInstruction:\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................";
+
         [Feature]
         public static void BuildClassificationModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext(seed: 0);
 
-            var dataView = InputDocumentData(ref mlContext, inFile, FileFormat.Txt);
+            var dataView = InputDocumentFromFile(ref mlContext, inFile, FileFormat.Txt);
 
             var trainTestData = mlContext.Data.TrainTestSplit(dataView, testFraction: 0.2);
             var trainData = trainTestData.TrainSet;
@@ -62,7 +71,7 @@ namespace DxMLEngine.Features.Classification
             var mlContext = new MLContext();
             var model = mlContext.Model.Load(inFileModel, out _);
 
-            var inputData = InputDocumentData(ref mlContext, inFileData, FileFormat.Txt);
+            var inputData = InputDocumentFromFile(ref mlContext, inFileData, FileFormat.Txt);
 
             var documents = mlContext.Data.CreateEnumerable<Document>(inputData, false).ToArray();
             var predictions = ConsumeClassificationModel(ref mlContext, model, documents);
@@ -82,7 +91,7 @@ namespace DxMLEngine.Features.Classification
 
         #region DATA CONNECTION
 
-        private static IDataView? InputDocumentData(ref MLContext mlContext, string path, FileFormat fileFormat)
+        private static IDataView? InputDocumentFromFile(ref MLContext mlContext, string path, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Txt)
             {
@@ -204,7 +213,7 @@ namespace DxMLEngine.Features.Classification
             if (string.IsNullOrEmpty(fileName))
                 throw new ArgumentNullException("file name is null or empty");
 
-            var inputData = InputDocumentData(ref mlContext, inFile, FileFormat.Txt);
+            var inputData = InputDocumentFromFile(ref mlContext, inFile, FileFormat.Txt);
             if (inputData == null)
                 throw new ArgumentNullException("inputData == null");
 

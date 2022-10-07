@@ -20,12 +20,21 @@ namespace DxMLEngine.Features.Classification
     [Feature]
     internal class SentimentAnalysis
     {
+        private const string SentimentAnalysisGuide =
+            "\nInstruction:\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................";
+
         [Feature]
         public static void BuildSentimentModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext();
 
-            var dataView = InputSentimentData(ref mlContext, inFile, FileFormat.Txt);
+            var dataView = InputSentimentFromFile(ref mlContext, inFile, FileFormat.Txt);
 
             var trainTestData = mlContext.Data.TrainTestSplit(dataView, testFraction: 0.2);
             var trainData = trainTestData.TrainSet;
@@ -62,7 +71,7 @@ namespace DxMLEngine.Features.Classification
             var mlContext = new MLContext();
             var model = mlContext.Model.Load(inFileModel, out _);
 
-            var inputData = InputSentimentData(ref mlContext, inFileData, FileFormat.Txt);
+            var inputData = InputSentimentFromFile(ref mlContext, inFileData, FileFormat.Txt);
 
             var sentiments = mlContext.Data.CreateEnumerable<Sentiment>(inputData, false).ToArray();
             var predictions = ConsumeSentimentModel(ref mlContext, model, sentiments);
@@ -82,7 +91,7 @@ namespace DxMLEngine.Features.Classification
 
         #region DATA CONNECTION
 
-        private static IDataView? InputSentimentData(ref MLContext mlContext, string path, FileFormat fileFormat)
+        private static IDataView? InputSentimentFromFile(ref MLContext mlContext, string path, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Txt)
             {
@@ -195,7 +204,7 @@ namespace DxMLEngine.Features.Classification
             if (string.IsNullOrEmpty(fileName))
                 throw new ArgumentNullException("file name is null or empty");
 
-            var inputData = InputSentimentData(ref mlContext, inFile, FileFormat.Txt);
+            var inputData = InputSentimentFromFile(ref mlContext, inFile, FileFormat.Txt);
             if (inputData == null)
                 throw new ArgumentNullException("inputData == null");
 

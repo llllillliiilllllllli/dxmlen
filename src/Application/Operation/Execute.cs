@@ -20,7 +20,9 @@ namespace DxMLEngine.Operation
             var beg = DateTime.Now;
 
             var feature = method.GetCustomAttribute<Feature>();
-            if (feature != null) Console.WriteLine(feature.Instruction);
+            if (feature != null) 
+                if (feature.Instruction != null) 
+                    Console.WriteLine(feature.Instruction);
 
             var parameters = new List<object?>();
             var paramterInfos = method.GetParameters();

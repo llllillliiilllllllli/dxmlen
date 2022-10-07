@@ -22,12 +22,21 @@ namespace DxMLEngine.Features.Forecasting
     [Feature]
     internal class BikeRentalForecast
     {
+        private const string BikeRentalForecastGuide =
+            "\nInstruction:\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................";
+
         [Feature]
         public static void BuildForecastingModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext();
 
-            var dataset = InputBikeRentalData(ref mlContext, inFile, FileFormat.Mdf);
+            var dataset = InputBikeRentalFromFile(ref mlContext, inFile, FileFormat.Mdf);
             var trainData = mlContext.Data.FilterRowsByColumn(dataset, "Year", upperBound: 1);
             var testData = mlContext.Data.FilterRowsByColumn(dataset, "Year", lowerBound: 1);
 
@@ -73,7 +82,7 @@ namespace DxMLEngine.Features.Forecasting
 
         #region DATA CONNECTION
 
-        private static IDataView? InputBikeRentalData(ref MLContext mlContext, string path, FileFormat fileFormat)
+        private static IDataView? InputBikeRentalFromFile(ref MLContext mlContext, string path, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Mdf)
             {
@@ -186,9 +195,9 @@ namespace DxMLEngine.Features.Forecasting
         private static void TryForecastingModel(ref MLContext mlContext, ITransformer model)
         {
             Console.Write("\nEnter output folder path: ");
-            var ourDir = Console.ReadLine()?.Replace("\"", "");
+            var outDir = Console.ReadLine()?.Replace("\"", "");
 
-            if (string.IsNullOrEmpty(ourDir))
+            if (string.IsNullOrEmpty(outDir))
                 throw new ArgumentNullException("path is null or empty");
 
             Console.Write("\nEnter output file name: ");
@@ -220,7 +229,7 @@ namespace DxMLEngine.Features.Forecasting
                 Console.WriteLine($"PredictedRental : {predictions.PredictedRentals[i]:F3}\n");
             }
 
-            OutputBikeRentalForecast(ourDir, fileName, horizon, confidenceLevel, predictions, FileFormat.Csv);
+            OutputBikeRentalForecast(outDir, fileName, horizon, confidenceLevel, predictions, FileFormat.Csv);
         }
 
         private static BikeRentalPrediction ConsumeForecastingModel(ref MLContext mlContext, ITransformer model, int? horizon, float? confidenceLevel)

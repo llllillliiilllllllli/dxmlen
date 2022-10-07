@@ -19,13 +19,22 @@ namespace DxMLEngine.Features.Clustering
 {
     [Feature]
     internal class IrisCluster
-    {        
+    {
+        private const string IrisClusterGuide =
+            "\nInstruction:\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................";
+
         [Feature]
         public static void BuildClusteringModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext(seed: 0);
 
-            var dataView = InputIrisData(ref mlContext, inFile, FileFormat.Csv);
+            var dataView = InputIrisFromFile(ref mlContext, inFile, FileFormat.Csv);
 
             var trainTestData = mlContext.Data.TrainTestSplit(dataView, testFraction: 0.2);
             var trainData = trainTestData.TrainSet;
@@ -54,7 +63,7 @@ namespace DxMLEngine.Features.Clustering
             var mlContext = new MLContext();
             var model = mlContext.Model.Load(inFileModel, out _);
 
-            var inputData = InputIrisData(ref mlContext, inFileData, FileFormat.Csv);
+            var inputData = InputIrisFromFile(ref mlContext, inFileData, FileFormat.Csv);
 
             var irisData = mlContext.Data.CreateEnumerable<Iris>(inputData, false).ToArray();
             var predictions = ConsumeClusterModel(ref mlContext, model, irisData);
@@ -76,7 +85,7 @@ namespace DxMLEngine.Features.Clustering
 
         #region DATA CONNECTION
 
-        private static IDataView? InputIrisData(ref MLContext mlContext, string path, FileFormat fileFormat)
+        private static IDataView? InputIrisFromFile(ref MLContext mlContext, string path, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Txt)
             {
@@ -186,9 +195,9 @@ namespace DxMLEngine.Features.Clustering
                 throw new ArgumentNullException("path is null or empty");
 
             Console.Write("\nEnter output folder path: ");
-            var ourDir = Console.ReadLine()?.Replace("\"", "");
+            var outDir = Console.ReadLine()?.Replace("\"", "");
 
-            if (string.IsNullOrEmpty(ourDir))
+            if (string.IsNullOrEmpty(outDir))
                 throw new ArgumentNullException("path is null or empty");
 
             Console.Write("\nEnter output file name: ");
@@ -197,7 +206,7 @@ namespace DxMLEngine.Features.Clustering
             if (string.IsNullOrEmpty(fileName))
                 throw new ArgumentNullException("file name is null or empty");
 
-            var inputData = InputIrisData(ref mlContext, inFile, FileFormat.Csv);
+            var inputData = InputIrisFromFile(ref mlContext, inFile, FileFormat.Csv);
             if (inputData == null)
                 throw new ArgumentNullException("inputData == null");
 
@@ -216,7 +225,7 @@ namespace DxMLEngine.Features.Clustering
                 Console.WriteLine($"AverageDistance : {predictions[i].Distances?.Average()}\n");
             }
 
-            OutputIrisCluster(ourDir, fileName, irisData, predictions, FileFormat.Csv);
+            OutputIrisCluster(outDir, fileName, irisData, predictions, FileFormat.Csv);
         }
 
         private static IrisPrediction[] ConsumeClusterModel(ref MLContext mlContext, ITransformer model, Iris[] irisData)

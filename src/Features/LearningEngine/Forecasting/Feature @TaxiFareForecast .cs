@@ -21,12 +21,21 @@ namespace DxMLEngine.Features.Forecasting
     [Feature]
     internal class TaxiFareForecast
     {
+        private const string TaxiFareForecastGuide =
+            "\nInstruction:\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\t......................................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................\n" +
+            "\tSource: ..............................................................................................";
+
         [Feature]
         public static void BuildForecastingModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext();
             
-            var dataView = InputTaxiFareData(ref mlContext, inFile, FileFormat.Csv);
+            var dataView = InputTaxiFareFromFile(ref mlContext, inFile, FileFormat.Csv);
             var trainTestData = mlContext.Data.TrainTestSplit(dataView, testFraction: 0.2);
             var trainData = trainTestData.TrainSet;
             var testData = trainTestData.TestSet;
@@ -56,7 +65,7 @@ namespace DxMLEngine.Features.Forecasting
             var mlContext = new MLContext();
             var model = mlContext.Model.Load(inFileModel, out _);
 
-            var inputData = InputTaxiFareData(ref mlContext, inFileData, FileFormat.Csv);
+            var inputData = InputTaxiFareFromFile(ref mlContext, inFileData, FileFormat.Csv);
 
             var taxiFares = mlContext.Data.CreateEnumerable<TaxiFare>(inputData, false).ToArray();
             var predictions = ConsumeForecastingModel(ref mlContext, model, taxiFares);
@@ -80,7 +89,7 @@ namespace DxMLEngine.Features.Forecasting
 
         #region DATA CONNECTION
 
-        private static IDataView? InputTaxiFareData(ref MLContext mlContext, string path, FileFormat fileFormat)
+        private static IDataView? InputTaxiFareFromFile(ref MLContext mlContext, string path, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Csv)
             {
@@ -183,9 +192,9 @@ namespace DxMLEngine.Features.Forecasting
                 throw new ArgumentNullException("path is null or empty");
 
             Console.Write("\nEnter output folder path: ");
-            var ourDir = Console.ReadLine()?.Replace("\"", "");
+            var outDir = Console.ReadLine()?.Replace("\"", "");
 
-            if (string.IsNullOrEmpty(ourDir))
+            if (string.IsNullOrEmpty(outDir))
                 throw new ArgumentNullException("path is null or empty");
 
             Console.Write("\nEnter output file name: ");
@@ -194,7 +203,7 @@ namespace DxMLEngine.Features.Forecasting
             if (string.IsNullOrEmpty(fileName))
                 throw new ArgumentNullException("file name is null or empty");
 
-            var inputData = InputTaxiFareData(ref mlContext, inFile, FileFormat.Csv);
+            var inputData = InputTaxiFareFromFile(ref mlContext, inFile, FileFormat.Csv);
             if (inputData == null)
                 throw new ArgumentNullException("inputData == null");
 
@@ -214,7 +223,7 @@ namespace DxMLEngine.Features.Forecasting
                 Console.WriteLine($"PredictedFare   : {predictions[i].FareAmount:F3}\n");
             }
 
-            OutputTaxiFareForecast(ourDir, fileName, taxiFares, predictions, FileFormat.Csv);
+            OutputTaxiFareForecast(outDir, fileName, taxiFares, predictions, FileFormat.Csv);
         }
 
         private static TaxiFarePrediction[] ConsumeForecastingModel(ref MLContext mlContext, ITransformer model, TaxiFare[] taxiFares)
