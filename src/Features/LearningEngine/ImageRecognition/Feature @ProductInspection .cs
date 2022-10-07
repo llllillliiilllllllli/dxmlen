@@ -13,27 +13,19 @@ using Microsoft.ML.Vision;
 using Microsoft.Data.Analysis;
 using Microsoft.ML.TensorFlow;
 
-namespace DxMLEngine.Features.ProductInspection 
+using DxMLEngine.Utilities;
+using DxMLEngine.Attributes;
+using DxMLEngine.Functions;
+using DxMLEngine.Objects;
+using Tensorflow.Keras.Engine;
+using DxMlEngine.Features.ImageRecognition;
+
+namespace DxMLEngine.Features.ImageRecognition
 {
 	[Feature]
 	internal class ProductInspection
-	{
-		#region INSTRUCTION
-		
-		private const string ProductImageInspectionInstruction =
-			"\nInstruction:\n" +
-			"\nThis function inspects and classifies product images by infects using pre-trained TensorFlow model.\n" +
-			"\tResidual Network (ResNet) v2 model employs deep learning with 101 layers that takes pixels as training features\n" +
-			"\tThe model is a type of MulticlassClassification and capable of categorizing up to a thousand of different labels.\n" +
-			"\tIn order to run any TensorFlow based APIs in ML.NET, extra dependency and configuration are required.\n" +
-			"\tOther use cases of computer vision are facial recognition, object detection, medical diagnosis, and landmark scanning.\n" +
-
-			"\tSource: https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.vision.imageclassificationtrainer?view=ml-dotnet\n" +
-			"\tSource: https://github.com/dotnet/samples/tree/main/machine-learning/tutorials/TransferLearningTF";
-			
-		#endregion INSTRUCTION
-		
-		[Feature(instruction: ProductImageInspectionInstruction)]
+	{		
+		[Feature]
 		public static void BuildClassificationModel(string inDir, string outDir, string fileName)
 		{
 			var mlContext = new MLContext();
@@ -44,8 +36,8 @@ namespace DxMLEngine.Features.ProductInspection
             var validData = mlContext.Data.TrainTestSplit(trainTestData.TestSet).TrainSet;
             var testData = mlContext.Data.TrainTestSplit(trainTestData.TestSet).TestSet;
 
-            var model = TrainInspectionModel(ref mlContext, trainData, validData, inDir);
-            var metrics = EvaluateInspectionModel(ref mlContext, model, testData);
+            var model = TrainClassificationModel(ref mlContext, trainData, validData, inDir);
+            var metrics = EvaluateClassificationModel(ref mlContext, model, testData);
 			
             Log.Info($"Multiclass Classification Metrics");
 
@@ -60,58 +52,22 @@ namespace DxMLEngine.Features.ProductInspection
             Console.WriteLine($"TopKAccuracyForAllK : {metrics.TopKAccuracyForAllK:F3}");
             Console.WriteLine($"\n{metrics.ConfusionMatrix.GetFormattedConfusionTable()}");
 			
-			Console.Write("\nConsume model (Y/N): ");
+			Console.Write("\nTry model (Y/N): ");
             if (Console.ReadLine() == "Y")
-            {
-                Console.Write("\nEnter input file path: ");
-                var newInDir = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newInDir))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output folder path: ");
-                var newOutDir = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newOutDir))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output file name: ");
-                var newFileName = Console.ReadLine()?.Replace(" ", "");
-
-                if (string.IsNullOrEmpty(newFileName))
-                    throw new ArgumentNullException("file name is null or empty");
-
-                var inputData = InputProductImageData(ref mlContext, newInDir, FileFormat.Jpeg);
-                if (inputData == null)
-                    throw new ArgumentNullException("inputData == null");
-
-                var productImages = mlContext.Data.CreateEnumerable<ProductImage>(inputData, false).ToArray();
-                var predictions = ConsumeClassificationModel(ref mlContext, model, productImages);
-
-                Log.Info($"Product Image Inspection");
-                for (int i = 0; i < productImages.Length; i++)
-                {
-                    Console.WriteLine($"ImagePath      : {deskImages[i].ImagePath:F3}");
-                    Console.WriteLine($"ImageBytes     : {deskImages[i].Image:F3}");
-                    Console.WriteLine($"ActualLabel    : {deskImages[i].Category:F3}");
-                    Console.WriteLine($"PredictedLabel : {deskImages[i].Category:F3}\n");
-                }
-				
-                OutputProductImageInspection(newOutDir, newFileName, deskImages, predictions, FileFormat.Csv);
-            }			
+                TryClassificationModel(ref mlContext, model);		
 			
 			Console.Write("\nSave model (Y/N): ");
             if (Console.ReadLine() == "Y")
                 SaveClassificationModel(ref mlContext, model, dataView!, outDir, fileName);        
 		}
 		
-		[Feature(instruction: ProductImageInspectionInstruction)]
+		[Feature]
 		public static void InspectProductImage(string inFileModel, string inDirData, string outDir, string fileName)
 		{
             var mlContext = new MLContext();
             var model = mlContext.Model.Load(inFileModel, out _);
 			
-			var inputData = InputDeskImageData(ref mlContext, inDirData, FileFormat.Jpeg);
+			var inputData = InputProductImageData(ref mlContext, inDirData, FileFormat.Jpeg);
 			
 			var productImages = mlContext.Data.CreateEnumerable<ProductImage>(inputData, false).ToArray();
             var predictions = ConsumeClassificationModel(ref mlContext, model, productImages); 
@@ -119,10 +75,10 @@ namespace DxMLEngine.Features.ProductInspection
 			Log.Info($"Product Image Inspection");
 			for (int i = 0; i < productImages.Length; i++)
 			{
-				Console.WriteLine($"ImagePath      : {deskImages[i].ImagePath:F3}");
-				Console.WriteLine($"ImageBytes     : {deskImages[i].Image:F3}");
-				Console.WriteLine($"ActualLabel    : {deskImages[i].Category:F3}");
-				Console.WriteLine($"PredictedLabel : {deskImages[i].Category:F3}\n");
+				Console.WriteLine($"ImagePath      : {productImages[i].ImagePath:F3}");
+				Console.WriteLine($"ImageBytes     : {productImages[i].Image:F3}");
+				Console.WriteLine($"ActualLabel    : {productImages[i].Category:F3}");
+				Console.WriteLine($"PredictedLabel : {productImages[i].Category:F3}\n");
 			}
 			
 			OutputProductImageInspection(outDir, fileName, productImages, predictions, FileFormat.Csv);
@@ -153,7 +109,7 @@ namespace DxMLEngine.Features.ProductInspection
             return null;
         }
 		
-		private static void OutputProductImageInspection(string location, string fileName, ProductImage[] productImages, ProductImagePrediction[] predictions, Fileformat fileFormat)
+		private static void OutputProductImageInspection(string location, string fileName, ProductImage[] productImages, ProductImagePrediction[] predictions, FileFormat fileFormat)
 		{
             if (fileFormat == FileFormat.Csv) 
             {
@@ -165,14 +121,14 @@ namespace DxMLEngine.Features.ProductInspection
                     new StringDataFrameColumn("PredictedCategory"),
                 });
 
-                                for (int i = 0; i < deskImages.Length; i++)
+                                for (int i = 0; i < productImages.Length; i++)
                 {
                     var dataRow = new List<KeyValuePair<string, object?>>()
                     {
-                        new KeyValuePair<string, object?>("ImagePath", $"\"{deskImages[i].ImagePath}\""),
-                        new KeyValuePair<string, object?>("ImageBytes", $"\"{deskImages[i].Image}\""),
-                        new KeyValuePair<string, object?>("ActualCategory", $"\"{deskImages[i].Category}\""),
-                        new KeyValuePair<string, object?>("PredictedCategory", $"\"{deskImages[i].Category}\""),
+                        new KeyValuePair<string, object?>("ImagePath", $"\"{productImages[i].ImagePath}\""),
+                        new KeyValuePair<string, object?>("ImageBytes", $"\"{productImages[i].Image}\""),
+                        new KeyValuePair<string, object?>("ActualCategory", $"\"{productImages[i].Category}\""),
+                        new KeyValuePair<string, object?>("PredictedCategory", $"\"{productImages[i].Category}\""),
                     };
                                         
                     dataFrame.Append(dataRow, inPlace: true);
@@ -227,6 +183,45 @@ namespace DxMLEngine.Features.ProductInspection
 
         #region MODEL CONSUMPTION
 
+        private static void TryClassificationModel(ref MLContext mlContext, ITransformer model)
+        {
+            Console.Write("\nEnter input file path: ");
+            var newInDir = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(newInDir))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output folder path: ");
+            var ourDir = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(ourDir))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output file name: ");
+            var fileName = Console.ReadLine()?.Replace(" ", "");
+
+            if (string.IsNullOrEmpty(fileName))
+                throw new ArgumentNullException("file name is null or empty");
+
+            var inputData = InputProductImageData(ref mlContext, newInDir, FileFormat.Jpeg);
+            if (inputData == null)
+                throw new ArgumentNullException("inputData == null");
+
+            var productImages = mlContext.Data.CreateEnumerable<ProductImage>(inputData, false).ToArray();
+            var predictions = ConsumeClassificationModel(ref mlContext, model, productImages);
+
+            Log.Info($"Product Image Inspection");
+            for (int i = 0; i < productImages.Length; i++)
+            {
+                Console.WriteLine($"ImagePath      : {productImages[i].ImagePath:F3}");
+                Console.WriteLine($"ImageBytes     : {productImages[i].Image:F3}");
+                Console.WriteLine($"ActualLabel    : {productImages[i].Category:F3}");
+                Console.WriteLine($"PredictedLabel : {productImages[i].Category:F3}\n");
+            }
+
+            OutputProductImageInspection(ourDir, fileName, productImages, predictions, FileFormat.Csv);
+        }
+
         private static ProductImagePrediction[] ConsumeClassificationModel(ref MLContext mlContext, ITransformer model, ProductImage[] productImages)
         {
             var predEngine = mlContext.Model.CreatePredictionEngine<ProductImage, ProductImagePrediction>(model);
@@ -238,7 +233,7 @@ namespace DxMLEngine.Features.ProductInspection
             return productImagePredictions;
         }
 
-        private static void SaveInspectionModel(ref MLContext mlContext, ITransformer model, IDataView dataView, string location, string fileName)
+        private static void SaveClassificationModel(ref MLContext mlContext, ITransformer model, IDataView dataView, string location, string fileName)
         {
             var path = $"{location}\\Model @{fileName} .zip";
             mlContext.Model.Save(model, dataView.Schema, path);

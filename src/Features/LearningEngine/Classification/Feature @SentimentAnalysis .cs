@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Data;
+using System.Reflection;
 
 using Microsoft.ML;
 using Microsoft.ML.Data;
@@ -13,31 +13,14 @@ using Microsoft.Data.Analysis;
 
 using DxMLEngine.Attributes;
 using DxMLEngine.Utilities;
+using DxMLEngine.Objects;
 
-namespace DxMLEngine.Features.SentimentAnalysis
+namespace DxMLEngine.Features.Classification
 {
     [Feature]
     internal class SentimentAnalysis
     {
-        #region INSTRUCTION
-
-        private const string SentimentAnalysisInstruction =
-            "\nInstruction:\n" +
-            "\tThis function classfies comments and feedbacks in English by means of sentiment.\n" +
-            "\tSentiment of text can be positive labeled as ones and zeros in trainning dataset.\n" +
-            "\tThe model is a binary logistic classifier named SdcaLogisticRegressionBinaryTrainer.\n" +
-            "\tModel is statistically calibrated to provide probabilities of uncertain predictions.\n" +
-            "\tModel predictability is evaluated by precision and retrieval metrics, among others.\n" +
-
-            "\tSource: https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.trainers.sdcalogisticregressionbinarytrainer?view=ml-dotnet\n" +
-            "\tSource: https://en.wikipedia.org/wiki/Binary_classification\n" +
-            "\tSource: https://www.ijcai.org/Proceedings/11/Papers/462.pdf\n" +
-            "\tSource: https://icml.cc/Conferences/2008/papers/166.pdf\n" +
-            "\tSource: https://en.wikipedia.org/wiki/Calibration_(statistics)";
-
-        #endregion INSTRUCTION
-
-        [Feature(instruction: SentimentAnalysisInstruction)]
+        [Feature]
         public static void BuildSentimentModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext();
@@ -64,53 +47,16 @@ namespace DxMLEngine.Features.SentimentAnalysis
             Console.WriteLine($"NegativeRecall      : {metrics.NegativeRecall:F3}");
             Console.WriteLine($"\n{metrics.ConfusionMatrix.GetFormattedConfusionTable()}");
 
-            Console.Write("\nConsume model (Y/N): ");
+            Console.Write("\nTry model (Y/N): ");
             if (Console.ReadLine() == "Y")
-            {
-                Console.Write("\nEnter input file path: ");
-                var newInFile = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newInFile))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output folder path: ");
-                var newOutDir = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newOutDir))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output file name: ");
-                var newFileName = Console.ReadLine()?.Replace(" ", "");
-
-                if (string.IsNullOrEmpty(newFileName))
-                    throw new ArgumentNullException("file name is null or empty");
-
-                var inputData = InputSentimentData(ref mlContext, newInFile, FileFormat.Txt);
-                if (inputData == null)
-                    throw new ArgumentNullException("inputData == null");
-
-                var sentiments = mlContext.Data.CreateEnumerable<Sentiment>(inputData, false).ToArray();
-                var predictions = ConsumeSentimentModel(ref mlContext, model, sentiments);
-
-                Log.Info($"Sentiment Analysis");
-                for (int i = 0; i < sentiments.Length; i++)
-                {
-                    Console.WriteLine($"Content         : {sentiments[i].Content}");
-                    Console.WriteLine($"ActualLabel     : {sentiments[i].Label}");
-                    Console.WriteLine($"PredictedLabel  : {predictions[i].Prediction}");
-                    Console.WriteLine($"Probability     : {predictions[i].Probability}");
-                    Console.WriteLine($"Score           : {predictions[i].Score}\n");
-                }
-
-                OutputSentimentAnalysis(newOutDir, newFileName, sentiments, predictions, FileFormat.Csv);
-            }
+                TrySentimentModel(ref mlContext, model);
 
             Console.Write("\nSave model (Y/N): ");
             if (Console.ReadLine() == "Y")
                 SaveSentimentModel(ref mlContext, model, dataView!, outDir, fileName);
         }
 
-        [Feature(instruction: SentimentAnalysisInstruction)]
+        [Feature]
         public static void AnalyzeSentiment(string inFileModel, string inFileData, string outDir, string fileName)
         {
             var mlContext = new MLContext();
@@ -228,6 +174,46 @@ namespace DxMLEngine.Features.SentimentAnalysis
         #endregion TRAINING & TESTING
 
         #region MODEL CONSUMPTION
+
+        private static void TrySentimentModel(ref MLContext mlContext, ITransformer model)
+        {
+            Console.Write("\nEnter input file path: ");
+            var inFile = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(inFile))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output folder path: ");
+            var outDir = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(outDir))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output file name: ");
+            var fileName = Console.ReadLine()?.Replace(" ", "");
+
+            if (string.IsNullOrEmpty(fileName))
+                throw new ArgumentNullException("file name is null or empty");
+
+            var inputData = InputSentimentData(ref mlContext, inFile, FileFormat.Txt);
+            if (inputData == null)
+                throw new ArgumentNullException("inputData == null");
+
+            var sentiments = mlContext.Data.CreateEnumerable<Sentiment>(inputData, false).ToArray();
+            var predictions = ConsumeSentimentModel(ref mlContext, model, sentiments);
+
+            Log.Info($"Sentiment Analysis");
+            for (int i = 0; i < sentiments.Length; i++)
+            {
+                Console.WriteLine($"Content         : {sentiments[i].Content}");
+                Console.WriteLine($"ActualLabel     : {sentiments[i].Label}");
+                Console.WriteLine($"PredictedLabel  : {predictions[i].Prediction}");
+                Console.WriteLine($"Probability     : {predictions[i].Probability}");
+                Console.WriteLine($"Score           : {predictions[i].Score}\n");
+            }
+
+            OutputSentimentAnalysis(outDir, fileName, sentiments, predictions, FileFormat.Csv);
+        }
 
         private static SentimentPrediction[] ConsumeSentimentModel(ref MLContext mlContext, ITransformer model, Sentiment[] sentiments)
         {

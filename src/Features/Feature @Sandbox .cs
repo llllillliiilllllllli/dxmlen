@@ -2,7 +2,6 @@
 using DxMLEngine.Features.YahooFinance;
 using DxMLEngine.Features.UNComtrade;
 using DxMLEngine.Features.ScienceDirect;
-
 using System.Text.Json;
 
 namespace DxMLEngine.Features
@@ -241,7 +240,7 @@ namespace DxMLEngine.Features
             Console.WriteLine(outFloat);
         }
 
-        public static void FindRSquared()
+        public static void FindRSquaredCoefficient()
         {
             var actualValues = new float[] 
             { 

@@ -11,7 +11,7 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.Data.Analysis;
 
-namespace DxMLEngine.Features.MovieRecommendation
+namespace DxMLEngine.Features.Recommendation
 {
     public class MovieRatingPrediction
     {

@@ -1,43 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Reflection;
+using System.Collections.Generic;
+using System.IO;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
+using System.Reflection;
 
 using Microsoft.ML;
 using Microsoft.ML.Data;
-using Microsoft.ML.Transforms.TimeSeries;
 using Microsoft.Data.Analysis;
+using Microsoft.ML.Transforms.TimeSeries;
 
 using DxMLEngine.Attributes;
 using DxMLEngine.Utilities;
+using DxMLEngine.Objects;
 
 namespace DxMLEngine.Features.Forecasting
 {
     [Feature]
     internal class BikeRentalForecast
     {
-        #region INSTRUCTION
-
-        private const string BikeRentalModelInstruction =
-            "\nInstruction:\n" +
-            "\tThis model forecast demand for bike rental for upcoming time periods.\n" +
-            "\tPredicted rental is based on at least two year of historical rental data.\n" +
-            "\tSingularSpectrumAnalysis decomposes univariate time series into principle components\n" +
-            "\tThese components include trends, noise, seasonality, and other influential factors.\n" +
-            "\tThe model can predict rental according to time range and confidence levels\n" +
-
-            "\tSource: https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.transforms.timeseries.ssaforecastingestimator?view=ml-dotnet\n" +
-            "\tSource: https://ssa.cf.ac.uk/zhigljavsky/pdfs/SSA/SSA_encyclopedia.pdf";
-
-        #endregion INSTRUCTION
-
-        [Feature(instruction: BikeRentalModelInstruction)]
-        public static void BuildBikeRentalModel(string inFile, string outDir, string fileName)
+        [Feature]
+        public static void BuildForecastingModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext();
 
@@ -45,8 +31,8 @@ namespace DxMLEngine.Features.Forecasting
             var trainData = mlContext.Data.FilterRowsByColumn(dataset, "Year", upperBound: 1);
             var testData = mlContext.Data.FilterRowsByColumn(dataset, "Year", lowerBound: 1);
 
-            var model = TrainBikeRentalModel(ref mlContext, trainData);
-            var metrics = EvaluateBikeRentalModel(ref mlContext, model, testData);
+            var model = TrainForecastingModel(ref mlContext, trainData);
+            var metrics = EvaluateForecastingModel(ref mlContext, model, testData);
             
             Log.Info($"Regression Metrics");
 
@@ -56,59 +42,22 @@ namespace DxMLEngine.Features.Forecasting
             Console.WriteLine($"R-Sq : {metrics.Item4:F3}");
             Console.WriteLine($"Loss : {metrics.Item5:F3}");
 
-            Console.Write("\nConsume model (Y/N): ");
+            Console.Write("\nTry model (Y/N): ");
             if (Console.ReadLine() == "Y")
-            {
-                Console.Write("\nEnter output folder path: ");
-                var newOutDir = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newOutDir))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output file name: ");
-                var newFileName = Console.ReadLine()?.Replace(" ", "");
-
-                if (string.IsNullOrEmpty(newFileName))
-                    throw new ArgumentNullException("file name is null or empty");
-
-                Console.Write("\nEnter horizon: ");
-                var inputHorizon = Console.ReadLine();
-                int? horizon = null;
-                if (!string.IsNullOrEmpty(inputHorizon))
-                    horizon = Convert.ToInt32(inputHorizon);
-
-                Console.Write("\nEnter confidence level: ");
-                var inputConfidenceLevel = Console.ReadLine();
-                float? confidenceLevel = null;
-                if (!string.IsNullOrEmpty(inputConfidenceLevel))
-                    confidenceLevel = Convert.ToSingle(inputConfidenceLevel);
-
-                var predictions = ConsumeBikeRentalModel(ref mlContext, model, horizon, confidenceLevel);
-
-                Log.Info($"Bike Rental Forecast");
-                for (int i = 0; i < predictions.PredictedRentals?.Length; i++)
-                {
-                    Console.WriteLine($"Horizon         : {horizon}");
-                    Console.WriteLine($"Confidence      : {confidenceLevel}");
-                    Console.WriteLine($"TimePeriod      : {i + 1}");
-                    Console.WriteLine($"PredictedRental : {predictions.PredictedRentals[i]:F3}\n");
-                }
-
-                OutputBikeRentalForecast(newOutDir, newFileName, horizon, confidenceLevel, predictions, FileFormat.Csv);
-            }
+                TryForecastingModel(ref mlContext, model);
 
             Console.Write("\nSave model (Y/N): ");
             if (Console.ReadLine() == "Y")
-                SaveBikeRentalModel(ref mlContext, model, outDir, fileName);
+                SaveForecastingModel(ref mlContext, model, outDir, fileName);
         }
 
-        [Feature(instruction: BikeRentalModelInstruction)]
+        [Feature]
         public static void ForecastBikeRental(string inFileModel, string outDir, string fileName, int horizon, float confidenceLevel)
         {
             var mlContext = new MLContext();
             var model = mlContext.Model.Load(inFileModel, out _);
 
-            var predictions = ConsumeBikeRentalModel(ref mlContext, model, horizon, confidenceLevel);
+            var predictions = ConsumeForecastingModel(ref mlContext, model, horizon, confidenceLevel);
 
             Log.Info($"Bike Rental Forecast");
             for (int i = 0; i < predictions.PredictedRentals?.Length; i++)
@@ -186,7 +135,7 @@ namespace DxMLEngine.Features.Forecasting
 
         #region TRAINING & TESTING
 
-        private static ITransformer TrainBikeRentalModel(ref MLContext mlContext, IDataView trainData)
+        private static ITransformer TrainForecastingModel(ref MLContext mlContext, IDataView trainData)
         {
             var pipeline = mlContext.Forecasting.ForecastBySsa(
                 inputColumnName: "TotalRentals",
@@ -204,7 +153,7 @@ namespace DxMLEngine.Features.Forecasting
             return model;
         }
 
-        private static (double?, double?, double?, double?, double?) EvaluateBikeRentalModel(ref MLContext mlContext, ITransformer model, IDataView testData)
+        private static (double?, double?, double?, double?, double?) EvaluateForecastingModel(ref MLContext mlContext, ITransformer model, IDataView testData)
         {
             var predictions = model.Transform(testData);
 
@@ -234,14 +183,54 @@ namespace DxMLEngine.Features.Forecasting
 
         #region MODEL CONSUMPTION
 
-        private static BikeRentalPrediction ConsumeBikeRentalModel(ref MLContext mlContext, ITransformer model, int? horizon, float? confidenceLevel)
+        private static void TryForecastingModel(ref MLContext mlContext, ITransformer model)
+        {
+            Console.Write("\nEnter output folder path: ");
+            var ourDir = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(ourDir))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output file name: ");
+            var fileName = Console.ReadLine()?.Replace(" ", "");
+
+            if (string.IsNullOrEmpty(fileName))
+                throw new ArgumentNullException("file name is null or empty");
+
+            Console.Write("\nEnter horizon: ");
+            var inputHorizon = Console.ReadLine();
+            int? horizon = null;
+            if (!string.IsNullOrEmpty(inputHorizon))
+                horizon = Convert.ToInt32(inputHorizon);
+
+            Console.Write("\nEnter confidence level: ");
+            var inputConfidenceLevel = Console.ReadLine();
+            float? confidenceLevel = null;
+            if (!string.IsNullOrEmpty(inputConfidenceLevel))
+                confidenceLevel = Convert.ToSingle(inputConfidenceLevel);
+
+            var predictions = ConsumeForecastingModel(ref mlContext, model, horizon, confidenceLevel);
+
+            Log.Info($"Bike Rental Forecast");
+            for (int i = 0; i < predictions.PredictedRentals?.Length; i++)
+            {
+                Console.WriteLine($"Horizon         : {horizon}");
+                Console.WriteLine($"Confidence      : {confidenceLevel}");
+                Console.WriteLine($"TimePeriod      : {i + 1}");
+                Console.WriteLine($"PredictedRental : {predictions.PredictedRentals[i]:F3}\n");
+            }
+
+            OutputBikeRentalForecast(ourDir, fileName, horizon, confidenceLevel, predictions, FileFormat.Csv);
+        }
+
+        private static BikeRentalPrediction ConsumeForecastingModel(ref MLContext mlContext, ITransformer model, int? horizon, float? confidenceLevel)
         {
             var predEngine = model.CreateTimeSeriesEngine<BikeRental, BikeRentalPrediction>(mlContext);
             var prediction = predEngine.Predict(horizon, confidenceLevel);
             return prediction;
         }
 
-        private static void SaveBikeRentalModel(ref MLContext mlContext, ITransformer model, string location, string fileName)
+        private static void SaveForecastingModel(ref MLContext mlContext, ITransformer model, string location, string fileName)
         {
             var predEngine = model.CreateTimeSeriesEngine<BikeRental, BikeRentalPrediction>(mlContext);
             predEngine.CheckPoint(mlContext, $"{location}\\Model @{fileName} .zip");

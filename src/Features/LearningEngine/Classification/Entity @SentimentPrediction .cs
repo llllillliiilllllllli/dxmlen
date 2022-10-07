@@ -14,7 +14,7 @@ using Microsoft.Data.Analysis;
 using DxMLEngine.Attributes;
 using DxMLEngine.Utilities;
 
-namespace DxMLEngine.Features.SentimentAnalysis
+namespace DxMLEngine.Features.Classification
 {
     public class SentimentPrediction
     {

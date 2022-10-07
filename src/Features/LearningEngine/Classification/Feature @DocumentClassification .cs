@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Data;
+using System.Reflection;
 
 using Microsoft.ML;
 using Microsoft.ML.Data;
@@ -13,33 +13,15 @@ using Microsoft.Data.Analysis;
 
 using DxMLEngine.Attributes;
 using DxMLEngine.Utilities;
-using System.Windows.Forms;
+using DxMLEngine.Objects;
 
-namespace DxMLEngine.Features.DocumentClassification
+namespace DxMLEngine.Features.Classification
 {
     [Feature]
     internal class DocumentClassification
     {
-        #region INSTRUCTION
-
-        private const string DocumentClassificationInstruction =
-            "\nInstruction:\n" +
-            "\tThis program performs classification on documents by analyzing multiple text fields.\n" +
-            "\tText vectors such as titles, abstracts, summaries, descriptions are featurized as inputs.\n" +
-            "\tOuputs contain document classified to categories which can be accomplished by verious methods.\n" +
-            "\tSdcaMaximumEntropy trains model with coordinate descent method where scores are class propability.\n" +
-            "\tMetrics for assessing model effectiveness consist of log loss, micro and macro accuracy.\n" +
-
-            "\tSource: https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.trainers.sdcamulticlasstrainerbase-1?view=ml-dotnet\n" +
-            "\tSource: https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.data.multiclassclassificationmetrics?view=ml-dotnet\n" +
-            "\tSource: https://en.wikipedia.org/wiki/Multiclass_classification\n" +
-            "\tSource: https://jmlr.org/papers/volume14/shalev-shwartz13a/shalev-shwartz13a.pdf\n" +
-            "\tSource: https://arxiv.org/abs/2008.05756";
-
-        #endregion INSTRUCTION
-
-        [Feature(instruction: DocumentClassificationInstruction)]
-        public static void BuildDocumentModel(string inFile, string outDir, string fileName)
+        [Feature]
+        public static void BuildClassificationModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext(seed: 0);
 
@@ -49,8 +31,8 @@ namespace DxMLEngine.Features.DocumentClassification
             var trainData = trainTestData.TrainSet;
             var testData = trainTestData.TestSet;
 
-            var model = TrainDocumentModel(ref mlContext, trainData);
-            var metrics = EvaluateDocumentModel(ref mlContext, model, testData);
+            var model = TrainClassificationModel(ref mlContext, trainData);
+            var metrics = EvaluateClassificationModel(ref mlContext, model, testData);
 
             Log.Info($"Multiclass Classification Metrics");
 
@@ -65,53 +47,16 @@ namespace DxMLEngine.Features.DocumentClassification
             Console.WriteLine($"TopKAccuracyForAllK : {metrics.TopKAccuracyForAllK:F3}");
             Console.WriteLine($"\n{metrics.ConfusionMatrix.GetFormattedConfusionTable()}");
 
-            Console.Write("\nConsume model (Y/N): ");
+            Console.Write("\nTry model (Y/N): ");
             if (Console.ReadLine() == "Y")
-            {
-                Console.Write("\nEnter input file path: ");
-                var newInFile = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newInFile))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output folder path: ");
-                var newOutDir = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newOutDir))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output file name: ");
-                var newFileName = Console.ReadLine()?.Replace(" ", "");
-
-                if (string.IsNullOrEmpty(newFileName))
-                    throw new ArgumentNullException("file name is null or empty");
-
-                var inputData = InputDocumentData(ref mlContext, newInFile, FileFormat.Txt);
-                if (inputData == null)
-                    throw new ArgumentNullException("inputData == null");
-
-                var documents = mlContext.Data.CreateEnumerable<Document>(inputData, false).ToArray();
-                var predictions = ConsumeDocumentModel(ref mlContext, model, documents);
-
-                Log.Info($"Document Analysis");
-                for (int i = 0; i < documents.Length; i++)
-                {
-                    Console.WriteLine($"Id               : {documents[i].Id}");
-                    Console.WriteLine($"Title            : {documents[i].Title}");
-                    Console.WriteLine($"Description      : {documents[i].Description}");
-                    Console.WriteLine($"ActualSubject    : {documents[i].Subject}");
-                    Console.WriteLine($"PredictedSubject : {predictions[i].Subject}");
-                }
-
-                OutputDocumentClassification(newOutDir, newFileName, documents, predictions, FileFormat.Csv);
-            }
+                TryClassificationModel(ref mlContext, model);
 
             Console.Write("\nSave model (Y/N): ");
             if (Console.ReadLine() == "Y")
-                SaveDocumentModel(ref mlContext, model, dataView!, outDir, fileName);
+                SaveClassificationModel(ref mlContext, model, dataView!, outDir, fileName);
         }
 
-        [Feature(instruction: DocumentClassificationInstruction)]
+        [Feature]
         public static void ClassifyDocument(string inFileModel, string inFileData, string outDir, string fileName)
         {
             var mlContext = new MLContext();
@@ -120,7 +65,7 @@ namespace DxMLEngine.Features.DocumentClassification
             var inputData = InputDocumentData(ref mlContext, inFileData, FileFormat.Txt);
 
             var documents = mlContext.Data.CreateEnumerable<Document>(inputData, false).ToArray();
-            var predictions = ConsumeDocumentModel(ref mlContext, model, documents);
+            var predictions = ConsumeClassificationModel(ref mlContext, model, documents);
 
             Log.Info($"Document Analysis");
             for (int i = 0; i < documents.Length; i++)
@@ -207,7 +152,7 @@ namespace DxMLEngine.Features.DocumentClassification
 
         #region TRAINING & TESTING
 
-        private static ITransformer TrainDocumentModel(ref MLContext mlContext, IDataView trainData)
+        private static ITransformer TrainClassificationModel(ref MLContext mlContext, IDataView trainData)
         {
             var pipeline = mlContext.Transforms.Conversion
                 .MapValueToKey(inputColumnName: "Subject", outputColumnName: "Label")
@@ -227,7 +172,7 @@ namespace DxMLEngine.Features.DocumentClassification
             return model;
         }
 
-        private static MulticlassClassificationMetrics EvaluateDocumentModel(ref MLContext mlContext, ITransformer model, IDataView testData)
+        private static MulticlassClassificationMetrics EvaluateClassificationModel(ref MLContext mlContext, ITransformer model, IDataView testData)
         {
             var predictions = model.Transform(testData);
             var metrics = mlContext.MulticlassClassification.Evaluate(predictions);
@@ -239,7 +184,47 @@ namespace DxMLEngine.Features.DocumentClassification
 
         #region MODEL CONSUMPTION
 
-        private static DocumentPrediction[] ConsumeDocumentModel(ref MLContext mlContext, ITransformer model, Document[] documents)
+        private static void TryClassificationModel(ref MLContext mlContext, ITransformer model)
+        {
+            Console.Write("\nEnter input file path: ");
+            var inFile = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(inFile))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output folder path: ");
+            var outDir = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(outDir))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output file name: ");
+            var fileName = Console.ReadLine()?.Replace(" ", "");
+
+            if (string.IsNullOrEmpty(fileName))
+                throw new ArgumentNullException("file name is null or empty");
+
+            var inputData = InputDocumentData(ref mlContext, inFile, FileFormat.Txt);
+            if (inputData == null)
+                throw new ArgumentNullException("inputData == null");
+
+            var documents = mlContext.Data.CreateEnumerable<Document>(inputData, false).ToArray();
+            var predictions = ConsumeClassificationModel(ref mlContext, model, documents);
+
+            Log.Info($"Document Analysis");
+            for (int i = 0; i < documents.Length; i++)
+            {
+                Console.WriteLine($"Id               : {documents[i].Id}");
+                Console.WriteLine($"Title            : {documents[i].Title}");
+                Console.WriteLine($"Description      : {documents[i].Description}");
+                Console.WriteLine($"ActualSubject    : {documents[i].Subject}");
+                Console.WriteLine($"PredictedSubject : {predictions[i].Subject}");
+            }
+
+            OutputDocumentClassification(outDir, fileName, documents, predictions, FileFormat.Csv);
+        }
+
+        private static DocumentPrediction[] ConsumeClassificationModel(ref MLContext mlContext, ITransformer model, Document[] documents)
         {
             var predEngine = mlContext.Model.CreatePredictionEngine<Document, DocumentPrediction>(model);
             var predictions = (
@@ -250,7 +235,7 @@ namespace DxMLEngine.Features.DocumentClassification
             return predictions;
         }
 
-        private static void SaveDocumentModel(ref MLContext mlContext, ITransformer model, IDataView dataView, string location, string fileName)
+        private static void SaveClassificationModel(ref MLContext mlContext, ITransformer model, IDataView dataView, string location, string fileName)
         {
             var path = $"{location}\\Model @{fileName} .zip";
             mlContext.Model.Save(model, dataView.Schema, path);

@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Data;
+using System.Reflection;
 
 using Microsoft.ML;
 using Microsoft.ML.Data;
@@ -13,30 +13,16 @@ using Microsoft.Data.Analysis;
 
 using DxMLEngine.Attributes;
 using DxMLEngine.Utilities;
+using DxMLEngine.Objects;
+
 
 namespace DxMLEngine.Features.Forecasting
 {
     [Feature]
     internal class TaxiFareForecast
     {
-        #region INSTRUCTION
-
-        private const string TaxiFareModelInstruction =
-            "\nInstruction:\n" +
-            "\tThis feature build a regression model based on machine learning algorithms to predict taxi fares.\n" +
-            "\tFare amount is predicted using vendor, rate, passenger count, payment, trip time and distance.\n" +
-            "\tThe model is trained on FastTreeRegression an efficient implementation of the MART gradient boosting algorithm.\n" +
-            "\tResults are then evaluated using common regression metrics MSE, MAE, RMSE, and R-Squared\n" +
-
-            "\tSource: https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.trainers.fasttree.fasttreeregressiontrainer?view=ml-dotnet\n" +
-            "\tSource: https://en.wikipedia.org/wiki/Gradient_boosting\n" +
-            "\tSource: https://arxiv.org/abs/1505.01866\n" +
-            "\tSource: https://jerryfriedman.su.domains/ftp/trebst.pdf";
-
-        #endregion INSTRUCTION
-
-        [Feature(instruction: TaxiFareModelInstruction)]
-        public static void BuildTaxiFareModel(string inFile, string outDir, string fileName)
+        [Feature]
+        public static void BuildForecastingModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext();
             
@@ -45,8 +31,8 @@ namespace DxMLEngine.Features.Forecasting
             var trainData = trainTestData.TrainSet;
             var testData = trainTestData.TestSet;
 
-            var model = TrainTaxiFareModel(ref mlContext, trainData);
-            var metrics = EvaluateTaxiFareModel(ref mlContext, model, testData);
+            var model = TrainForecastingModel(ref mlContext, trainData);
+            var metrics = EvaluateForecastingModel(ref mlContext, model, testData);
 
             Log.Info($"Regression Metrics");
 
@@ -55,56 +41,16 @@ namespace DxMLEngine.Features.Forecasting
             Console.WriteLine($"RMSE : {metrics.RootMeanSquaredError:F3}");
             Console.WriteLine($"R-Sq : {metrics.RSquared:F3}");
 
-            Console.Write("\nConsume model (Y/N): ");
+            Console.Write("\nTry model (Y/N): ");
             if (Console.ReadLine() == "Y")
-            {
-                Console.Write("\nEnter input file path: ");
-                var newInFile = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newInFile))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output folder path: ");
-                var newOutDir = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newOutDir))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output file name: ");
-                var newFileName = Console.ReadLine()?.Replace(" ", "");
-
-                if (string.IsNullOrEmpty(newFileName))
-                    throw new ArgumentNullException("file name is null or empty");
-
-                var inputData = InputTaxiFareData(ref mlContext, newInFile, FileFormat.Csv);
-                if (inputData == null)
-                    throw new ArgumentNullException("inputData == null");
-
-                var taxiFares = mlContext.Data.CreateEnumerable<TaxiFare>(inputData, false).ToArray();
-                var predictions = ConsumeTaxiFareModel(ref mlContext, model, taxiFares);
-
-                Log.Info($"Taxi Fare Forecast");
-                for (int i = 0; i < taxiFares.Length; i++)
-                {
-                    Console.WriteLine($"VendorId        : {taxiFares[i].VendorId:F3}");
-                    Console.WriteLine($"RateCode        : {taxiFares[i].RateCode:F3}");
-                    Console.WriteLine($"PassengerCount  : {taxiFares[i].PassengerCount:F3}");
-                    Console.WriteLine($"TripTime        : {taxiFares[i].TripTime:F3}");
-                    Console.WriteLine($"TripDistance    : {taxiFares[i].TripDistance:F3}");
-                    Console.WriteLine($"PaymentType     : {taxiFares[i].PaymentType:F3}");
-                    Console.WriteLine($"ActualFare      : {taxiFares[i].FareAmount:F3}");
-                    Console.WriteLine($"PredictedFare   : {predictions[i].FareAmount:F3}\n");
-                }
-
-                OutputTaxiFareForecast(newOutDir, newFileName, taxiFares, predictions, FileFormat.Csv);
-            }
+                TryForecastingModel(ref mlContext, model);
 
             Console.Write("\nSave model (Y/N): ");
             if (Console.ReadLine() == "Y")
-                SaveTaxiFareModel(ref mlContext, model, dataView!, outDir, fileName);
+                SaveForecastingModel(ref mlContext, model, dataView!, outDir, fileName);
         }
 
-        [Feature(instruction: TaxiFareModelInstruction)]
+        [Feature]
         public static void ForecastTaxiFare(string inFileModel, string inFileData, string outDir, string fileName)
         {
             var mlContext = new MLContext();
@@ -113,7 +59,7 @@ namespace DxMLEngine.Features.Forecasting
             var inputData = InputTaxiFareData(ref mlContext, inFileData, FileFormat.Csv);
 
             var taxiFares = mlContext.Data.CreateEnumerable<TaxiFare>(inputData, false).ToArray();
-            var predictions = ConsumeTaxiFareModel(ref mlContext, model, taxiFares);
+            var predictions = ConsumeForecastingModel(ref mlContext, model, taxiFares);
 
             Log.Info($"Taxi Fare Forecast");
 
@@ -202,7 +148,7 @@ namespace DxMLEngine.Features.Forecasting
 
         #region TRAINING & TESTING
 
-        private static ITransformer TrainTaxiFareModel(ref MLContext mlContext, IDataView trainData)
+        private static ITransformer TrainForecastingModel(ref MLContext mlContext, IDataView trainData)
         {
             var pipeline = mlContext.Transforms
                 .CopyColumns(inputColumnName: "FareAmount", outputColumnName: "Label")
@@ -216,7 +162,7 @@ namespace DxMLEngine.Features.Forecasting
             return model;
         }
 
-        private static RegressionMetrics EvaluateTaxiFareModel(ref MLContext mlContext, ITransformer model, IDataView testData)
+        private static RegressionMetrics EvaluateForecastingModel(ref MLContext mlContext, ITransformer model, IDataView testData)
         {
             var predictions = model.Transform(testData);
             var metrics = mlContext.Regression.Evaluate(predictions, "Label", "Score");
@@ -228,7 +174,50 @@ namespace DxMLEngine.Features.Forecasting
 
         #region MODEL CONSUMPTION
 
-        private static TaxiFarePrediction[] ConsumeTaxiFareModel(ref MLContext mlContext, ITransformer model, TaxiFare[] taxiFares)
+        private static void TryForecastingModel(ref MLContext mlContext, ITransformer model)
+        {
+            Console.Write("\nEnter input file path: ");
+            var inFile = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(inFile))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output folder path: ");
+            var ourDir = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(ourDir))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output file name: ");
+            var fileName = Console.ReadLine()?.Replace(" ", "");
+
+            if (string.IsNullOrEmpty(fileName))
+                throw new ArgumentNullException("file name is null or empty");
+
+            var inputData = InputTaxiFareData(ref mlContext, inFile, FileFormat.Csv);
+            if (inputData == null)
+                throw new ArgumentNullException("inputData == null");
+
+            var taxiFares = mlContext.Data.CreateEnumerable<TaxiFare>(inputData, false).ToArray();
+            var predictions = ConsumeForecastingModel(ref mlContext, model, taxiFares);
+
+            Log.Info($"Taxi Fare Forecast");
+            for (int i = 0; i < taxiFares.Length; i++)
+            {
+                Console.WriteLine($"VendorId        : {taxiFares[i].VendorId:F3}");
+                Console.WriteLine($"RateCode        : {taxiFares[i].RateCode:F3}");
+                Console.WriteLine($"PassengerCount  : {taxiFares[i].PassengerCount:F3}");
+                Console.WriteLine($"TripTime        : {taxiFares[i].TripTime:F3}");
+                Console.WriteLine($"TripDistance    : {taxiFares[i].TripDistance:F3}");
+                Console.WriteLine($"PaymentType     : {taxiFares[i].PaymentType:F3}");
+                Console.WriteLine($"ActualFare      : {taxiFares[i].FareAmount:F3}");
+                Console.WriteLine($"PredictedFare   : {predictions[i].FareAmount:F3}\n");
+            }
+
+            OutputTaxiFareForecast(ourDir, fileName, taxiFares, predictions, FileFormat.Csv);
+        }
+
+        private static TaxiFarePrediction[] ConsumeForecastingModel(ref MLContext mlContext, ITransformer model, TaxiFare[] taxiFares)
         {
             var predEngine = mlContext.Model.CreatePredictionEngine<TaxiFare, TaxiFarePrediction>(model);
             var taxiFarePredictions = (
@@ -239,7 +228,7 @@ namespace DxMLEngine.Features.Forecasting
             return taxiFarePredictions;
         }
 
-        private static void SaveTaxiFareModel(ref MLContext mlContext, ITransformer model, IDataView dataView, string location, string fileName)
+        private static void SaveForecastingModel(ref MLContext mlContext, ITransformer model, IDataView dataView, string location, string fileName)
         {
             var path = $"{location}\\Model @{fileName} .zip";
             mlContext.Model.Save(model, dataView.Schema, path);

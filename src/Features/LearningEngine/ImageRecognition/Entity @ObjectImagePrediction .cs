@@ -13,14 +13,14 @@ using Microsoft.ML.Vision;
 using Microsoft.Data.Analysis;
 using Microsoft.ML.TensorFlow;
 
-namespace DxMLEngine.Features.ObjectDetection
+namespace DxMLEngine.Features.ImageRecognition
 {
     public class ObjectImagePrediction 
     {
         [ColumnName("PredictedLabel")]        
-        public string PredictedCategory;
+        public string? PredictedCategory;
 
         [ColumnName("Score")]
-        public float[] Score;
+        public float[]? Score;
     } 
 }

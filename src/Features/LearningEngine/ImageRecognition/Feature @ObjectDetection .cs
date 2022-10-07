@@ -13,43 +13,29 @@ using Microsoft.ML.Vision;
 using Microsoft.Data.Analysis;
 using Microsoft.ML.TensorFlow;
 
-namespace DxMLEngine.Features.ObjectDetection 
+using DxMLEngine.Utilities;
+using DxMLEngine.Attributes;
+using DxMLEngine.Functions;
+using DxMLEngine.Objects;
+
+namespace DxMLEngine.Features.ImageRecognition 
 {
 	[Feature]
 	internal class ObjectDetection
-	{
-		#region INSTRUCTION
-		
-		private const string ObjectDetectionInstruction =
-			"\nInstruction:\n" +
-			"\nImage classification is a popular application of deep learning and machine learning.\n" +
-			"\tThis feature makes use of a powerful pre-trained TensorFlow model named Inception.\n" +
-			"\tInception has been trained on massive image data with millions of parameters.\n" +
-			"\tThe model helps extracting features to build new learning models with fewer classes.\n" +
-			"\tExtraced features are then feed into MulticlassClassification to classifies images.\n" +
-			"\tMulticlassClassificationMetrics are therefore used to evaluate model performance.\n" +
-
-			"\tSource: https://en.wikipedia.org/wiki/Outline_of_object_recognition\n" +
-			"\tSource: https://www.tensorflow.org/api_docs/python/tf/keras/applications/inception_v3/InceptionV3\n" +
-			"\tSource: https://www.tensorflow.org/api_docs/python/tf/keras/applications/inception_v3/InceptionV3\n" +
-			"\tSource: https://en.wikipedia.org/wiki/Multiclass_classification" +
-			"\tSource: https://en.wikipedia.org/wiki/Multinomial_logistic_regression";
-			
-		#endregion INSTRUCTION
-		
-		[Feature(instruction: ObjectDetectionInstruction)]
-		public static void BuildClassificationModel(string inDir, string outDir, string fileName)
+	{		
+		[Feature]
+		public static void BuildClassificationModel(string inFileModel, string inDirData, string outDir, string fileName)
 		{
 			var mlContext = new MLContext();
             
-            var dataView = InputObjectImageData(ref mlContext, inDir, FileFormat.Jpeg);
+            var dataView = InputObjectImageData(ref mlContext, inDirData, FileFormat.Jpeg);
             var trainTestData = mlContext.Data.TrainTestSplit(dataView, testFraction: 0.3);
             var trainData = trainTestData.TrainSet;
             var validData = mlContext.Data.TrainTestSplit(trainTestData.TestSet).TrainSet;
             var testData = mlContext.Data.TrainTestSplit(trainTestData.TestSet).TestSet;
 
-            var model = TrainDetectionModel(ref mlContext, trainData, validData, inDir);
-            var metrics = EvaluateDetectionModel(ref mlContext, model, testData);
+            var model = TrainClassificationModel(ref mlContext, trainData, validData, inFileModel, inDirData);
+            var metrics = EvaluateClassificationModel(ref mlContext, model, testData);
 			
             Log.Info($"Multiclass Classification Metrics");
 
@@ -64,57 +50,22 @@ namespace DxMLEngine.Features.ObjectDetection
             Console.WriteLine($"TopKAccuracyForAllK : {metrics.TopKAccuracyForAllK:F3}");
             Console.WriteLine($"\n{metrics.ConfusionMatrix.GetFormattedConfusionTable()}");
 			
-			Console.Write("\nConsume model (Y/N): ");
+			Console.Write("\nTry model (Y/N): ");
             if (Console.ReadLine() == "Y")
-            {
-                Console.Write("\nEnter input file path: ");
-                var newInDir = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newInDir))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output folder path: ");
-                var newOutDir = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newOutDir))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output file name: ");
-                var newFileName = Console.ReadLine()?.Replace(" ", "");
-
-                if (string.IsNullOrEmpty(newFileName))
-                    throw new ArgumentNullException("file name is null or empty");
-
-                var inputData = InputObjectImageData(ref mlContext, newInDir, FileFormat.Jpeg);
-                if (inputData == null)
-                    throw new ArgumentNullException("inputData == null");
-
-                var objectImages = mlContext.Data.CreateEnumerable<ObjectImage>(inputData, false).ToArray();
-                var predictions = ConsumeClassificationModel(ref mlContext, model, objectImages);
-
-                Log.Info($"Object Detection");
-                for (int i = 0; i < objectImages.Length; i++)
-                {
-                    Console.WriteLine($"ImagePath      : {objectImages[i].ImagePath:F3}");
-                    Console.WriteLine($"ActualLabel    : {objectImages[i].Category:F3}");
-                    Console.WriteLine($"PredictedLabel : {objectImages[i].Category:F3}\n");
-                }
-				
-                OutputObjectImageDetection(newOutDir, newFileName, objectImages, predictions, FileFormat.Csv);
-            }			
+                TryClassificationModel(ref mlContext, model);		
 			
 			Console.Write("\nSave model (Y/N): ");
             if (Console.ReadLine() == "Y")
                 SaveClassificationModel(ref mlContext, model, dataView!, outDir, fileName);        
 		}
 		
-		[Feature(instruction: ObjectDetectionInstruction)]
+		[Feature]
 		public static void InspectObjectImage(string inFileModel, string inDirData, string outDir, string fileName)
 		{
             var mlContext = new MLContext();
             var model = mlContext.Model.Load(inFileModel, out _);
 			
-			var inputData = InputDeskImageData(ref mlContext, inDirData, FileFormat.Jpeg);
+			var inputData = InputObjectImageData(ref mlContext, inDirData, FileFormat.Jpeg);
 			
 			var objectImages = mlContext.Data.CreateEnumerable<ObjectImage>(inputData, false).ToArray();
             var predictions = ConsumeClassificationModel(ref mlContext, model, objectImages); 
@@ -155,7 +106,7 @@ namespace DxMLEngine.Features.ObjectDetection
             return null;
         }
 		
-		private static void OutputObjectImageDetection(string location, string fileName, ObjectImage[] objectImages, ObjectImagePrediction[] predictions, Fileformat fileFormat)
+		private static void OutputObjectImageDetection(string location, string fileName, ObjectImage[] objectImages, ObjectImagePrediction[] predictions, FileFormat fileFormat)
 		{
             if (fileFormat == FileFormat.Csv) 
             {
@@ -226,6 +177,44 @@ namespace DxMLEngine.Features.ObjectDetection
 
         #region MODEL CONSUMPTION
 
+        private static void TryClassificationModel(ref MLContext mlContext, ITransformer model)
+        {
+            Console.Write("\nEnter input file path: ");
+            var newInDir = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(newInDir))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output folder path: ");
+            var ourDir = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(ourDir))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output file name: ");
+            var fileName = Console.ReadLine()?.Replace(" ", "");
+
+            if (string.IsNullOrEmpty(fileName))
+                throw new ArgumentNullException("file name is null or empty");
+
+            var inputData = InputObjectImageData(ref mlContext, newInDir, FileFormat.Jpeg);
+            if (inputData == null)
+                throw new ArgumentNullException("inputData == null");
+
+            var objectImages = mlContext.Data.CreateEnumerable<ObjectImage>(inputData, false).ToArray();
+            var predictions = ConsumeClassificationModel(ref mlContext, model, objectImages);
+
+            Log.Info($"Object Detection");
+            for (int i = 0; i < objectImages.Length; i++)
+            {
+                Console.WriteLine($"ImagePath      : {objectImages[i].ImagePath:F3}");
+                Console.WriteLine($"ActualLabel    : {objectImages[i].Category:F3}");
+                Console.WriteLine($"PredictedLabel : {objectImages[i].Category:F3}\n");
+            }
+
+            OutputObjectImageDetection(ourDir, fileName, objectImages, predictions, FileFormat.Csv);
+        }
+
         private static ObjectImagePrediction[] ConsumeClassificationModel(ref MLContext mlContext, ITransformer model, ObjectImage[] objectImages)
         {
             var predEngine = mlContext.Model.CreatePredictionEngine<ObjectImage, ObjectImagePrediction>(model);
@@ -237,7 +226,7 @@ namespace DxMLEngine.Features.ObjectDetection
             return objectImagePredictions;
         }
 
-        private static void SaveDetectionModel(ref MLContext mlContext, ITransformer model, IDataView dataView, string location, string fileName)
+        private static void SaveClassificationModel(ref MLContext mlContext, ITransformer model, IDataView dataView, string location, string fileName)
         {
             var path = $"{location}\\Model @{fileName} .zip";
             mlContext.Model.Save(model, dataView.Schema, path);

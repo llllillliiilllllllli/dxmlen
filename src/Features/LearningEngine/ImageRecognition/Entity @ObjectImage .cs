@@ -13,14 +13,14 @@ using Microsoft.ML.Vision;
 using Microsoft.Data.Analysis;
 using Microsoft.ML.TensorFlow;
 
-namespace DxMLEngine.Features.ObjectDetection
+namespace DxMLEngine.Features.ImageRecognition
 {
     public class ObjectImage
     {
         [LoadColumn(0), ColumnName("ImagePath")]
-        public string ImagePath;
+        public string? ImagePath;
 
         [LoadColumn(1), ColumnName("Label")]
-        public string Category;
+        public string? Category;
     }    
 }

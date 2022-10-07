@@ -1,48 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Data;
+using System.Reflection;
 
 using Microsoft.ML;
 using Microsoft.ML.Data;
+using Microsoft.ML.Trainers;
 using Microsoft.Data.Analysis;
 
 using DxMLEngine.Attributes;
 using DxMLEngine.Utilities;
-using System.Windows.Forms;
-using Microsoft.ML.Trainers;
+using DxMLEngine.Objects;
+using Tensorflow.Keras.Engine;
 
-namespace DxMLEngine.Features.MovieRecommendation
+
+namespace DxMLEngine.Features.Recommendation
 {
     [Feature]
     internal class MovieRecommendation
     {
-        #region INSTRUCTION
-
-        private const string MovieRecommendationInstruction =
-            "\nInstruction:\n" +
-            "\tMovie recommender suggests titles that users may love and give high rating.\n" +
-            "\tFeatures affecting user decisions when searching and rating movies must be selective.\n" +
-            "\tPredictions are collaboratively filtered by users having the same interests.\n" +
-            "\tMatrixFactorization approximates trained data by two low-rank factor matrices.\n" +
-            "\tThe model incorporates stochastic gradient and coordinate descent methods.\n" +
-            "\tThese methods helps minimizing distances between the input matrix and its estimates.\n" +
-            "\tThe algorithm also allows missing entries and customization via hyper-parameters.\n" +
-            "\tResulting score reflects how likely an user prefers a perticular movie.\n" +
-            "\tOther indicators include regression metrics that show errors in predictions.\n" +
-
-            "\tSource: https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.trainers.matrixfactorizationtrainer?view=ml-dotnet-preview\n" +
-            "\tSource: https://en.wikipedia.org/wiki/Collaborative_filtering\n" +
-            "\tSource: https://en.wikipedia.org/wiki/Stochastic_gradient_descent\n" +
-            "\tSource: https://en.wikipedia.org/wiki/Coordinate_descent";
-
-        #endregion INSTRUCTION
-
-        [Feature(instruction: MovieRecommendationInstruction)]
+        [Feature]
         public static void BuildRecommendationModel(string inFile, string outDir, string fileName)
         {
             var mlContext = new MLContext(seed: 0);
@@ -63,52 +44,16 @@ namespace DxMLEngine.Features.MovieRecommendation
             Console.WriteLine($"RMSE : {metrics.RootMeanSquaredError:F3}");
             Console.WriteLine($"R-Sq : {metrics.RSquared:F3}");
 
-            Console.Write("\nConsume model (Y/N): ");
+            Console.Write("\nTry model (Y/N): ");
             if (Console.ReadLine() == "Y")
-            {
-                Console.Write("\nEnter input file path: ");
-                var newInFile = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newInFile))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output folder path: ");
-                var newOutDir = Console.ReadLine()?.Replace("\"", "");
-
-                if (string.IsNullOrEmpty(newOutDir))
-                    throw new ArgumentNullException("path is null or empty");
-
-                Console.Write("\nEnter output file name: ");
-                var newFileName = Console.ReadLine()?.Replace(" ", "");
-
-                if (string.IsNullOrEmpty(newFileName))
-                    throw new ArgumentNullException("file name is null or empty");
-
-                var inputData = InputMovieRatingData(ref mlContext, newInFile, FileFormat.Csv);
-                if (inputData == null)
-                    throw new ArgumentNullException("inputData == null");
-
-                var movieRatings = mlContext.Data.CreateEnumerable<MovieRating>(inputData, false).ToArray();
-                var predictions = ConsumeRecommendationModel(ref mlContext, model, movieRatings);
-
-                Log.Info($"Movie Recommendation");
-                for (int i = 0; i < movieRatings.Length; i++)
-                {
-                    Console.WriteLine($"UserId          : {movieRatings[i].UserId}");
-                    Console.WriteLine($"MovieId         : {movieRatings[i].MovieId}");
-                    Console.WriteLine($"ActualRating    : {movieRatings[i].Rating}");
-                    Console.WriteLine($"PredictedRating : {predictions[i].Rating}\n");
-                }
-
-                OutputMovieRecommendation(newOutDir, newFileName, movieRatings, predictions, FileFormat.Csv);
-            }
+                TryRecommendationModel(ref mlContext, model);
 
             Console.Write("\nSave model (Y/N): ");
             if (Console.ReadLine() == "Y")
                 SaveRecommendationModel(ref mlContext, model, dataView!, outDir, fileName);
         }
 
-        [Feature(instruction: MovieRecommendationInstruction)]
+        [Feature]
         public static void RecommendMovieToUser(string inFileModel, string inFileData, string outDir, string fileName)
         {
             var mlContext = new MLContext();
@@ -233,6 +178,45 @@ namespace DxMLEngine.Features.MovieRecommendation
         #endregion TRAINING & TESTING
 
         #region MODEL CONSUMPTION
+
+        private static void TryRecommendationModel(ref MLContext mlContext, ITransformer model)
+        {
+            Console.Write("\nEnter input file path: ");
+            var inFile = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(inFile))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output folder path: ");
+            var ourDir = Console.ReadLine()?.Replace("\"", "");
+
+            if (string.IsNullOrEmpty(ourDir))
+                throw new ArgumentNullException("path is null or empty");
+
+            Console.Write("\nEnter output file name: ");
+            var fileName = Console.ReadLine()?.Replace(" ", "");
+
+            if (string.IsNullOrEmpty(fileName))
+                throw new ArgumentNullException("file name is null or empty");
+
+            var inputData = InputMovieRatingData(ref mlContext, inFile, FileFormat.Csv);
+            if (inputData == null)
+                throw new ArgumentNullException("inputData == null");
+
+            var movieRatings = mlContext.Data.CreateEnumerable<MovieRating>(inputData, false).ToArray();
+            var predictions = ConsumeRecommendationModel(ref mlContext, model, movieRatings);
+
+            Log.Info($"Movie Recommendation");
+            for (int i = 0; i < movieRatings.Length; i++)
+            {
+                Console.WriteLine($"UserId          : {movieRatings[i].UserId}");
+                Console.WriteLine($"MovieId         : {movieRatings[i].MovieId}");
+                Console.WriteLine($"ActualRating    : {movieRatings[i].Rating}");
+                Console.WriteLine($"PredictedRating : {predictions[i].Rating}\n");
+            }
+
+            OutputMovieRecommendation(ourDir, fileName, movieRatings, predictions, FileFormat.Csv);
+        }
 
         private static MovieRatingPrediction[] ConsumeRecommendationModel(ref MLContext mlContext, ITransformer model, MovieRating[] movieRatings)
         {

@@ -10,7 +10,7 @@ namespace DxMLEngine.Attributes
     {
         internal string? Instruction { set; get; }
         public Feature() { }
-        public Feature(string instruction)
+        public Feature(string? instruction)
         {
             this.Instruction = instruction;
         }

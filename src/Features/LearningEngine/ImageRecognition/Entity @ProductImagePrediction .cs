@@ -14,7 +14,7 @@ using Microsoft.Data.Analysis;
 using DxMLEngine.Attributes;
 using DxMLEngine.Utilities;
 
-namespace DxMlEngine.Features.ProductInspection 
+namespace DxMlEngine.Features.ImageRecognition
 {
 	public class ProductImagePrediction
 	{

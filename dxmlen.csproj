@@ -10,52 +10,53 @@
 
   <ItemGroup>
     <Compile Remove="res\Data %40Tesseract #20220925 - Copy\**" />
+    <Compile Remove="src\Application\Configuration\**" />
+    <Compile Remove="src\Features\LearningEngine\Statistics\**" />
+    <Compile Remove="src\Features\LearningEngine\TextMining\**" />
     <EmbeddedResource Remove="res\Data %40Tesseract #20220925 - Copy\**" />
+    <EmbeddedResource Remove="src\Application\Configuration\**" />
+    <EmbeddedResource Remove="src\Features\LearningEngine\Statistics\**" />
+    <EmbeddedResource Remove="src\Features\LearningEngine\TextMining\**" />
     <None Remove="res\Data %40Tesseract #20220925 - Copy\**" />
+    <None Remove="src\Application\Configuration\**" />
+    <None Remove="src\Features\LearningEngine\Statistics\**" />
+    <None Remove="src\Features\LearningEngine\TextMining\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="doc\" />
+    <Folder Include="doc\BusinessIntelligence\" />
+    <Folder Include="doc\MachineLearning\" />
+    <Folder Include="doc\ResearchInformation\" />
     <Folder Include="log\" />
+    <Folder Include="src\Application\Config\" />
+    <Folder Include="src\Extensions\" />
     <Folder Include="test\" />
-    <Folder Include="src\Features\LearningEngine\TextMining\" />
-    <Folder Include="src\Features\LearningEngine\Statistics\" />
-    <Folder Include="src\Features\DataStation\CrunchBase\CBFundings\" />
-    <Folder Include="src\Features\DataStation\CrunchBase\CBAcquisitions\" />
-    <Folder Include="src\Features\DataStation\CrunchBase\CBPeople\" />
-    <Folder Include="src\Features\DataStation\CrunchBase\CBHubs\" />
-    <Folder Include="src\Features\DataStation\CrunchBase\CBSchools\" />
-    <Folder Include="src\Features\DataStation\CrunchBase\CBContacts\" />
-    <Folder Include="src\Features\DataStation\CrunchBase\CBInvestors\" />
-    <Folder Include="src\Features\DataStation\CrunchBase\CBEvents\" />
-    <Folder Include="src\Features\DataStation\CrunchBase\CBCompanies\" />
-    <Folder Include="src\Features\DataStation\Elsevier\EngineeringVillage\" />
-    <Folder Include="src\Features\DataStation\Elsevier\Geofacets\" />
-    <Folder Include="src\Features\DataStation\Elsevier\PharmaPendium\" />
-    <Folder Include="src\Features\DataStation\Elsevier\SciVar\" />
-    <Folder Include="src\Features\DataStation\Elsevier\Scopus\" />
-    <Folder Include="src\Features\DataStation\Google\GoogleSearch\" />
-    <Folder Include="src\Features\DataStation\Google\GoogleNews\" />
-    <Folder Include="src\Features\DataStation\Google\GoogleBooks\" />
-    <Folder Include="src\Features\DataStation\Google\GoogleMaps\" />
-    <Folder Include="src\Features\DataStation\Google\GooglePlay\" />
-    <Folder Include="src\Features\DataStation\Google\GoogleArts\" />
-    <Folder Include="src\Features\DataStation\Google\GoogleTranslate\" />
-    <Folder Include="src\Features\DataStation\Google\YouTube\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBFundings\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBAcquisitions\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBPeople\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBHubs\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBSchools\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBContacts\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBInvestors\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBEvents\" />
+    <Folder Include="src\Features\DataRespository\CrunchBase\CBCompanies\" />
+    <Folder Include="src\Features\DataRespository\Elsevier\EngineeringVillage\" />
+    <Folder Include="src\Features\DataRespository\Elsevier\Geofacets\" />
+    <Folder Include="src\Features\DataRespository\Elsevier\PharmaPendium\" />
+    <Folder Include="src\Features\DataRespository\Elsevier\SciVar\" />
+    <Folder Include="src\Features\DataRespository\Elsevier\Scopus\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleSearch\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleNews\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleBooks\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleMaps\" />
+    <Folder Include="src\Features\DataRespository\Google\GooglePlay\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleArts\" />
+    <Folder Include="src\Features\DataRespository\Google\GoogleTranslate\" />
+    <Folder Include="src\Features\DataRespository\Google\YouTube\" />
     <Folder Include="src\Functions\Data\" />
     <Folder Include="src\Functions\Mathematics\" />
     <Folder Include="src\Services\HtmlAgility\" />
     <Folder Include="src\Services\Tesseract\TessData\tessconfigs\" />
-    <Folder Include="src\Application\Configuration\" />
-    <Folder Include="src\Extensions\" />
-    <Folder Include="src\Extensions\DataLoaderExtensions\" />
-    <Folder Include="src\Extensions\DebuggerExtensions\" />
-    <Folder Include="src\Extensions\FactorizationMachineExtensions\" />
-    <Folder Include="src\Extensions\KMeanClusteringExtensions\" />
-    <Folder Include="src\Extensions\LearningPipelineExtensions\" />
-    <Folder Include="src\Extensions\LightBgmExtensions\" />
-    <Folder Include="src\Extensions\PermutationFeatureImportanceExtensions\" />
-    <Folder Include="src\Extensions\TreeExtensions\" />
     <Folder Include="src\Services\Microsoft\ML\Base\PredictionEngineBase\" />
     <Folder Include="src\Services\Microsoft\ML\Base\TrainCatalogBase\" />
     <Folder Include="src\Services\Microsoft\ML\Base\TrainerInfo\" />
@@ -111,8 +112,12 @@
     <PackageReference Include="Microsoft.Data.Analysis" Version="0.19.1" />
     <PackageReference Include="Microsoft.ML" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.FastTree" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.Recommender" Version="0.19.1" />
+    <PackageReference Include="Microsoft.ML.TensorFlow" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.TensorFlow.Redist" Version="0.14.0" />
     <PackageReference Include="Microsoft.ML.TimeSeries" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.Vision" Version="1.7.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
     <PackageReference Include="Tesseract" Version="4.1.1" />
