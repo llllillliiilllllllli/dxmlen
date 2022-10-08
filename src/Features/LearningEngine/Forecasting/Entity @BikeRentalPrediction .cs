@@ -8,7 +8,7 @@ using Microsoft.ML.Data;
 
 namespace DxMLEngine.Features.Forecasting
 {
-    public class BikeRentalPrediction
+    public class BikeRentalPrediction : BikeRental
     {
         public float[]? PredictedRentals { set; get; }
         public float[]? LowerBound { set; get; }

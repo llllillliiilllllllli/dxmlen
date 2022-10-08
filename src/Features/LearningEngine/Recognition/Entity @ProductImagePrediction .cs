@@ -16,12 +16,9 @@ using DxMLEngine.Utilities;
 
 namespace DxMLEngine.Features.Recognition
 {
-	public class ProductImagePrediction
-	{
-		[ColumnName("ImagePath")]
-		public string? ImagePath { set; get; }
-		
+	public class ProductImagePrediction : ProductImage
+	{		
 		[ColumnName("PredictedLabel")]
-		public string? Category { set; get; }
+		public string? Prediction { set; get; }
 	}
 }

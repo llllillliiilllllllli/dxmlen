@@ -14,14 +14,14 @@ using Microsoft.Data.Analysis;
 using DxMLEngine.Attributes;
 using DxMLEngine.Utilities;
 
-namespace DxMLEngine.Features.Clustering
+namespace DxMLEngine.Features.Classification
 {
-    public class IrisPrediction : Iris
+    public class Review
     {
-        [ColumnName("PredictedLabel")]
-        public uint PredictedSpecies;
+        [LoadColumn(0), ColumnName("Content")]
+        public string? Content { set; get; }
 
-        [ColumnName("Score")]
-        public float[]? Distances;
+        [LoadColumn(1), ColumnName("Label")]
+        public bool Label { set; get; }
     }
 }

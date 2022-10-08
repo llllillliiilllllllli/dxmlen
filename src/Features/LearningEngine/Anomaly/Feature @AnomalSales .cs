@@ -81,7 +81,7 @@ namespace DxMLEngine.Features.AnomalyDetection
                 Console.WriteLine($"PValue     : {predictions[i].Results![2]:F3}\n");
             }
 
-            OutputSalesDetection(outDir, fileName, salesData, predictions, FileFormat.Csv);
+            OutputSalesDetection(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         #region DATA CONNECTION
@@ -96,7 +96,7 @@ namespace DxMLEngine.Features.AnomalyDetection
             return mlContext.Data.LoadFromEnumerable(new List<Sales>());
         }
 
-        private static void OutputSalesDetection(string location, string fileName, Sales[] salesData, SalesPrediction[] predictions, FileFormat fileFormat)
+        private static void OutputSalesDetection(string location, string fileName, SalesPrediction[] predictions, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Txt)
             {
@@ -114,7 +114,7 @@ namespace DxMLEngine.Features.AnomalyDetection
                     new StringDataFrameColumn("PValue"),
                 });
 
-                for (int i = 0; i < salesData.Length; i++)
+                for (int i = 0; i < predictions.Length; i++)
                 {
                     var dataRow = new List<KeyValuePair<string, object?>>()
                     {
@@ -218,7 +218,7 @@ namespace DxMLEngine.Features.AnomalyDetection
                 Console.WriteLine($"PValue     : {predictions[i].Results![2]:F3}\n");
             }
 
-            OutputSalesDetection(outDir, fileName, salesData, predictions, FileFormat.Csv);
+            OutputSalesDetection(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         private static SalesPrediction[] ConsumeAnomalyModel(ref MLContext mlContext, ITransformer model, Sales[] salesData)

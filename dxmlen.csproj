@@ -11,15 +11,12 @@
   <ItemGroup>
     <Compile Remove="res\Data %40Tesseract #20220925 - Copy\**" />
     <Compile Remove="src\Application\Configuration\**" />
-    <Compile Remove="src\Features\LearningEngine\Statistics\**" />
     <Compile Remove="src\Features\LearningEngine\TextMining\**" />
     <EmbeddedResource Remove="res\Data %40Tesseract #20220925 - Copy\**" />
     <EmbeddedResource Remove="src\Application\Configuration\**" />
-    <EmbeddedResource Remove="src\Features\LearningEngine\Statistics\**" />
     <EmbeddedResource Remove="src\Features\LearningEngine\TextMining\**" />
     <None Remove="res\Data %40Tesseract #20220925 - Copy\**" />
     <None Remove="src\Application\Configuration\**" />
-    <None Remove="src\Features\LearningEngine\Statistics\**" />
     <None Remove="src\Features\LearningEngine\TextMining\**" />
   </ItemGroup>
 
@@ -114,7 +111,10 @@
     <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.12.1" />
     <PackageReference Include="Microsoft.ML.OnnxTransformer" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.Probabilistic" Version="0.4.2203.202" />
+    <PackageReference Include="Microsoft.ML.Probabilistic.Compiler" Version="0.4.2203.202" />
     <PackageReference Include="Microsoft.ML.Recommender" Version="0.19.1" />
+    <PackageReference Include="Microsoft.ML.SampleUtils" Version="0.19.1" />
     <PackageReference Include="Microsoft.ML.TensorFlow" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.TensorFlow.Redist" Version="0.14.0" />
     <PackageReference Include="Microsoft.ML.TimeSeries" Version="1.7.1" />

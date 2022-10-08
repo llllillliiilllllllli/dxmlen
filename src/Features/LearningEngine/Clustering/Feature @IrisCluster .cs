@@ -80,7 +80,7 @@ namespace DxMLEngine.Features.Clustering
                 Console.WriteLine($"AverageDistance : {predictions[i].Distances?.Average()}\n");
             }
 
-            OutputIrisCluster(outDir, fileName, irisData, predictions, FileFormat.Csv);
+            OutputIrisCluster(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         #region DATA CONNECTION
@@ -111,7 +111,7 @@ namespace DxMLEngine.Features.Clustering
             return null;
         }
 
-        private static void OutputIrisCluster(string location, string fileName, Iris[] irisData, IrisPrediction[] predictions, FileFormat fileFormat)
+        private static void OutputIrisCluster(string location, string fileName, IrisPrediction[] predictions, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Txt)
             {
@@ -131,17 +131,17 @@ namespace DxMLEngine.Features.Clustering
                     new StringDataFrameColumn("AverageDistance"),
                 });
 
-                for (int i = 0; i < irisData.Length; i++)
+                for (int i = 0; i < predictions.Length; i++)
                 {
                     var dataRow = new List<KeyValuePair<string, object?>>()
                     {
-                        new KeyValuePair<string, object?>("SepalLength", $"\"{irisData[i].SepalLength}\""),
-                        new KeyValuePair<string, object?>("SepalWidth", $"\"{irisData[i].SepalWidth}\""),
-                        new KeyValuePair<string, object?>("PetalLength", $"\"{irisData[i].PetalLength}\""),
-                        new KeyValuePair<string, object?>("PetalWidth", $"\"{irisData[i].PetalWidth}\""),
-                        new KeyValuePair<string, object?>("ActualCluster", $"\"{irisData[i].Species}\""),
-                        new KeyValuePair<string, object?>("PredictedCluster", $"\"{predictions[i].PredictedSpecies}\""),
-                        new KeyValuePair<string, object?>("AverageDistance", $"\"{predictions[i].Distances?.Average()}\""),
+                        new KeyValuePair<string, object?>("SepalLength",        $"\"{predictions[i].SepalLength}\""),
+                        new KeyValuePair<string, object?>("SepalWidth",         $"\"{predictions[i].SepalWidth}\""),
+                        new KeyValuePair<string, object?>("PetalLength",        $"\"{predictions[i].PetalLength}\""),
+                        new KeyValuePair<string, object?>("PetalWidth",         $"\"{predictions[i].PetalWidth}\""),
+                        new KeyValuePair<string, object?>("ActualCluster",      $"\"{predictions[i].Species}\""),
+                        new KeyValuePair<string, object?>("PredictedCluster",   $"\"{predictions[i].PredictedSpecies}\""),
+                        new KeyValuePair<string, object?>("AverageDistance",    $"\"{predictions[i].Distances?.Average()}\""),
                     };
                                         
                     dataFrame.Append(dataRow, inPlace: true);
@@ -225,7 +225,7 @@ namespace DxMLEngine.Features.Clustering
                 Console.WriteLine($"AverageDistance : {predictions[i].Distances?.Average()}\n");
             }
 
-            OutputIrisCluster(outDir, fileName, irisData, predictions, FileFormat.Csv);
+            OutputIrisCluster(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         private static IrisPrediction[] ConsumeClusterModel(ref MLContext mlContext, ITransformer model, Iris[] irisData)

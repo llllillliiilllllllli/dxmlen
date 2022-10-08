@@ -8,9 +8,9 @@ using Microsoft.ML.Data;
 
 namespace DxMLEngine.Features.Forecasting
 {
-    public class TaxiFarePrediction
+    public class TaxiFarePrediction : TaxiFare
     {
         [ColumnName("Score")]
-        public float FareAmount;
+        public float Score;
     }
 }

@@ -16,10 +16,10 @@ using DxMLEngine.Utilities;
 
 namespace DxMLEngine.Features.Classification
 {
-    public class DocumentPrediction
+    public class DocumentPrediction : Document
     {
         [ColumnName("PredictedLabel")]
-        public string? Subject { set; get; }
+        public string? Prediction { set; get; }
 
         [ColumnName("Score")]
         public float[]? Scores { set; get; }

@@ -82,7 +82,7 @@ namespace DxMLEngine.Features.Recommendation
                 Console.WriteLine($"PredictedRating : {predictions[i].Rating}\n");
             }
 
-            OutputMovieRecommendation(outDir, fileName, movieRatings, predictions, FileFormat.Csv);
+            OutputMovieRecommendation(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         #region DATA CONNECTION
@@ -108,7 +108,7 @@ namespace DxMLEngine.Features.Recommendation
             return null;
         }
 
-        private static void OutputMovieRecommendation(string location, string fileName, MovieRating[] movieRatings, MovieRatingPrediction[] predictions, FileFormat fileFormat)
+        private static void OutputMovieRecommendation(string location, string fileName, MovieRatingPrediction[] predictions, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Txt)
             {
@@ -125,14 +125,14 @@ namespace DxMLEngine.Features.Recommendation
                     new StringDataFrameColumn("PredictedRating"),
                 });
 
-                for (int i = 0; i < movieRatings.Length; i++)
+                for (int i = 0; i < predictions.Length; i++)
                 {
                     var dataRow = new List<KeyValuePair<string, object?>>()
                     {
-                        new KeyValuePair<string, object?>("UserId", $"\"{movieRatings[i].UserId}\""),
-                        new KeyValuePair<string, object?>("MovieId", $"\"{movieRatings[i].MovieId}\""),
-                        new KeyValuePair<string, object?>("ActualRating", $"\"{movieRatings[i].Rating}\""),
-                        new KeyValuePair<string, object?>("PredictedRating", $"\"{predictions[i].Rating}\""),
+                        new KeyValuePair<string, object?>("UserId",             $"\"{predictions[i].UserId}\""),
+                        new KeyValuePair<string, object?>("MovieId",            $"\"{predictions[i].MovieId}\""),
+                        new KeyValuePair<string, object?>("ActualRating",       $"\"{predictions[i].Rating}\""),
+                        new KeyValuePair<string, object?>("PredictedRating",    $"\"{predictions[i].Rating}\""),
                     };
                                         
                     dataFrame.Append(dataRow, inPlace: true);
@@ -224,7 +224,7 @@ namespace DxMLEngine.Features.Recommendation
                 Console.WriteLine($"PredictedRating : {predictions[i].Rating}\n");
             }
 
-            OutputMovieRecommendation(outDir, fileName, movieRatings, predictions, FileFormat.Csv);
+            OutputMovieRecommendation(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         private static MovieRatingPrediction[] ConsumeRecommendationModel(ref MLContext mlContext, ITransformer model, MovieRating[] movieRatings)

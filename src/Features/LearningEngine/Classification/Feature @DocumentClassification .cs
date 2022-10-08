@@ -77,16 +77,16 @@ namespace DxMLEngine.Features.Classification
             var predictions = ConsumeClassificationModel(ref mlContext, model, documents);
 
             Log.Info($"Document Analysis");
-            for (int i = 0; i < documents.Length; i++)
+            for (int i = 0; i < predictions.Length; i++)
             {
-                Console.WriteLine($"Id               : {documents[i].Id}");
-                Console.WriteLine($"Title            : {documents[i].Title}");
-                Console.WriteLine($"Description      : {documents[i].Description}");
-                Console.WriteLine($"ActualSubject    : {documents[i].Subject}");
-                Console.WriteLine($"PredictedSubject : {predictions[i].Subject}");
+                Console.WriteLine($"Id               : {predictions[i].Id}");
+                Console.WriteLine($"Title            : {predictions[i].Title}");
+                Console.WriteLine($"Description      : {predictions[i].Description}");
+                Console.WriteLine($"ActualSubject    : {predictions[i].Subject}");
+                Console.WriteLine($"PredictedSubject : {predictions[i].Prediction}");
             }
 
-            OutputDocumentClassification(outDir, fileName, documents, predictions, FileFormat.Csv);
+            OutputDocumentClassification(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         #region DATA CONNECTION
@@ -112,7 +112,7 @@ namespace DxMLEngine.Features.Classification
             return null;
         }
 
-        private static void OutputDocumentClassification(string location, string fileName, Document[] documents, DocumentPrediction[] predictions, FileFormat fileFormat)
+        private static void OutputDocumentClassification(string location, string fileName, DocumentPrediction[] predictions, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Txt)
             {
@@ -130,15 +130,15 @@ namespace DxMLEngine.Features.Classification
                     new StringDataFrameColumn("PredictedSubject"),
                 });
 
-                for (int i = 0; i < documents.Length; i++)
+                for (int i = 0; i < predictions.Length; i++)
                 {
                     var dataRow = new List<KeyValuePair<string, object?>>()
                     {
-                        new KeyValuePair<string, object?>("Id", $"\"{documents[i].Id}\""),
-                        new KeyValuePair<string, object?>("Title", $"\"{documents[i].Title?.Replace("\"", "\"\"")}\""),
-                        new KeyValuePair<string, object?>("Description", $"\"{documents[i].Description?.Replace("\"", "\"\"")}\""),
-                        new KeyValuePair<string, object?>("ActualSubject", $"\"{documents[i].Subject}\""),
-                        new KeyValuePair<string, object?>("PredictedSubject", $"\"{predictions[i].Subject}\""),
+                        new KeyValuePair<string, object?>("Id",               $"\"{predictions[i].Id}\""),
+                        new KeyValuePair<string, object?>("Title",            $"\"{predictions[i].Title?.Replace("\"", "\"\"")}\""),
+                        new KeyValuePair<string, object?>("Description",      $"\"{predictions[i].Description?.Replace("\"", "\"\"")}\""),
+                        new KeyValuePair<string, object?>("ActualSubject",    $"\"{predictions[i].Subject}\""),
+                        new KeyValuePair<string, object?>("PredictedSubject", $"\"{predictions[i].Prediction}\""),
                     };
                                         
                     dataFrame.Append(dataRow, inPlace: true);
@@ -230,7 +230,7 @@ namespace DxMLEngine.Features.Classification
                 Console.WriteLine($"PredictedSubject : {predictions[i].Subject}");
             }
 
-            OutputDocumentClassification(outDir, fileName, documents, predictions, FileFormat.Csv);
+            OutputDocumentClassification(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         private static DocumentPrediction[] ConsumeClassificationModel(ref MLContext mlContext, ITransformer model, Document[] documents)

@@ -11,14 +11,14 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.Data.Analysis;
 
-namespace DxMLEngine.Features.Recommendation
-{
-    public class MovieRatingPrediction : MovieRating
-    {
-        [ColumnName("Label")]
-        public float Prediction { set; get; }
+using DxMLEngine.Attributes;
+using DxMLEngine.Utilities;
 
-        [ColumnName("Score")]
-        public float Score { set; get; }
+namespace DxMLEngine.Features.Classification
+{
+    public class ReviewPrediction : Review
+    {
+        [VectorType(2)]
+        public float[]? Results { get; set; }
     }
 }

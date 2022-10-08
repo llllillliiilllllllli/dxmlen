@@ -15,10 +15,10 @@ using Microsoft.ML.TensorFlow;
 
 namespace DxMLEngine.Features.Recognition
 {
-    public class ObjectImagePrediction 
+    public class ObjectImagePrediction : ObjectImage
     {
         [ColumnName("PredictedLabel")]        
-        public string? Category;
+        public string? Prediction;
 
         [ColumnName("Score")]
         public float[]? Score;

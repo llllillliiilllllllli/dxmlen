@@ -84,7 +84,7 @@ namespace DxMLEngine.Features.Recognition
 				Console.WriteLine($"PredictedLabel : {predictions[i].Category:F3}\n");
 			}
 			
-			OutputObjectImageRecognition(outDir, fileName, objectImages, predictions, FileFormat.Csv);
+			OutputObjectImageRecognition(outDir, fileName, predictions, FileFormat.Csv);
 		}	
 		
 		#region DATA CONNECTION
@@ -170,7 +170,7 @@ namespace DxMLEngine.Features.Recognition
             return null;
         }
 
-        private static void OutputObjectImageRecognition(string location, string fileName, ObjectImage[] objectImages, ObjectImagePrediction[] predictions, FileFormat fileFormat)
+        private static void OutputObjectImageRecognition(string location, string fileName, ObjectImagePrediction[] predictions, FileFormat fileFormat)
 		{
             if (fileFormat == FileFormat.Csv) 
             {
@@ -181,13 +181,13 @@ namespace DxMLEngine.Features.Recognition
                     new StringDataFrameColumn("PredictedCategory"),
                 });
 
-                                for (int i = 0; i < objectImages.Length; i++)
+                for (int i = 0; i < predictions.Length; i++)
                 {
                     var dataRow = new List<KeyValuePair<string, object?>>()
                     {
-                        new KeyValuePair<string, object?>("ImagePath", $"\"{objectImages[i].ImagePath}\""),
-                        new KeyValuePair<string, object?>("ActualCategory", $"\"{objectImages[i].Category}\""),
-                        new KeyValuePair<string, object?>("PredictedCategory", $"\"{predictions[i].Category}\""),
+                        new KeyValuePair<string, object?>("ImagePath",          $"\"{predictions[i].ImagePath}\""),
+                        new KeyValuePair<string, object?>("ActualCategory",     $"\"{predictions[i].Category}\""),
+                        new KeyValuePair<string, object?>("PredictedCategory",  $"\"{predictions[i].Prediction}\""),
                     };
                                         
                     dataFrame.Append(dataRow, inPlace: true);
@@ -277,7 +277,7 @@ namespace DxMLEngine.Features.Recognition
                 Console.WriteLine($"PredictedLabel : {objectImages[i].Category:F3}\n");
             }
 
-            OutputObjectImageRecognition(outDir, fileName, objectImages, predictions, FileFormat.Csv);
+            OutputObjectImageRecognition(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         private static ObjectImagePrediction[] ConsumeClassificationModel(ref MLContext mlContext, ITransformer model, ObjectImage[] objectImages)

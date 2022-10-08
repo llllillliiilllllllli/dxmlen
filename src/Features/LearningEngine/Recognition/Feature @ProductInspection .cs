@@ -89,7 +89,7 @@ namespace DxMLEngine.Features.Recognition
 				Console.WriteLine($"PredictedLabel : {productImages[i].Category:F3}\n");
 			}
 			
-			OutputProductImageInspection(outDir, fileName, productImages, predictions, FileFormat.Csv);
+			OutputProductImageInspection(outDir, fileName, predictions, FileFormat.Csv);
 		}	
 		
 		#region DATA CONNECTION
@@ -124,7 +124,7 @@ namespace DxMLEngine.Features.Recognition
             return null;
         }
 		
-		private static void OutputProductImageInspection(string location, string fileName, ProductImage[] productImages, ProductImagePrediction[] predictions, FileFormat fileFormat)
+		private static void OutputProductImageInspection(string location, string fileName, ProductImagePrediction[] predictions, FileFormat fileFormat)
 		{
             if (fileFormat == FileFormat.Csv) 
             {
@@ -136,14 +136,14 @@ namespace DxMLEngine.Features.Recognition
                     new StringDataFrameColumn("PredictedCategory"),
                 });
 
-                                for (int i = 0; i < productImages.Length; i++)
+                for (int i = 0; i < predictions.Length; i++)
                 {
                     var dataRow = new List<KeyValuePair<string, object?>>()
                     {
-                        new KeyValuePair<string, object?>("ImagePath", $"\"{productImages[i].ImagePath}\""),
-                        new KeyValuePair<string, object?>("ImageBytes", $"\"{productImages[i].Image}\""),
-                        new KeyValuePair<string, object?>("ActualCategory", $"\"{productImages[i].Category}\""),
-                        new KeyValuePair<string, object?>("PredictedCategory", $"\"{productImages[i].Category}\""),
+                        new KeyValuePair<string, object?>("ImagePath",          $"\"{predictions[i].ImagePath}\""),
+                        new KeyValuePair<string, object?>("ImageBytes",         $"\"{predictions[i].Image}\""),
+                        new KeyValuePair<string, object?>("ActualCategory",     $"\"{predictions[i].Category}\""),
+                        new KeyValuePair<string, object?>("PredictedCategory",  $"\"{predictions[i].Prediction}\""),
                     };
                                         
                     dataFrame.Append(dataRow, inPlace: true);
@@ -234,7 +234,7 @@ namespace DxMLEngine.Features.Recognition
                 Console.WriteLine($"PredictedLabel : {productImages[i].Category:F3}\n");
             }
 
-            OutputProductImageInspection(outDir, fileName, productImages, predictions, FileFormat.Csv);
+            OutputProductImageInspection(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         private static ProductImagePrediction[] ConsumeClassificationModel(ref MLContext mlContext, ITransformer model, ProductImage[] productImages)

@@ -72,7 +72,7 @@ namespace DxMLEngine.Features.AnomalyDetection
                 Console.WriteLine($"LowerBoundary : {predictions[i].Results![6]:F3}\n");
             }
 
-            OutputPhoneCallDetection(outDir, fileName, phoneCalls, predictions, FileFormat.Csv);
+            OutputPhoneCallDetection(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         #region DATA CONNECTION
@@ -87,7 +87,7 @@ namespace DxMLEngine.Features.AnomalyDetection
             return null;
         }
 
-        private static void OutputPhoneCallDetection(string location, string fileName, PhoneCall[] phoneCalls, PhoneCallPrediction[] predictions, FileFormat fileFormat)
+        private static void OutputPhoneCallDetection(string location, string fileName, PhoneCallPrediction[] predictions, FileFormat fileFormat)
         {
             if (fileFormat == FileFormat.Txt)
             {
@@ -109,7 +109,7 @@ namespace DxMLEngine.Features.AnomalyDetection
                     new StringDataFrameColumn("LowerBoundary"),
                 });
 
-                for (int i = 0; i < phoneCalls.Length; i++)
+                for (int i = 0; i < predictions.Length; i++)
                 {
                     var dataRow = new List<KeyValuePair<string, object?>>()
                     {
@@ -224,7 +224,7 @@ namespace DxMLEngine.Features.AnomalyDetection
                 Console.WriteLine($"LowerBoundary : {predictions[i].Results![6]:F3}\n");
             }
 
-            OutputPhoneCallDetection(outDir, fileName, phoneCalls, predictions, FileFormat.Csv);
+            OutputPhoneCallDetection(outDir, fileName, predictions, FileFormat.Csv);
         }
 
         private static PhoneCallPrediction[] ConsumeAnomalyModel(ref MLContext mlContext, PhoneCall[] phoneCalls)
