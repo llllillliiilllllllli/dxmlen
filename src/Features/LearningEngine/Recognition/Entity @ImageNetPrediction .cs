@@ -1,0 +1,31 @@
+using System;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.IO;
+using System.Data;
+using System.Reflection;
+
+using Microsoft.ML;
+using Microsoft.ML.Data;
+using Microsoft.ML.Vision;
+using Microsoft.Data.Analysis;
+using Microsoft.ML.TensorFlow;
+
+namespace DxMLEngine.Features.Recognition
+{
+    public class ImageNetPrediction : ImageNet
+    {
+        /// <summary>
+        /// PredictedLabels:
+        /// "aeroplane" "bicycle", "bird", "boat", "bottle",
+        /// "bus", "car", "cat", "chair", "cow", "diningtable",
+        /// "dog", "horse", "motorbike", "person", "pottedplant",
+        /// "sheep", "sofa", "train", "tvmonitor"
+        /// </summary>
+
+        [ColumnName("grid")]
+        public float[]? PredictedLabels;
+    }    
+}

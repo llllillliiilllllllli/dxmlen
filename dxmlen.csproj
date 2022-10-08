@@ -27,7 +27,6 @@
     <Folder Include="doc\BusinessIntelligence\" />
     <Folder Include="doc\MachineLearning\" />
     <Folder Include="doc\ResearchInformation\" />
-    <Folder Include="log\" />
     <Folder Include="src\Application\Config\" />
     <Folder Include="src\Extensions\" />
     <Folder Include="test\" />
@@ -113,6 +112,8 @@
     <PackageReference Include="Microsoft.ML" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.FastTree" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.12.1" />
+    <PackageReference Include="Microsoft.ML.OnnxTransformer" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.Recommender" Version="0.19.1" />
     <PackageReference Include="Microsoft.ML.TensorFlow" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.TensorFlow.Redist" Version="0.14.0" />
