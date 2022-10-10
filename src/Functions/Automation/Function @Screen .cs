@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DxMLEngine.Functions
 {
-    internal class DxScreen
+    internal class Screen
     {
         [DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();

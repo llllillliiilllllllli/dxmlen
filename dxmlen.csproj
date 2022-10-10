@@ -12,12 +12,18 @@
     <Compile Remove="res\Data %40Tesseract #20220925 - Copy\**" />
     <Compile Remove="src\Application\Configuration\**" />
     <Compile Remove="src\Features\LearningEngine\TextMining\**" />
+    <Compile Remove="src\Functions\Data\**" />
+    <Compile Remove="src\Functions\Mathematics\**" />
     <EmbeddedResource Remove="res\Data %40Tesseract #20220925 - Copy\**" />
     <EmbeddedResource Remove="src\Application\Configuration\**" />
     <EmbeddedResource Remove="src\Features\LearningEngine\TextMining\**" />
+    <EmbeddedResource Remove="src\Functions\Data\**" />
+    <EmbeddedResource Remove="src\Functions\Mathematics\**" />
     <None Remove="res\Data %40Tesseract #20220925 - Copy\**" />
     <None Remove="src\Application\Configuration\**" />
     <None Remove="src\Features\LearningEngine\TextMining\**" />
+    <None Remove="src\Functions\Data\**" />
+    <None Remove="src\Functions\Mathematics\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,8 +55,6 @@
     <Folder Include="src\Features\DataRespository\Google\GoogleArts\" />
     <Folder Include="src\Features\DataRespository\Google\GoogleTranslate\" />
     <Folder Include="src\Features\DataRespository\Google\YouTube\" />
-    <Folder Include="src\Functions\Data\" />
-    <Folder Include="src\Functions\Mathematics\" />
     <Folder Include="src\Services\HtmlAgility\" />
     <Folder Include="src\Services\Tesseract\TessData\tessconfigs\" />
     <Folder Include="src\Services\Microsoft\ML\Base\PredictionEngineBase\" />
@@ -109,7 +113,8 @@
     <PackageReference Include="Microsoft.ML" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.FastTree" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="1.7.1" />
-    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.12.1" />
+    <PackageReference Include="Microsoft.ML.LightGbm" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.13.0" />
     <PackageReference Include="Microsoft.ML.OnnxTransformer" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.Probabilistic" Version="0.4.2203.202" />
     <PackageReference Include="Microsoft.ML.Probabilistic.Compiler" Version="0.4.2203.202" />

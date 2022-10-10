@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
 using System.Diagnostics; 
 using System.Runtime.InteropServices;
 
 namespace DxMLEngine.Functions
 {
-    internal class DxKeyboard
+    internal class Keyboard
     {
         public const byte VK_A = 0x41;
         public const byte VK_Q = 0x51;

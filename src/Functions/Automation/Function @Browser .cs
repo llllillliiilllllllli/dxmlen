@@ -5,8 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using DxMLEngine.Functions;
-
 namespace DxMLEngine.Functions
 {
     internal class Browser
@@ -28,7 +26,7 @@ namespace DxMLEngine.Functions
 
         public static void CloseBrowser(Process browser)
         {
-            DxKeyboard.SendKeys(browser, "ALT+F4", 100);
+            Keyboard.SendKeys(browser, "ALT+F4", 100);
         }
 
         public static Process OpenNewTab(Process browser, string url, int wait = 5000)
@@ -42,49 +40,49 @@ namespace DxMLEngine.Functions
 
         public static void CloseCurrentTab(Process process)
         {
-            DxKeyboard.SendKeys(process, "CTRL+W", 100);
+            Keyboard.SendKeys(process, "CTRL+W", 100);
         }
 
         public static string CopyPageText(Process process, int wait = 0)
         {
             Thread.Sleep(wait);
 
-            DxClipboard.SetText("");
-            DxClipboard.GetText();
-            while (DxClipboard.GetText() == "")
+            Clipboard.SetText("");
+            Clipboard.GetText();
+            while (Clipboard.GetText() == "")
             { 
-                DxKeyboard.SendKeys(process, "CTRL+A", 100);
-                DxKeyboard.SendKeys(process, "CTRL+C", 100);
+                Keyboard.SendKeys(process, "CTRL+A", 100);
+                Keyboard.SendKeys(process, "CTRL+C", 100);
                 Thread.Sleep(1000);
             }
 
-            return DxClipboard.GetText();
+            return Clipboard.GetText();
         }
 
         public static string CopyPageSource(Process process, int wait = 5000)
         {
-            DxKeyboard.SendKeys(process, "CTRL+U", 100);
+            Keyboard.SendKeys(process, "CTRL+U", 100);
             Thread.Sleep(wait);
 
             var newProcess = Process.GetCurrentProcess();
 
-            DxClipboard.SetText("");
-            DxClipboard.GetText();
-            while (DxClipboard.GetText() == "")
+            Clipboard.SetText("");
+            Clipboard.GetText();
+            while (Clipboard.GetText() == "")
             {
-                DxKeyboard.SendKeys(newProcess, "CTRL+A", 100);
-                DxKeyboard.SendKeys(newProcess, "CTRL+C", 100);                
+                Keyboard.SendKeys(newProcess, "CTRL+A", 100);
+                Keyboard.SendKeys(newProcess, "CTRL+C", 100);                
                 Thread.Sleep(1000);
             }
 
-            DxKeyboard.SendKeys(newProcess, "CTRL+W", 100);
+            Keyboard.SendKeys(newProcess, "CTRL+W", 100);
 
-            return DxClipboard.GetText();
+            return Clipboard.GetText();
         }
 
         public static void DownloadSearch(Process process, int wait = 5000)
         {
-            DxKeyboard.SendKeys(process, "CTRL+S", 100);
+            Keyboard.SendKeys(process, "CTRL+S", 100);
             Thread.Sleep(wait);
         }
     }

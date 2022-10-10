@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 
 namespace DxMLEngine.Functions
 {
-    internal class DxMouse
+    internal class Mouse
     {
         [DllImport("User32.dll")]
         private static extern int SetForegroundWindow(IntPtr point);
